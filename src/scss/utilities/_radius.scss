@@ -1,0 +1,14 @@
+/* 
+BORDER RADIUS UTILITY
+Values for consistent border radius.
+*/
+:root {
+    --radius-xs: 3px;
+    --radius-small: 8px;
+    --radius-normal: 16px;
+    --radius-large: 48px;
+}
+
+.rounded {
+    border-radius: var(--radius-normal);
+}

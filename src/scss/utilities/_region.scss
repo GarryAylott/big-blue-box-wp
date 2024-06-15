@@ -1,0 +1,19 @@
+/* 
+REGION UTILITY
+Consistent block padding for page sections.
+*/
+.region-small {
+  padding-block: var(--region-space-small, var(--space-m-l));
+}
+
+.region-normal {
+  padding-block: var(--region-space-normal, var(--space-l-xl));
+}
+
+.region {
+  padding-block: var(--region-space, var(--space-xl-2xl));
+}
+
+.region-bottom {
+  padding-block-end: var(--region-space, var(--space-xl-2xl));
+}

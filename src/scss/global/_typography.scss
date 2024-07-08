@@ -1,0 +1,24 @@
+/* 
+TYPOGRAPHY
+Font styling for headings, paragraphs etc.
+*/
+
+.bold {
+    font-weight: var(--fw-bold);
+}
+
+// Links
+a {
+    color: var(--clr-text-400);
+    text-decoration-color: transparent;
+    text-underline-offset: 4px;
+
+    &:not(:hover) {
+        text-decoration: none;
+    }
+
+    &:hover {
+        color: var(--clr-text-100);
+        text-decoration-color: var(--clr-text-100);
+    }
+}

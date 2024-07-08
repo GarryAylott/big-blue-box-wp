@@ -17,8 +17,8 @@ const paths = {
     dest: './',
   },
   scripts: {
-    src: ['src/js/**/*.js'],
-    dest: './',
+    src: ['src/scripts/**/*.js'],
+    dest: './scripts/',
   }
 };
 
@@ -53,6 +53,6 @@ gulp.task('watch', function() {
          proxy: "big-blue-box.local"
 });
 gulp.watch('src/scss/**/*.scss', gulp.series('styles'));
-gulp.watch('src/js/*.js', gulp.series('scripts'));
+gulp.watch('src/scripts/*.js', gulp.series('scripts'));
 gulp.watch('**/*.php').on('change', browserSync.reload); });
 gulp.task('default', gulp.parallel('styles', 'scripts', 'watch'));

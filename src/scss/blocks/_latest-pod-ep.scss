@@ -1,0 +1,36 @@
+/* 
+LATEST PODCAST EPISODE BLOCK
+*/
+
+.latest-podcast-ep {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    padding: var(--space-s);
+    background: hsl(215, 95%, 55%, 0.05);
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    &__content {
+        padding-inline-end: var(--space-s);
+
+        .text-block {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2xs);
+            margin: var(--space-s) 0 var(--space-m) 0;
+
+        }
+
+        p {
+            color: var(--clr-text-900);
+        }
+    }
+}

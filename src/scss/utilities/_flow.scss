@@ -2,6 +2,7 @@
 FLOW UTILITY
 Spacing value between content blocks.
 */
+
 .flow > * + * {
   margin-top: var(--flow-space, 1em);
 }

@@ -38,6 +38,10 @@ function bigbluebox_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	add_image_size( 'homepage-thumb', 590, 330, true );
+	add_image_size( 'singlepost-feat', 1200, 600, true );
+	add_image_size( 'singlepost-wide', 1200, 675, true );
+	add_image_size( 'singlepost-square', 1200, 9999, true );
+	add_image_size( 'post-list-thumb', 400, 225, true );
 
 	/*
 	* Switch default core markup for search form, comment form, and comments
@@ -92,7 +96,7 @@ add_action( 'after_setup_theme', 'bigbluebox_setup' );
  * Custom admin footer
  */
 function modify_footer() {
-    echo 'Created by Garry Aylott for The Big Blue Box Podcast.';
+    echo 'Created by Garry Aylott for The Big Blue Box Podcast. ';
 }
 add_filter( 'admin_footer_text', 'modify_footer' );
 

@@ -1,0 +1,14 @@
+/* 
+ICON TEXT GROUPS UTILITY
+Groupings for text that have either leading or ttailing icons.
+*/
+
+p.icon-text-group {
+    display: flex;
+    gap: var(--space-2xs);
+    align-items: center;
+
+    svg {
+        fill: currentColor;
+    }
+}

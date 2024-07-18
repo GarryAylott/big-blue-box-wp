@@ -24,11 +24,11 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'bigbluebox' ); ?></a>
 
-	<header role="banner" class="site-head">
+	<header role="banner" class="site-head bg-blur">
 		<div class="wrapper">
 			<div class="site-head__inner">
 				<div class="site-head__logo">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/BBB-logo.svg" width="300" height="77">
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/BBB-logo.svg" width="300" height="77" alt="The Big Blue Box Podcast logo">
 				</div>
 
 				<div class="site-head__navigation">

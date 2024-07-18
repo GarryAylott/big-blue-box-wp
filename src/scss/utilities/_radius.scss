@@ -3,7 +3,7 @@ BORDER RADIUS UTILITY
 Values for consistent border radius.
 */
 :root {
-    --radius-xs: 3px;
+    --radius-xs: 6px;
     --radius-small: 8px;
     --radius-normal: 16px;
     --radius-large: 48px;
@@ -11,4 +11,8 @@ Values for consistent border radius.
 
 .rounded {
     border-radius: var(--radius-normal);
+}
+
+.rounded-small {
+    border-radius: var(--radius-small);
 }

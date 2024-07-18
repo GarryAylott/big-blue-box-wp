@@ -1,5 +1,26 @@
+/* 
+FONTS
+Self-hosted font details.
+*/
+
 @font-face {
-    font-family: 'MonaSansBold';
+    font-family: 'MonaSans';
+    font-weight: 400;
+    font-style: normal;
+    src: url("./fonts/MonaSans-Regular.woff2") format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MonaSans';
+    font-weight: 400;
+    font-style: italic;
+    src: url("./fonts/MonaSans-Italic.woff2") format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MonaSans';
     font-weight: 700;
     font-style: normal;
     src: url("./fonts/MonaSans-Bold.woff2") format('woff2');
@@ -7,9 +28,9 @@
 }
 
 @font-face {
-    font-family: 'MonaSansRegular';
-    font-weight: 400;
+    font-family: 'MonaSans';
+    font-weight: 600;
     font-style: normal;
-    src: url("./fonts/MonaSans-Regular.woff2") format('woff2');
+    src: url("./fonts/MonaSans-SemiBold.woff2") format('woff2');
     font-display: swap;
 }

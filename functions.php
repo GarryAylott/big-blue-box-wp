@@ -37,7 +37,7 @@ function bigbluebox_setup() {
 	*/
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'homepage-thumb', 590, 330, true );
+	add_image_size( 'homepage-thumb', 690, 999, true );
 	add_image_size( 'singlepost-feat', 1200, 600, true );
 	add_image_size( 'singlepost-wide', 1200, 675, true );
 	add_image_size( 'singlepost-square', 1200, 9999, true );
@@ -148,6 +148,22 @@ function bigbluebox_widgets_init() {
 	);
 }
 add_action( 'widgets_init', 'bigbluebox_widgets_init' );
+
+/**
+ * Modify excerpt length
+ */
+function custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+/**
+ * Change More excerpt
+ */
+function custom_more_excerpt( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'custom_more_excerpt' );
 
 /**
  * Enqueue scripts and styles.

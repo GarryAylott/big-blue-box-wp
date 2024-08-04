@@ -3,10 +3,14 @@ FLOW UTILITY
 Spacing value between content blocks.
 */
 
+.flow-small > * + * {
+  margin-top: var(--flow-space-small, 0.5em);
+}
+
 .flow > * + * {
   margin-top: var(--flow-space, 1em);
 }
 
 .flow-large > * + * {
-  margin-top: var(--flow-space-large, 1em);
+  margin-top: var(--flow-space-large, 2em);
 }

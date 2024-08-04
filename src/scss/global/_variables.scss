@@ -59,11 +59,15 @@
 
     /* Other spacing values */
     --gutter: var(--space-m);
+    --flow-space-small: var(--space-2xs-xs);
+    --flow-space: var(--space-s-m);
+    --flow-space-large: var(--space-l-xl);
 
     //Colours
     --clr-text-100: hsl(0, 0%, 100%); // Core white
     --clr-text-400: hsl(218, 14%, 85%); // Default
     --clr-text-900: hsl(219, 11%, 70%); // Subtle
+    --clr-text-link: hsl(221, 91%, 70%); // Text links
 
     --clr-surface-100: hsl(215, 50%, 5%); // Page background
     --clr-surface-200: hsl(217, 50%, 7%); // Dark logo and vector fills
@@ -73,6 +77,7 @@
 
     --clr-border: hsl(219, 11%, 50%);
     --clr-border-darker: var(--clr-surface-100);
+    --clr-border-link: hsl(221, 91%, 70%); // Ghost button outline
 
     --clr-brand-primary: hsl(215, 95%, 55%);
     --clr-brand-secondary: hsl(42, 91%, 58%);

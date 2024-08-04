@@ -6,31 +6,25 @@ LATEST PODCAST EPISODE BLOCK
     position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    flex-wrap: wrap;
     gap: var(--space-m);
-    padding: var(--space-s);
-    background: hsl(215, 95%, 55%, 0.05);
-    overflow: hidden;
 
-    img {
+    &__img {
         width: 100%;
         aspect-ratio: 16 / 9;
         object-fit: cover;
     }
 
     &__content {
-        padding-inline-end: var(--space-s);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-        .text-block {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2xs);
-            margin: var(--space-s) 0 var(--space-m) 0;
-
+        a {
+            display: block;
         }
 
         p {
-            color: var(--clr-text-900);
+            color: var(--clr-text-400);
         }
     }
 }

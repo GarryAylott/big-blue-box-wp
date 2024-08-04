@@ -1,0 +1,28 @@
+/* 
+LINKS TO PODCAST APPS BLOCK
+*/
+
+.podcast-app-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+
+    .link-column a {
+        display: flex;
+        min-height: 45px;
+    }
+
+    @media (max-width: 520px) {
+        .link-column {
+            flex: 45%;
+        }
+
+        a {
+            flex-grow: 1;
+        }
+    }
+
+    @media (max-width: 400px) {
+        flex-direction: column;
+    }
+}

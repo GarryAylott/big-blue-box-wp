@@ -1,0 +1,13 @@
+/* 
+VARIOUS FLEX LAYOUT CLASSES
+*/
+
+.flex-splitter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-push-right {
+    justify-content: flex-end;
+}

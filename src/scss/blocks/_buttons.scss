@@ -37,14 +37,18 @@ button.button {
         z-index: -1;
     }
 
-    &:hover::before {
+    &:hover::before,
+    &:active::before {
         filter: brightness(.9);
     }
 
-    &:focus {
-        outline-style: solid;
-        outline-color: transparent;
-        box-shadow: 0 0 0 4px scale-color(hsl(42, 91%, 58%), $lightness: -40%);
+    &:focus-visible {
+        // outline-style: solid;
+        // outline-color: transparent;
+        // box-shadow: 0 0 0 4px scale-color(hsl(42, 91%, 58%), $lightness: -40%);
+        outline: 3px solid var(--clr-brand-accent);
+        outline-offset: 0.25rem;
+        border-radius: 2px;
     }
 }
 
@@ -58,4 +62,22 @@ button.button {
     font-family: inherit;
     padding: 0;
     cursor: pointer;
+}
+
+/* Ghost buttons */
+.button-ghost {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4em 0.7em;
+    color: var(--clr-text-100);
+    text-align: center;
+    border: 1.5px solid var(--clr-border-link);
+    border-radius: var(--radius-small);
+    transition: all .2s ease-out;
+
+    &:hover {
+        background: rgba(109 153 248 / 40%);
+    }
 }

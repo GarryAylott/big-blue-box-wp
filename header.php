@@ -18,13 +18,14 @@
 <?php wp_body_open(); ?>
 
 <div class="page-bg-inline">
-	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg-home.webp" width="1920" height="850" decoding="async" alt="" fetchpriority="high">
+	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg-home.webp" decoding="async" alt="" fetchpriority="high">
 </div>
 
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'bigbluebox' ); ?></a>
 
-	<header role="banner" class="site-head bg-blur">
+	<header role="banner" class="site-head">
+		<div class="header-backdrop"></div>
 		<div class="wrapper">
 			<div class="site-head__inner">
 				<div class="site-head__logo">

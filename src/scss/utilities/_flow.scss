@@ -4,13 +4,18 @@ Spacing value between content blocks.
 */
 
 .flow-small > * + * {
-  margin-top: var(--flow-space-small, 0.5em);
+  margin-block-start: var(--flow-space-small, 0.5em);
 }
 
 .flow > * + * {
-  margin-top: var(--flow-space, 1em);
+  margin-block-start: var(--flow-space, 1em);
 }
 
 .flow-large > * + * {
-  margin-top: var(--flow-space-large, 2em);
+  margin-block-start: var(--flow-space-large, 2em);
+}
+
+.flow-page-regions > * + * {
+  // margin-block-start: var(--flow-space-xl, 15em);
+  margin-block-start: var(--flow-space-xl, 8em);
 }

@@ -7,12 +7,7 @@ LATEST PODCAST EPISODE BLOCK
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: var(--space-m);
-
-    &__img {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-    }
+    margin-block-start: var(--space-2xl-3xl);
 
     &__content {
         display: flex;
@@ -26,5 +21,11 @@ LATEST PODCAST EPISODE BLOCK
         p {
             color: var(--clr-text-400);
         }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2xs);
     }
 }

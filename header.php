@@ -18,7 +18,7 @@
 <?php wp_body_open(); ?>
 
 <div class="page-bg-inline">
-	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg-home.webp" decoding="async" alt="" fetchpriority="high">
+	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg-home.jpg" decoding="async" alt="" fetchpriority="high">
 </div>
 
 <div id="page" class="site">

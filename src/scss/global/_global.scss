@@ -3,6 +3,14 @@ GLOBAL STYLES
 Site-wide styles.
 */
 
+
+// TEMP SIDEBAR SPACING WHILE DEVELOPING - REMOVE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+aside {
+  margin-top: 500px;
+}
+
+
+// Top-level page styles
 html {
     scroll-behavior: smooth;
 }
@@ -26,5 +34,18 @@ body {
       left: 0;
       z-index: -1;
     }
+  }
+}
+
+// Post preview images
+.post-thumb-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  filter: saturate(1) brightness(1);
+  transition: filter 0.2s ease-in-out;
+
+  &:hover {
+    filter: saturate(1.1) brightness(1.1);
   }
 }

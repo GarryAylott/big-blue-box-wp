@@ -1,0 +1,11 @@
+/* 
+CATEGORY TAG BLOCK
+*/
+
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: 0.25rem 0.625rem;
+    background: var(--clr-surface-400);
+}

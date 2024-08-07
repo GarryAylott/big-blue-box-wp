@@ -62,6 +62,7 @@
     --flow-space-small: var(--space-2xs-xs);
     --flow-space: var(--space-s-m);
     --flow-space-large: var(--space-l-xl);
+    --flow-space-xl: calc(var(--space-2xl-3xl) + var(--space-s));
 
     //Colours
     --clr-text-100: hsl(0, 0%, 100%); // Core white

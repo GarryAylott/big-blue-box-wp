@@ -21,7 +21,7 @@ get_header();
 					?>
 					<?php if ( has_post_thumbnail() ) : ?>
 						<a href="<?php the_permalink(); ?>">
-							<img class="post-thumb-img rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>">
+							<img class="post-thumb-img latest-podcast-ep__thumb rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>">
 						</a>
 					<?php endif; ?>
 

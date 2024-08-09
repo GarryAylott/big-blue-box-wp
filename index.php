@@ -8,7 +8,7 @@ get_header();
 
 	<main id="primary" class="site-main flow-page-regions">
 		<div class="wrapper">
-			<div class="flow-large">
+			<div class="flow">
 				<article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep'); ?>>
 					<?php
 						$homepage_latest_podcast = new WP_Query(
@@ -56,8 +56,23 @@ get_header();
 						wp_reset_postdata();
 					?>
 				</article>
+				<?php get_template_part( 'template-parts/content', 'podcast-apps-links' ); ?>
+			</div>
+		</div>
 
-				<?php get_template_part( 'template-parts/content', 'latest-articles' ); ?>
+		<?php get_template_part( 'template-parts/content', 'latest-articles' ); ?>
+
+		<div class="wrapper">
+			<div class="blockquote-fw">
+				<h4>
+					I’ve been listening to TBBBP for years now after being introduced to it by my son when he was at the peak of his Who obsession. His obsession may have waned somewhat, but the podcast remains a highlight of my week.
+				</h4>
+				<p>
+					Winston Scott
+					<span>
+						<cite>Apple Podcasts Review</cite>
+					</span>
+				</p>
 			</div>
 		</div>
 	</main>

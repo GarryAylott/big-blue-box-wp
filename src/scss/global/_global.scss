@@ -37,6 +37,11 @@ body {
   }
 }
 
+// Custom scroll bar colour
+* {
+  scrollbar-color: var(--clr-surface-600) #c2c5cc;
+}
+
 // Post preview images
 .post-thumb-img {
   width: 100%;

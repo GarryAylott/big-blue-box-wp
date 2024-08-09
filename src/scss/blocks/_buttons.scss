@@ -33,7 +33,7 @@ button.button {
             linear-gradient(170deg, #B4D3FD -30%, transparent 60%) border-box;
         border: 1px solid transparent;
         border-radius: var(--radius-xs);
-        transition: all .15s ease;
+        transition: all .1s ease-out;
         z-index: -1;
     }
 
@@ -73,9 +73,9 @@ button.button {
     padding: 0.4em 0.7em;
     color: var(--clr-text-100);
     text-align: center;
-    border: 1.5px solid var(--clr-border-link);
+    border: 1px solid var(--clr-border-link);
     border-radius: var(--radius-small);
-    transition: all .2s ease-out;
+    transition: all .1s ease-out;
 
     &:hover {
         background: rgba(109 153 248 / 40%);

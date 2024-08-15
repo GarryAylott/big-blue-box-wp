@@ -3,6 +3,8 @@ LINKS TO PODCAST APPS BLOCK
 */
 
 .podcast-app-links {
+    position: relative;
+    width: fit-content;
 
     &__buttons {
         display: flex;
@@ -26,6 +28,45 @@ LINKS TO PODCAST APPS BLOCK
 
         @media (max-width: 400px) {
             flex-direction: column;
+        }
+    }
+
+    // Popcast apps pop up
+    .pod-links-menu {
+        details summary {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        details[open] summary {
+            background: rgba(109 153 248 / 40%);
+            border-radius: var(--radius-small);
+        }
+
+        .other-pod-links-popup {
+            --popover-spacing: calc(var(--space-xs) - 0.3rem);
+            position: absolute;
+            bottom: 130%;
+            right: 0;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--popover-spacing);
+            padding: var(--popover-spacing);
+            background: white;
+            z-index: 100;
+
+            &__item {
+
+                img {
+                    width: 3.5rem;
+                    filter: grayscale(1) brightness(0.9);
+                    transition: filter 0.2s ease-out;
+
+                    &:hover {
+                        filter: grayscale(0) brightness(1);
+                    }
+                }
+            }
         }
     }
 }

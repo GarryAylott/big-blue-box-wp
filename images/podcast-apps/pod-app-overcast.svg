@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+  <g clip-path="url(#a)">
+    <rect width="40" height="40" fill="url(#b)" rx="8"/>
+    <mask id="c" width="40" height="40" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <rect width="40" height="40" fill="#D9D9D9" rx="8"/>
+    </mask>
+    <g mask="url(#c)">
+      <mask id="d" width="40" height="40" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+        <path fill="#fff" d="M0 0h40v40H0V0Z"/>
+      </mask>
+      <g mask="url(#d)">
+        <mask id="e" width="40" height="40" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+          <path fill="#000" d="M20 0c15.446 0 20 4.554 20 20s-4.554 20-20 20S0 35.446 0 20 4.554 0 20 0Z"/>
+        </mask>
+        <g mask="url(#e)">
+          <path fill="url(#f)" d="M0 0h40v40H0V0Z"/>
+          <path fill="#fff" fill-rule="evenodd" d="M20 35c8.284 0 15-6.716 15-15 0-8.284-6.716-15-15-15-8.284 0-15 6.716-15 15 0 8.284 6.716 15 15 15Z" clip-rule="evenodd"/>
+          <path fill="url(#g)" fill-rule="evenodd" d="M4.166 20c0 8.745 7.089 15.834 15.834 15.834A15.796 15.796 0 0 0 35.834 20c0-8.744-7.089-15.833-15.834-15.833S4.166 11.255 4.166 20Zm17.021 8.379L20 29.566l-1.188-1.187L20 23.826l1.188 4.553ZM18.483 29.5l-.594 2.243 1.386-1.385-.792-.858Zm2.242.791.792-.792.594 2.177-1.386-1.384Zm1.914 3.298L20 30.952l-2.64 2.638a17.15 17.15 0 0 0 2.639.265c.887.013 1.773-.075 2.639-.265Zm-16.3-15.911A13.841 13.841 0 0 1 20 6.146a13.841 13.841 0 0 1 4.55 26.916l-2.967-11.016a2.64 2.64 0 1 0-4.223-2.112 2.567 2.567 0 0 0 1.055 2.112l-2.969 11.017A13.841 13.841 0 0 1 6.34 17.678Z" clip-rule="evenodd"/>
+          <path fill="#FF9A20" fill-rule="evenodd" d="M10.962 26.863a1.024 1.024 0 0 0 1.385.197.951.951 0 0 0 .198-1.32 10.137 10.137 0 0 1 0-11.479.896.896 0 0 0-.198-1.32 1.024 1.024 0 0 0-1.385.2 11.9 11.9 0 0 0 0 13.722Zm16.69.197a1.024 1.024 0 0 0 1.385-.199 11.9 11.9 0 0 0 0-13.722 1.024 1.024 0 0 0-1.385-.198.896.896 0 0 0-.197 1.32 10.138 10.138 0 0 1 0 11.48.898.898 0 0 0 .197 1.32Zm-3.365-4.287a1.12 1.12 0 0 0-.065 1.516.958.958 0 0 0 1.385.066 6.573 6.573 0 0 0 0-8.709.908.908 0 0 0-1.385.067 1.193 1.193 0 0 0 .065 1.517c.63.788.978 1.763.99 2.77a4.306 4.306 0 0 1-.99 2.771v.002Zm-8.51 1.516a.96.96 0 0 1-1.385.066 6.572 6.572 0 0 1 0-8.709.906.906 0 0 1 1.385.067 1.12 1.12 0 0 1-.066 1.517 4.53 4.53 0 0 0-.989 2.77 4.305 4.305 0 0 0 .99 2.77 1.117 1.117 0 0 1 .065 1.519Z" clip-rule="evenodd"/>
+        </g>
+      </g>
+    </g>
+  </g>
+  <defs>
+    <linearGradient id="b" x1="20" x2="20" y1="0" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9A20"/>
+      <stop offset="1" stop-color="#FF7724"/>
+    </linearGradient>
+    <linearGradient id="f" x1="0" x2="0" y1="0" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9A20"/>
+      <stop offset="1" stop-color="#FF7724"/>
+    </linearGradient>
+    <linearGradient id="g" x1="4.166" x2="4.166" y1="4.167" y2="35.834" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#444E58"/>
+      <stop offset="1" stop-color="#22312C"/>
+    </linearGradient>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h40v40H0z"/>
+    </clipPath>
+  </defs>
+</svg>

@@ -1,0 +1,65 @@
+/* 
+TESTIMONIALS STYLES
+Styles for full-width and column based testimonials.
+*/
+
+blockquote {
+    font-style: italic;
+
+    em {
+        position: relative;
+        color: var(--clr-surface-700);
+        background: var(--clr-brand-secondary);
+        padding: 0 3px 3px 6px;
+        margin-inline-start: -4px;
+    }
+}
+
+.testimonial-fw {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    width: 90%;
+    padding-inline-start: var(--space-m);
+    margin-inline: auto;
+    border-left: 4px solid var(--clr-brand-secondary);
+
+    @media (max-width: 53em) {
+        width: 100%;
+    }
+
+    h4, h5, p {
+        color: var(--clr-text-400);
+    }
+
+    &__source {
+        display: flex;
+        flex-direction: column;
+
+        p, cite {
+            font-style: normal;
+        }
+
+        cite {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2xs);
+            font-weight: var(--fw-bold);
+        }
+    }
+
+    &__bg-image {
+        position: absolute;
+        top: -65%;
+        right: 0;
+        width: 250px;
+        height: auto;
+        opacity: 0.7;
+        z-index: -1;
+
+        @media (max-width: 53em) {
+            display: none;
+        }
+    }
+}

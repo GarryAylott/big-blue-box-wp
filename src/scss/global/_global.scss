@@ -21,7 +21,7 @@ body {
   font-weight: var(--fw-reg);
   line-height: 1.5;
   color: var(--clr-text-400);
-  background: var(--clr-surface-100);
+  background: var(--clr-surface-700);
   overflow-x: hidden;
 
   &:is(.home) {
@@ -40,6 +40,13 @@ body {
 // Custom scroll bar colour
 * {
   scrollbar-color: var(--clr-surface-600) #c2c5cc;
+}
+
+// Global text selection
+*::selection {
+  background: var(--clr-brand-accent);
+  color: var(--clr-surface-700);
+  -webkit-text-stroke-width: 0;
 }
 
 // Post preview images

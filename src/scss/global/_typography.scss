@@ -58,28 +58,30 @@ h6 {font-size: var(--step-0);}
 
 // Links
 a {
-    color: var(--clr-text-400);
+    color: var(--clr-text-100);
     text-decoration-color: transparent;
     text-underline-offset: 4px;
-    cursor: pointer;
-
-    &:not(:hover) {
-        text-decoration: none;
-    }
 
     &:hover,
     &:active {
-        color: var(--clr-text-100);
-        text-decoration-color: var(--clr-text-100);
+        text-decoration: underline;
+        text-decoration-color: var(--clr-text-link);
     }
     
     &:focus-visible {
-        // outline-style: solid;
-        // outline-color: transparent;
-        // border-radius: 1px;
-        // box-shadow: 0 0 0 2px scale-color(hsl(42, 91%, 58%), $lightness: -40%);
         outline: 2px solid var(--clr-brand-accent);
         outline-offset: 0.25rem;
         border-radius: 2px;
+    }
+}
+
+// Standard text links within body text
+:is(.entry-content) a {
+    color: var(--clr-text-link);
+    text-decoration: underline;
+
+    &:hover,
+    &:active {
+        color: var(--clr-text-link-hover);
     }
 }

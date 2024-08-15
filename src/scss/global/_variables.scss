@@ -69,12 +69,13 @@
     --clr-text-400: hsl(218, 14%, 85%); // Default
     --clr-text-900: hsl(219, 11%, 70%); // Subtle
     --clr-text-link: hsl(221, 91%, 70%); // Text links
+    --clr-text-link-hover: hsl(221, 91%, 66%); // Text links
 
-    --clr-surface-100: hsl(215, 50%, 5%); // Page background
-    --clr-surface-200: hsl(217, 50%, 7%); // Dark logo and vector fills
+    --clr-surface-700: hsl(215, 50%, 5%); // Page background
+    --clr-surface-600: hsl(217, 50%, 7%); // Dark logo and vector fills
     --clr-surface-400: hsl(224, 16%, 13%); // Default/Section backgorunds
-    --clr-surface-600: hsl(218, 15%, 25%); // Component backgrounds
-    --clr-surface-700: hsl(219, 13%, 38%); // Card backgrounds 
+    --clr-surface-200: hsl(218, 15%, 25%); // Component backgrounds
+    --clr-surface-100: hsl(219, 13%, 38%); // Card backgrounds 
 
     --clr-border: hsl(219, 11%, 50%);
     --clr-border-darker: var(--clr-surface-100);

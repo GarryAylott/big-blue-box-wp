@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none">
+  <g clip-path="url(#a)">
+    <rect width="40" height="40" fill="url(#b)" rx="8"/>
+    <mask id="c" width="40" height="40" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha">
+      <rect width="40" height="40" fill="#D9D9D9" rx="8"/>
+    </mask>
+    <g mask="url(#c)">
+      <path fill="#fff" fill-rule="evenodd" d="M23.329 14.825V23.4a1.25 1.25 0 0 1-2.5 0v-2.419a.85.85 0 0 0-1.659.035h-.004v2.234a1.25 1.25 0 0 1-2.5 0v-3.034a.85.85 0 0 0-1.666 0v6.02a1.25 1.25 0 1 1-2.5 0v-4.42a.766.766 0 0 0-.834-.678.766.766 0 0 0-.832.678v.325a1.25 1.25 0 1 1-2.5 0V18.28a1.25 1.25 0 0 1 2.5 0v.324a.766.766 0 0 0 .832.678.766.766 0 0 0 .834-.678V15.82a1.25 1.25 0 0 1 2.5 0v1.177a.85.85 0 0 0 1.666 0v-3.245a1.25 1.25 0 1 1 2.5 0v4.052h.004a.85.85 0 0 0 1.659.035v-3.014a1.25 1.25 0 1 1 2.5 0Zm2.921 2.096A1.24 1.24 0 0 0 25 18.15v4.904a1.25 1.25 0 0 0 2.5 0V18.15a1.24 1.24 0 0 0-1.25-1.229Zm2.916 3.719a1.24 1.24 0 0 1 1.25-1.23 1.24 1.24 0 0 1 1.25 1.23v1.222a1.25 1.25 0 1 1-2.5 0V20.64Z" clip-rule="evenodd"/>
+    </g>
+  </g>
+  <defs>
+    <linearGradient id="b" x1="0" x2="40" y1="0" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9D56"/>
+      <stop offset="1" stop-color="#F52"/>
+    </linearGradient>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h40v40H0z"/>
+    </clipPath>
+  </defs>
+</svg>

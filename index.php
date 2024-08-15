@@ -63,17 +63,18 @@ get_header();
 		<?php get_template_part( 'template-parts/content', 'latest-articles' ); ?>
 
 		<div class="wrapper">
-			<div class="blockquote-fw">
-				<h4>
-					I’ve been listening to TBBBP for years now after being introduced to it by my son when he was at the peak of his Who obsession. His obsession may have waned somewhat, but the podcast remains a highlight of my week.
-				</h4>
-				<p>
-					Winston Scott
-					<span>
-						<cite>Apple Podcasts Review</cite>
-					</span>
-				</p>
-			</div>
+			<blockquote class="testimonial-fw">
+				<h5>
+					I’ve been listening to TBBBP for years now after being introduced to it by my son when he was at the peak of his Who obsession. His obsession may have waned somewhat, <em>but the podcast remains a highlight of my week.</em>
+				</h5>
+				<div class="testimonial-fw__source">
+					<p>Winston Scott</p>
+					<cite>
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-five-stars.svg" width="92" height="16" alt=""> Apple Podcasts Review
+					</cite>
+				</div>
+				<img class="testimonial-fw__bg-image" src="<?php echo get_bloginfo('template_url') ?>/images/tardis-blockquote.svg" alt="">
+			</blockquote>
 		</div>
 	</main>
 <?php

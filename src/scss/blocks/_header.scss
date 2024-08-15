@@ -40,7 +40,6 @@ Header styling for logo, nav etc.
 
         p {
             font-size: var(--step--1);
-            color: var(--clr-text-400);
         }
 
         .nav {
@@ -49,7 +48,6 @@ Header styling for logo, nav etc.
             align-items: center;
             gap: var(--space-xl);
             justify-content: flex-end;
-            font-size: var(--step--1);
             font-size: calc(var(--step--1) + 0.15rem);
             font-weight: var(--fw-bold);
             margin: 0;
@@ -76,7 +74,7 @@ Header styling for logo, nav etc.
             padding: var(--space-3xl) var(--space-l);
             gap: var(--space-l);
             font-size: var(--step-1);
-            background: var(--clr-surface-200);
+            background: var(--clr-surface-400);
             z-index: 1000;
             transform: translateX(0);
             transition: transform .25s ease-out;

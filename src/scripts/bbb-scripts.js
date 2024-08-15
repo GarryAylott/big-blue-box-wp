@@ -1,3 +1,4 @@
+// Responsive nav menu
 const primaryNav = document.querySelector('.nav');
 const navToggle = document.querySelector('.menu-nav-toggle');
 

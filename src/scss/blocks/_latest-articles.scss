@@ -8,8 +8,6 @@ LATEST ARTICLES BLOCK
     gap: var(--space-m);
 
     article {
-        margin-block-end: var(--space-s);
-
         > * + * {
             margin-block-start: 0.85rem;
         }

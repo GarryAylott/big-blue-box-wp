@@ -6,20 +6,22 @@
  */
 ?>
 
-<?php
-    $args = array(
-        'category_name' => 'articles',
-        'posts_per_page' => 3,
-        'post_status' => 'publish'
-    );
-    $latest_articles = new WP_Query( $args );
-?>
-
-<div class="wrapper latest-articles">
+<div class="wrapper">
     <h4 class="section-title">Latest articles</h4>
     <div class="latest-articles-featured">
-        <?php if ( $latest_articles->have_posts() ) :
-            while ( $latest_articles->have_posts() ) : $latest_articles->the_post(); ?>
+        <?php
+            $displayed_posts = get_query_var('displayed_posts', array());
+
+            $args2 = array(
+                'category_name' => 'articles',
+                'posts_per_page' => 3,
+                'post_status' => 'publish',
+                'post__not_in' => $displayed_posts
+            );
+            $query2 = new WP_Query($args2);
+        ?>
+        <?php if ( $query2->have_posts() ) :
+            while ( $query2->have_posts() ) : $query2->the_post(); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
 
                     <?php if ( has_post_thumbnail() ) : ?>
@@ -48,12 +50,13 @@
                         <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
                     </footer>
 
-                </article><!-- #post-<?php the_ID(); ?> -->
-            <?php endwhile;
-
+                </article>
+        <?php
+        $displayed_posts[] = get_the_ID();
+        endwhile;
             wp_reset_postdata();
-        else : ?>
-            <p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
-        <?php endif; ?>
+        endif; 
+        set_query_var('displayed_posts', $displayed_posts);
+        ?>
     </div>
 </div>

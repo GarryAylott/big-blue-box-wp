@@ -34,7 +34,7 @@ if ( array_key_exists($author_name, $author_images) ) {
 <div class="author-meta">
     <img class="author-image" src="<?php echo esc_url($author_image_url); ?>" alt="<?php echo esc_attr($author_name); ?>">
     <div class="author-meta__details">
-        <p class="small bold">
+        <p class="author-meta__author-name small bold">
             <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>">
                 <?php echo esc_html($author_name); ?>
             </a>

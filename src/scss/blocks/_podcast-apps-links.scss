@@ -53,6 +53,7 @@ LINKS TO PODCAST APPS BLOCK
             gap: var(--popover-spacing);
             padding: var(--popover-spacing);
             background: white;
+            transition: all 0.2s ease-out;
             z-index: 100;
 
             &__item {

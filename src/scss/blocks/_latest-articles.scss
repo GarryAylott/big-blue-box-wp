@@ -6,14 +6,4 @@ LATEST ARTICLES BLOCK
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
     gap: var(--space-m);
-
-    article {
-        > * + * {
-            margin-block-start: 0.85rem;
-        }
-
-        footer {
-            margin-block-start: 0;
-        }
-    }
 }

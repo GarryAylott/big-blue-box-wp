@@ -1,0 +1,24 @@
+/* 
+POST PREVIEW CARDS
+Layout and styling for articles post cards.
+*/
+
+article:not(.latest-podcast-ep) {
+    > * + * {
+        margin-block-start: 0.85rem;
+    }
+
+    a:has(img) {
+        display: block;
+    }
+
+    footer {
+        margin-block-start: 0;
+    }
+}
+
+article.post-card-alt {
+    > * + * {
+        margin-block-start: var(--flow-space-small);
+    }
+}

@@ -3,22 +3,56 @@ POST PREVIEW CARDS
 Layout and styling for articles post cards.
 */
 
-article:not(.latest-podcast-ep) {
-    > * + * {
-        margin-block-start: 0.85rem;
-    }
+article {
+    position: relative;
+    display: flex;
+    flex-direction: column;
 
     a:has(img) {
         display: block;
     }
 
     footer {
-        margin-block-start: 0;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2xs);
+        color: var(--clr-text-900);
     }
 }
 
-article.post-card-alt {
-    > * + * {
-        margin-block-start: var(--flow-space-small);
+.post-thumb-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    filter: saturate(1) brightness(1);
+    transition: filter 0.2s ease-in-out;
+    
+    &:hover {
+        filter: saturate(1.1) brightness(1.1);
+    }
+}
+
+.post-thumb-img-small {
+    filter: saturate(1) brightness(1);
+    transition: filter 0.2s ease-in-out;
+
+    &:hover {
+        filter: saturate(1.1) brightness(1.1);
+    }
+}
+
+.post-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-2xs);
+
+    header {
+        margin-block-start: var(--space-2xs);
+
+        a {
+            display: block;
+        }
     }
 }

@@ -61,6 +61,12 @@ textarea, select {
   font-size: inherit;
 }
 
+/* Remove input and field default styles */
+input, textarea {
+  padding: 0;
+  margin: 0;
+}
+
 /* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
   min-height: 10em;

@@ -11,6 +11,10 @@ LINKS TO PODCAST APPS BLOCK
         flex-wrap: wrap;
         gap: var(--space-xs);
 
+        .button-ghost {
+            padding: 0.4em 0.8em;
+        }
+
         .link-column a {
             display: flex;
             min-height: 45px;
@@ -36,6 +40,11 @@ LINKS TO PODCAST APPS BLOCK
         details summary {
             list-style: none;
             cursor: pointer;
+
+            // Safari fix
+            &::-webkit-details-marker {
+                display: none;
+            }
         }
 
         details[open] summary {
@@ -52,14 +61,13 @@ LINKS TO PODCAST APPS BLOCK
             grid-template-columns: repeat(5, 1fr);
             gap: var(--popover-spacing);
             padding: var(--popover-spacing);
-            background: white;
+            background: var(--clr-surface-400);
             transition: all 0.2s ease-out;
             z-index: 100;
 
             &__item {
-
                 img {
-                    width: 3.5rem;
+                    width: 3rem;
                     filter: grayscale(1) brightness(0.9);
                     transition: filter 0.2s ease-out;
 

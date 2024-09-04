@@ -2,6 +2,12 @@
 VARIOUS FLEX LAYOUT CLASSES
 */
 
+.flex {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+}
+
 .flex-splitter {
     display: flex;
     align-items: center;

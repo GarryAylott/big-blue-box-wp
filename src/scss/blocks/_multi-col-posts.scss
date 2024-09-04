@@ -1,0 +1,53 @@
+/* 
+MULTI-COL POSTS
+Layout and styling for small post cards in multiple columns (desktop).
+*/
+
+.more-articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: var(--space-2xl);
+
+    ul {
+        margin-block-end: var(--space-l);
+    }
+
+    li {
+        display: flex;
+        gap: var(--space-s);
+        padding-block: var(--space-s);
+
+        .more-articles-content {
+            a {
+                display: block;
+                margin-block-end: var(--space-2xs);
+
+                img {
+                    max-width: 142px;
+                    height: 80px;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        .more-articles-title {
+            margin-block-start: -6px;
+            
+            p {
+                line-height: 1.4;
+            }
+        }
+
+        &:is(:first-child) {
+            padding-block-start: 0;
+        }
+
+        &:is(:last-child) {
+            padding-block-end: 0;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid var(--clr-surface-200);
+        }
+    }
+}

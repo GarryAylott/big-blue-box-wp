@@ -8,7 +8,7 @@ LATEST PODCAST EPISODE BLOCK
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: var(--space-m);
     row-gap: var(--space-s);
-    margin-block-start: var(--space-2xl-3xl);
+    margin-block-start: var(--space-xl-2xl);
 
     &__content {
         display: flex;

@@ -10,12 +10,15 @@ Author image and post meta styling.
     grid-template-columns: 3rem 1fr;
     align-items: center;
     gap: var(--space-xs);
-    padding-block-start: var(--space-s);
 
     &__details {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+        @media (max-width: 989px) {
+            background: none;
+        }
     }
 }
 
@@ -29,7 +32,7 @@ Author image and post meta styling.
 
         &__details {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: max-content 1fr;
             align-items: center;
             gap: var(--space-2xs);
 
@@ -43,11 +46,5 @@ Author image and post meta styling.
             color: inherit;
             padding-inline-start: var(--space-3xs);
         }
-    }
-}
-
-article.post-card-alt {
-    footer {
-        margin-block-start: var(--space-3xs);
     }
 }

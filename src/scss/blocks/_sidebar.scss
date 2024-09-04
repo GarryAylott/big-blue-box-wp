@@ -1,0 +1,114 @@
+/* 
+SIDEBAR
+Layout and styling for the main sidebar that appears on the homepage and a select other pages.
+*/
+
+.main-sidebar {
+
+    .search-form {
+        position: relative;
+        display: grid;
+
+        .search-field {
+            width: 100%;
+        }
+
+        button {
+            position: absolute;
+            right: var(--space-2xs);
+            top: 50%;
+            height: calc(100% - var(--space-xs));
+            transform: translateY(-50%);
+        }
+    }
+
+    .social-links {
+        li {
+            padding-block: var(--space-xs);
+        }
+
+        li:is(:first-child) {
+            padding-block-start: 0;
+        }
+
+        li:is(:last-child) {
+            padding-block-end: 0;
+        }
+
+        li:not(:last-child) {
+            border-bottom: 1px solid var(--clr-surface-200);
+        }
+
+        &__item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+
+            img {
+                width: 1.3rem;
+            }
+
+            a {
+                font-size: var(--step--1);
+            }
+        }
+    }
+
+    .discord-link, .intro {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
+
+        .intro {
+            gap: var(--space-xs);
+
+            img {
+                width: fit-content;
+            }
+        }
+    }
+
+    .author-section-small {
+        &__author-block {
+            display: flex;
+            gap: var(--space-xs);
+            padding-block: var(--space-xs);
+
+            img {
+                border-radius: var(--radius-xs);
+            }
+
+            .new-author-img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 56px;
+                height: 56px;
+                background-color: var(--clr-surface-400);
+            }
+
+            p:not(:first-child) {
+                color: var(--clr-text-900);
+            }
+
+            &:is(:first-child) {
+                padding-block-start: 0;
+            }
+
+            &:is(:last-child) {
+                padding-block-end: 0;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid var(--clr-surface-200);
+            }
+        }
+    }
+
+    .sidebar-img {
+        @media (max-width: 621px) {
+            min-width: 100%;
+            height: auto;
+        }
+    }
+}

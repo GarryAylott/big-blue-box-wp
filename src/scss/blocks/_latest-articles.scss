@@ -1,3 +1,5 @@
+@use 'utilities' as *;
+
 /* 
 LATEST ARTICLES BLOCK
 */
@@ -6,4 +8,8 @@ LATEST ARTICLES BLOCK
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
     gap: var(--space-m);
+
+    .category-tag {
+        @include visually-hidden;
+    }
 }

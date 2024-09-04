@@ -32,7 +32,7 @@ body {
 
 // Custom scroll bar colour
 * {
-  scrollbar-color: var(--clr-surface-600) #c2c5cc;
+  scrollbar-color: var(--clr-brand-primary) var(--clr-surface-400);
 }
 
 // Global text selection
@@ -40,17 +40,4 @@ body {
   background: var(--clr-brand-accent);
   color: var(--clr-surface-700);
   -webkit-text-stroke-width: 0;
-}
-
-// Post preview images
-.post-thumb-img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  filter: saturate(1) brightness(1);
-  transition: filter 0.2s ease-in-out;
-
-  &:hover {
-    filter: saturate(1.1) brightness(1.1);
-  }
 }

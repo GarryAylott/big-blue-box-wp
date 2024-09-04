@@ -22,15 +22,13 @@
         ?>
         <?php if ( $query2->have_posts() ) :
             while ( $query2->have_posts() ) : $query2->the_post(); ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
+                <article id="post-<?php the_ID(); ?>" <?php post_class('flow-small'); ?>>
 
                     <?php if ( has_post_thumbnail() ) : ?>
                         <a href="<?php the_permalink(); ?>">
-                            <img class="post-thumb-img rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>">
+                            <img class="post-thumb-img rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="387" height="217" alt="<?php echo the_title() ?>">
                         </a>
                     <?php endif; ?>
-
-                    <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
 
                     <header class="entry-header">
                         <a href="<?php the_permalink(); ?>">
@@ -47,9 +45,9 @@
                     </header>
 
                     <footer class="entry-footer">
+                        <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
                         <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
                     </footer>
-
                 </article>
         <?php
         $displayed_posts[] = get_the_ID();

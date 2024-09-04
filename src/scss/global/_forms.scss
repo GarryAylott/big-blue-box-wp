@@ -1,0 +1,31 @@
+/* 
+FORMS
+Styling for all form elements.
+*/
+
+form {
+    // Basic input styling
+    input, textarea {
+        color: var(--clr-text-400);
+        padding: var(--space-xs) var(--space-s);
+        background: var(--clr-surface-400);
+        border: 1px solid var(--clr-border-darker);
+        border-radius: var(--radius-small);y
+
+        &::placeholder {
+            font-size: 1.2rem;
+            color: var(--clr-surface-100);
+            opacity: 1;
+        }
+    }
+    
+    button.button-ghost {
+        border-radius: 5px;
+    }
+
+    // Browser add-on clean up
+    [type="search"]::-webkit-search-decoration,
+    [type="search"]::-webkit-search-cancel-button {
+        appearance: none;
+    }
+}

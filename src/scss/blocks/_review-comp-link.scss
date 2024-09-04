@@ -1,0 +1,25 @@
+/* 
+REVIEW COMPENDIUM LINK FULL WIDTH SECTION
+Styles for full-width section that links to the Reviews Compendium
+*/
+
+.review-compendium-link {
+    position: relative;
+    padding-block: var(--space-3xl);
+    background-image: url("images/review-compendium-section-bg.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &__content {
+        display: flex;
+        gap: var(--space-3xl);
+
+        > :first-child {
+            width: 70ch;
+        }
+
+        a.button {
+            margin-block-start: var(--space-l);
+        }
+    }
+}

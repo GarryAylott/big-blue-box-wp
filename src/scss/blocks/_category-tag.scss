@@ -6,6 +6,18 @@ CATEGORY TAG BLOCK
     display: inline-flex;
     align-items: center;
     gap: var(--space-2xs);
-    padding: 0.25rem 0.625rem;
-    background: var(--clr-surface-400);
+    width: fit-content;
+    margin: 0;
+
+    svg {
+        opacity: 0.6;
+    }
+
+    p {
+        font-size: 12px;
+        color: var(--clr-text-900);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding-block-start: 1px;
+    }
 }

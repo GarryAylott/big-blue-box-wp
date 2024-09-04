@@ -5,7 +5,7 @@ Layout and styling for the browse all and side section.
 
 .browse-all {
     position: static;
-    background: url(images/homepage-browse-all-bg.webp);
+    background-image: url("images/homepage-browse-all-bg.webp");
     background-repeat: no-repeat;
     background-size: contain;
 
@@ -26,7 +26,19 @@ Layout and styling for the browse all and side section.
 
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-        gap: var(--space-m)
+        gap: var(--space-m);
+
+        // Make catch-all buttons span all columns/full-width
+        > :last-child {
+            grid-column: 1 / -1;
+        }
+    }
+
+    
+
+    .main-sidebar {
+        flex-basis: 20.5rem;
+        flex-grow: 1;
     }
 
     article {

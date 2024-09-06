@@ -3,6 +3,10 @@ FLOW UTILITY
 Spacing value between content blocks.
 */
 
+.flow-tiny > * + * {
+  margin-block-start: var(--flow-space-tiny, 0.5em);
+}
+
 .flow-small > * + * {
   margin-block-start: var(--flow-space-small, 0.5em);
 }

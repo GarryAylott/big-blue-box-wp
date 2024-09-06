@@ -30,9 +30,28 @@ body {
   }
 }
 
+// Spacing after main content between the footer
+main {
+  margin-block-end: var(--space-3xl);
+}
+
 // Custom scroll bar colour
 * {
   scrollbar-color: var(--clr-brand-primary) var(--clr-surface-400);
+  
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: var(--clr-surface-400);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: var(--clr-brand-primary);
+    border-radius: 6px;
+    border: 3px solid var(--clr-surface-400);
+  }
 }
 
 // Global text selection

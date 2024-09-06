@@ -37,8 +37,8 @@ function bigbluebox_setup() {
 	*/
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'homepage-thumb', 690, 999, true );
-	add_image_size( 'singlepost-feat', 1200, 600, true );
+	add_image_size( 'homepage-thumb', 690, 999 );
+	add_image_size( 'singlepost-feat', 1200, 600 );
 	add_image_size( 'singlepost-wide', 1200, 675, true );
 	add_image_size( 'singlepost-square', 1200, 9999, true );
 	add_image_size( 'post-list-thumb', 400, 225, true );
@@ -181,24 +181,24 @@ add_action( 'wp_enqueue_scripts', 'bigbluebox_scripts' );
 
 /* Includes from starter theme */
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
+// /**
+//  * Custom template tags for this theme.
+//  */
+// require get_template_directory() . '/inc/template-tags.php';
 
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
+// /**
+//  * Functions which enhance the theme by hooking into WordPress.
+//  */
+// require get_template_directory() . '/inc/template-functions.php';
 
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
+// /**
+//  * Customizer additions.
+//  */
+// require get_template_directory() . '/inc/customizer.php';
 
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
+// /**
+//  * Load Jetpack compatibility file.
+//  */
+// if ( defined( 'JETPACK__VERSION' ) ) {
+// 	require get_template_directory() . '/inc/jetpack.php';
+// }

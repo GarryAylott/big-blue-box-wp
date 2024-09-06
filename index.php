@@ -6,7 +6,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main flow-page-regions" style="padding-block-end: 500px;">
+<main id="primary" class="site-main flow-page-regions">
     <div class="wrapper">
         <div class="flow">
             <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep'); ?>>
@@ -68,8 +68,10 @@ get_header();
     set_query_var('displayed_posts', $displayed_posts);
     get_template_part('template-parts/content', 'latest-articles');
     ?>
-
-    <?php get_template_part('template-parts/content', 'testimonial-fw'); ?>
+    
+    <div class="wrapper">
+        <?php get_template_part('template-parts/content', 'testimonial'); ?>
+    </div>
 
     <div class="browse-all">
         <div class="wrapper">
@@ -138,7 +140,9 @@ get_header();
         </div>
     </div>
 
-    <?php get_template_part('template-parts/content', 'testimonial-fw'); ?>
+    <div class="wrapper">
+        <?php get_template_part('template-parts/content', 'testimonial'); ?>
+    </div>
 
     <section class="review-compendium-link">
         <div class="wrapper">
@@ -223,6 +227,14 @@ get_header();
     </section>
 
     <?php get_template_part('template-parts/content', 'rt-link-panel'); ?>
+
+    <div class="wrapper">
+        <div class="testimonials-multi-col">
+            <?php get_template_part('template-parts/content', 'testimonial'); ?>
+            <?php get_template_part('template-parts/content', 'testimonial'); ?>
+            <?php get_template_part('template-parts/content', 'testimonial'); ?>
+        </div>
+    </div>
 </main>
 <?php
 

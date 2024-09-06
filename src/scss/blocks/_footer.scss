@@ -1,0 +1,116 @@
+@use '../utilities/visually-hidden' as *;
+
+/* 
+SITE FOOTER
+Layout and styling for the site footer
+*/
+
+.footer {
+    position: relative;
+    padding-block-start: var(--space-xl);
+    background: url("./images/footer-bg-glow-noise.webp") no-repeat bottom center;
+    background-size: cover;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        background: url("./images/footer-tardis-bg.webp") no-repeat center;
+        background-size: contain;
+        z-index: 1;
+
+        @media (max-width: 768px) {
+            background-position: bottom right;
+            left: 30%;
+            transform: none;
+            background-size: 90%;
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(6, 12, 19, 1) 5%, rgba(6, 12, 19, 0) 100%);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    p {
+        color: var(--clr-text-900);
+    }
+
+    .footer-top {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr max-content max-content;
+        gap: var(--space-xl);
+        padding-block-end: var(--space-l);
+        background: linear-gradient(to right, 
+            transparent, 
+            rgba(27, 47, 75, 0.6) 20%, 
+            rgba(27, 47, 75, 0.6) 80%, 
+            transparent
+        );
+        background-size: 100% 1px;
+        background-position: 0 100%;
+        background-repeat: no-repeat;
+        z-index: 3;
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+
+        &__col1 {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-s);
+
+            ul {
+                display: flex;
+                align-items: center;
+                gap: var(--space-s);
+
+                li a img {
+                    transition: all .2s ease-out;
+                    
+                    &:hover {
+                        transform: translateY(-3px);
+                    }
+                }
+            }
+        }
+
+        ul.footer-list li {
+            &:first-child {
+                margin-block-end: var(--space-xs);
+            }
+
+            &:not(:first-child) {
+                font-size: var(--step--1);
+            }
+
+            a {
+                color: var(--clr-text-900);
+            }
+        }
+    }
+
+    .footer-bottom {
+        position: relative;
+        padding-block: var(--space-l);
+        z-index: 3;
+
+        p {
+            max-width: 75ch;
+        }
+    }
+}

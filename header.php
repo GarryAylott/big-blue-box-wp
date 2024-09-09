@@ -17,7 +17,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<div class="page-bg-inline">
+<div class="page-bg-inline bg-image-fade">
 	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg-home.jpg" decoding="async" alt="" fetchpriority="high">
 </div>
 

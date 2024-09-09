@@ -5,21 +5,35 @@ Styles for full-width section that links to the Reviews Compendium
 
 .review-compendium-link {
     position: relative;
-    padding-block: var(--space-3xl);
     background-image: url("images/review-compendium-section-bg.webp");
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 
     &__content {
-        display: flex;
-        gap: var(--space-3xl);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+        gap: var(--space-s);
 
-        > :first-child {
-            width: 70ch;
+        .review-compendium-text {
+            padding-block: var(--space-3xl);
+
+            a.button {
+                width: fit-content;
+                margin-block-start: var(--space-l);
+            }
         }
 
-        a.button {
-            margin-block-start: var(--space-l);
+        img {
+            max-width: 500px;
+            height: auto;
+            object-fit: cover;
+            align-self: end;
+            justify-self: end;
+
+            @media (max-width: 906px) {
+                display: none;
+            }
         }
     }
 }

@@ -32,7 +32,7 @@
 
                     <header class="entry-header">
                         <a href="<?php the_permalink(); ?>">
-                            <h5>
+                            <h5 class="balance">
                                 <?php
                                     $thetitle = $post->post_title;
                                     $getlength = strlen($thetitle);

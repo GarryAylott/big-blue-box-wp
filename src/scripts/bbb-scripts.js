@@ -13,3 +13,16 @@ navToggle.addEventListener('click', () => {
         navToggle.setAttribute('aria-expanded', false);
     }
 });
+
+// Fade in background image on scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const backgroundImage = document.querySelector('.bg-image-fade img');
+    
+    if (backgroundImage) {
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const opacity = 1 - (scrollPosition / 600);
+            backgroundImage.style.opacity = Math.max(opacity, 0);
+        });
+    }
+});

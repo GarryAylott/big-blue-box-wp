@@ -34,11 +34,11 @@ get_header();
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" fill="none">
                                         <path d="M7.5 3c0-.813-.688-1.5-1.5-1.5A1.5 1.5 0 0 0 4.5 3v5c0 .844.656 1.5 1.5 1.5A1.5 1.5 0 0 0 7.5 8V3ZM3 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3ZM2 6.75V8c0 2.219 1.781 4 4 4 2.188 0 4-1.781 4-4V6.75a.74.74 0 0 1 .75-.75.76.76 0 0 1 .75.75V8c0 2.813-2.094 5.094-4.75 5.469V14.5h1.5a.76.76 0 0 1 .75.75.74.74 0 0 1-.75.75h-4.5a.722.722 0 0 1-.75-.75.74.74 0 0 1 .75-.75h1.5v-1.031A5.502 5.502 0 0 1 .5 8V6.75A.74.74 0 0 1 1.25 6a.76.76 0 0 1 .75.75Z"/>
                                     </svg>
-                                    Latest Podcast <span>•</span> <?php the_field('episode_number'); ?>
+                                    Latest Podcast <span>•</span> Episode <?php the_field('episode_number'); ?>
                                 </p>
                                 <div class="latest-podcast-ep__details">
                                     <a href="<?php the_permalink(); ?>">
-                                        <h4>
+                                        <h4 class="balance">
                                             <?php
                                             $thetitle = $post->post_title;
                                             $getlength = strlen($thetitle);
@@ -102,7 +102,7 @@ get_header();
 									<header class="entry-header">
                                         <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
 										<a href="<?php the_permalink(); ?>">
-											<h5>
+											<h5 class="balance">
 												<?php
 												$thetitle = $post->post_title;
 												$getlength = strlen($thetitle);
@@ -144,25 +144,7 @@ get_header();
         <?php get_template_part('template-parts/content', 'testimonial'); ?>
     </div>
 
-    <section class="review-compendium-link">
-        <div class="wrapper">
-            <div class="review-compendium-link__content">
-                <div class="flow-small">
-                    <h4>Find Our Reviews for Every Doctor Who Story</h4>
-                    <p>
-                        We’ve reviewed A LOT of Doctor Who, almost all of it in fact (including the spin-offs), so it can be difficult, especially in some of the podcast apps, to find what podcast episode we reviewed a particular story.
-                    </p>
-                    <p>
-                        So, here’s a handy reference so you can do just that! Happy listening.
-                    </p>
-                    <a class="button" href="#">
-                        View Reviews Compendium
-                    </a>
-                </div>
-                <img class="review-compendium-link__doctor-img" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="391" height="220" alt="<?php echo the_title() ?>">
-            </div>
-        </div>     
-    </section>
+    <?php get_template_part('template-parts/content', 'review-comp-link'); ?>
 
     <section>
         <div class="wrapper">

@@ -93,9 +93,9 @@ $random_testimonial = $testimonials[array_rand($testimonials)];
 
 <div class="testimonial">
     <blockquote class="testimonial__content">
-        <h4><?php echo $random_testimonial['content']; ?></h4>
+        <h5><?php echo $random_testimonial['content']; ?></h5>
         <div class="testimonial__source">
-            <p><?php echo $random_testimonial['author']; ?></p>
+            <p class="small"><?php echo $random_testimonial['author']; ?></p>
             <cite>
                 <img src="<?php echo $random_testimonial['rating_img']; ?>" width="92" height="16" alt=""><?php echo $random_testimonial['source']; ?>
             </cite>

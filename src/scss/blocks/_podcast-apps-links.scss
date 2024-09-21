@@ -3,10 +3,12 @@ LINKS TO PODCAST APPS BLOCK
 */
 
 .podcast-app-links {
-    position: relative;
-    width: fit-content;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 
     &__buttons {
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-xs);
@@ -20,7 +22,7 @@ LINKS TO PODCAST APPS BLOCK
             min-height: 45px;
         }
 
-        @media (max-width: 520px) {
+        @media (max-width: 622px) {
             .link-column {
                 flex: 45%;
             }
@@ -32,6 +34,8 @@ LINKS TO PODCAST APPS BLOCK
 
         @media (max-width: 400px) {
             flex-direction: column;
+            flex-wrap: nowrap;
+            width: 100%;
         }
     }
 
@@ -75,6 +79,10 @@ LINKS TO PODCAST APPS BLOCK
                         filter: grayscale(0) brightness(1);
                     }
                 }
+            }
+
+            @media (max-width: 622px) {
+                bottom: 3.5rem;
             }
         }
     }

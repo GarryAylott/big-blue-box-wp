@@ -28,7 +28,7 @@ Header styling for logo, nav etc.
     }
 
     &__logo img {
-        width: clamp(11rem, 78vw - 3.7rem, 17rem);
+        width: clamp(11.25rem, 21.3144vw + 6.9871rem, 18.75rem);
         height: auto;
         opacity: 0;
         filter: blur(10px);
@@ -61,7 +61,7 @@ Header styling for logo, nav etc.
         }
     }
 
-    @media (max-width: 53em) {
+    @media (max-width: 52em) {
         &__navigation p {
             display: none;
         }
@@ -90,7 +90,7 @@ Header styling for logo, nav etc.
         .menu-nav-toggle {
             display: block;
             position: absolute;
-            right: 1.75rem;
+            right: 1.9rem;
             width: 2.25rem;
             aspect-ratio: 1;
             background: none;

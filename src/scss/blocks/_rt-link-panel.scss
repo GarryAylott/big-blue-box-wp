@@ -1,3 +1,5 @@
+@use 'utilities' as *;
+
 /* 
 ROUNDTABLE LINK PANEL
 Styles for the Roundtable link panel
@@ -9,12 +11,13 @@ Styles for the Roundtable link panel
     overflow: hidden;
     z-index: 10;
 
+    // Tardis bg image
     &::before {
         content: '';
         position: absolute;
         inset: 1px;
         width: 100%;
-        height: 100%;
+        height: 110%;
         background-image: url("images/round-table-link-bg.webp");
         background-size: contain;
         background-position: right center;
@@ -22,11 +25,12 @@ Styles for the Roundtable link panel
         border-radius: var(--radius-normal);
         z-index: -1;
 
-        @media (max-width: 800px) {
+        @media (max-width: 998px) {
             background-size: cover;
         }
     }
 
+    // 1px corner border highlight
     &::after {
         content: '';
         position: absolute;
@@ -52,10 +56,6 @@ Styles for the Roundtable link panel
             max-width: 55ch;
         }
 
-        h4 {
-            text-wrap: balance;
-        }
-
         p {
             margin-block-end: var(--space-s);
         }
@@ -64,21 +64,24 @@ Styles for the Roundtable link panel
             align-self: start;
         }
 
+        // Colour gradient behind text
         &::before {
             content: '';
             position: absolute;
             inset: 1px;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, rgba(9,16,27,1) 50%, rgba(9,16,27,0) 100%);
+            // background: linear-gradient(90deg, rgba(9,16,27,1) 55%, rgba(9,16,27,0) 100%);
+            background: linear-gradient(90deg, rgba(9,16,27,1) 55%, rgba(9,16,27,0) 100%);
             border-radius: var(--radius-normal);
             z-index: -2;
 
-            @media (max-width: 800px) {
+            @media (max-width: 998px) {
                 background: rgba(9,16,27,.85)
             }
         }
 
+        // Radial-gradient glow
         &::after {
             content: '';
             position: absolute;
@@ -90,6 +93,10 @@ Styles for the Roundtable link panel
             border-radius: 50%;
             filter: blur(20px);
             z-index: -1;
+
+            @media (max-width: 998px) {
+                @include visually-hidden;
+            }
         }
     }
 }

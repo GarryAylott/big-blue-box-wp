@@ -25,7 +25,7 @@ Layout and styling for the browse all and side section.
         min-inline-size: 50%;
 
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
         gap: var(--space-m);
 
         // Make catch-all buttons span all columns/full-width

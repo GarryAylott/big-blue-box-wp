@@ -23,33 +23,26 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
     }
 
     .social-links {
-        li {
+        a {
             padding-block: var(--space-xs);
         }
 
-        li:is(:first-child) {
+        a:is(:first-child) {
             padding-block-start: 0;
         }
 
-        li:is(:last-child) {
+        a:is(:last-child) {
             padding-block-end: 0;
-        }
-
-        li:not(:last-child) {
-            border-bottom: 1px solid var(--clr-surface-200);
         }
 
         &__item {
             display: flex;
             align-items: center;
             gap: var(--space-xs);
+            font-size: var(--step--1);
 
             img {
                 width: 1.3rem;
-            }
-
-            a {
-                font-size: var(--step--1);
             }
         }
     }
@@ -100,7 +93,7 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
             }
 
             &:not(:last-child) {
-                border-bottom: 1px solid var(--clr-surface-200);
+                border-bottom: 1px solid var(--clr-border-darker);
             }
         }
     }

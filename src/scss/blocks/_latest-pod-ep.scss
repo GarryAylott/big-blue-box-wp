@@ -5,16 +5,17 @@ LATEST PODCAST EPISODE BLOCK
 .latest-podcast-ep {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
     gap: var(--space-m);
-    row-gap: var(--space-s);
     margin-block-start: var(--space-xl-2xl);
+    margin-block-end: var(--space-l);
 
     &__content {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         margin-block-start: -6px;
+        gap: var(--space-xs);
 
         a { 
             display: block;
@@ -28,6 +29,16 @@ LATEST PODCAST EPISODE BLOCK
     &__details {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2xs);
+        gap: var(--space-s);
+
+        h4 {
+            max-inline-size: 30ch;
+        }
+    }
+
+    &__excerpt {
+        @media (max-width: 930px) {
+            display: none;
+        }
     }
 }

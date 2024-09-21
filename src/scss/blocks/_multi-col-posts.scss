@@ -15,7 +15,7 @@ Layout and styling for small post cards in multiple columns (desktop).
     li {
         display: flex;
         gap: var(--space-s);
-        padding-block: var(--space-s);
+        padding-block: var(--space-m);
 
         .more-articles-content {
             a {
@@ -47,7 +47,7 @@ Layout and styling for small post cards in multiple columns (desktop).
         }
 
         &:not(:last-child) {
-            border-bottom: 1px solid var(--clr-surface-200);
+            border-bottom: 1px solid var(--clr-border-darker);
         }
     }
 }

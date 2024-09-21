@@ -7,7 +7,9 @@
 ?>
 
 <div class="wrapper">
-    <h4 class="section-title">Latest articles</h4>
+    <h4 class="section-title">
+        Latest articles
+    </h4>
     <div class="latest-articles-featured">
         <?php
             $displayed_posts = get_query_var('displayed_posts', array());
@@ -22,7 +24,7 @@
         ?>
         <?php if ( $query2->have_posts() ) :
             while ( $query2->have_posts() ) : $query2->the_post(); ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class('flow-small'); ?>>
+                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
                     <?php if ( has_post_thumbnail() ) : ?>
                         <a href="<?php the_permalink(); ?>">
@@ -30,19 +32,27 @@
                         </a>
                     <?php endif; ?>
 
-                    <header class="entry-header">
-                        <a href="<?php the_permalink(); ?>">
-                            <h5 class="balance">
-                                <?php
-                                    $thetitle = $post->post_title;
-                                    $getlength = strlen($thetitle);
-                                    $thelength = 80;
-                                    echo substr($thetitle, 0, $thelength);
-                                    if ($getlength > $thelength) echo "...";
-                                ?>
-                            </h5>
-                        </a>
-                    </header>
+                    <div class="post-card-content">
+                        <header class="entry-header">
+                            <a href="<?php the_permalink(); ?>">
+                                <h5 class="balance">
+                                    <?php
+                                        $thetitle = $post->post_title;
+                                        $getlength = strlen($thetitle);
+                                        $thelength = 80;
+                                        echo substr($thetitle, 0, $thelength);
+                                        if ($getlength > $thelength) echo "...";
+                                    ?>
+                                </h5>
+                            </a>
+                        </header>
+
+                        <div class="entry-content">
+                            <p class="small">
+                                <?php echo wp_trim_words( get_the_excerpt(), 18 ); ?>
+                            </p>
+                        </div>
+                    </div>
 
                     <footer class="entry-footer">
                         <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>

@@ -19,42 +19,54 @@
 			Connect and chat
 		</p>
 		<ul class="social-links" role="list">
-			<li>
-				<div class="social-links__item">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
-					<a class="link-alt" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">X (Twitter)</a>
-				</div>
-			</li>
-			<li>
-				<div class="social-links__item">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
-					<a class="link-alt" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">Instagram</a>
-				</div>
-			</li>
-			<li>
-				<div class="social-links__item">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
-					<a class="link-alt" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">Facebook</a>
-				</div>
-			</li>
-			<li>
-				<div class="social-links__item">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
-					<a class="link-alt" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">Threads</a>
-				</div>
-			</li>
-			<li>
-				<div class="social-links__item">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
-					<a class="link-alt" href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">RSS feed - podcasts</a>
-				</div>
-			</li>
-			<li>
-				<div class="social-links__item">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
-					<a class="link-alt" href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">RSS feed - articles</a>
-				</div>
-			</li>
+			<a class="link-alt" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
+				<li>
+					<div class="social-links__item">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
+						X (Twitter)
+					</div>
+				</li>
+			</a>
+			<a class="link-alt" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+				<li>
+					<div class="social-links__item">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
+						Instagram
+					</div>
+				</li>
+			</a>
+			<a class="link-alt" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+				<li>
+					<div class="social-links__item">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
+						Facebook
+					</div>
+				</li>
+			</a>
+			<a class="link-alt" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+				<li>
+					<div class="social-links__item">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
+						Threads
+					</div>
+				</li>
+			</a>
+			<a class="link-alt" href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
+				<li>
+					<div class="social-links__item">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
+						RSS feed - podcasts
+					</div>
+				</li>
+			</a>
+			<a class="link-alt" href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
+				<li>
+					<div class="social-links__item">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
+						RSS feed - articles
+					</div>
+				</li>
+			</a>
 		</ul>
 	</section>
 
@@ -72,7 +84,7 @@
 
 	<section class="flow-small">
 		<p class="semi-bold section-title-small">
-			Meet our writers
+			Meet your writers
 		</p>
 		<div class="author-section-small">
 			<div class="author-section-small__author-block">

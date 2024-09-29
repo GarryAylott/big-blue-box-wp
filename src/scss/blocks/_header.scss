@@ -3,7 +3,7 @@
 /* 
 HEADER BLOCK
 Header styling for logo, nav etc.
-*/
+*/  
 
 .site-head {
     position: relative;
@@ -61,7 +61,7 @@ Header styling for logo, nav etc.
         }
     }
 
-    @media (max-width: 52em) {
+    @media (max-width: 900px) {
         &__navigation p {
             display: none;
         }
@@ -90,9 +90,9 @@ Header styling for logo, nav etc.
         .menu-nav-toggle {
             display: block;
             position: absolute;
-            right: 1.9rem;
-            width: 2.25rem;
-            aspect-ratio: 1;
+            right: 2.75rem;
+            aspect-ratio: 1.75;
+            width: 2rem;
             background: none;
             border: none;
             transform: translateY(-50%);
@@ -114,17 +114,21 @@ Header styling for logo, nav etc.
                 top: 50%;
                 display: block;
                 width: 100%;
-                height: 5px;
+                height: 3px;
                 background-color: var(--clr-text-100);
                 transition: .25s ease-out;
             }
 
             span:nth-of-type(1) {
-                top: 30%;
+                top: 0;
             }
 
             span:nth-of-type(2) {
-                top: 70%;
+                top: 50%;
+            }
+
+            span:nth-of-type(3) {
+                top: 100%;
             }
         }
 
@@ -141,6 +145,10 @@ Header styling for logo, nav etc.
             }
 
             span:nth-of-type(2) {
+                display: none;
+            }
+
+            span:nth-of-type(3) {
                 top: 50%;
                 transform: rotate(-45deg);
             }

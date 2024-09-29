@@ -38,7 +38,7 @@
 					<button class="menu-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
 						<p class="visually-hidden">Menu</p>
 						<span></span>
-						<!-- <span></span> -->
+						<span></span>
 						<span></span>
 					</button>
 

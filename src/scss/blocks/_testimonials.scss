@@ -38,6 +38,7 @@ Styles for full-width and column based testimonials.
         h5 {
             font-weight: var(--fw-reg);
             line-height: 1.4;
+            text-wrap: wrap;
         }
 
         @media (max-width: 53em) {

@@ -1,6 +1,6 @@
 // Responsive nav menu
 const primaryNav = document.querySelector('.nav');
-const navToggle = document.querySelector('.menu-nav-toggle');
+const navToggle = document.querySelector('.mobile-nav-toggle');
 
 navToggle.addEventListener('click', () => {
     const visibility = primaryNav.getAttribute('data-visible');

@@ -56,7 +56,7 @@ Header styling for logo, nav etc.
             margin: 0;
         }
 
-        .menu-nav-toggle {
+        .mobile-nav-toggle {
             display: none;
         }
     }
@@ -80,77 +80,58 @@ Header styling for logo, nav etc.
             background: var(--clr-surface-400);
             z-index: 1000;
             transform: translateX(0);
-            transition: transform .25s ease-out;
+            transition: transform .3s cubic-bezier(0.77,0,0.18,1);
+
+            &[data-visible="true"] {
+                transform: translateX(-100%);
+            }
         }
 
-        .nav[data-visible="true"] {
-            transform: translateX(-100%);
-        }
-
-        .menu-nav-toggle {
+        .mobile-nav-toggle {
+            position: relative;
             display: block;
-            position: absolute;
-            right: 2.75rem;
-            aspect-ratio: 1.75;
-            width: 2rem;
-            background: none;
+            width: 60px;
+            aspect-ratio: 1;
+            padding: 0;
+            background: transparent;
             border: none;
-            transform: translateY(-50%);
+            background-image: url("./images/icons/nav-icon-sonic.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
             cursor: pointer;
-            z-index: 9999;
 
-            &::before {
-                content: "";
-                display: block;
+            &[aria-expanded="true"] {
+                position: fixed;
+                top: var(--space-l);
+                right: var(--space-l);
+                width: 30px;
+                background-image: url("./images/icons/nav-icon-close.svg");
+                z-index: 9999;
+
+                &::before {
+                    display: none;
+                }
+            }
+
+            &:before {
+                content: '';
                 position: absolute;
-                top: -20px;
-                right: -10px;
-                bottom: -20px;
-                left: -30px;
+                top: 12px;
+                left: 2.9rem;
+                width: 40px;
+                height: 40px;
+                background: radial-gradient(circle, rgba(0, 174, 255, 0.5) 0%, rgba(0, 50, 100, 0.1) 70%);
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                border-radius: 50%;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                // z-index: -1;
             }
 
-            span {
-                position: absolute;
-                top: 50%;
-                display: block;
-                width: 100%;
-                height: 3px;
-                background-color: var(--clr-text-100);
-                transition: .25s ease-out;
-            }
-
-            span:nth-of-type(1) {
-                top: 0;
-            }
-
-            span:nth-of-type(2) {
-                top: 50%;
-            }
-
-            span:nth-of-type(3) {
-                top: 100%;
-            }
-        }
-
-        .menu-nav-toggle[aria-expanded="true"] {
-            position: fixed;
-
-            span {
-                background-color: var(--clr-brand-secondary);
-            }
-
-            span:nth-of-type(1) {
-                top: 50%;
-                transform: rotate(45deg);
-            }
-
-            span:nth-of-type(2) {
-                display: none;
-            }
-
-            span:nth-of-type(3) {
-                top: 50%;
-                transform: rotate(-45deg);
+            &:hover::before {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1);
             }
         }
     }

@@ -56,8 +56,12 @@ Header styling for logo, nav etc.
             margin: 0;
         }
 
-        .mobile-nav-toggle {
+        .menu-nav-toggle {
             display: none;
+        }
+
+        @media (max-width: 900px) {
+            gap: 0;
         }
     }
 
@@ -87,53 +91,111 @@ Header styling for logo, nav etc.
             }
         }
 
-        .mobile-nav-toggle {
-            position: relative;
+        .menu-nav-toggle {
             display: block;
-            width: 60px;
+            position: absolute;
+            right: 1.75rem;
+            width: 2.25rem;
             aspect-ratio: 1;
-            padding: 0;
-            background: transparent;
+            background: none;
             border: none;
-            background-image: url("./images/icons/nav-icon-sonic.svg");
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
+            transform: translateY(-50%);
             cursor: pointer;
+            z-index: 9999;
 
-            &[aria-expanded="true"] {
-                position: fixed;
-                top: var(--space-l);
-                right: var(--space-l);
-                width: 30px;
-                background-image: url("./images/icons/nav-icon-close.svg");
-                z-index: 9999;
-
-                &::before {
-                    display: none;
-                }
-            }
-
-            &:before {
-                content: '';
+            &::before {
+                content: "";
+                display: block;
                 position: absolute;
-                top: 12px;
-                left: 2.9rem;
-                width: 40px;
-                height: 40px;
-                background: radial-gradient(circle, rgba(0, 174, 255, 0.5) 0%, rgba(0, 50, 100, 0.1) 70%);
-                transform: translate(-50%, -50%);
-                opacity: 0;
-                border-radius: 50%;
-                transition: opacity 0.3s ease, transform 0.3s ease;
-                // z-index: -1;
+                top: -20px;
+                right: -10px;
+                bottom: -20px;
+                left: -30px;
             }
 
-            &:hover::before {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.1);
+            span {
+                position: absolute;
+                top: 50%;
+                display: block;
+                width: 100%;
+                height: 5px;
+                background-color: var(--clr-text-100);
+                transition: .25s ease-out;
+            }
+
+            span:nth-of-type(1) {
+                top: 30%;
+            }
+
+            span:nth-of-type(2) {
+                top: 70%;
             }
         }
+
+        .menu-nav-toggle[aria-expanded="true"] {
+            position: fixed;
+
+            span {
+                background-color: var(--clr-brand-secondary);
+            }
+
+            span:nth-of-type(1) {
+                top: 50%;
+                transform: rotate(45deg);
+            }
+
+            span:nth-of-type(2) {
+                top: 50%;
+                transform: rotate(-45deg);
+            }
+        }
+
+        // .mobile-nav-toggle {
+        //     position: relative;
+        //     display: block;
+        //     width: 54px;
+        //     aspect-ratio: 1;
+        //     padding: 0;
+        //     background: transparent;
+        //     border: none;
+        //     background-image: url("./images/icons/nav-icon-sonic.svg");
+        //     background-repeat: no-repeat;
+        //     background-position: center;
+        //     background-size: contain;
+        //     cursor: pointer;
+
+        //     &[aria-expanded="true"] {
+        //         position: fixed;
+        //         top: var(--space-l);
+        //         right: var(--space-l);
+        //         width: 30px;
+        //         background-image: url("./images/icons/nav-icon-close.svg");
+        //         z-index: 9999;
+
+        //         &::before {
+        //             display: none;
+        //         }
+        //     }
+
+        //     &:before {
+        //         content: '';
+        //         position: absolute;
+        //         top: 8px;
+        //         left: 2.9rem;
+        //         width: 40px;
+        //         height: 40px;
+        //         background: radial-gradient(circle, rgba(0, 174, 255, 0.5) 0%, rgba(0, 50, 100, 0.1) 70%);
+        //         transform: translate(-50%, -50%);
+        //         opacity: 0;
+        //         border-radius: 50%;
+        //         transition: opacity 0.3s ease, transform 0.3s ease;
+        //     }
+
+        //     &:hover::before {
+        //         opacity: 1;
+        //         transform: translate(-50%, -50%) scale(1.1);
+        //     }
+        // }
     }
 }
 

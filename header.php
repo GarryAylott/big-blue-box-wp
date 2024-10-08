@@ -34,8 +34,12 @@
 
 				<div class="site-head__navigation">
 					<p>Your ultimate destination for all things Doctor Who</p>
-					<button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-						<span class="visually-hidden">Menu</span>
+
+					<button class="menu-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+						<p class="visually-hidden">Menu</p>
+						<span></span>
+						<!-- <span></span> -->
+						<span></span>
 					</button>
 
 					<?php wp_nav_menu(

@@ -47,7 +47,7 @@ get_header();
                                 </h4>
                             </a>
                         </div>
-                        <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
+                        <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
                     </div>
 
                 <?php
@@ -56,7 +56,6 @@ get_header();
                 wp_reset_postdata();
             endif; ?>
         </article>
-        <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
     </div>
 
     <?php
@@ -70,7 +69,7 @@ get_header();
 
     <div class="browse-all">
         <div class="wrapper">
-            <h4 class="section-title">Browse all</h4>
+            <h4 class="section-title">All articles and episodes</h4>
             <div class="browse-all__container">
                 <div class="browse-all__posts">
                     <?php

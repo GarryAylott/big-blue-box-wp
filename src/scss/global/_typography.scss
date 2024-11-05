@@ -16,7 +16,6 @@ Font styling for headings, paragraphs etc.
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family);
     font-weight: var(--fw-semibold);
-    text-wrap: balance;
 }
 
 // Heading sizes
@@ -33,7 +32,7 @@ h6 {font-size: var(--step-0); line-height: 1.4;}
     line-height: 1;
     color: var(--clr-text-400);
     margin-block-end: var(--space-l);
-    padding-inline-start: 26px;
+    padding-inline-start: 32px;
     
     &::before {
         content: '';

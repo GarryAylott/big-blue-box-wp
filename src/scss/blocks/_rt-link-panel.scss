@@ -60,10 +60,6 @@ Styles for the Roundtable link panel
             margin-block-end: var(--space-s);
         }
 
-        a.button {
-            align-self: start;
-        }
-
         // Colour gradient behind text
         &::before {
             content: '';

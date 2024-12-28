@@ -9,7 +9,6 @@ Header styling for logo, nav etc.
     position: relative;
     padding: var(--space-xs) 0;
     background: hsla(217, 50%, 7%, 0.5);
-    border-bottom: 1px solid var(--clr-surface-400);
 
     .header-backdrop { 
         position: absolute;
@@ -33,7 +32,7 @@ Header styling for logo, nav etc.
     }
 
     &__logo img {
-        width: clamp(11.25rem, 21.3144vi + 6.9871rem, 13rem);
+        width: clamp(12.5rem, 5.593vw + 8.914rem, 15.625rem);
         height: auto;
         opacity: 0;
         filter: blur(10px);
@@ -41,6 +40,10 @@ Header styling for logo, nav etc.
     }
 
     &__navigation {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2xs);
+        align-items: end;
 
         .nav {
             display: flex;
@@ -50,22 +53,14 @@ Header styling for logo, nav etc.
             justify-content: flex-end;
             font-weight: var(--fw-semibold);
             margin: 0;
-
-            a {
-                font-family: var(--font-family-headings);
-            }
         }
 
         .menu-nav-toggle {
             display: none;
         }
-
-        @media (max-width: 900px) {
-            gap: 0;
-        }
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 45rem) {
         &__navigation p {
             display: none;
         }

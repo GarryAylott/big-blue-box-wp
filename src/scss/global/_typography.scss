@@ -7,8 +7,8 @@ Font styling for headings, paragraphs etc.
 
 :root {
     // Main font settings
-    --font-family-headings: 'MonaSans';
-    --font-family-body: 'PTSerif';
+    --font-family-headings: 'Merriweather';
+    --font-family-body: 'Mona Sans';
     --fw-light: 300;
     --fw-reg: 400;
     --fw-semibold: 600;
@@ -16,9 +16,9 @@ Font styling for headings, paragraphs etc.
 }
 
 // Heading styles
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
     font-family: var(--font-family-headings);
-    font-weight: var(--fw-bold);
+    font-weight: var(--fw-semibold);
 }
 
 // Heading sizes
@@ -46,6 +46,15 @@ h6 {font-size: calc(var(--step--1) + 0.15rem); line-height: 1.4;}
         height: 39px;
         background: url('./images/icons/icon-subtitle-tardis.svg') no-repeat center center;
     }
+}
+
+/* Improve line wrapping */
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
 }
 
 .section-title-small {

@@ -8,7 +8,7 @@ get_header();
 
 <main id="primary" class="site-main flow-page-regions">
     <div class="wrapper">
-        <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep'); ?>>
+        <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep flex-splitter'); ?>>
             <?php
             $displayed_posts = array();
 
@@ -21,12 +21,6 @@ get_header();
             if ($query1->have_posts()) :
                 while ($query1->have_posts()) : $query1->the_post(); ?>
 
-                    <?php if (has_post_thumbnail()) : ?>
-                        <a href="<?php the_permalink(); ?>">
-                            <img class="post-thumb-img latest-podcast-ep__thumb img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="595" height="335" alt="<?php echo the_title() ?>">
-                        </a>
-                    <?php endif; ?>
-
                     <div class="latest-podcast-ep__content">
                         <div class="latest-podcast-ep__details">
                             <h6 class="icon-text-group clr-900">
@@ -38,7 +32,7 @@ get_header();
 
                             <div class="latest-podcast-ep__copy">
                                 <a href="<?php the_permalink(); ?>">
-                                    <h4>
+                                    <h3>
                                         <?php
                                         $thetitle = $post->post_title;
                                         $getlength = strlen($thetitle);
@@ -46,23 +40,31 @@ get_header();
                                         echo substr($thetitle, 0, $thelength);
                                         if ($getlength > $thelength) echo "...";
                                         ?>
-                                    </h4>
+                                    </h3>
                                 </a>
-                                <p>
-                                    <?php echo wp_trim_words(get_the_excerpt()); ?>
-                                </p>
                             </div>
                         </div>
-                        <a class="button" href="">
-                            Listen Now
-                        </a>
+
+                        <p>
+                            <?php echo wp_trim_words(get_the_excerpt()); ?>
+                        </p>
                     </div>
+
+                    <?php if (has_post_thumbnail()) : ?>
+                        <a href="<?php the_permalink(); ?>">
+                            <img class="post-thumb-img latest-podcast-ep__thumb img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="595" height="335" alt="<?php echo the_title() ?>">
+                        </a>
+                    <?php endif; ?>
+
                 <?php
                 $displayed_posts[] = get_the_ID();
                 endwhile;
                 wp_reset_postdata();
             endif; ?>
         </article>
+        <div class="app-links">
+            <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?> 
+        </div>
     </div>
 
     <?php

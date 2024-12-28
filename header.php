@@ -29,7 +29,7 @@
 		<div class="wrapper">
 			<div class="site-head__inner">
 				<div class="site-head__logo">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/BBB-logo.svg" width="300" height="77" alt="The Big Blue Box Podcast logo">
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/BBB-logo.svg" width="250" height="64" alt="The Big Blue Box Podcast logo">
 				</div>
 
 				<div class="site-head__navigation">
@@ -39,6 +39,8 @@
 						<!-- <span></span> -->
 						<span></span>
 					</button>
+
+					<p class="small">Your ultimate destination for all things Doctor Who</p>
 
 					<?php wp_nav_menu(
 						array(

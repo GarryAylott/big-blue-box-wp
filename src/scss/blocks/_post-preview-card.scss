@@ -1,3 +1,5 @@
+@use 'utilities' as *;
+
 /* 
 POST PREVIEW CARDS
 Layout and styling for articles post cards.
@@ -25,35 +27,21 @@ article {
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    filter: saturate(1) brightness(1);
-    transition: filter 0.2s ease-in-out;
-    
-    &:hover {
-        filter: saturate(1.1) brightness(1.15);
-    }
 }
 
-.post-thumb-img-small {
-    filter: saturate(1) brightness(1);
-    transition: filter 0.2s ease-in-out;
+// .post-thumb-img-small {
+//     filter: saturate(1) brightness(1);
+//     transition: filter 0.2s ease-in-out;
 
-    &:hover {
-        filter: saturate(1.1) brightness(1.1);
-    }
-}
+//     &:hover {
+//         filter: saturate(1.1) brightness(1.1);
+//     }
+// }
 
 .post-card-content {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: var(--space-2xs);
-    margin-block: var(--space-2xs) var(--space-s);
-
-    header {
-        margin-block-start: var(--space-2xs);
-
-        a {
-            display: block;
-        }
-    }
+    margin-block: var(--space-xs) var(--space-s);
 }

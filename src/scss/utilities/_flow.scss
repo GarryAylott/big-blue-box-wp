@@ -20,6 +20,5 @@ Spacing value between content blocks.
 }
 
 .flow-page-regions > * + * {
-  // margin-block-start: var(--flow-space-xl, 15em);
   margin-block-start: var(--flow-space-xl, 8em);
 }

@@ -7,7 +7,6 @@
 ?>
 
 <div class="podcast-app-links">
-    <p class="small">Listen and follow on your favourite podcast app&hellip;</p>
     <div class="podcast-app-links__buttons">
         <div class="link-column">
             <a class="button-ghost" href="https://podcasts.apple.com/gb/podcast/the-doctor-who-big-blue-box-podcast/id852653886?ls=1&mt=2" target="_blank" rel="noopener noreferrer">

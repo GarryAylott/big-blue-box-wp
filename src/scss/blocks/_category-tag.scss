@@ -5,19 +5,22 @@ CATEGORY TAG BLOCK
 .category-tag {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2xs);
+    gap: var(--space-3xs);
     width: fit-content;
     margin: 0;
+    color: var(--clr-text-900);
 
     svg {
         opacity: 0.6;
     }
 
     p {
+        font-family: var(--font-family-headings);
         font-size: 14px;
-        color: var(--clr-text-900);
+        font-weight: var(--fw-bold);
+        color: inherit;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        // letter-spacing: 0.5px;
         padding-block-start: 1px;
     }
 }

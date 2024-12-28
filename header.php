@@ -33,8 +33,6 @@
 				</div>
 
 				<div class="site-head__navigation">
-					<p>Your ultimate destination for all things Doctor Who</p>
-
 					<button class="menu-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
 						<p class="visually-hidden">Menu</p>
 						<span></span>

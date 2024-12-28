@@ -1,23 +1,23 @@
 :root {
     //Font sizes
-    /* Step -2: 11.8056px → 12.16px */
-    --step--2: clamp(0.7378rem, 0.7301rem + 0.0385vw, 0.76rem);
-    /* Step -1: 14.1667px → 15.2px */
-    --step--1: clamp(0.8854rem, 0.863rem + 0.1123vw, 0.95rem);
-    /* Step 0: 19px → 22px */
-    --step-0: clamp(1.1875rem, 1.1223rem + 0.3261vw, 1.375rem);
-    /* Step 1: 22.8px → 27.5px */
-    --step-1: clamp(1.425rem, 1.3228rem + 0.5109vw, 1.7188rem);
-    /* Step 2: 27.36px → 34.375px */
-    --step-2: clamp(1.71rem, 1.5575rem + 0.7625vw, 2.1484rem);
-    /* Step 3: 32.832px → 42.9688px */
-    --step-3: clamp(2.052rem, 1.8316rem + 1.1018vw, 2.6855rem);
-    /* Step 4: 39.3984px → 53.7109px */
-    --step-4: clamp(2.4624rem, 2.1513rem + 1.5557vw, 3.3569rem);
-    /* Step 5: 47.2781px → 67.1387px */
-    --step-5: clamp(2.9549rem, 2.5231rem + 2.1588vw, 4.1962rem);
-    /* Step 6: 56.7337px → 83.9233px */
-    --step-6: clamp(3.5459rem, 2.9548rem + 2.9554vw, 5.2452rem);
+    /* Step -2: 11.589px → 11.52px */
+    --step--2: clamp(0.72rem, 0.7259rem + -0.0079vw, 0.7243rem);
+    /* Step -1: 13.617px → 14.4px */
+    --step--1: clamp(0.8511rem, 0.8325rem + 0.09vw, 0.9rem);
+    /* Step 0: 16px → 18px */
+    --step-0: clamp(1rem, 0.9526rem + 0.2299vw, 1.125rem);
+    /* Step 1: 18.8px → 22.5px */
+    --step-1: clamp(1.175rem, 1.0873rem + 0.4253vw, 1.4063rem);
+    /* Step 2: 22.09px → 28.125px */
+    --step-2: clamp(1.3806rem, 1.2376rem + 0.6937vw, 1.7578rem);
+    /* Step 3: 25.9558px → 35.1563px */
+    --step-3: clamp(1.6222rem, 1.4041rem + 1.0575vw, 2.1973rem);
+    /* Step 4: 30.498px → 43.9453px */
+    --step-4: clamp(1.9061rem, 1.5873rem + 1.5457vw, 2.7466rem);
+    /* Step 5: 35.8352px → 54.9316px */
+    --step-5: clamp(2.2397rem, 1.787rem + 2.195vw, 3.4332rem);
+    /* Step 6: 42.1063px → 68.6646px */
+    --step-6: clamp(2.6316rem, 2.002rem + 3.0527vw, 4.2915rem);
 
     // Spacing
     /* Space 3xs: 4px → 5px */
@@ -81,7 +81,7 @@
     --clr-surface-100: hsl(219, 13%, 38%); // Card backgrounds
 
     --clr-border: hsl(219, 11%, 50%);
-    --clr-border-darker: var(--clr-surface-400);
+    --clr-border-darker: var(--clr-surface-200);
     --clr-border-link: hsl(221, 91%, 70%); // Ghost button outline
 
     --clr-brand-primary: hsl(215, 95%, 55%);

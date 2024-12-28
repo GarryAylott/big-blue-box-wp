@@ -8,28 +8,32 @@ Header styling for logo, nav etc.
 .site-head {
     position: relative;
     padding: var(--space-xs) 0;
+    background: hsla(217, 50%, 7%, 0.5);
+    border-bottom: 1px solid var(--clr-surface-400);
 
-    .header-backdrop {
+    .header-backdrop { 
         position: absolute;
-        top: 0;
-        width: 100%;
-        opacity: 1;
-        backdrop-filter: blur(15px);
-        background: hsla(218 15% 25% / 0.07);
         inset: 0;
+        height: 200%;   
+        backdrop-filter: blur(6px);
+        mask-image: linear-gradient(
+            to bottom,
+            black 0% 50%,
+            transparent 50% 100%
+        );
         z-index: -1;
     }
 
     &__inner {
         position: relative;
-        display: flex;
+        display: flex;  
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
     }
 
     &__logo img {
-        width: clamp(11.25rem, 21.3144vw + 6.9871rem, 18.75rem);
+        width: clamp(11.25rem, 21.3144vi + 6.9871rem, 13rem);
         height: auto;
         opacity: 0;
         filter: blur(10px);
@@ -37,24 +41,19 @@ Header styling for logo, nav etc.
     }
 
     &__navigation {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-2xs);
-        text-align: right;
-
-        p {
-            font-size: var(--step--1);
-        }
 
         .nav {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: var(--space-xl);
+            gap: var(--space-l);
             justify-content: flex-end;
-            font-size: calc(var(--step--1) + 0.15rem);
             font-weight: var(--fw-semibold);
             margin: 0;
+
+            a {
+                font-family: var(--font-family-headings);
+            }
         }
 
         .menu-nav-toggle {

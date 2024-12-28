@@ -8,13 +8,10 @@ Applies background colour and blur to an element.
     &::before {
         content: '';
         position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
+        inset: 0;
         width: 100%;
-        background: hsl(221 90% 85% / 0.1);
-        backdrop-filter: blur(0.3rem);
+        backdrop-filter: blur(10px);
+        background-color: rgba(0, 0, 0, 0.2);
         z-index: -1;
     }
 }

@@ -42,8 +42,7 @@ if ( array_key_exists($author_name, $author_images) ) {
             <?php } ?>
         </p>
         <p class="small">
-            <?php $publish_date = get_the_date('j F, Y'); ?>
-            <?php echo $publish_date; ?>
+            <?php echo $publish_date = get_the_date('j F, Y'); ?>
         </p>
     </div>
 </div>

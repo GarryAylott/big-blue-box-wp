@@ -28,7 +28,7 @@
 
                     <?php if ( has_post_thumbnail() ) : ?>
                         <a href="<?php the_permalink(); ?>">
-                            <img class="post-thumb-img rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="387" height="217" alt="<?php echo the_title() ?>">
+                            <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="387" height="217" alt="<?php echo the_title() ?>">
                         </a>
                     <?php endif; ?>
 
@@ -48,8 +48,8 @@
                         </header>
 
                         <div class="entry-content">
-                            <p class="small">
-                                <?php echo wp_trim_words( get_the_excerpt(), 18 ); ?>
+                            <p>
+                                <?php echo wp_trim_words( get_the_excerpt(), 15 ); ?>
                             </p>
                         </div>
                     </div>

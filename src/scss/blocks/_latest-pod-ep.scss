@@ -3,37 +3,37 @@ LATEST PODCAST EPISODE BLOCK
 */
 
 .latest-podcast-ep {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
     gap: var(--space-m);
-    margin-block-start: var(--space-xl-2xl);
-    margin-block-end: var(--space-l);
+    margin-block-start: var(--space-2xl);
 
     &__content {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        gap: var(--space-m);
         margin-block-start: -6px;
-        gap: var(--space-xs);
 
         a { 
             display: block;
-        }
-
-        p {
-            color: var(--clr-text-400);
         }
     }
 
     &__details {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2xs);
+        gap: var(--space-xs);
 
         h4 {
             max-inline-size: 30ch;
         }
+    }
+
+    &__copy {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
     }
 
     &__excerpt {

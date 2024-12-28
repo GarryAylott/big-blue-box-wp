@@ -71,6 +71,11 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
                 border-radius: var(--radius-xs);
             }
 
+            .author-block-content {
+                display: flex;
+                flex-direction: column;
+            }
+
             .new-author-img {
                 display: flex;
                 align-items: center;

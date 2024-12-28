@@ -8,22 +8,15 @@
 
 <aside id="secondary" class="main-sidebar flow-large">
 	<section class="flow-small">
-		<p class="semi-bold section-title-small">
-			Search the TARDIS
-		</p>
-		<?php get_search_form(); ?>
-	</section>
-
-	<section class="flow-small">
-		<p class="semi-bold section-title-small">
+		<h5 class="section-title-small">
 			Connect and chat
-		</p>
+		</h5>
 		<ul class="social-links" role="list">
 			<a class="link-alt" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
 				<li>
 					<div class="social-links__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
-						X (Twitter)
+						<h6>X (Twitter)</h6>
 					</div>
 				</li>
 			</a>
@@ -31,7 +24,7 @@
 				<li>
 					<div class="social-links__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
-						Instagram
+						<h6>Instagram</h6>
 					</div>
 				</li>
 			</a>
@@ -39,7 +32,7 @@
 				<li>
 					<div class="social-links__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
-						Facebook
+						<h6>Facebook</h6>
 					</div>
 				</li>
 			</a>
@@ -47,7 +40,7 @@
 				<li>
 					<div class="social-links__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
-						Threads
+						<h6>Threads</h6>
 					</div>
 				</li>
 			</a>
@@ -55,7 +48,7 @@
 				<li>
 					<div class="social-links__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
-						RSS feed - podcasts
+						<h6>RSS feed - podcasts</h6>
 					</div>
 				</li>
 			</a>
@@ -63,7 +56,7 @@
 				<li>
 					<div class="social-links__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
-						RSS feed - articles
+						<h6>RSS feed - articles</h6>
 					</div>
 				</li>
 			</a>
@@ -83,16 +76,16 @@
 	</section>
 
 	<section class="flow-small">
-		<p class="semi-bold section-title-small">
+		<h5 class="section-title-small">
 			Meet your writers
-		</p>
+		</h5>
 		<div class="author-section-small">
 			<div class="author-section-small__author-block">
 				<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-jordan.webp" width="56" height="56" alt="Jordan Shortman author image">
 				<div class="author-block-content">
-						<p class="semi-bold">
-							<?php the_author_posts_link(); ?>
-						</p>
+					<h6>
+						<?php the_author_posts_link(); ?>
+					</h6>
 					<p class="small">
 						Big Finish and book reviews are Jordans cup of tea.
 					</p>
@@ -101,9 +94,9 @@
 			<div class="author-section-small__author-block">
 				<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-maria.webp" width="56" height="56" alt="Maria Kalotichou author image">
 				<div class="author-block-content">
-					<p class="semi-bold">
+					<h6>
 						Maria Kalotichou
-					</p>
+					</h6>
 					<p class="small">
 						Our roving on-location reviewer for UK cons and meet ups plus Big Finish reviews.
 					</p>
@@ -112,9 +105,9 @@
 			<div class="author-section-small__author-block">
 				<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-matt.webp" width="56" height="56" alt="Matt Steele author image">
 				<div class="author-block-content">
-					<p class="semi-bold">
+					<h6>
 						Matt Steele
-					</p>
+					</h6>
 					<p class="small">
 						Matt runs the merch updates area on our Discord server plus reviews TV episodes.
 					</p>
@@ -123,9 +116,9 @@
 			<div class="author-section-small__author-block">
 				<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-harry.webp" width="56" height="56" alt="Harry Walker author image">
 				<div class="author-block-content">
-					<p class="semi-bold">
+					<h6>
 						Harry Walker
-					</p>
+					</h6>
 					<p class="small">
 						Harry puts his writing skills to work with creative editorials and reviews.
 					</p>
@@ -136,9 +129,9 @@
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-newauthor.svg" width="40" height="40" alt="Maybe you could join the team?">
 				</div>
 				<div class="author-block-content">
-					<p class="semi-bold">
+					<h6>
 						Maybe you?
-					</p>
+					</h6>
 					<p class="small">
 						We’re always looking for writers to volunteer for the blog. Do you know your Doctor Who and have decent writing skills? <a class="link-alt" href="#">Get in touch!</a>
 					</p>
@@ -149,7 +142,7 @@
 
 	<section>
 		<a href="https://www.youtube.com/user/thegeekshandbag" target="_blank" rel="noreferrer noopener">
-			<img class="sidebar-img" src="<?php echo get_bloginfo('template_url') ?>/images/sidebar-panel-geekshandbag.webp" width="329" height="205" alt="Maybe you could join the team?">
+			<img class="sidebar-img img-hover" src="<?php echo get_bloginfo('template_url') ?>/images/sidebar-panel-geekshandbag.webp" width="329" height="205" alt="Adam's YouTube channel - The Geeks Handbag.">
 		</a>
 	</section>
 

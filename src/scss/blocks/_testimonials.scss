@@ -20,24 +20,24 @@ Styles for full-width and column based testimonials.
         gap: var(--space-xs);
         padding-inline-start: var(--space-s);
         margin-inline: auto;
-        font-style: italic;
         border-left: 4px solid var(--clr-brand-secondary);
 
         em {
             position: relative;
             color: var(--clr-surface-700);
             background: var(--clr-brand-secondary);
-            padding: 0 3px 3px 6px;
+            padding: 0 3px 3px 3px;
             margin-inline-start: -4px;
         }
 
-        h5, p {
+        h4, p {
             color: var(--clr-text-400);
         }
 
-        h5 {
-            font-weight: var(--fw-reg);
-            line-height: 1.4;
+        h4 {
+            font-size: calc(var(--step-3) - 0.5rem);
+            font-weight: var(--fw-semibold);
+            font-style: italic;
             text-wrap: wrap;
         }
 
@@ -49,8 +49,9 @@ Styles for full-width and column based testimonials.
     &__source {
         display: flex;
         flex-direction: column;
+        gap: var(--space-3xs);
 
-        p, cite {
+        h6, h5, cite {
             font-style: normal;
         }
 
@@ -62,7 +63,9 @@ Styles for full-width and column based testimonials.
             display: inline-flex;
             align-items: center;
             gap: var(--space-2xs);
-            font-size: var(--step--1);
+            font-family: var(--font-family-headings);
+            font-weight: var(--fw-semibold);
+            font-size: calc(var(--step--1) + 0.15rem);
         }
     }
 
@@ -96,8 +99,8 @@ Styles for full-width and column based testimonials.
             padding-inline-start: 0;
             border-left: none;
 
-            h5 {
-                font-size: var(--step-0);
+            h4 {
+                font-size: calc(var(--step-3) - 0.6rem);
             }
         }
 

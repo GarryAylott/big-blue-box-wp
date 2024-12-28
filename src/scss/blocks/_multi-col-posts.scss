@@ -28,13 +28,19 @@ Layout and styling for small post cards in multiple columns (desktop).
                     object-fit: cover;
                 }
             }
+
+            .post-meta {
+                font-family: var(--font-family-headings);
+                font-weight: var(--fw-semibold);
+                color: var(--clr-text-900);
+            }
         }
 
         .more-articles-title {
             margin-block-start: -6px;
             
-            p {
-                line-height: 1.4;
+            h6 {
+                font-size: var(--step-0);
             }
         }
 

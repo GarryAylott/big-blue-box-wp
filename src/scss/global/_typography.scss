@@ -31,20 +31,23 @@ h6 {font-size: calc(var(--step--1) + 0.15rem); line-height: 1.4;}
 
 .section-title {
     position: relative;
+    display: flex;
+    align-items: center;
     font-size: calc(var(--step-3) - 0.6rem);
     line-height: 1;
     color: var(--clr-text-400);
-    margin-block-end: var(--space-l);
-    padding-inline-start: 32px;
+    margin-block-end: var(--space-xl);
+    padding-inline-start: 72px;
     
     &::before {
         content: '';
         position: absolute;
         left: 0;
-        bottom: 2px;
-        width: 18px;
-        height: 39px;
-        background: url('./images/icons/icon-subtitle-tardis.svg') no-repeat center center;
+        width: 56px;
+        height: 56px;
+        background: url('./images/logos/BBB-Icon.svg') no-repeat center center;
+        background-color: var(--clr-surface-400);
+        border-radius: var(--radius-small);
     }
 }
 
@@ -60,6 +63,7 @@ p {
 .section-title-small {
     @extend .section-title;
     font-size: var(--step-1);
+    margin-block-end: var(--space-m);
     padding-inline-start: 0;
 
     &::before {

@@ -117,9 +117,9 @@ get_header();
 										</a>
 									</header>
 
-									<foote class="entry-footer">
+									<footer class="entry-footer">
 										<?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
-									</foote>
+									</footer>
 								</div>
 
                             </article>

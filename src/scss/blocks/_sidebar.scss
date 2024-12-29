@@ -74,6 +74,7 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
             .author-block-content {
                 display: flex;
                 flex-direction: column;
+                gap: var(--space-3xs);
             }
 
             .new-author-img {

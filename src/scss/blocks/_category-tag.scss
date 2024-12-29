@@ -7,20 +7,19 @@ CATEGORY TAG BLOCK
     align-items: center;
     gap: var(--space-3xs);
     width: fit-content;
-    margin: 0;
+    margin-block-end: var(--space-3xs);
     color: var(--clr-text-900);
 
     svg {
         opacity: 0.6;
     }
 
-    p {
-        font-family: var(--font-family-headings);
+    span {
         font-size: 14px;
-        font-weight: var(--fw-bold);
+        font-weight: var(--fw-semibold);
         color: inherit;
         text-transform: uppercase;
-        // letter-spacing: 0.5px;
+        letter-spacing: 0.5px;
         padding-block-start: 1px;
     }
 }

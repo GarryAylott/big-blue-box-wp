@@ -3,7 +3,7 @@
     /* Step -2: 11.589px → 11.52px */
     --step--2: clamp(0.72rem, 0.7259rem + -0.0079vw, 0.7243rem);
     /* Step -1: 13.617px → 14.4px */
-    --step--1: clamp(0.8511rem, 0.8325rem + 0.09vw, 0.9rem);
+    --step--1: clamp(0.875rem, 0.8405rem + 0.1724vw, 0.9375rem);
     /* Step 0: 16px → 18px */
     --step-0: clamp(1rem, 0.9526rem + 0.2299vw, 1.125rem);
     /* Step 1: 18.8px → 22.5px */
@@ -81,7 +81,7 @@
     --clr-surface-100: hsl(219, 13%, 38%); // Card backgrounds
 
     --clr-border: hsl(219, 11%, 50%);
-    --clr-border-darker: var(--clr-surface-200);
+    --clr-border-darker: hsl(218, 15%, 16%);
     --clr-border-link: hsl(221, 91%, 70%); // Ghost button outline
 
     --clr-brand-primary: hsl(215, 95%, 55%);

@@ -36,12 +36,11 @@
 					<button class="menu-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
 						<p class="visually-hidden">Menu</p>
 						<span></span>
-						<!-- <span></span> -->
 						<span></span>
 					</button>
 
 					<p class="small">Your ultimate destination for all things Doctor Who</p>
-
+				
 					<?php wp_nav_menu(
 						array(
 							'theme_location' => 'main-nav',
@@ -54,3 +53,9 @@
 			</div>
 		</div>
 	</header>
+
+	<div class="search-overlay" id="searchOverlay" aria-hidden="true">
+		<div class="search-overlay__content">
+			<?php get_search_form(); ?>
+		</div>
+	</div>

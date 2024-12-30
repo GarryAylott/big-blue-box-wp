@@ -53,6 +53,16 @@ Header styling for logo, nav etc.
             justify-content: flex-end;
             font-weight: var(--fw-semibold);
             margin: 0;
+
+            .nav-search-icon svg {
+                width: 16px;
+                height: 16px;
+                fill: var(--clr-text-100);
+    
+                &:hover {
+                    fill: var(--clr-brand-primary);
+                }
+            }
         }
 
         .menu-nav-toggle {

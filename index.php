@@ -78,7 +78,6 @@ get_header();
 
     <div class="browse-all">
         <div class="wrapper">
-            <h4 class="section-title">All articles and episodes</h4>
             <div class="browse-all__container">
                 <div class="browse-all__posts">
                     <?php

@@ -1,0 +1,82 @@
+/* 
+SEARCH OVERLAY BLOCK
+Search overlay that appears when the search icon is clicked
+*/
+
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(1, 10, 29, 0.8);
+    opacity: 0;
+    will-change: opacity;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+
+    &__content {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 0;
+        padding-inline: var(--gutter);
+        background: rgba(1, 10, 29, 0.9);
+        border-bottom: 1px solid var(--clr-border-darker);
+        transition: height 0.2s ease;
+        z-index: 150;
+
+        @media (min-width: 37.5rem) {
+            padding-inline: var(--gutter-large);
+        }
+
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-s);
+            width: 50rem;
+            padding-block-end: var(--space-s);
+            border-bottom: 2px solid var(--clr-border-darker);
+
+            .inputs {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .search-field {
+                flex-grow: 1;
+                font-size: 1.25rem;
+                padding: 0;
+                background: none;
+                border: none;
+                border-radius: 0;
+
+                &:focus-visible {
+                    outline: none;
+                }
+            }
+            
+            .search-submit {
+                background: none;
+                border: none;
+                cursor: pointer;
+
+                img {
+                    width: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+.search-overlay[aria-hidden="false"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-overlay[aria-hidden="false"] .search-overlay__content {
+    height: 50vh;
+}

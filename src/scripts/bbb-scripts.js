@@ -14,8 +14,8 @@ navToggle.addEventListener('click', () => {
     }
 });
 
-// Fade in background image on scroll
 document.addEventListener('DOMContentLoaded', function() {
+    // Fade background image on scroll
     const backgroundImage = document.querySelector('.bg-image-fade img');
     
     if (backgroundImage) {
@@ -25,4 +25,30 @@ document.addEventListener('DOMContentLoaded', function() {
             backgroundImage.style.opacity = Math.max(opacity, 0);
         });
     }
+
+    // Search function
+    const searchIcon = document.querySelector('.nav-search-icon');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const body = document.body;
+    
+    searchIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        searchOverlay.setAttribute('aria-hidden', 'false');
+        body.classList.add('overlay-active');
+    });
+    
+    searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) {
+            searchOverlay.setAttribute('aria-hidden', 'true');
+            body.classList.remove('overlay-active');
+        }
+    });
+    
+    // Add keyboard support to close on Esc press
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchOverlay.getAttribute('aria-hidden') === 'false') {
+            searchOverlay.setAttribute('aria-hidden', 'true');
+            body.classList.remove('overlay-active');
+        }
+    });
 });

@@ -5,7 +5,7 @@
     /* Step -1: 13.617px → 14.4px */
     --step--1: clamp(0.875rem, 0.8405rem + 0.1724vw, 0.9375rem);
     /* Step 0: 16px → 18px */
-    --step-0: clamp(1rem, 0.9526rem + 0.2299vw, 1.125rem);
+    --step-0: clamp(1.0625rem, 0.9935rem + 0.3448vw, 1.1875rem);
     /* Step 1: 18.8px → 22.5px */
     --step-1: clamp(1.175rem, 1.0873rem + 0.4253vw, 1.4063rem);
     /* Step 2: 22.09px → 28.125px */
@@ -56,6 +56,24 @@
     --space-xl-2xl: clamp(3rem, 2.3043rem + 3.4783vi, 5rem);
     /* Space 2xl-3xl: 64px → 120px */
     --space-2xl-3xl: clamp(4rem, 2.7826rem + 6.087vi, 7.5rem);
+
+    /* Space modifiers - padding */
+    .vs-p-small { padding-block: var(--space-s); }
+    .vs-p-medium { padding-block: var(--space-m); }
+    .vs-p-large { padding-block: var(--space-l); }
+    .vs-p-xl { padding-block: var(--space-2xl); }
+
+    /* Space modifiers - margin */
+    .vs-m-small { margin-block: var(--space-s); }
+    .vs-m-medium { margin-block: var(--space-m); }
+    .vs-m-large { margin-block: var(--space-l); }
+    .vs-m-xl { margin-block: var(--space-2xl); }
+
+    /* Flex & Grid gap modifiers */
+    .gap-small { gap: var(--space-xs); }
+    .gap-medium { gap: var(--space-m); }
+    .gap-large { gap: var(--space-l); }
+    .gap-xl { gap: var(--space-xl); }
 
     /* Other spacing values */
     --gutter: var(--space-m);

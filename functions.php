@@ -185,6 +185,7 @@ function custom_more_excerpt( $more ) {
 }
 add_filter( 'excerpt_more', 'custom_more_excerpt' );
 
+
 /**
  * Enqueue scripts and styles.
  */

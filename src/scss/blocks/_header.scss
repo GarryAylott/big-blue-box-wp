@@ -54,6 +54,16 @@ Header styling for logo, nav etc.
             font-weight: var(--fw-semibold);
             margin: 0;
 
+            @media (hover) {
+                & > a {
+                    transition: opacity .2s ease;
+                }
+
+                &:hover > *:not(:hover) {
+                    opacity: .25;
+                }
+            }
+
             .nav-search-icon svg {
                 width: 16px;
                 height: 16px;

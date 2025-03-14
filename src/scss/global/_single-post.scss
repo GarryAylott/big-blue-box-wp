@@ -1,0 +1,176 @@
+@use 'blocks' as *;
+
+/* 
+SINGLE POST STYLES
+Layout and styling for single post pages.
+*/
+
+.single-post-article {
+    h1 {
+        max-width: 23ch;
+    }
+
+    &__header-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: var(--space-s);
+
+        @media (max-width: 50rem) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--space-s);
+        }
+    }
+
+    .post-featured-image img {
+        @extend .post-thumb-img;
+        aspect-ratio: 16 / 8;
+    }
+
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2xl);
+        margin-block-start: var(--space-xl);
+
+        .article-body {
+            flex-basis: 0;
+            flex-grow: 999;
+            min-inline-size: 63%;
+        }
+
+        .post-summary {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            padding: var(--space-l);
+            padding-block-start: var(--space-m);
+            background: var(--clr-surface-600);
+
+            &:before {
+                background: linear-gradient(to bottom right, var(--clr-border-darker), var(--clr-surface-600) 50%);
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-2xs);
+                padding-inline-start: 1rem;
+
+                li {
+                    list-style-type: disc;
+                    padding-inline-start: 0.25rem;
+
+                    &::marker {
+                        color: var(--clr-brand-accent);
+                    }
+                }
+            }
+        }
+
+        .post-content {
+            p.lead {
+                font-size: var(--step-1);
+                font-weight: var(--fw-semibold);
+                line-height: 1.5;
+
+                &::first-letter {
+                    color: var(--clr-brand-accent);
+                    font-family: var(--font-family-headings);
+                    font-size: 4rem;
+                    line-height: 1;
+                    margin-block-start: 0.125rem;
+                    margin-inline-end: var(--space-2xs);
+                    float: left;
+                }
+            }
+
+            h2 {
+                font-size: var(--step-3);
+                line-height: 1.4;
+                margin-block-start: var(--space-xl);
+            }
+
+            figure {
+                max-width: 100%;
+                margin-block: var(--space-2xl) var(--space-xl);
+                margin-inline: auto;
+                
+                img {
+                    border-radius: var(--radius-small);
+                }
+
+                figcaption {
+                    font-size: var(--step--1);
+                    font-style: italic;
+                    line-height: 1.4;
+                    color: var(--clr-text-900);
+                    margin-block-start: var(--space-2xs);
+                }
+            }
+
+            ul, ol {
+                margin-inline-start: 1.1rem;
+                @extend .flow-tiny;
+            }
+
+            blockquote {
+                position: relative;
+                font-size: var(--step-1);
+                font-style: italic;
+                line-height: 1.4;
+                margin-block: var(--space-xl);
+                padding-inline-start: 3rem;
+
+                &::before {
+                    content: '“';
+                    position: absolute;
+                    top: 0;
+                    left: -1.1rem;
+                    font-size: var(--step-6);
+                    font-family: var(--font-family-headings);
+                    line-height: 1;
+                    color: var(--clr-brand-accent);
+                }
+
+                p {
+                    display: inline-block;
+                }
+                
+                p:not(:last-child) {
+                    font-weight: var(--fw-semibold);
+                    margin-block-end: var(--space-2xs);
+                    background: linear-gradient(90deg, hsl(334, 88%, 68%), hsl(215, 95%, 55%));
+                    background-clip: text; /* Ensures the gradient is clipped to the text */
+                    -webkit-text-fill-color: transparent; /* Makes the text itself transparent */
+                }
+
+                p:last-child {
+                    display: block;
+                    font-size: var(--step--1);
+                    color: var(--clr-text-900);
+                }
+            }
+        }
+
+        .post-sidebar {
+            flex-basis: 16rem;
+            flex-grow: 1;
+
+            .author-info {
+                img.avatar {
+                    height: 104px;
+                }
+
+                a {
+                    display: block;
+                }
+
+                &__name {
+                    font-weight: var(--fw-semibold);
+                }
+            }
+        }
+    }
+}

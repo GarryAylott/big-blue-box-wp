@@ -13,7 +13,7 @@ Layout and styling for panels that are styled differently to regular sections.
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(to bottom right, var(--clr-surface-100), var(--clr-surface-300) 50%);
+        background: linear-gradient(to bottom right, var(--clr-surface-100), var(--clr-surface-300) 40%);
         margin: -1px;
         border-radius: 8px;
         z-index: -1;
@@ -23,4 +23,8 @@ Layout and styling for panels that are styled differently to regular sections.
 .call-out-panel-large {
     padding: var(--space-3xl);
     border-radius: var(--radius-normal);
+
+    &::before {
+        border-radius: var(--radius-normal);
+    }
 }

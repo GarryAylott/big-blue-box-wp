@@ -6,6 +6,10 @@
 get_header();
 ?>
 
+<div class="page-bg-inline bg-image-fade">
+	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg_home.webp" decoding="async" alt="" fetchpriority="high">
+</div>
+
 <main id="primary" class="site-main flow-page-regions">
     <div class="wrapper">
         <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep flex-splitter'); ?>>

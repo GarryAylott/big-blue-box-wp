@@ -10,16 +10,11 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-
-<div class="page-bg-inline bg-image-fade">
-	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg-home.jpg" decoding="async" alt="" fetchpriority="high">
-</div>
 
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'bigbluebox' ); ?></a>
@@ -28,9 +23,12 @@
 		<div class="header-backdrop"></div>
 		<div class="wrapper">
 			<div class="site-head__inner">
-				<div class="site-head__logo">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/BBB-logo.svg" width="250" height="64" alt="The Big Blue Box Podcast logo">
-				</div>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-head__home">
+					<span class="visually-hidden">The Big Blue Box Podcast</span>
+					<div class="site-head__logo">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/BBB-logo.svg" width="250" height="64" alt="The Big Blue Box Podcast logo">
+					</div>
+				</a>
 
 				<div class="site-head__navigation">
 					<button class="menu-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">

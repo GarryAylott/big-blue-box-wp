@@ -24,6 +24,7 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
 
     .social-links {
         a {
+            display: block;
             padding-block: var(--space-xs);
         }
 

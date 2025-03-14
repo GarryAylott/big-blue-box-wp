@@ -7,11 +7,11 @@
 ?>
 
 <aside id="secondary" class="main-sidebar flow-large">
-	<section class="flow-small">
+	<section class="social-links">
 		<h5 class="section-title-small">
 			Connect and chat
 		</h5>
-		<ul class="social-links" role="list">
+		<ul role="list">
 			<a class="link-alt" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
 				<li>
 					<div class="social-links__item">
@@ -48,7 +48,7 @@
 				<li>
 					<div class="social-links__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
-						<h6>RSS feed - podcasts</h6>
+						<h6>RSS feed - Podcasts</h6>
 					</div>
 				</li>
 			</a>
@@ -56,7 +56,7 @@
 				<li>
 					<div class="social-links__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
-						<h6>RSS feed - articles</h6>
+						<h6>RSS feed - Articles</h6>
 					</div>
 				</li>
 			</a>

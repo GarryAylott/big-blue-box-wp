@@ -11,7 +11,7 @@ CATEGORY TAG BLOCK
     color: var(--clr-text-900);
 
     svg {
-        opacity: 0.6;
+        fill: var(--clr-text-900);
     }
 
     span {
@@ -21,5 +21,13 @@ CATEGORY TAG BLOCK
         text-transform: uppercase;
         letter-spacing: 0.5px;
         padding-block-start: 1px;
+    }
+}
+
+body:is(.single-post) .category-tag {
+    color: var(--clr-brand-accent);
+
+    svg {
+        fill: currentColor;
     }
 }

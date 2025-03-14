@@ -1,0 +1,41 @@
+/* 
+POST TAGS
+Layout and styling for single post page and search results tags.
+*/
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2xs);
+
+    @media (max-width: 50rem) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    ul {
+        display: flex;
+        gap: var(--space-2xs);
+        list-style: none;
+
+        @media (max-width: 31.25rem) {
+            flex-direction: column;
+        }
+
+        li a {
+            width: fit-content;
+            font-size: var(--step--1);
+            color: var(--clr-brand-secondary);
+            padding: 0.188rem 0.75rem;
+            border: 1px solid var(--clr-brand-secondary);
+            border-radius: var(--radius-circle);
+
+            &:hover {
+                text-decoration: none;
+                background-color: var(--clr-brand-secondary);
+                color: var(--clr-surface-700);
+            }
+        }
+    }
+}

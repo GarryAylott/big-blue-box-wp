@@ -19,11 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const backgroundImage = document.querySelector('.bg-image-fade img');
     
     if (backgroundImage) {
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
+        // Set initial opacity based on current scroll position
+        const setOpacity = () => {
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             const opacity = 1 - (scrollPosition / 600);
             backgroundImage.style.opacity = Math.max(opacity, 0);
-        });
+        };
+
+        // Set initial opacity on page load
+        setOpacity();
+
+        // Update opacity on scroll
+        window.addEventListener('scroll', setOpacity);
     }
 
     // Search function
@@ -44,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Add keyboard support to close on Esc press
+    // Add keyboard support to close on Esc
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && searchOverlay.getAttribute('aria-hidden') === 'false') {
             searchOverlay.setAttribute('aria-hidden', 'true');

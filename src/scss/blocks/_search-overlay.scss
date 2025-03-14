@@ -50,12 +50,17 @@ Search overlay that appears when the search icon is clicked
                 flex-grow: 1;
                 font-size: 1.25rem;
                 padding: 0;
+                color: var(--clr-text-100);
                 background: none;
                 border: none;
                 border-radius: 0;
 
                 &:focus-visible {
                     outline: none;
+                }
+
+                &::placeholder {
+                    color: var(--clr-surface-200);
                 }
             }
             

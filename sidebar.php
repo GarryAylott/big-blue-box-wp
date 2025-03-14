@@ -7,59 +7,67 @@
 ?>
 
 <aside id="secondary" class="main-sidebar flow-large">
-	<section class="social-links">
-		<h5 class="section-title-small">
+	<section class="social-channels flow">
+		<h5>
 			Connect and chat
 		</h5>
 		<ul role="list">
-			<a class="link-alt" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
-				<li>
-					<div class="social-links__item">
+			<li>
+				<a href="https://bsky.app/profile/bigblueboxpodcast.bsky.social" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="X Bluesky link">
+						<p>Bluesky</p>
+					</div>
+				 </a>
+			</li>
+			<li>
+				<a href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
-						<h6>X (Twitter)</h6>
+						<p>X (Twitter)</p>
 					</div>
-				</li>
-			</a>
-			<a class="link-alt" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
-				<li>
-					<div class="social-links__item">
+				 </a>
+			</li>
+			<li>
+				<a href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
-						<h6>Instagram</h6>
+						<p>Instagram</p>
 					</div>
-				</li>
-			</a>
-			<a class="link-alt" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
-				<li>
-					<div class="social-links__item">
+				 </a>
+			</li>
+			<li>
+				<a href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
-						<h6>Facebook</h6>
+						<p>Facebook</p>
 					</div>
-				</li>
-			</a>
-			<a class="link-alt" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
-				<li>
-					<div class="social-links__item">
+				 </a>
+			</li>
+			<li>
+				<a href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
-						<h6>Threads</h6>
+						<p>Threads</p>
 					</div>
-				</li>
-			</a>
-			<a class="link-alt" href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
-				<li>
-					<div class="social-links__item">
+				 </a>
+			</li>
+			<li>
+				<a href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
-						<h6>RSS feed - Podcasts</h6>
+						<p>RSS feed - Podcasts</p>
 					</div>
-				</li>
-			</a>
-			<a class="link-alt" href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
-				<li>
-					<div class="social-links__item">
+				 </a>
+			</li>
+			<li>
+				<a href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
-						<h6>RSS feed - Articles</h6>
+						<p>RSS feed - Articles</p>
 					</div>
-				</li>
-			</a>
+				 </a>
+			</li>
 		</ul>
 	</section>
 
@@ -75,8 +83,8 @@
 		</a>
 	</section>
 
-	<section class="flow-small">
-		<h5 class="section-title-small">
+	<section class="flow">
+		<h5>
 			Meet your writers
 		</h5>
 		<div class="author-section-small">

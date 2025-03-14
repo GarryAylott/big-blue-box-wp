@@ -28,7 +28,7 @@
 		</div>
     </header>
 
-	<section class="post-featured-image">
+	<section class="article-featured-image">
 		<?php
 		if (has_post_thumbnail()) :
 			?>
@@ -76,8 +76,8 @@
 				<?php the_content(); ?>
 			</section>
 
-			<section class="post-closing">
-				<h2>Final Thoughts</h2>
+			<section class="article-closeout">
+				<h4>Final Thoughts</h4>
 				<?php
 				// Display the final summary and review score
 				if ( function_exists( 'get_field' ) ) {
@@ -95,23 +95,87 @@
 			</section>
 		</div>
 
-		<aside class="post-sidebar flow-large">
+		<aside class="article-sidebar flow-large">
 			<section class="author-info flow-small">
-				<?php
+			<?php
 				$author_id = get_the_author_meta( 'ID' );
+				$short_bio = get_field( 'short_bio', 'user_' . $author_id );
+				
+				// Output the author's avatar.
 				echo get_avatar( $author_id, 72, '', get_the_author() );
+				
+				// Output the full author name.
 				echo '<p class="author-info__name">By ' . esc_html( get_the_author() ) . '</p>';
-				echo '<p class="small">' . esc_html( get_the_author_meta( 'description' ) ) . '</p>';
-				echo '<a class="link-alt" href="' . esc_url( get_author_posts_url( $author_id ) ) . '"><p class="small">More about ' . esc_html( get_the_author() ) . '</p></a>';
-				?>
-			</section>
 
-			<section class="share-post">
+				// Output the short bio if available; otherwise, fall back to the default description.
+				if ( $short_bio ) {
+					echo '<p class="small">' . wp_kses_post( $short_bio ) . '</p>';
+				} else {
+					echo '<p class="small">' . esc_html( get_the_author_meta( 'description' ) ) . '</p>';
+				}
+
+				// Retrieve the author's first name.
+				$first_name = get_the_author_meta( 'first_name', $author_id );
+				// Set the link text, falling back to a generic label if the first name is not set.
+				$link_text = ! empty( $first_name )
+					? sprintf( esc_html__( 'More about %s', 'your-text-domain' ), esc_html( $first_name ) )
+					: esc_html__( 'More about the author', 'your-text-domain' );
+
+				// Output the link to the author's archive.
+				echo '<a class="link-alt" href="' . esc_url( get_author_posts_url( $author_id ) ) . '">';
+					echo '<p class="small">' . $link_text . '</p>';
+				echo '</a>';
+			?>
+			</section>	
+
+			<section class="social-channels flow">
 				<h5>Share</h5>
-				<ul>
-					<li><a href="https://facebook.com/sharer/sharer.php?u=<?php echo urlencode( get_permalink() ); ?>" target="_blank">Facebook</a></li>
-					<li><a href="https://x.com/share?url=<?php echo urlencode( get_permalink() ); ?>&text=<?php echo urlencode( get_the_title() ); ?>" target="_blank">Twitter</a></li>
-					<li><a href="https://linkedin.com/sharing/share-offsite/?url=<?php echo urlencode( get_permalink() ); ?>" target="_blank">LinkedIn</a></li>
+				<ul role="list">
+					<li>
+						<a href="https://bsky.app/compose?text=<?php echo urlencode( get_the_title() . ' ' . get_permalink() ); ?>" target="_blank" rel="noopener">
+							<div class="social-channels__item">
+								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="X Bluesky link">
+								<p>Bluesky</p>
+							</div>
+							<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="https://x.com/share?url=<?php echo urlencode( get_permalink() ); ?>&text=<?php echo urlencode( get_the_title() ); ?>" target="_blank">
+							<div class="social-channels__item">
+								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
+								<p>X (Twitter)</p>
+							</div>
+							<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+							<div class="social-channels__item">
+								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
+								<p>Instagram</p>
+							</div>
+							<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="https://facebook.com/sharer/sharer.php?u=<?php echo urlencode( get_permalink() ); ?>" target="_blank">
+							<div class="social-channels__item">
+								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
+								<p>Facebook</p>
+							</div>
+							<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+						</a>
+					</li>
+					<li>
+						<a href="https://www.threads.net/intent/post?text=Check+out+this+article+from+The+Big+Blue+Box+&url=<?php echo urlencode( get_permalink() ); ?>" target="_blank">
+							<div class="social-channels__item">
+								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
+								<p>Threads</p>
+							</div>
+							<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+						</a>
+					</li>
 				</ul>
 			</section>
     	</aside>

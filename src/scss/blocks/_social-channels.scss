@@ -1,0 +1,37 @@
+/* 
+SOCIAL CHANNELS
+Layout and styling for the list of social channels.
+*/
+
+
+.social-channels {
+    li {
+        border-block-end: 1px solid var(--clr-border-darker);
+        padding-block: var(--space-xs);
+
+        &:is(:first-child) {
+            padding-block-start: 0;
+        }
+
+        &:is(:last-child) {
+            padding-block-end: 0;
+            border: none;
+        }
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-xs);
+
+        img {
+            width: 1.3rem;
+        }
+    }
+}

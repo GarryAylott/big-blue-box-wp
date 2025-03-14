@@ -34,9 +34,6 @@ Header styling for logo, nav etc.
     &__logo img {
         width: clamp(12.5rem, 5.593vw + 8.914rem, 15.625rem);
         height: auto;
-        opacity: 0;
-        filter: blur(10px);
-        animation: fadeInBlur 2s ease-out forwards;
     }
 
     &__navigation {
@@ -61,6 +58,7 @@ Header styling for logo, nav etc.
 
                 &:hover > *:not(:hover) {
                     opacity: .25;
+                    transition: opacity .2s ease;
                 }
             }
 
@@ -169,16 +167,5 @@ Header styling for logo, nav etc.
                 right: 2rem;
             }
         }
-    }
-}
-
-@keyframes fadeInBlur {
-    0% {
-        opacity: 0;
-        filter: blur(10px);
-    }
-    100% {
-        opacity: 1;
-        filter: blur(0);
     }
 }

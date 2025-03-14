@@ -23,7 +23,7 @@ Layout and styling for single post pages.
         }
     }
 
-    .post-featured-image img {
+    .article-featured-image img {
         @extend .post-thumb-img;
         aspect-ratio: 16 / 8;
     }
@@ -154,9 +154,16 @@ Layout and styling for single post pages.
             }
         }
 
-        .post-sidebar {
-            flex-basis: 16rem;
+        .article-sidebar {
+            flex-basis: 20rem;
             flex-grow: 1;
+            border-inline-start: 1px solid var(--clr-border-darker);
+            padding-inline-start: var(--space-2xl);
+
+            @media (max-width: 72.188rem) {
+                padding-inline-start: 0;
+                border-inline-start: none;
+            }
 
             .author-info {
                 img.avatar {
@@ -170,6 +177,12 @@ Layout and styling for single post pages.
                 &__name {
                     font-weight: var(--fw-semibold);
                 }
+            }
+
+            .article-share {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-xs);
             }
         }
     }

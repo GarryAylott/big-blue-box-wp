@@ -35,9 +35,8 @@ Styles for full-width and column based testimonials.
         }
 
         h4 {
-            font-size: calc(var(--step-3) - 0.5rem);
-            font-weight: var(--fw-semibold);
             font-style: italic;
+            font-weight: 400;
             text-wrap: wrap;
         }
 
@@ -49,9 +48,10 @@ Styles for full-width and column based testimonials.
     &__source {
         display: flex;
         flex-direction: column;
-        gap: var(--space-3xs);
+        gap: calc(var(--space-3xs) - 3px);
 
-        h6, h5, cite {
+        h5, cite {
+            font-family: var(--font-family-body);
             font-style: normal;
         }
 
@@ -63,9 +63,7 @@ Styles for full-width and column based testimonials.
             display: inline-flex;
             align-items: center;
             gap: var(--space-2xs);
-            font-family: var(--font-family-headings);
-            font-weight: var(--fw-semibold);
-            font-size: calc(var(--step--1) + 0.15rem);
+            font-size: var(--step-0);
         }
     }
 
@@ -100,7 +98,7 @@ Styles for full-width and column based testimonials.
             border-left: none;
 
             h4 {
-                font-size: calc(var(--step-3) - 0.6rem);
+                font-size: var(--step-2);
             }
         }
 

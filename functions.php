@@ -185,7 +185,6 @@ function custom_more_excerpt( $more ) {
 }
 add_filter( 'excerpt_more', 'custom_more_excerpt' );
 
-
 /**
  * Enqueue scripts and styles.
  */
@@ -223,3 +222,5 @@ add_action( 'wp_enqueue_scripts', 'bigbluebox_scripts' );
 // if ( defined( 'JETPACK__VERSION' ) ) {
 // 	require get_template_directory() . '/inc/jetpack.php';
 // }
+
+?>

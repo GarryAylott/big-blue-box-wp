@@ -6,7 +6,7 @@ Layout and styling for mainly single post meta information.
 .post-meta {
     gap: var(--space-2xs);
     
-    @media (max-width: 31.25rem) {
+    @media (max-width: 23.063rem) {
         flex-direction: column;
         flex-wrap: wrap;
         align-items: flex-start;

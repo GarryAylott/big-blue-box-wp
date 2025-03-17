@@ -20,28 +20,19 @@ article {
         gap: var(--space-2xs);
         color: var(--clr-text-900);
     }
+    
+    .post-card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: var(--space-2xs);
+        margin-block-start: var(--space-xs);
+    }
 }
 
-.post-thumb-img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+article.post-card-alt {
+    .post-card-content {
+        gap: var(--space-2xs);
+    }
 }
 
-// .post-thumb-img-small {
-//     filter: saturate(1) brightness(1);
-//     transition: filter 0.2s ease-in-out;
-
-//     &:hover {
-//         filter: saturate(1.1) brightness(1.1);
-//     }
-// }
-
-.post-card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: var(--space-2xs);
-    margin-block-start: var(--space-2xs);
-}

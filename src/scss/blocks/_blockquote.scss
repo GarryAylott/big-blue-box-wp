@@ -1,0 +1,39 @@
+/* 
+BLOCKQUOTE
+Layout and styling for in-post blockquotes.
+*/
+
+blockquote {
+    position: relative;
+    font-size: var(--step-3);
+    font-style: italic;
+    line-height: 1.4;
+    margin-block: var(--space-2xl);
+    padding-inline-start: var(--space-m);
+
+    &::before {
+        content: '“';
+        position: absolute;
+        width: 100%;
+        top: -2rem;
+        left: -1.1rem;
+        font-size: 12rem;
+        line-height: 1;
+        color: var(--clr-brand-accent);
+        opacity: 0.25;
+    }
+    
+    p:not(:last-child) {
+        font-weight: var(--fw-semibold);
+        margin-block-end: var(--space-2xs);
+        background: linear-gradient(90deg, hsl(334, 88%, 68%), hsl(215, 95%, 55%));
+        background-clip: text; /* Ensures the gradient is clipped to the text */
+        -webkit-text-fill-color: transparent; /* Makes the text itself transparent */
+    }
+
+    p:last-child {
+        display: block;
+        font-size: var(--step-1 );
+        color: var(--clr-text-900);
+    }
+}

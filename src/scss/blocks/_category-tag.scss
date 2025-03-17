@@ -7,7 +7,6 @@ CATEGORY TAG BLOCK
     align-items: center;
     gap: var(--space-3xs);
     width: fit-content;
-    margin-block-end: var(--space-3xs);
     color: var(--clr-text-900);
 
     svg {
@@ -15,7 +14,7 @@ CATEGORY TAG BLOCK
     }
 
     span {
-        font-size: 14px;
+        font-size: var(--step-0);
         font-weight: var(--fw-semibold);
         color: inherit;
         text-transform: uppercase;

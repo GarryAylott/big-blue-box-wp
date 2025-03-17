@@ -35,7 +35,7 @@
                     <div class="post-card-content">
                         <header class="entry-header">
                             <a href="<?php the_permalink(); ?>">
-                                <h5 class="balance">
+                                <h4 class="balance">
                                     <?php
                                         $thetitle = $post->post_title;
                                         $getlength = strlen($thetitle);
@@ -43,7 +43,7 @@
                                         echo substr($thetitle, 0, $thelength);
                                         if ($getlength > $thelength) echo "...";
                                     ?>
-                                </h5>
+                                </h4>
                             </a>
                         </header>
 
@@ -52,12 +52,11 @@
                                 <?php echo wp_trim_words( get_the_excerpt(), 15 ); ?>
                             </p>
                         </div>
-                    </div>
 
-                    <footer class="entry-footer">
-                        <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
-                        <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
-                    </footer>
+                        <footer class="entry-footer">
+                            <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
+                        </footer>
+                    </div>
                 </article>
         <?php
         $displayed_posts[] = get_the_ID();

@@ -36,7 +36,7 @@ get_header();
 
                             <div class="latest-podcast-ep__copy">
                                 <a href="<?php the_permalink(); ?>">
-                                    <h3>
+                                    <h1>
                                         <?php
                                         $thetitle = $post->post_title;
                                         $getlength = strlen($thetitle);
@@ -44,7 +44,7 @@ get_header();
                                         echo substr($thetitle, 0, $thelength);
                                         if ($getlength > $thelength) echo "...";
                                         ?>
-                                    </h3>
+                                    </h1>
                                 </a>
                             </div>
                         </div>
@@ -82,6 +82,9 @@ get_header();
 
     <div class="browse-all">
         <div class="wrapper">
+            <h4 class="section-title">
+                More Episodes and Articles
+            </h4>
             <div class="browse-all__container">
                 <div class="browse-all__posts">
                     <?php
@@ -108,7 +111,7 @@ get_header();
 									<header class="entry-header">
                                         <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
 										<a href="<?php the_permalink(); ?>">
-											<h5 class="balance">
+											<h4 class="balance">
 												<?php
 												$thetitle = $post->post_title;
 												$getlength = strlen($thetitle);
@@ -116,7 +119,7 @@ get_header();
 												echo substr($thetitle, 0, $thelength);
 												if ($getlength > $thelength) echo "...";
 												?>
-											</h5>
+											</h4>
 										</a>
 									</header>
 
@@ -154,7 +157,7 @@ get_header();
 
     <section>
         <div class="wrapper">
-            <h4 class="section-title">More articles</h4>
+            <h4 class="section-title">Explore more articles</h4>
             <div class="more-articles">
             <?php
             $tags = ['big-finish', 'events', 'reading'];
@@ -169,7 +172,7 @@ get_header();
 
                 if ($query->have_posts()) : ?>
                     <div class="more-articles__column">
-                        <h5 class="section-title-small"><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h5>
+                        <h4 class="section-title-small"><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h4>
                         <ul role="list">
                         <?php while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -188,15 +191,15 @@ get_header();
                                 </div>
 
                                 <a class="more-articles-title" href="<?php the_permalink(); ?>">
-                                    <h6>
+                                    <h5>
                                         <?php
                                         $thetitle = $post->post_title;
                                         $getlength = strlen($thetitle);
-                                        $thelength = 55;
+                                        $thelength = 75;
                                         echo substr($thetitle, 0, $thelength);
                                         if ($getlength > $thelength) echo "...";
                                         ?>
-                                    </h6>
+                                    </h5>
                                 </a>
                             </li>
                             

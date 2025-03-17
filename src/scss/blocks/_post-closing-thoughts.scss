@@ -1,0 +1,103 @@
+/* 
+POST CLOSING THOUGHTS
+Layout and styling for the closing paragraph and review score.
+*/
+
+.closing-thoughts {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-xl-2xl);
+    padding: var(--space-m);
+    background: var(--clr-surface-300);
+    overflow: hidden;
+    z-index: 10;
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+
+        flex-basis: 0;
+        flex-grow: 999;
+        min-inline-size: 50%;
+
+        .closing-thoughts-title {
+            font-size: var(--step-2);
+            margin-block-start: 0;
+        }
+
+        p {
+            color: var(--clr-text-900);
+        }
+    }
+
+    .score-wrapper {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        flex-basis: 10rem;
+        flex-grow: 1;
+
+        @media (max-width: 39.938rem) {
+            flex-grow: unset; 
+        }
+
+        .score-circle {
+            width: 500px;
+            height: auto;
+            background: transparent; /* Ensure no white box behind SVG */
+            transform: rotate(-90deg); /* Stroke starts from top */
+
+            @media (max-width: 39.938rem) {
+                max-width: 250px;
+            }
+        }
+
+        .score-circle-bg {
+            fill: none;
+            stroke: transparent; /* Adjust color as needed */
+            stroke-width: 10;
+        }
+
+        .score-circle-stroke {
+            fill: none;
+            stroke: var(--clr-brand-primary); /* Adjust color as needed */
+            stroke-width: 6;
+            stroke-dasharray: 314; /* Approx. circumference for r=50 */
+            stroke-dashoffset: 314; /* Overridden inline by PHP */
+            stroke-linecap: round; /* Rounded ends on the stroke */
+        }
+
+        .score-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: var(--step-6);
+            font-weight: var(--fw-bold);
+            color: var(--clr-brand-primary);
+            pointer-events: none;
+        }
+    }
+
+    // Glow
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -150px;
+        right: -450px;
+        width: 1100px;
+        height: 350px;
+        background: radial-gradient(circle,hsla(215, 95%, 55%,0.15) 0,hsla(215, 95%, 55%,0) 60%);
+        border-radius: 50%;
+        filter: blur(20px);
+        z-index: -1;
+
+        @media (max-width: 39.938rem) {
+            left: -450px;
+        }
+    }
+}

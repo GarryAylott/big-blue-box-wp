@@ -1,23 +1,25 @@
 :root {
     //Font sizes
-    /* Step -2: 11.589px → 11.52px */
-    --step--2: clamp(0.72rem, 0.7259rem + -0.0079vw, 0.7243rem);
-    /* Step -1: 13.617px → 14.4px */
-    --step--1: clamp(0.875rem, 0.8405rem + 0.1724vw, 0.9375rem);
-    /* Step 0: 16px → 18px */
-    --step-0: clamp(1.0625rem, 0.9935rem + 0.3448vw, 1.1875rem);
-    /* Step 1: 18.8px → 22.5px */
-    --step-1: clamp(1.175rem, 1.0873rem + 0.4253vw, 1.4063rem);
-    /* Step 2: 22.09px → 28.125px */
-    --step-2: clamp(1.3806rem, 1.2376rem + 0.6937vw, 1.7578rem);
-    /* Step 3: 25.9558px → 35.1563px */
-    --step-3: clamp(1.6222rem, 1.4041rem + 1.0575vw, 2.1973rem);
-    /* Step 4: 30.498px → 43.9453px */
-    --step-4: clamp(1.9061rem, 1.5873rem + 1.5457vw, 2.7466rem);
-    /* Step 5: 35.8352px → 54.9316px */
-    --step-5: clamp(2.2397rem, 1.787rem + 2.195vw, 3.4332rem);
-    /* Step 6: 42.1063px → 68.6646px */
-    --step-6: clamp(2.6316rem, 2.002rem + 3.0527vw, 4.2915rem);
+    /* Step -2: 9.7222px → 10.4167px */
+    --step--2: clamp(0.6076rem, 0.5929rem + 0.0739vw, 0.651rem);
+    /* Step -1: 11.6667px → 12.5px */
+    --step--1: clamp(0.7292rem, 0.7114rem + 0.0887vw, 0.7813rem);
+    /* Step 0: 14px → 15px */
+    --step-0: clamp(0.875rem, 0.8537rem + 0.1064vw, 0.9375rem);
+    /* Step 1: 16.8px → 18px */
+    --step-1: clamp(1.094rem, 0.268vi + 1.035rem, 1.25rem);
+    /* Step 2: 20.16px → 21.6px */
+    --step-2: clamp(1.26rem, 1.2294rem + 0.1532vw, 1.35rem);
+    /* Step 3: 24.192px → 25.92px */
+    --step-3: clamp(1.512rem, 1.4752rem + 0.1838vw, 1.62rem);
+    /* Step 4: 29.0304px → 31.104px */
+    --step-4: clamp(1.8144rem, 1.7703rem + 0.2206vw, 1.944rem);
+    /* Step 5: 34.8365px → 37.3248px */
+    --step-5: clamp(2.1773rem, 2.1243rem + 0.2647vw, 2.3328rem);
+    /* Step 6: 41.8038px → 44.7898px */
+    --step-6: clamp(2.6127rem, 2.5492rem + 0.3177vw, 2.7994rem);
+    /* Display: 60.1974px → 64.4973px */
+    --step-7: clamp(3.125rem, 1.522vw + 2.783rem, 4rem);
 
     // Spacing
     /* Space 3xs: 4px → 5px */
@@ -93,7 +95,7 @@
 
     --clr-surface-700: hsl(215, 50%, 5%); // Page background
     --clr-surface-600: hsl(217, 50%, 7%); // Dark logo and vector fills
-    --clr-surface-400: hsl(224, 16%, 13%); // Default/Section backgorunds
+    --clr-surface-400: hsl(222, 15%, 13%); // Default/Section backgorunds
     --clr-surface-300: hsl(247, 21%, 13%); // Call out panels
     --clr-surface-200: hsl(218, 15%, 25%); // Component backgrounds
     --clr-surface-100: hsl(219, 13%, 38%); // Card backgrounds
@@ -105,4 +107,5 @@
     --clr-brand-primary: hsl(215, 95%, 55%);
     --clr-brand-secondary: hsl(42, 91%, 58%);
     --clr-brand-accent: hsl(334, 88%, 68%);
+    --clr-brand-accent-darker: hsl(334, 88%, 41%);
 }

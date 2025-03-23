@@ -1,29 +1,34 @@
 <?php
 /**
- * Template part for displaying the latest three articles.
+ * Template part for displaying suggested articles.
  *
  * @package Big_Blue_Box
  */
 ?>
 
-<div class="wrapper">
-    <h4 class="section-title">
-        Latest articles
+<div class="suggested-articles">
+    <h4>
+        Continue reading
     </h4>
-    <div class="latest-articles-featured">
+    <div class="articles-hori-scroll">
         <?php
-            $displayed_posts = get_query_var('displayed_posts', array());
+            $current_post_id = get_the_ID();
+            $current_post_categories = wp_get_post_categories($current_post_id);
+            $current_post_tags = wp_get_post_tags($current_post_id);
 
-            $args2 = array(
-                'category_name' => 'articles',
-                'posts_per_page' => 3,
-                'post_status' => 'publish',
-                'post__not_in' => $displayed_posts
+            $args = array(
+                'post_type'      => 'post',
+                'posts_per_page' => 10,
+                'post__not_in'   => array($current_post_id),
+                'orderby'        => 'rand',
+                'category__in'   => $current_post_categories,
+                'tag__in'        => wp_list_pluck($current_post_tags, 'term_id'),
+                'ignore_sticky_posts' => 1,
             );
-            $query2 = new WP_Query($args2);
+            $query = new WP_Query($args);
         ?>
-        <?php if ( $query2->have_posts() ) :
-            while ( $query2->have_posts() ) : $query2->the_post(); ?>
+        <?php if ( $query->have_posts() ) :
+            while ( $query->have_posts() ) : $query->the_post(); ?>
                 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
                     <?php if ( has_post_thumbnail() ) : ?>
@@ -48,14 +53,10 @@
                         </header>
 
                         <div class="entry-content">
-                            <p>
+                            <p class="small">
                                 <?php echo wp_trim_words( get_the_excerpt(), 15 ); ?>
                             </p>
                         </div>
-
-                        <footer class="entry-footer">
-                            <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
-                        </footer>
                     </div>
                 </article>
         <?php

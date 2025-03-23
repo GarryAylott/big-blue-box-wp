@@ -7,7 +7,6 @@ Styles for full-width and column based testimonials.
 .testimonial {
     width: 90%;
     margin-inline: auto;
-    padding-block: var(--space-l);
 
     @media (max-width: 768px) {
         width: 100%;
@@ -21,6 +20,10 @@ Styles for full-width and column based testimonials.
         padding-inline-start: var(--space-s);
         margin-inline: auto;
         border-left: 4px solid var(--clr-brand-secondary);
+
+        &::before {
+            display: none;
+        }
 
         em {
             position: relative;

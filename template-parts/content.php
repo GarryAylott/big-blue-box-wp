@@ -74,11 +74,9 @@
 			</section>
 
 			<?php
-			// Fetch the ACF fields (ensure you have ACF installed/active).
 			$closing_text  = get_field( 'closing_thoughts_text' );
 			$closing_score = get_field( 'closing_thoughts_score' );
 
-			// Only display if fields are not empty.
 			if ( $closing_text || $closing_score ) :
 				// Convert score to a float (handles half-points).
 				$score = (float) $closing_score;
@@ -93,7 +91,7 @@
 				
 				<div class="closing-thoughts rounded">
 					<div class="closing-thoughts__text">
-						<h3 class="closing-thoughts-title"><?php esc_html_e( 'Closing Thoughts', 'bigbluebox' ); ?></h3>
+						<h4 class="closing-thoughts-title"><?php esc_html_e( 'Closing Thoughts', 'bigbluebox' ); ?></h4>
 						
 						<?php if ( $closing_text ) : ?>
 							<p><?php echo esc_html( $closing_text ); ?></p>

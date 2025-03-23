@@ -72,8 +72,8 @@ get_header();
     </div>
 
     <?php
-    set_query_var('displayed_posts', $displayed_posts);
-    get_template_part('template-parts/content', 'latest-articles');
+        set_query_var('displayed_posts', $displayed_posts);
+        get_template_part('template-parts/content', 'latest-articles');
     ?>
     
     <div class="wrapper">
@@ -111,7 +111,7 @@ get_header();
 									<header class="entry-header">
                                         <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
 										<a href="<?php the_permalink(); ?>">
-											<h4 class="balance">
+											<h5 class="balance">
 												<?php
 												$thetitle = $post->post_title;
 												$getlength = strlen($thetitle);
@@ -119,7 +119,7 @@ get_header();
 												echo substr($thetitle, 0, $thelength);
 												if ($getlength > $thelength) echo "...";
 												?>
-											</h4>
+											</h5>
 										</a>
 									</header>
 

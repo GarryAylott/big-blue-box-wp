@@ -3,39 +3,24 @@ LINKS TO PODCAST APPS BLOCK
 */
 
 .podcast-app-links {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(185px, 100%), 1fr));
     gap: var(--space-xs);
+    align-items: start;
+    width: fit-content;
+    max-width: 100%;
 
-    &__buttons {
+    &__button {
+        width: 100%;
         position: relative;
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--space-xs);
+        min-height: 45px;
+        
 
         .button-ghost {
             padding: 0.4em 0.8em;
-        }
-
-        .link-column a {
-            display: flex;
-            min-height: 45px;
-        }
-
-        @media (max-width: 622px) {
-            .link-column {
-                flex: 45%;
-            }
-
-            a {
-                flex-grow: 1;
-            }
-        }
-
-        @media (max-width: 400px) {
-            flex-direction: column;
-            flex-wrap: nowrap;
             width: 100%;
+            min-width: max-content;
         }
     }
 
@@ -59,30 +44,32 @@ LINKS TO PODCAST APPS BLOCK
         .other-pod-links-popup {
             --popover-spacing: calc(var(--space-xs) - 0.3rem);
             position: absolute;
-            bottom: 130%;
-            right: 0;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: var(--popover-spacing);
+            bottom: 100%;
+            right: 0;
+            min-width: fit-content;
+            margin-block-end: 0.5rem;
             padding: var(--popover-spacing);
             background: var(--clr-surface-400);
             transition: all 0.2s ease-out;
             z-index: 100;
 
             &__item {
+                position: relative;
+                
                 img {
-                    width: 3rem;
+                    width: 2.5rem;
+                    height: auto;
+                    aspect-ratio: 1 / 1;
                     filter: grayscale(1) brightness(0.9);
                     transition: filter 0.2s ease-out;
 
                     &:hover {
-                        filter: grayscale(0) brightness(1);
+                        filter: grayscale(0) brightness(1) saturate(1.2);
                     }
                 }
-            }
-
-            @media (max-width: 622px) {
-                bottom: 3.5rem;
             }
         }
     }

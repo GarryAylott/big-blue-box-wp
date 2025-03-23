@@ -1,27 +1,25 @@
 :root {
-    //Font sizes
-    /* Step -2: 9.7222px → 10.4167px */
-    --step--2: clamp(0.6076rem, 0.5929rem + 0.0739vw, 0.651rem);
-    /* Step -1: 11.6667px → 12.5px */
-    --step--1: clamp(0.7292rem, 0.7114rem + 0.0887vw, 0.7813rem);
-    /* Step 0: 14px → 15px */
-    --step-0: clamp(0.875rem, 0.8537rem + 0.1064vw, 0.9375rem);
-    /* Step 1: 16.8px → 18px */
-    --step-1: clamp(1.094rem, 0.268vi + 1.035rem, 1.25rem);
-    /* Step 2: 20.16px → 21.6px */
-    --step-2: clamp(1.26rem, 1.2294rem + 0.1532vw, 1.35rem);
-    /* Step 3: 24.192px → 25.92px */
-    --step-3: clamp(1.512rem, 1.4752rem + 0.1838vw, 1.62rem);
-    /* Step 4: 29.0304px → 31.104px */
-    --step-4: clamp(1.8144rem, 1.7703rem + 0.2206vw, 1.944rem);
-    /* Step 5: 34.8365px → 37.3248px */
-    --step-5: clamp(2.1773rem, 2.1243rem + 0.2647vw, 2.3328rem);
-    /* Step 6: 41.8038px → 44.7898px */
-    --step-6: clamp(2.6127rem, 2.5492rem + 0.3177vw, 2.7994rem);
-    /* Display: 60.1974px → 64.4973px */
-    --step-7: clamp(3.125rem, 1.522vw + 2.783rem, 4rem);
+    /* Font sizes */
+    /* Step -2: 12.5px → 13.8889px */
+    --step--2: clamp(0.7813rem, 0.7436rem + 0.1606vw, 0.8681rem);
+    /* Step -1: 15px → 16.6667px */
+    --step--1: clamp(0.9375rem, 0.8923rem + 0.1927vw, 1.0417rem);
+    /* Step 0: 18px → 20px */
+    --step-0: clamp(1.125rem, 1.0708rem + 0.2312vw, 1.25rem);
+    /* Step 1: 21.6px → 24px */
+    --step-1: clamp(1.35rem, 1.285rem + 0.2775vw, 1.5rem);
+    /* Step 2: 23.04px → 28.8px */
+    --step-2: clamp(1.44rem, 1.2839rem + 0.6659vw, 1.8rem);
+    /* Step 3: 27.648px → 34.56px */
+    --step-3: clamp(1.728rem, 1.5407rem + 0.7991vw, 2.16rem);
+    /* Step 4: 33.1776px → 41.472px */
+    --step-4: clamp(2.0736rem, 1.8489rem + 0.9589vw, 2.592rem);
+    /* Step 5: 39.8131px → 49.7664px */
+    --step-5: clamp(2.4883rem, 2.2186rem + 1.1507vw, 3.1104rem);
+    /* Step 6: 38px → 64 */
+    --step-6: clamp(2.375rem, 1.75rem + 2.8571vw, 4rem);
 
-    // Spacing
+    /* Spacing */
     /* Space 3xs: 4px → 5px */
     --space-3xs: clamp(0.25rem, 0.2283rem + 0.1087vi, 0.3125rem);
     /* Space 2xs: 6px → 8px */
@@ -59,24 +57,6 @@
     /* Space 2xl-3xl: 64px → 120px */
     --space-2xl-3xl: clamp(4rem, 2.7826rem + 6.087vi, 7.5rem);
 
-    /* Space modifiers - padding */
-    .vs-p-small { padding-block: var(--space-s); }
-    .vs-p-medium { padding-block: var(--space-m); }
-    .vs-p-large { padding-block: var(--space-l); }
-    .vs-p-xl { padding-block: var(--space-2xl); }
-
-    /* Space modifiers - margin */
-    .vs-m-small { margin-block: var(--space-s); }
-    .vs-m-medium { margin-block: var(--space-m); }
-    .vs-m-large { margin-block: var(--space-l); }
-    .vs-m-xl { margin-block: var(--space-2xl); }
-
-    /* Flex & Grid gap modifiers */
-    .gap-small { gap: var(--space-xs); }
-    .gap-medium { gap: var(--space-m); }
-    .gap-large { gap: var(--space-l); }
-    .gap-xl { gap: var(--space-xl); }
-
     /* Other spacing values */
     --gutter: var(--space-m);
     --gutter-large: var(--space-l);
@@ -86,7 +66,7 @@
     --flow-space-large: var(--space-l-xl);
     --flow-space-xl: calc(var(--space-2xl-3xl) + var(--space-3xs));
 
-    //Colours
+    /* Colours */
     --clr-text-100: hsl(0, 0%, 100%); // Core white
     --clr-text-400: hsl(218, 14%, 85%); // Default
     --clr-text-900: hsl(219, 11%, 70%); // Subtle

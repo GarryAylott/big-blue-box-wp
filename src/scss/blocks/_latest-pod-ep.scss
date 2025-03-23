@@ -34,6 +34,11 @@ LATEST PODCAST EPISODE BLOCK
         flex-direction: column;
         gap: var(--space-xs);
 
+        .icon-text-group {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
         h4 {
             max-inline-size: 30ch;
         }
@@ -50,9 +55,4 @@ LATEST PODCAST EPISODE BLOCK
             display: none;
         }
     }
-}
-
-.app-links {
-    position: relative;
-    width: fit-content;
 }

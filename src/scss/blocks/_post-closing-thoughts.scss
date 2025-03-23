@@ -24,7 +24,7 @@ Layout and styling for the closing paragraph and review score.
         min-inline-size: 50%;
 
         .closing-thoughts-title {
-            font-size: var(--step-2);
+            // font-size: var(--step-2);
             margin-block-start: 0;
         }
 
@@ -52,7 +52,7 @@ Layout and styling for the closing paragraph and review score.
             transform: rotate(-90deg); /* Stroke starts from top */
 
             @media (max-width: 39.938rem) {
-                max-width: 250px;
+                max-width: 220px;
             }
         }
 
@@ -76,10 +76,14 @@ Layout and styling for the closing paragraph and review score.
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: var(--step-6);
+            font-size: var(--step-5);
             font-weight: var(--fw-bold);
             color: var(--clr-brand-primary);
             pointer-events: none;
+
+            @media (max-width: 39.938rem) {
+                font-size: 4rem;
+            }
         }
     }
 

@@ -5,7 +5,7 @@ Layout and styling for small post cards in multiple columns (desktop).
 
 .more-articles {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: var(--space-2xl);
 
     ul {

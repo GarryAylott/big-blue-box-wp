@@ -3,30 +3,25 @@ LINKS TO PODCAST APPS BLOCK
 */
 
 .podcast-app-links {
-    position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(185px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
     gap: var(--space-xs);
-    align-items: start;
-    width: fit-content;
-    max-width: 100%;
+    width: 100%;
 
     &__button {
-        width: 100%;
-        position: relative;
-        min-height: 45px;
-        
+        display: flex;
+        min-height: 50px;
 
         .button-ghost {
+            min-width: 100%;
             padding: 0.4em 0.8em;
-            width: 100%;
-            min-width: max-content;
         }
     }
 
     // Popcast apps pop up
     .pod-links-menu {
         details summary {
+            height: 100%;
             list-style: none;
             cursor: pointer;
 
@@ -47,14 +42,13 @@ LINKS TO PODCAST APPS BLOCK
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: var(--popover-spacing);
-            bottom: 100%;
+            top: 100%;
             right: 0;
             min-width: fit-content;
-            margin-block-end: 0.5rem;
+            margin-block-start: 0.5rem;
             padding: var(--popover-spacing);
             background: var(--clr-surface-400);
             transition: all 0.2s ease-out;
-            z-index: 100;
 
             &__item {
                 position: relative;

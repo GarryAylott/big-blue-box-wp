@@ -101,7 +101,17 @@ Styles for full-width and column based testimonials.
             border-left: none;
 
             h4 {
-                font-size: var(--step-2);
+                font-size: var(--step-0);
+            }
+        }
+
+        &__source {
+            h5 {
+                font-size: var(--step-0);
+            }
+
+            cite {
+                font-size: var(--step--1);
             }
         }
 

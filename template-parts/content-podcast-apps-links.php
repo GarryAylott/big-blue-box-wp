@@ -22,65 +22,9 @@
             <img src="<?php echo get_bloginfo('template_url') ?>/images/podlinkbtn-youtubemusic.svg" width="138" height="26" alt="Listen on YouTube Music">
         </a>
     </div>
-    <div class="link-column pod-links-menu">
-        <details>
-            <summary>
-                <a class="podcast-app-links__button button-ghost pod-links-menu__link">
-                    <img src="<?php echo get_bloginfo('template_url') ?>/images/podlinkbtn-more.svg" width="26" height="6" alt="More podcast listening options">
-                </a>
-            </summary>
-            <div class="other-pod-links-popup rounded">
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-amazonmusic.svg" width="48" height="48" alt="Listen on Amazon Music">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-goodpods.svg" width="48" height="48" alt="Listen on Goodpods">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-tunein.svg" width="48" height="48" alt="Listen on TuneIn Radio">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-pocketcasts.svg" width="48" height="48" alt="Listen on Pocket Casts">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-iheart.svg" width="48" height="48" alt="Listen on iHeart Radio">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-castro.svg" width="48" height="48" alt="Listen on Castro">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-castbox.svg" width="48" height="48" alt="Listen on Castbox">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-overcast.svg" width="48" height="48" alt="Listen on Overcast">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-podchaser.svg" width="48" height="48" alt="Listen on Podchaser">
-                    </a>
-                </div>
-                <div class="other-pod-links-popup__item">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <img src="<?php echo get_bloginfo('template_url') ?>/images/podcast-apps/pod-app-rss.svg" width="48" height="48" alt="Copy RSS feed">
-                    </a>
-                </div>
-            </div>  
-        </details>
+    <div class="podcast-app-links__button">
+        <a class="button-ghost" href="https://lnkfi.re/bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
+            <p class="small">More Podcast Apps</p>
+        </a>
     </div>
 </div>

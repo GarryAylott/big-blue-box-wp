@@ -66,9 +66,9 @@ get_header();
                 wp_reset_postdata();
             endif; ?>
         </article>
-        <div class="app-links">
-            <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?> 
-        </div>
+
+        <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?> 
+
     </div>
 
     <?php
@@ -172,7 +172,7 @@ get_header();
 
                 if ($query->have_posts()) : ?>
                     <div class="more-articles__column">
-                        <h4 class="section-title-small"><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h4>
+                        <h5 class="section-title-small"><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h5>
                         <ul role="list">
                         <?php while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -191,7 +191,7 @@ get_header();
                                 </div>
 
                                 <a class="more-articles-title" href="<?php the_permalink(); ?>">
-                                    <h5>
+                                    <h6>
                                         <?php
                                         $thetitle = $post->post_title;
                                         $getlength = strlen($thetitle);
@@ -199,7 +199,7 @@ get_header();
                                         echo substr($thetitle, 0, $thelength);
                                         if ($getlength > $thelength) echo "...";
                                         ?>
-                                    </h5>
+                                    </h6>
                                 </a>
                             </li>
                             

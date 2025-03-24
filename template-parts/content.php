@@ -77,7 +77,7 @@
 			$closing_text  = get_field( 'closing_thoughts_text' );
 			$closing_score = get_field( 'closing_thoughts_score' );
 
-			if ( $closing_text || $closing_score ) :
+			if ( $closing_text || ($closing_score && $closing_score > 0) ) :
 				// Convert score to a float (handles half-points).
 				$score = (float) $closing_score;
 				
@@ -98,7 +98,7 @@
 						<?php endif; ?>
 					</div>
 
-					<?php if ( $closing_score ) : ?>
+					<?php if ( $closing_score && $closing_score > 0 ) : ?>
 						<div class="score-wrapper" aria-label="<?php printf( esc_attr__( 'Score: %s out of 10', 'bigbluebox' ), esc_attr( $score ) ); ?>">
 							<!-- SVG Container -->
 							<svg 

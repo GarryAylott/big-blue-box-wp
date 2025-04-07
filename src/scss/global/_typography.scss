@@ -133,3 +133,10 @@ body:is(.single-post) :is(.post-content) a {
         text-decoration-color: var(--clr-text-link-hover);
     }
 }
+
+// External links with icon
+a[target="_blank"] {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+}

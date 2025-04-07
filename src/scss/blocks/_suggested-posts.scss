@@ -1,0 +1,104 @@
+/* 
+SUGGESTED POSTS
+Layout and styling for the 'Continue reading/listening' section.
+*/
+
+.suggested-posts {
+    position: relative;
+    margin-block-end: var(--space-2xl);
+
+    .suggested-posts-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-block-end: var(--space-m);
+        z-index: 1;
+    }
+
+    .scroll-nav {
+        display: flex;
+        gap: var(--space-2xs);
+    }
+    
+    .scroll-nav-btn {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border: none;
+        border-radius: var(--radius-circle);
+        background-color: transparent;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        z-index: 2;
+
+        svg {
+            fill: var(--clr-text-link);
+        }
+    }
+    
+    .scroll-nav-btn:hover {
+        background-color: var(--clr-surface-200);
+    }
+    
+    .scroll-nav-btn:disabled {
+        background-color: transparent;
+        opacity: 0.3;
+        cursor: default;
+    }
+
+    .posts-hori-scroll {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 21%;
+        gap: var(--space-l);
+        width: 100vw;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: inline mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+
+        @media (max-width: 96.875rem) {
+            grid-auto-columns: 31%;
+        }
+
+        @media (max-width: 72.188rem) {
+            grid-auto-columns: 41%;
+        }
+
+        @media (max-width: 50rem) {
+            grid-auto-columns: 71%;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        
+        > article { 
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+
+            &:hover {
+                cursor: grab;
+            }
+    
+            &:active {
+                cursor: grabbing;
+            }
+        }
+
+        // Empty space to the right of the last article
+        &::after {
+            content: "";
+            display: block;
+            width: 1px;
+            flex-shrink: 0;
+        }
+    }
+}

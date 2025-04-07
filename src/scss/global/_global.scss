@@ -21,7 +21,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     overflow: hidden;
     z-index: -2;
@@ -35,14 +35,15 @@ body {
       height: 100%;
       object-fit: cover;
       will-change: opacity;
-      transition: opacity 0.1s ease;
+      opacity: 0;
+      transition: opacity 0.1s ease-out;
     }
   }
 }
 
-// Spacing after main content between the footer
 main {
-  margin-block-end: var(--space-3xl);
+  margin-block-end: var(--space-3xl); // Spacing after main content between the footer
+  padding-block-start: calc(var(--space-3xl) + var(--space-l)); // Space below fixed header
 }
 
 // Custom scroll bar colour

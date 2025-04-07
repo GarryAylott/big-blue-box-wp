@@ -6,20 +6,20 @@ Header styling for logo, nav etc.
 */  
 
 .site-head {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     padding: var(--space-xs) 0;
-    background: hsla(217, 50%, 7%, 0.5);
+    z-index: 10;
 
     .header-backdrop { 
         position: absolute;
         inset: 0;
-        height: 200%;   
-        backdrop-filter: blur(6px);
-        mask-image: linear-gradient(
-            to bottom,
-            black 0% 50%,
-            transparent 50% 100%
-        );
+        -webkit-backdrop-filter: saturate(150%) brightness(120%) blur(10px);
+        backdrop-filter: saturate(150%) brightness(120%) blur(10px);
+        background-color: rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid var(--clr-surface-400);
         z-index: -1;
     }
 
@@ -32,14 +32,14 @@ Header styling for logo, nav etc.
     }
 
     &__logo img {
-        width: clamp(12.5rem, 5.593vw + 8.914rem, 15.625rem);
+        width: 190px;
         height: auto;
     }
 
     &__navigation {
         display: flex;
         flex-direction: column;
-        gap: var(--space-2xs);
+        gap: var(--space-3xs);
         align-items: end;
 
         .nav {
@@ -51,14 +51,17 @@ Header styling for logo, nav etc.
             font-weight: var(--fw-semibold);
             margin: 0;
 
-            @media (hover) {
-                & > a {
-                    transition: opacity .2s ease;
+            a {
+                font-size: var(--step--1);
+            }
+
+            @media (min-width: 45rem) and (hover) {
+                & > * {
+                    transition: opacity 0.2s ease;
                 }
 
                 &:hover > *:not(:hover) {
                     opacity: .25;
-                    transition: opacity .2s ease;
                 }
             }
 
@@ -101,6 +104,10 @@ Header styling for logo, nav etc.
 
             &[data-visible="true"] {
                 transform: translateX(-100%);
+            }
+
+            a {
+                font-size: var(--step-0);
             }
         }
 

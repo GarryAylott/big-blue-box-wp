@@ -1,71 +1,192 @@
-// Responsive nav menu using event delegation
-const primaryNav = document.querySelector('.nav');
-const navToggle = document.querySelector('.menu-nav-toggle');
-
-navToggle?.addEventListener('click', () => {
-    const isVisible = primaryNav?.dataset.visible === 'true';
-    primaryNav?.setAttribute('data-visible', String(!isVisible));
-    navToggle?.setAttribute('aria-expanded', String(!isVisible));
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Fade background image on scroll with optimized performance
-    const backgroundImage = document.querySelector('.bg-image-fade img');
-    
-    if (backgroundImage) {
-        let ticking = false;
-        const setOpacity = () => {
-            const scrollPosition = window.scrollY;
-            const opacity = Math.max(1 - (scrollPosition / 600), 0);
-            backgroundImage.style.opacity = opacity;
-            ticking = false;
-        };
-
-        setOpacity(); // Initial opacity
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    setOpacity();
-                });
-                ticking = true;
-            }
-        }, { passive: true });
+// Configuration object
+const CONFIG = {
+    FADE_DISTANCE: 900,
+    SCROLL_ANIMATION_DELAY: 100,
+    SELECTORS: {
+        nav: '.nav',
+        navToggle: '.menu-nav-toggle',
+        bgImage: '.bg-image-fade img',
+        searchIcon: '.nav-search-icon',
+        searchOverlay: '#searchOverlay',
+        podcastMenu: '.pod-links-menu details',
+        scrollContainer: '.posts-hori-scroll',
+        suggestedPosts: '.suggested-posts'
     }
+};
 
-    // Search functionality with event delegation
-    const searchIcon = document.querySelector('.nav-search-icon');
-    const searchOverlay = document.getElementById('searchOverlay');
-    
-    searchIcon?.addEventListener('click', (e) => {
+// Cache DOM elements
+const elements = {
+    primaryNav: document.querySelector(CONFIG.SELECTORS.nav),
+    navToggle: document.querySelector(CONFIG.SELECTORS.navToggle)
+};
+
+// Navigation toggle
+const initNavigation = () => {
+    elements.navToggle?.addEventListener('click', () => {
+        const isVisible = elements.primaryNav?.dataset.visible === 'true';
+        elements.primaryNav?.setAttribute('data-visible', String(!isVisible));
+        elements.navToggle?.setAttribute('aria-expanded', String(!isVisible));
+    });
+};
+
+// Background fade
+const initBackgroundFade = () => {
+    const backgroundImage = document.querySelector(CONFIG.SELECTORS.bgImage);
+    if (!backgroundImage) return;
+
+    let ticking = false;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const scrollHandler = () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            const opacity = Math.max(1 - (window.scrollY / CONFIG.FADE_DISTANCE), 0);
+                            backgroundImage.style.opacity = opacity;
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                };
+                scrollHandler(); // Set initial opacity
+                window.addEventListener('scroll', scrollHandler, { passive: true });
+            }
+        });
+    });
+    observer.observe(backgroundImage);
+};
+
+// Search functionality
+const initSearch = () => {
+    const searchIcon = document.querySelector(CONFIG.SELECTORS.searchIcon);
+    const searchOverlay = document.querySelector(CONFIG.SELECTORS.searchOverlay);
+    if (!searchIcon || !searchOverlay) return;
+
+    const closeOverlay = () => {
+        searchOverlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('overlay-active');
+    };
+
+    searchIcon.addEventListener('click', (e) => {
         e.preventDefault();
-        searchOverlay?.setAttribute('aria-hidden', 'false');
+        searchOverlay.setAttribute('aria-hidden', 'false');
         document.body.classList.add('overlay-active');
     });
-    
-    // Use event delegation for overlay clicks
-    searchOverlay?.addEventListener('click', ({ target }) => {
-        if (target === searchOverlay) {
-            searchOverlay.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('overlay-active');
-        }
-    });
-    
-    // Global keyboard event handler
-    document.addEventListener('keydown', ({ key }) => {
-        if (key === 'Escape' && searchOverlay?.getAttribute('aria-hidden') === 'false') {
-            searchOverlay.setAttribute('aria-hidden', 'true');
-            document.body.classList.remove('overlay-active');
-        }
+
+    searchOverlay.addEventListener('click', ({ target }) => {
+        if (target === searchOverlay) closeOverlay();
     });
 
-    // Podcast links menu with optimized click handling
-    const podLinksDetails = document.querySelector('.pod-links-menu details');
-    if (podLinksDetails) {
-        document.addEventListener('click', ({ target }) => {
-            if (podLinksDetails.open && !podLinksDetails.contains(target)) {
-                podLinksDetails.open = false;
+    document.addEventListener('keydown', ({ key }) => {
+        if (key === 'Escape' && searchOverlay.getAttribute('aria-hidden') === 'false') {
+            closeOverlay();
+        }
+    });
+};
+
+// Podcast links menu
+const initPodcastMenu = () => {
+    const podLinksDetails = document.querySelector(CONFIG.SELECTORS.podcastMenu);
+    if (!podLinksDetails) return;
+
+    const closeHandler = ({ target }) => {
+        if (podLinksDetails.open && !podLinksDetails.contains(target)) {
+            podLinksDetails.open = false;
+        }
+    };
+
+    document.addEventListener('click', closeHandler, { passive: true });
+};
+
+// Scroll containers
+const initScrollContainers = () => {
+    const scrollContainers = document.querySelectorAll(CONFIG.SELECTORS.scrollContainer);
+    if (!scrollContainers.length) return;
+
+    // Create a Map to store container-specific update functions
+    const updateFunctions = new Map();
+
+    scrollContainers.forEach(container => {
+        const header = container.closest(CONFIG.SELECTORS.suggestedPosts)
+            ?.querySelector('.suggested-posts-header');
+        if (!header) return;
+
+        const leftBtn = header.querySelector('.scroll-left');
+        const rightBtn = header.querySelector('.scroll-right');
+        const scrollAmount = container.querySelector('article')?.offsetWidth ?? 0 + 16;
+
+        const updateButtonStates = () => {
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            leftBtn.disabled = container.scrollLeft <= 0;
+            rightBtn.disabled = container.scrollLeft >= maxScroll - 1;
+        };
+
+        // Store the update function in the Map
+        updateFunctions.set(container, updateButtonStates);
+
+        const scrollHandler = (direction) => {
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+            setTimeout(updateButtonStates, CONFIG.SCROLL_ANIMATION_DELAY);
+        };
+
+        leftBtn?.addEventListener('click', () => scrollHandler(-1));
+        rightBtn?.addEventListener('click', () => scrollHandler(1));
+        container.addEventListener('scroll', updateButtonStates, { passive: true });
+        
+        updateButtonStates();
+    });
+
+    // Create ResizeObserver after the functions are defined
+    const resizeObserver = new ResizeObserver(entries => {
+        entries.forEach(entry => {
+            const container = entry.target;
+            const updateFn = updateFunctions.get(container);
+            if (updateFn) {
+                updateFn();
             }
-        }, { passive: true });
-    }
-});
+        });
+    });
+
+    // Observe all containers
+    scrollContainers.forEach(container => {
+        resizeObserver.observe(container);
+    });
+};
+
+// Add external link icons
+const initExternalLinkIcons = () => {
+    const links = document.querySelectorAll('a[target="_blank"]:not(.has-external-icon)');
+    const themeUrl = window.themeUrl || '';
+
+    links.forEach(link => {
+        // Create <span> element for the icon
+        const icon = document.createElement('span');
+        icon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" class="external-link-icon">
+            <path d="M13 3L3 13M13 3H4M13 3V12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+
+        // Append icon and mark as processed
+        link.appendChild(icon);
+        link.classList.add('has-external-icon');
+    });
+};
+
+// Initialize all features
+const init = () => {
+    initNavigation();
+    initBackgroundFade();
+    initSearch();
+    initPodcastMenu();
+    initScrollContainers();
+    initExternalLinkIcons();
+};
+
+// Start when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}

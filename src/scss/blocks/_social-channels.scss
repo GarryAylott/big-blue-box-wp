@@ -23,15 +23,15 @@ Layout and styling for the list of social channels.
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        > img {
+            opacity: 0.5;
+        }
     }
 
     &__item {
         display: flex;
         align-items: center;
         gap: var(--space-xs);
-
-        img {
-            width: 1.3rem;
-        }
     }
 }

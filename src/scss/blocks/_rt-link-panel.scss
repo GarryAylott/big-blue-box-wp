@@ -9,7 +9,7 @@ Styles for the Roundtable link panel
     position: relative;
     background-color: var(--clr-surface-600);
     overflow: hidden;
-    z-index: 10;
+    z-index: 1;
 
     // Tardis bg image
     &::before {

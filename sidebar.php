@@ -13,59 +13,66 @@
 		</h5>
 		<ul role="list">
 			<li>
-				<a href="https://bsky.app/profile/bigblueboxpodcast.bsky.social" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://bsky.app/profile/bigblueboxpodcast.bsky.social" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="X Bluesky link">
 						<p>Bluesky</p>
 					</div>
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
 			</li>
 			<li>
-				<a href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
 						<p>X (Twitter)</p>
 					</div>
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
 			</li>
 			<li>
-				<a href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
 						<p>Instagram</p>
 					</div>
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
 			</li>
 			<li>
-				<a href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
 						<p>Facebook</p>
 					</div>
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
 			</li>
 			<li>
-				<a href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
 						<p>Threads</p>
 					</div>
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
 			</li>
 			<li>
-				<a href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
 						<p>RSS feed - Podcasts</p>
 					</div>
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
 			</li>
 			<li>
-				<a href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
 						<p>RSS feed - Articles</p>
 					</div>
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
 			</li>
 		</ul>

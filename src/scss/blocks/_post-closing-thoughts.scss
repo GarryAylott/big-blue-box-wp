@@ -12,7 +12,7 @@ Layout and styling for the closing paragraph and review score.
     padding: var(--space-m);
     background: var(--clr-surface-300);
     overflow: hidden;
-    z-index: 10;
+    z-index: 1;
 
     &__text {
         display: flex;

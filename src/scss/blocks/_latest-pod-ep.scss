@@ -6,7 +6,6 @@ LATEST PODCAST EPISODE BLOCK
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-m);
-    margin-block-start: var(--space-2xl);
     margin-block-end: var(--space-m);
 
     @media (min-width: 67rem) {
@@ -33,14 +32,11 @@ LATEST PODCAST EPISODE BLOCK
         display: flex;
         flex-direction: column;
         gap: var(--space-xs);
+        color: var(--clr-text-100);
 
         .icon-text-group {
             display: flex;
             flex-wrap: wrap;
-        }
-
-        h4 {
-            max-inline-size: 30ch;
         }
     }
 

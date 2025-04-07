@@ -37,7 +37,7 @@
 						<span></span>
 					</button>
 
-					<p class="small">Your ultimate destination for all things Doctor Who</p>
+					<!-- <p class="small">Your ultimate destination for all things Doctor Who</p> -->
 				
 					<?php wp_nav_menu(
 						array(

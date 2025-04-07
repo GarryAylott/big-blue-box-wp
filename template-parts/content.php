@@ -7,9 +7,7 @@
 <article class="single-post-article region-small flow" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header class="entry-header flow-small">
 
-		<?php get_template_part( 'template-parts/content', 'category-tag' );
-
-        the_title( '<h1 class="entry-title">', '</h1>' );?>
+		<?php the_title( '<h1 class="entry-title">', '</h1>' );?>
 
 		<div class="single-post-article__header-meta">
 			<?php printf(

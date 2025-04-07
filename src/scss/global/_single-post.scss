@@ -6,6 +6,8 @@ Layout and styling for single post pages.
 */
 
 .single-post-article {
+    padding: 0 0 var(--space-xl) 0;
+
     h1 {
         font-size: var(--step-6);
         line-height: 1.2;
@@ -84,10 +86,10 @@ Layout and styling for single post pages.
                 &::first-letter {
                     color: var(--clr-brand-accent);
                     font-family: var(--font-family-headings);
-                    font-size: 6rem;
-                    line-height: 1;
-                    margin-block-start: -4px;
-                    margin-inline-end: var(--space-xs);
+                    font-size: 4.6rem;
+                    line-height: 0.3;
+                    margin-block-start: 0.3em;
+                    margin-inline-end: var(--space-2xs);
                     float: left;
                 }
             }

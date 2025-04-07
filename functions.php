@@ -198,29 +198,20 @@ function bigbluebox_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'bigbluebox_scripts' );
 
+/**
+ * Enqueue theme scripts with localized data.
+ */
+function enqueue_theme_scripts() {
+    wp_localize_script('bigbluebox-scripts', 'themeUrl', get_template_directory_uri());
+}
+add_action('wp_enqueue_scripts', 'enqueue_theme_scripts');
+
 
 /* Includes from starter theme */
 
-// /**
-//  * Custom template tags for this theme.
-//  */
-// require get_template_directory() . '/inc/template-tags.php';
-
-// /**
-//  * Functions which enhance the theme by hooking into WordPress.
-//  */
-// require get_template_directory() . '/inc/template-functions.php';
-
-// /**
-//  * Customizer additions.
-//  */
-// require get_template_directory() . '/inc/customizer.php';
-
-// /**
-//  * Load Jetpack compatibility file.
-//  */
-// if ( defined( 'JETPACK__VERSION' ) ) {
-// 	require get_template_directory() . '/inc/jetpack.php';
-// }
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
 
 ?>

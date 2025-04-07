@@ -50,7 +50,7 @@ $facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $ur
     <h5>Share</h5>
     <ul role="list">
         <li>
-            <a href="<?php echo esc_url( $bluesky_url ); ?>" target="_blank" rel="noopener noreferrer">
+            <a class="has-external-icon" href="<?php echo esc_url( $bluesky_url ); ?>" target="_blank" rel="noopener noreferrer">
                 <div class="social-channels__item">
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="X Bluesky link">
                     <p>Bluesky</p>
@@ -59,7 +59,7 @@ $facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $ur
             </a>
         </li>
         <li>
-            <a href="<?php echo esc_url( $twitter_url ); ?>" target="_blank" rel="noopener noreferrer">
+            <a class="has-external-icon" href="<?php echo esc_url( $twitter_url ); ?>" target="_blank" rel="noopener noreferrer">
                 <div class="social-channels__item">
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
                     <p>X (Twitter)</p>
@@ -68,7 +68,7 @@ $facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $ur
             </a>
         </li>
         <li>
-            <a href="<?php echo esc_url( $facebook_url ); ?>" target="_blank" rel="noopener noreferrer">
+            <a class="has-external-icon" href="<?php echo esc_url( $facebook_url ); ?>" target="_blank" rel="noopener noreferrer">
                 <div class="social-channels__item">
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
                     <p>Facebook</p>
@@ -77,7 +77,7 @@ $facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $ur
             </a>
         </li>
         <li>
-            <a href="<?php echo esc_url( $threads_url ); ?>" target="_blank" rel="noopener noreferrer">
+            <a class="has-external-icon" href="<?php echo esc_url( $threads_url ); ?>" target="_blank" rel="noopener noreferrer">
                 <div class="social-channels__item">
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
                     <p>Threads</p>

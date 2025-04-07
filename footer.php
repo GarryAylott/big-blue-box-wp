@@ -49,32 +49,32 @@
 
 					<ul class="social-icons" role="list">
 						<li>
-							<a href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noopener noreferrer">
+							<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noopener noreferrer">
 								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="24" height="24" alt="Link to The Big Blue Box Podcast on X">
 							</a>
 						</li>
 						<li>
-							<a href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
+							<a class="has-external-icon" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
 								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="24" height="24" alt="Link to The Big Blue Box Podcast on Instagram">
 							</a>
 						</li>
 						<li>
-							<a href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
+							<a class="has-external-icon" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
 								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="24" height="24" alt="Link to The Big Blue Box Podcast on Facebook">
 							</a>
 						</li>
 						<li>
-							<a href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
+							<a class="has-external-icon" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
 								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="24" height="24" alt="Link to The Big Blue Box Podcast on Threads">
 							</a>
 						</li>
 						<li>
-							<a href="https://www.youtube.com/@BigBlueBoxPodcast" target="_blank" rel="noopener noreferrer">
+							<a class="has-external-icon" href="https://www.youtube.com/@BigBlueBoxPodcast" target="_blank" rel="noopener noreferrer">
 								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-yt.svg" width="29" height="28" alt="Link to The Big Blue Box Podcast on YouTube">
 							</a>
 						</li>
 						<li>
-							<a href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noopener noreferrer">
+							<a class="has-external-icon" href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noopener noreferrer">
 								<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-discord.svg" width="29" height="22" alt="Link to The Big Blue Box Podcast on Discord">
 							</a>
 						</li>

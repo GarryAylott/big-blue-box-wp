@@ -174,6 +174,68 @@ const initExternalLinkIcons = () => {
     });
 };
 
+// Tardis icon scroll progress
+const initTardisScrollProgress = () => {
+    const container = document.querySelector('.tardis-progress-container');
+    const fillRect = document.getElementById('tardis-fill');
+    const statusText = document.getElementById('tardisProgressStatus');
+    const featuredImage = document.querySelector('.post-featured-image');
+    const article = document.querySelector('.single-post-article');
+    const comments = document.querySelector('#comments');
+
+    if (!container || !fillRect || !statusText || !article) return;
+
+    const showAfter = featuredImage?.offsetHeight || 300;
+    const fillHeight = 864; // Match SVG height
+    let ticking = false;
+
+    const updateProgress = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        
+        // Calculate article end position
+        const articleEnd = article.offsetTop + article.offsetHeight;
+        const viewportHeight = window.innerHeight;
+        const scrollDistance = articleEnd - viewportHeight;
+        
+        // Add offset to ensure fill completes exactly at article end
+        const progress = Math.min(scrollY / (scrollDistance + 100), 1);
+        const percent = Math.round(progress * 100);
+
+        // Show/hide logic
+        if (scrollY > showAfter && scrollY < (scrollDistance + viewportHeight + 200)) {
+            container.classList.add('visible');
+        } else {
+            container.classList.remove('visible');
+        }
+
+        // Move the blue fill up
+        const translateY = fillHeight * (1 - progress);
+        fillRect.setAttribute('y', translateY);
+
+        // Update screen reader text
+        statusText.textContent = `Reading progress: ${percent}%`;
+
+        // Add bounce animation when complete
+        if (progress >= 1 && !container.classList.contains('tardis-bounce')) {
+            container.classList.add('tardis-bounce');
+            setTimeout(() => container.classList.remove('tardis-bounce'), 600);
+        }
+
+        ticking = false;
+    };
+
+    const onScroll = () => {
+        if (!ticking) {
+            requestAnimationFrame(updateProgress);
+            ticking = true;
+        }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateProgress(); // initial state
+};
+
 // Initialize all features
 const init = () => {
     initNavigation();
@@ -182,6 +244,7 @@ const init = () => {
     initPodcastMenu();
     initScrollContainers();
     initExternalLinkIcons();
+    initTardisScrollProgress();
 };
 
 // Start when DOM is ready

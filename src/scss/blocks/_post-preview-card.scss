@@ -20,5 +20,9 @@ article {
         justify-content: space-between;
         gap: var(--space-3xs);
         margin-block-start: var(--space-2xs);
+
+        footer {
+            margin-block-start: var(--space-2xs);
+        }
     }
 }

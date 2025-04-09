@@ -6,7 +6,6 @@
  *
  * @package Big_Blue_Box
  */
-
 ?>
 
 <section class="no-results not-found">

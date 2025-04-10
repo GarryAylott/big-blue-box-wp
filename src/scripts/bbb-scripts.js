@@ -185,7 +185,7 @@ const initTardisScrollProgress = () => {
 
     if (!container || !fillRect || !statusText || !article) return;
 
-    const showAfter = featuredImage?.offsetHeight || 300;
+    const showAfter = featuredImage?.offsetHeight || 200;
     const fillHeight = 864; // Match SVG height
     let ticking = false;
 
@@ -202,7 +202,7 @@ const initTardisScrollProgress = () => {
         const percent = Math.round(progress * 100);
 
         // Show/hide logic
-        if (scrollY > showAfter && scrollY < (scrollDistance + viewportHeight + 200)) {
+        if (scrollY > showAfter && scrollY < (scrollDistance + viewportHeight + -900)) {
             container.classList.add('visible');
         } else {
             container.classList.remove('visible');
@@ -214,12 +214,6 @@ const initTardisScrollProgress = () => {
 
         // Update screen reader text
         statusText.textContent = `Reading progress: ${percent}%`;
-
-        // Add bounce animation when complete
-        if (progress >= 1 && !container.classList.contains('tardis-bounce')) {
-            container.classList.add('tardis-bounce');
-            setTimeout(() => container.classList.remove('tardis-bounce'), 600);
-        }
 
         ticking = false;
     };

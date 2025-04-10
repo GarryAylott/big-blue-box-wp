@@ -86,10 +86,10 @@ Layout and styling for single post pages.
                 &::first-letter {
                     color: var(--clr-brand-accent);
                     font-family: var(--font-family-headings);
-                    font-size: 4.6rem;
-                    line-height: 0.3;
-                    margin-block-start: 0.3em;
-                    margin-inline-end: var(--space-2xs);
+                    font-size: 5rem;
+                    line-height: 0.3em;
+                    margin-block-start: 1.6rem;
+                    margin-inline-end: 0.5rem;
                     float: left;
                 }
             }

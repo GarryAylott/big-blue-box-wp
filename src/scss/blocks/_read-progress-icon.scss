@@ -3,14 +3,13 @@
 .tardis-progress-container {
     position: fixed;
     bottom: 2rem;
-    right: var(--space-s);
-    width: 70px; // Increased from 60px to 70px to accommodate rotation
+    right: 2rem;
+    width: 70px;
     height: 96px;
     opacity: 0;
-    pointer-events: none;
     transition: opacity 0.5s ease;
+    pointer-events: none;
     z-index: 9999;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
     @media (max-width: 72.188rem) {
         @include visually-hidden

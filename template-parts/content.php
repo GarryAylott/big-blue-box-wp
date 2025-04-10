@@ -34,6 +34,7 @@
 	?>
 
 	<div class="single-post-article__container">
+		<?php get_template_part('template-parts/content', 'read-progress'); ?>
 		<div class="article-body flow-large">
 			<?php
 			if ( function_exists( 'get_field' ) ) {

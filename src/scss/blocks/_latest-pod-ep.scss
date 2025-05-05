@@ -5,6 +5,7 @@ LATEST PODCAST EPISODE BLOCK
 .latest-podcast-ep {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: flex-start;
     gap: var(--space-m);
     margin-block-end: var(--space-m);
 
@@ -15,7 +16,6 @@ LATEST PODCAST EPISODE BLOCK
     &__content {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         gap: var(--space-s);
         margin-block-start: -6px;
     }

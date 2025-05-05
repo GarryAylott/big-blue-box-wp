@@ -3,24 +3,6 @@ FONTS
 Self-hosted font details.
 */
 
-// Headings
-@font-face {
-    font-family: 'Merriweather';
-    font-weight: 400;
-    font-style: normal;
-    src: url('fonts/Merriweather-Regular.woff2') format('woff2');
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Merriweather';
-    font-weight: 700;
-    font-style: normal;
-    src: url('fonts/Merriweather-Bold.woff2') format('woff2');
-    font-display: swap;
-}
-
-// Body
 @font-face {
     font-family: 'Mona Sans';
     font-weight: 400;
@@ -50,5 +32,21 @@ Self-hosted font details.
     font-weight: 600;
     font-style: italic;
     src: url('fonts/MonaSans-Semi-Bold-Italic.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mona Sans';
+    font-weight: 700;
+    font-style: normal;
+    src: url('fonts/MonaSans-Bold.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mona Sans';
+    font-weight: 800;
+    font-style: normal;
+    src: url('fonts/MonaSans-ExtraBold.woff2') format('woff2');
     font-display: swap;
 }

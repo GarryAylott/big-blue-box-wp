@@ -9,6 +9,7 @@ article {
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-block-end: var(--space-s);
 
     a:has(img) {
         display: block;
@@ -19,7 +20,7 @@ article {
         flex-direction: column;
         justify-content: space-between;
         gap: var(--space-3xs);
-        margin-block-start: var(--space-2xs);
+        margin-block-start: var(--space-xs);
 
         footer {
             margin-block-start: var(--space-2xs);

@@ -160,6 +160,4 @@
 			<img class="sidebar-img img-hover" src="<?php echo get_bloginfo('template_url') ?>/images/sidebar-panel-geekshandbag.webp" width="329" height="205" alt="Adam's YouTube channel - The Geeks Handbag.">
 		</a>
 	</section>
-
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
 </aside><!-- #secondary -->

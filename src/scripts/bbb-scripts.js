@@ -185,7 +185,7 @@ const initTardisScrollProgress = () => {
 
     if (!container || !fillRect || !statusText || !article) return;
 
-    const showAfter = featuredImage?.offsetHeight || 200;
+    const showAfter = featuredImage?.offsetHeight || 600;
     const fillHeight = 864; // Match SVG height
     let ticking = false;
 
@@ -202,7 +202,7 @@ const initTardisScrollProgress = () => {
         const percent = Math.round(progress * 100);
 
         // Show/hide logic
-        if (scrollY > showAfter && scrollY < (scrollDistance + viewportHeight + -900)) {
+        if (scrollY > showAfter && scrollY < (scrollDistance + viewportHeight + -600)) {
             container.classList.add('visible');
         } else {
             container.classList.remove('visible');

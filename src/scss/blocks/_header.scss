@@ -46,7 +46,7 @@ Header styling for logo, nav etc.
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: var(--space-l);
+            gap: var(--space-m);
             justify-content: flex-end;
             font-weight: var(--fw-semibold);
             margin: 0;
@@ -81,7 +81,7 @@ Header styling for logo, nav etc.
         }
     }
 
-    @media (max-width: 45rem) {
+    @media (max-width: 52rem) {
         &__navigation p {
             display: none;
         }

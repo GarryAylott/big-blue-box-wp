@@ -8,6 +8,7 @@ Layout and styling for articles post cards.
 article {
     position: relative;
     display: flex;
+    flex: 1;
     flex-direction: column;
     margin-block-end: var(--space-s);
 
@@ -17,13 +18,13 @@ article {
 
     .post-card-content {
         display: flex;
+        flex: 1;
         flex-direction: column;
-        justify-content: space-between;
         gap: var(--space-3xs);
         margin-block-start: var(--space-xs);
 
         footer {
-            margin-block-start: var(--space-2xs);
+            margin-block-start: auto;
         }
     }
 }

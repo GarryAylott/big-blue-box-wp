@@ -14,13 +14,12 @@ Font styling for headings, paragraphs etc.
     --fw-reg: 400;
     --fw-semibold: 600;
     --fw-bold: 700;
-    --fw-xbold: 800;
 }
 
 // Heading styles
 h1, h2, h3, h4, h5 {
     font-family: var(--font-family);
-    font-weight: var(--fw-xbold);
+    font-weight: var(--fw-bold);
 }
 
 // Heading sizes
@@ -39,26 +38,28 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     display: flex;
     align-items: center;
-    color: var(--clr-text-400);
+    width: fit-content;
+    color: var(--clr-brand-accent);
+    font-weight: var(--fw-semibold);
+    font-size: var(--step--1);
+    text-transform: uppercase;
     margin-block-end: var(--space-l);
-    padding-inline-start: 72px;
-    
-    &::before {
+
+    &:before {
         content: '';
         position: absolute;
         left: 0;
-        width: 56px;
-        height: 56px;
-        background: url('./images/logos/BBB-Icon.svg') no-repeat center center;
-        background-color: var(--clr-surface-400);
-        border-radius: var(--radius-small);
+        bottom: -16px;
+        width: 5rem;
+        height: 2px;
+        background: var(--clr-brand-accent);
     }
 }
 
 .section-title-small {
     @extend .section-title;
+    font-size: var(--step--2);
     margin-block-end: var(--space-m);
-    padding-inline-start: 0;
 
     &::before {
         @include visually-hidden;
@@ -106,19 +107,22 @@ p {
 // Links
 a {
     color: var(--clr-text-100);
-    text-decoration-color: transparent;
+    text-decoration: none;
     text-underline-offset: 4px;
+    text-decoration-thickness: 3px;
 
     &:hover,
     &:active {
         text-decoration: underline;
         text-decoration-color: var(--clr-text-link);
+        -webkit-text-decoration-color: var(--clr-text-link);
+        text-decoration-thickness: 3px;
     }
 }
 
 :focus-visible {
     outline: 2px solid var(--clr-brand-accent);
-    outline-offset: 0.25rem;
+    outline-offset: 4px;
     border-radius: 2px;
 }
 

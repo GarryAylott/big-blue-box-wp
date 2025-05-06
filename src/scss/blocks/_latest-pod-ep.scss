@@ -16,8 +16,12 @@ LATEST PODCAST EPISODE BLOCK
     &__content {
         display: flex;
         flex-direction: column;
-        gap: var(--space-s);
+        gap: var(--space-xs);
         margin-block-start: -6px;
+
+        .section-title {
+            margin-block-end: var(--space-s);
+        }
     }
 
     a { 
@@ -37,6 +41,7 @@ LATEST PODCAST EPISODE BLOCK
         .icon-text-group {
             display: flex;
             flex-wrap: wrap;
+            font-weight: var(--fw-semibold);
         }
     }
 

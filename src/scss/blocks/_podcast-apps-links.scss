@@ -5,7 +5,7 @@ LINKS TO PODCAST APPS BLOCK
 .podcast-app-links {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-xs);
+    gap: var(--space-l);
     max-width: calc(100% - 11rem);
 
     @media (max-width: 67rem) {
@@ -27,6 +27,14 @@ LINKS TO PODCAST APPS BLOCK
 
         &:not(.text-button)img {
             scale: 0.9;
+            transition: all 0.1s ease-in-out;
+        }
+
+        &:not(.text-button):hover {
+            img {
+                transform: translateY(-2px);
+                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+            }
         }
     }
 

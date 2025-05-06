@@ -14,7 +14,7 @@ button.button {
     min-height: 44px;
     padding: calc(var(--space-2xs) + 0.2rem) var(--space-s);
     font-size: calc(var(--step--1) + 0.20rem);
-    font-weight: var(--fw-bold);
+    font-weight: var(--fw-semibold);
     text-align: center;
     line-height: 1.1;
     color: var(--clr-text-100);
@@ -75,7 +75,7 @@ button.button {
     justify-content: center;
     min-width: 6ch;
     font-size: calc(var(--step--1) + 0.20rem);
-    font-weight: var(--fw-bold);
+    font-weight: var(--fw-semibold);
     color: var(--clr-text-100);
     text-align: center;
     padding: var(--space-2xs) var(--space-s);

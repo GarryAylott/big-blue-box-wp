@@ -7,9 +7,9 @@
 ?>
 
 <div class="wrapper">
-    <h4 class="section-title">
+    <h5 class="section-title">
         Latest articles
-    </h4>
+    </h5>
     <div class="latest-articles-featured">
         <?php
             $displayed_posts = get_query_var('displayed_posts', array());

@@ -8,6 +8,10 @@ Layout and styling for small post cards in multiple columns (desktop).
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: var(--space-2xl);
 
+    h6 {
+        margin-block-end: var(--space-m);
+    }
+
     ul {
         margin-block-end: var(--space-l);
     }

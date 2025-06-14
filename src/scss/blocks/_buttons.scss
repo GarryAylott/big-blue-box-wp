@@ -13,7 +13,7 @@ button.button {
     min-width: 10ch;
     min-height: 44px;
     padding: calc(var(--space-2xs) + 0.2rem) var(--space-s);
-    font-size: calc(var(--step--1) + 0.20rem);
+    font-size: var(--step--1);
     font-weight: var(--fw-semibold);
     text-align: center;
     line-height: 1.1;
@@ -74,7 +74,7 @@ button.button {
     align-items: center;
     justify-content: center;
     min-width: 6ch;
-    font-size: calc(var(--step--1) + 0.20rem);
+    font-size: var(--step--1);
     font-weight: var(--fw-semibold);
     color: var(--clr-text-100);
     text-align: center;
@@ -88,5 +88,40 @@ button.button {
 
     &:hover {
         background: rgba(109 153 248 / 45%);
+    }
+}
+
+// Button Group 
+.button-group {
+    display: inline-flex;
+    background: var(--clr-surface-400);
+    margin-block-end: var(--space-s);
+    border: 1px solid var(--clr-surface-200);
+    overflow: hidden;
+
+    @media (max-width: 40rem) {
+        width: 100%;
+    }
+    
+    .switch-btn {
+        min-width: 7.5rem;
+        font-size: var(--step--1);
+        background: transparent;
+        border: none;
+        padding: var(--space-2xs) var(--space-s);
+        transition: all .1s ease-out;
+        cursor: pointer;
+
+        @media (max-width: 40rem) {
+            width: 100%;
+        }
+
+        &.is-active, &:hover {
+            background: var(--clr-surface-200);
+        }
+
+        &.is-active {
+            font-weight: var(--fw-bold);
+        }
     }
 }

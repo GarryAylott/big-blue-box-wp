@@ -9,8 +9,10 @@ Header styling for logo, nav etc.
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    right: 0;
+    width: 100%;
     padding: var(--space-xs) 0;
+    transform: translateZ(0);
     z-index: 10;
 
     .header-backdrop { 
@@ -65,14 +67,24 @@ Header styling for logo, nav etc.
                 }
             }
 
-            .nav-search-icon svg {
-                width: 16px;
-                height: 16px;
-                fill: var(--clr-text-100);
-    
+            .nav-search-icon {
+                display: block;
+                padding: 0.45rem;
+                background: transparent;
+                border-radius: var(--radius-circle);
+                transform: translateY(1px);
+
                 &:hover {
-                    fill: var(--clr-brand-primary);
+                    background: var(--clr-border-link);
                 }
+
+                svg {
+                    width: 18px;
+                    height: 18px;
+                    fill: var(--clr-text-100);
+                }
+    
+                
             }
         }
 

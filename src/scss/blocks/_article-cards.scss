@@ -10,14 +10,8 @@ LATEST ARTICLES BLOCK
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
     gap: var(--space-m);
 
-    article {
-        .post-card-content {
-            gap: 0;
-
-            .entry-content {
-                margin-block: var(--space-xs);
-            }
-        }
+    header {
+        margin-block-start: var(--space-s);
     }
 
     @media (max-width: 45rem) {

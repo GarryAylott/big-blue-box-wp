@@ -11,34 +11,16 @@ Layout and styling for in-post blockquotes.
 
 blockquote {
     position: relative;
-    font-size: var(--step-2);
-    font-style: italic;
-    line-height: 1.4;
+    border-inline-start: 2px solid var(--clr-brand-accent);
     padding-inline-start: var(--space-m);
-
-    &::before {
-        content: '“';
-        position: absolute;
-        width: 100%;
-        top: -2rem;
-        left: -1.1rem;
-        font-size: 12rem;
-        line-height: 1;
-        color: var(--clr-brand-accent);
-        opacity: 0.25;
-    }
     
-    p:not(:last-child) {
-        font-weight: var(--fw-semibold);
+    p:first-of-type {
+        font-size: var(--step-2);
+        font-weight: var(--fw-bold);
+        line-height: 1.3;
         margin-block-end: var(--space-2xs);
         background: linear-gradient(90deg, hsl(334, 88%, 68%), hsl(215, 95%, 55%));
-        background-clip: text; /* Ensures the gradient is clipped to the text */
-        -webkit-text-fill-color: transparent; /* Makes the text itself transparent */
-    }
-
-    p:last-child {
-        display: block;
-        font-size: var(--step-0);
-        color: var(--clr-text-900);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }

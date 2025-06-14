@@ -11,16 +11,7 @@ get_header();
 </div>
 
 <main id="primary" class="site-main flow-page-regions">
-    <div class="wrapper hero">
-        <picture>
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.avif" type="image/avif">
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.webp" type="image/webp">
-            <img src="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.png" alt="Your space-time coordinates for everything Doctor Who...">
-        </picture>
-        <h5>Your space-time coordinates for everything Doctor Who...</h5>
-    </div>
     <div class="wrapper">
-        <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep flex-splitter'); ?>>
             <?php
             $displayed_posts = array();
 
@@ -33,49 +24,52 @@ get_header();
             if ($query1->have_posts()) :
                 while ($query1->have_posts()) : $query1->the_post(); ?>
 
-                    <div class="latest-podcast-ep__content">
-                        <h6 class="section-title">
-                            Latest podcast episode
-                        </h6>
-                        <div class="latest-podcast-ep__details">
-                            <div class="latest-podcast-ep__copy">
-                                <a href="<?php the_permalink(); ?>">
-                                    <h1>
-                                        <?php
-                                        $thetitle = $post->post_title;
-                                        $getlength = strlen($thetitle);
-                                        $thelength = 80;
-                                        echo substr($thetitle, 0, $thelength);
-                                        if ($getlength > $thelength) echo "...";
-                                        ?>
-                                    </h1>
-                                </a>
-                                <p class="icon-text-group small">
-                                    Episode <?php the_field('podcast_episode_number'); ?> <span>•</span> <?php echo $publish_date = get_the_date('j M, Y'); ?>
-                                </p>
+                    <?php $bg_img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'singlepost-feat') : ''; ?>
+
+                    <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep rounded'); ?> style="background-image: url('<?php echo esc_url($bg_img_url); ?>');">
+                        <div class="latest-podcast-ep__content">
+                            <div class="latest-podcast-ep__details">
+                                <h6 class="section-title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16">
+                                        <path d="M7.5 3c0-.813-.688-1.5-1.5-1.5A1.5 1.5 0 0 0 4.5 3v5c0 .844.656 1.5 1.5 1.5A1.5 1.5 0 0 0 7.5 8V3ZM3 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3ZM2 6.75V8c0 2.219 1.781 4 4 4 2.188 0 4-1.781 4-4V6.75a.74.74 0 0 1 .75-.75.76.76 0 0 1 .75.75V8c0 2.813-2.094 5.094-4.75 5.469V14.5h1.5a.76.76 0 0 1 .75.75.74.74 0 0 1-.75.75h-4.5a.722.722 0 0 1-.75-.75.74.74 0 0 1 .75-.75h1.5v-1.031A5.502 5.502 0 0 1 .5 8V6.75A.74.74 0 0 1 1.25 6a.76.76 0 0 1 .75.75Z"/>
+                                    </svg>
+                                    Latest podcast episode
+                                </h6>
+                                <div class="latest-podcast-ep__copy">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <h1>
+                                            <?php
+                                            $thetitle = $post->post_title;
+                                            $getlength = strlen($thetitle);
+                                            $thelength = 80;
+                                            echo substr($thetitle, 0, $thelength);
+                                            if ($getlength > $thelength) echo "...";
+                                            ?>
+                                        </h1>
+                                    </a>
+                                    <p class="icon-text-group small">
+                                        Episode <?php the_field('podcast_episode_number'); ?> <span>•</span> <?php echo $publish_date = get_the_date('j M, Y'); ?>
+                                    </p>
+                                </div>
                             </div>
+
+                            <p class="latest-podcast-ep__excerpt">
+                                <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
+                            </p>
+
+                            <a href="<?php the_permalink(); ?>" class="button flex">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                                    <path fill="#fff" fill-rule="evenodd" d="M8 1.5A5.5 5.5 0 0 0 2.5 7v1h4v7H4a3 3 0 0 1-3-3V7a7 7 0 0 1 14 0v5a3 3 0 0 1-3 3H9.5V8h4V7A5.5 5.5 0 0 0 8 1.5Zm-3 8H2.5V12A1.5 1.5 0 0 0 4 13.5h1v-4Zm6 0h2.5V12a1.5 1.5 0 0 1-1.5 1.5h-1v-4Z" clip-rule="evenodd"/>
+                                </svg>
+                                Listen Now
+                            </a>
                         </div>
-
-                        <p class="small">
-                            <?php echo wp_trim_words(get_the_excerpt()); ?>
-                        </p>
-                    </div>
-
-                    <?php if (has_post_thumbnail()) : ?>
-                        <a href="<?php the_permalink(); ?>">
-                            <img class="post-thumb-img latest-podcast-ep__thumb img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="595" height="335" alt="<?php echo the_title() ?>">
-                        </a>
-                    <?php endif; ?>
-
+                    </article>
                 <?php
                 $displayed_posts[] = get_the_ID();
                 endwhile;
                 wp_reset_postdata();
             endif; ?>
-        </article>
-
-        <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?> 
-
     </div>
 
     <?php
@@ -89,52 +83,50 @@ get_header();
 
     <div class="browse-all">
         <div class="wrapper">
-            <h5 class="section-title">
-                More Podcast Episodes and Articles
-            </h5>
+            <div class="category-switcher button-group rounded-small" role="group" aria-label="Filter posts by type">
+                <button class="switch-btn is-active" data-category="all" aria-pressed="true">All</button>
+                <button class="switch-btn" data-category="articles" aria-pressed="true">Articles</button>
+                <button class="switch-btn" data-category="podcasts" aria-pressed="false">Podcasts</button>
+            </div>
             <div class="browse-all__container">
-                <div class="browse-all__posts">
+                <div id="ajax-posts-container" class="browse-all__posts">
                     <?php
                     $displayed_posts = get_query_var('displayed_posts');
 
                     $args3 = array(
                         'posts_per_page' => 10,
                         'post_status' => 'publish',
-                        'post__not_in' => $displayed_posts
+                        'post__not_in' => $displayed_posts,
+                        'post-type' => 'post'
                     );
                     $query3 = new WP_Query($args3);
 
                     if ($query3->have_posts()) :
                         while ($query3->have_posts()) : $query3->the_post(); ?>
                             <article id="post-<?php the_ID(); ?>" <?php post_class('post-card-alt'); ?>>
+                                <a href="<?php the_permalink(); ?>">
+                                    <div class="article-top">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="391" height="220" alt="<?php echo the_title() ?>">
+                                        <?php endif; ?>
 
-                                <?php if (has_post_thumbnail()) : ?>
-                                    <a href="<?php the_permalink(); ?>">
-                                        <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="391" height="220" alt="<?php echo the_title() ?>">
-                                    </a>
-                                <?php endif; ?>
-
-								<div class="post-card-content">
-									<header class="entry-header">
-                                        <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
-										<a href="<?php the_permalink(); ?>">
-											<h5 class="balance">
-												<?php
-												$thetitle = $post->post_title;
-												$getlength = strlen($thetitle);
-												$thelength = 55;
-												echo substr($thetitle, 0, $thelength);
-												if ($getlength > $thelength) echo "...";
-												?>
-											</h5>
-										</a>
-									</header>
-
-									<footer class="entry-footer">
-										<?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
-									</footer>
-								</div>
-
+                                        <header class="entry-header">
+                                            <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
+                                            <h5 class="balance">
+                                                <?php
+                                                $thetitle = $post->post_title;
+                                                $getlength = strlen($thetitle);
+                                                $thelength = 55;
+                                                echo substr($thetitle, 0, $thelength);
+                                                if ($getlength > $thelength) echo "...";
+                                                ?>
+                                            </h5>
+                                        </header>
+                                    </div>
+                                </a>
+                                <footer class="entry-footer">
+                                    <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
+                                </footer>
                             </article>
                         <?php endwhile;
                         wp_reset_postdata();
@@ -155,9 +147,12 @@ get_header();
 
     <section>
         <div class="wrapper">
-            <h5 class="section-title">
+            <h6 class="section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                    <path d="M5.25 2.5a.74.74 0 0 0-.75.75v9.5c0 .281-.063.531-.156.75h9.406a.74.74 0 0 0 .75-.75v-9.5a.76.76 0 0 0-.75-.75h-8.5Zm-3 12.5C1 15 0 14 0 12.75V3.5a.74.74 0 0 1 .75-.75.76.76 0 0 1 .75.75v9.25c0 .438.313.75.75.75a.74.74 0 0 0 .75-.75v-9.5C3 2.031 4 1 5.25 1h8.5C14.969 1 16 2.031 16 3.25v9.5A2.26 2.26 0 0 1 13.75 15H2.25ZM5.5 4.25a.74.74 0 0 1 .75-.75h3a.76.76 0 0 1 .75.75v2.5a.74.74 0 0 1-.75.75h-3a.722.722 0 0 1-.75-.75v-2.5Zm6.25-.75h1a.76.76 0 0 1 .75.75.74.74 0 0 1-.75.75h-1a.722.722 0 0 1-.75-.75.74.74 0 0 1 .75-.75Zm0 2.5h1a.76.76 0 0 1 .75.75.74.74 0 0 1-.75.75h-1a.722.722 0 0 1-.75-.75.74.74 0 0 1 .75-.75Zm-5.5 2.5h6.5a.76.76 0 0 1 .75.75.74.74 0 0 1-.75.75h-6.5a.722.722 0 0 1-.75-.75.74.74 0 0 1 .75-.75Zm0 2.5h6.5a.76.76 0 0 1 .75.75.74.74 0 0 1-.75.75h-6.5a.722.722 0 0 1-.75-.75.74.74 0 0 1 .75-.75Z"/>
+                </svg>
                 Explore more articles
-            </h5>
+            </h6>
             <div class="more-articles">
             <?php
             $tags = ['big-finish', 'events', 'reading'];
@@ -172,35 +167,32 @@ get_header();
 
                 if ($query->have_posts()) : ?>
                     <div class="more-articles__column">
-                        <h6><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h6>
+                        <h5><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h5>
                         <ul role="list">
                         <?php while ($query->have_posts()) : $query->the_post(); ?>
 
                             <li>
                                 <div class="more-articles-content">
-                                    <?php if (has_post_thumbnail()) : ?>
                                     <a href="<?php the_permalink(); ?>">
-                                        <img class="post-thumb-img-small img-hover rounded-xs" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="156" height="88" alt="<?php echo the_title() ?>">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <img class="post-thumb-img-small img-hover rounded-xs" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="156" height="88" alt="<?php echo the_title() ?>">
+                                        <?php endif; ?>
+
+                                        <h6 class="more-articles-title">
+                                            <?php
+                                            $thetitle = $post->post_title;
+                                            $getlength = strlen($thetitle);
+                                            $thelength = 75;
+                                            echo substr($thetitle, 0, $thelength);
+                                            if ($getlength > $thelength) echo "...";
+                                            ?>
+                                        </h6>
                                     </a>
-                                    <?php endif; ?>
 
                                     <div class="post-meta">
-                                        <p class="small">by <?php echo get_the_author_meta('first_name'); ?></p>
-                                        <p class="small"><?php the_date('j M, Y'); ?></p>
+                                        <p class="small"><?php echo get_the_author_meta('display_name'); ?> • <?php the_date('j M, Y'); ?></p>
                                     </div>
                                 </div>
-
-                                <a class="more-articles-title" href="<?php the_permalink(); ?>">
-                                    <h6>
-                                        <?php
-                                        $thetitle = $post->post_title;
-                                        $getlength = strlen($thetitle);
-                                        $thelength = 75;
-                                        echo substr($thetitle, 0, $thelength);
-                                        if ($getlength > $thelength) echo "...";
-                                        ?>
-                                    </h6>
-                                </a>
                             </li>
                             
                         <?php endwhile; ?>
@@ -224,6 +216,20 @@ get_header();
             <?php get_template_part('template-parts/content', 'testimonial'); ?>
             <?php get_template_part('template-parts/content', 'testimonial'); ?>
             <?php get_template_part('template-parts/content', 'testimonial'); ?>
+        </div>
+    </div>
+
+    <div class="wrapper hero">
+        <picture>
+            <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.avif" type="image/avif">
+            <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.webp" type="image/webp">
+            <img src="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.png" alt="Your space-time coordinates for everything Doctor Who...">
+        </picture>
+        <div class="podcast-app-links">
+            <p class="centered">
+                Listen to The Big Blue Box Podcast on your favourite podcast app
+            </p>
+            <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
         </div>
     </div>
 </main>

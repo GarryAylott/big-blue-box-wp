@@ -4,36 +4,46 @@
  */
 
 ?>
-<article class="single-post-article region-small flow" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <header class="entry-header flow-small">
-
-		<?php the_title( '<h1 class="entry-title">', '</h1>' );?>
-
-		<div class="single-post-article__header-meta">
-			<?php printf(
-				'<div class="post-meta flex">%s <span>•</span> %s</div>',
-					'<p> By ' . esc_html( get_the_author() ) . '</p>',
-					'<p>' . esc_html( get_the_date() ) . '</p>'
-				);
+<article class="post-article region-small flow" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <div class="post-hero entry-header">
+		<?php
+		if (has_post_thumbnail()) :
 			?>
+				<img class="post-thumb-img rounded" src="<?php echo the_post_thumbnail_url(); ?>" width="595" height="335" alt="<?php echo the_title() ?>">
+			<?php
+		endif;
+		?>
+		<div class="post-hero__details">
+			<div class="post-article-title">
+				<?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
+				<?php the_title( '<h1 class="entry-title">', '</h1>' );?>
+			</div>
+
+			<div class="post-article-meta flex">
+				<?php
+					$reading_time = sprintf(
+						'<p class="reading-time small">%s%s</p>',
+						bbb_get_icon( 'icon-clock' ),
+						esc_html( bbb_estimated_reading_time() )
+					);
+
+					echo '<p class="small">By ' . esc_html( get_the_author() ) . '</p>';
+					echo '<span class="separator">|</span>';
+					echo '<p class="small">' . esc_html( get_the_date() ) . '</p>';
+					echo '<span class="separator">|</span>';
+					echo $reading_time;
+				?>
+			</div>
+
 			<?php if ( has_tag() ) : ?>
 				<div class="post-tags">
-					<p class="small">Tags:</p>
 					<?php the_tags( '<ul role="list"><li>', '</li><li>', '</li></ul>' ); ?>
 				</div>
 			<?php endif; ?>
 		</div>
-    </header>
+    </div>
 
-	<?php
-	if (has_post_thumbnail()) :
-		?>
-			<img class="singlepost-feat rounded" src="<?php echo the_post_thumbnail_url(); ?>" width="595" height="335" alt="<?php echo the_title() ?>">
-		<?php
-	endif;
-	?>
-
-	<div class="single-post-article__container">
+	<div class="post-article__container">
 		<?php get_template_part('template-parts/content', 'read-progress'); ?>
 		<div class="article-body flow-large">
 			<?php
@@ -77,16 +87,13 @@
 		</div>
 
 		<aside class="article-sidebar flow-large">
-			<section class="author-info flow-tiny">
+			<section class="author-info flow-small">
 			<?php
 				$author_id = get_the_author_meta( 'ID' );
 				$short_bio = get_field( 'short_bio', 'user_' . $author_id );
 				
 				// Output the author's avatar.
 				echo get_avatar( $author_id, 72, '', get_the_author() );
-				
-				// Output the full author name.
-				echo '<p class="author-info__name">By ' . esc_html( get_the_author() ) . '</p>';
 
 				// Output the short bio if available; otherwise, fall back to the default description.
 				if ( $short_bio ) {

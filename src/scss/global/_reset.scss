@@ -13,18 +13,14 @@
     padding: 0;
   }
 
-  /* Prevent font size inflation */
   html {
-    -moz-text-size-adjust: none;
-    -webkit-text-size-adjust: none;
-    text-size-adjust: none;
+    overflow-y: scroll;
   }
 
-  /* Set core body defaults */
+  html,
   body {
-    min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    overflow-x: clip;
   }
 
   /* Set shorter line heights on headings and interactive elements */
@@ -50,9 +46,28 @@
   }
 
   /* Make images easier to work with */
-  img, picture, video, canvas, svg {
+  img, picture, video, canvas, svg, figure {
     max-width: 100%;
+    height: auto;
     display: block;
+  }
+
+  /* WP block images reset */
+  figure.wp-caption,
+  .wp-block-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  figure.aligncenter img {
+    margin-inline: auto;
+  }
+
+  figure.wp-embed-aspect-16-9 iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
   }
 
   /* Inherit fonts for inputs and buttons */

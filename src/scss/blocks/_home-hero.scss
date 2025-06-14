@@ -7,8 +7,11 @@ Header styling for the hero section on the homepage.
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-m);
-    filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.2));
+    gap: var(--space-xl);
+
+    picture {
+        filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.2));
+    }
 
     h5 {
         text-align: center;

@@ -64,11 +64,11 @@
     --flow-space-small: var(--space-2xs-xs);
     --flow-space: var(--space-s-m);
     --flow-space-large: var(--space-l-xl);
-    --flow-space-xl: calc(var(--space-2xl-3xl) + var(--space-3xs));
+    --flow-space-xl: calc(var(--space-2xl-3xl) + var(--space-s));
 
     /* Colours */
     --clr-text-100: hsl(0, 0%, 100%); // Core white
-    --clr-text-400: hsl(218, 14%, 85%); // Default
+    --clr-text-400: hsl(218, 14%, 90%); // Default
     --clr-text-900: hsl(219, 11%, 70%); // Subtle
     --clr-text-link: hsl(221, 91%, 70%); // Text links
     --clr-text-link-hover: hsl(221, 91%, 63%); // Text links

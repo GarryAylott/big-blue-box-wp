@@ -93,7 +93,7 @@ $random_testimonial = $testimonials[array_rand($testimonials)];
 
 <div class="testimonial">
     <blockquote class="testimonial__content">
-        <h4><?php echo $random_testimonial['content']; ?></h4>
+        <h4 class="no-heading"><?php echo $random_testimonial['content']; ?></h4>
         <div class="testimonial__source">
             <h5><?php echo $random_testimonial['author']; ?></h5>
             <cite>

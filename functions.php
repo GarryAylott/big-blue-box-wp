@@ -173,7 +173,7 @@ add_action( 'widgets_init', 'bigbluebox_widgets_init' );
  * Modify excerpt length
  */
 function custom_excerpt_length( $length ) {
-    return 35;
+    return 80;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
@@ -186,26 +186,146 @@ function custom_more_excerpt( $more ) {
 add_filter( 'excerpt_more', 'custom_more_excerpt' );
 
 /**
+ * Strip WP inline image and figure hard widths and heights
+ */
+add_filter('the_content', 'bbbx_clean_gutenberg_images', 20);
+
+function bbbx_clean_gutenberg_images($content) {
+    libxml_use_internal_errors(true);
+    $doc = new DOMDocument();
+    $doc->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
+
+    // Loop through all <img> and remove width/height
+    foreach ($doc->getElementsByTagName('img') as $img) {
+        $img->removeAttribute('width');
+        $img->removeAttribute('height');
+    }
+
+    // Loop through all <figure> and remove style="width: ..."
+    foreach ($doc->getElementsByTagName('figure') as $figure) {
+        if ($figure->hasAttribute('style')) {
+            $figure->removeAttribute('style');
+        }
+    }
+
+    $body = $doc->getElementsByTagName('body')->item(0);
+    $new_content = '';
+    foreach ($body->childNodes as $child) {
+        $new_content .= $doc->saveHTML($child);
+    }
+
+    return $new_content;
+}
+
+/**
+ * Stop WP interferring with front-end image manipulation when images are set to "auto" (this will likely be fixed in an upcoming WP update).
+ */
+add_filter( 'wp_img_tag_add_auto_sizes', '__return_false' );
+
+/**
+ * Single post reading time estimation.
+ */
+function bbb_estimated_reading_time( $post_id = null ) {
+	if ( ! $post_id ) {
+		$post_id = get_the_ID();
+	}
+
+	$content = get_post_field( 'post_content', $post_id );
+	$word_count = str_word_count( wp_strip_all_tags( $content ) );
+	$reading_time = max( 1, ceil( $word_count / 200 ) );
+
+	$reading_time_text = sprintf(
+		_n( '%d min to read', '%d mins to read', $reading_time, 'bigbluebox' ),
+		$reading_time
+	);
+
+	return apply_filters( 'bbb_estimated_reading_time', $reading_time_text, $reading_time, $post_id );
+}
+
+function bbb_get_icon( $name ) {
+	$path = get_template_directory() . '/images/icons/' . sanitize_file_name( $name ) . '.svg';
+
+	if ( file_exists( $path ) ) {
+		return file_get_contents( $path );
+	}
+	return '';
+}
+
+/**
+ * AJAX handler for category-based post filtering
+ */
+function filter_posts_by_category() {
+    $category = sanitize_text_field($_POST['category']);
+
+    $args = array(
+        'posts_per_page' => 10,
+        'post_status'    => 'publish',
+        'post_type'      => 'post',
+    );
+
+    // Only add category_name if filtering by a specific category
+    if ($category !== 'all') {
+        $args['category_name'] = $category;
+    }
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            get_template_part('template-parts/content', 'ajax-post-card');
+        endwhile;
+    else :
+        echo '<p>No posts found.</p>';
+    endif;
+
+    wp_die();
+}
+add_action('wp_ajax_filter_posts_by_category', 'filter_posts_by_category');
+add_action('wp_ajax_nopriv_filter_posts_by_category', 'filter_posts_by_category');
+
+
+
+
+
+/**
+ * Manually add categories to body class.
+ */
+// function add_categories( $classes = '' ) {
+
+//     $categories = get_the_category();
+//     foreach( $categories as $category ) {
+//     $classes[] = 'category-'.$category->slug;
+
+
+// }
+//  return $classes;
+// }
+// add_filter( 'body_class', 'add_categories' );
+
+
+
+
+
+
+
+/**
  * Enqueue scripts and styles.
  */
 function bigbluebox_scripts() {
 	wp_enqueue_style( 'bigbluebox-style', get_stylesheet_uri(), array(), _S_VERSION );
+
 	wp_enqueue_script( 'bigbluebox-scripts', get_template_directory_uri() . '/scripts/bbb-scripts.min.js', array(), _S_VERSION, true );
+
+	wp_localize_script( 'bigbluebox-scripts', 'themeSettings', array(
+		'themeUrl' => get_template_directory_uri(),
+		'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
+	));
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'bigbluebox_scripts' );
-
-/**
- * Enqueue theme scripts with localized data.
- */
-function enqueue_theme_scripts() {
-    wp_localize_script('bigbluebox-scripts', 'themeUrl', get_template_directory_uri());
-}
-add_action('wp_enqueue_scripts', 'enqueue_theme_scripts');
-
 
 /* Includes from starter theme */
 

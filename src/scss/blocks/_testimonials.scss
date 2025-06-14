@@ -27,6 +27,7 @@ Styles for full-width and column based testimonials.
 
         em {
             position: relative;
+            font-weight: var(--fw-semibold);
             color: var(--clr-surface-700);
             background: var(--clr-brand-secondary);
             padding: 0 3px 3px 3px;
@@ -39,7 +40,8 @@ Styles for full-width and column based testimonials.
 
         h4 {
             font-style: italic;
-            font-weight: 400;
+            font-weight: var(--fw-reg);
+            line-height: 1.4;
             text-wrap: wrap;
         }
 

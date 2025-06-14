@@ -11,16 +11,11 @@ article {
         object-fit: cover;
     }
 
-    .singlepost-feat {
-        @extend .post-thumb-img;
-        aspect-ratio: 16 / 8;
-    }
-
     figure {
         max-width: 100%;
         margin-inline: auto;
-        padding-block-start: var(--space-l);
-        margin-block-end: var(--space-xl);
+        padding-block-start: var(--space-s);
+        margin-block-end: var(--space-l);
         
         img {
             border-radius: var(--radius-small);

@@ -5,34 +5,67 @@ SINGLE POST STYLES
 Layout and styling for single post pages.
 */
 
-.single-post-article {
+.post-article {
     padding: 0 0 var(--space-xl) 0;
 
-    h1 {
-        font-size: var(--step-6);
-        line-height: 1.2;
-        max-width: 28ch;
-    }
-
-    h2 {
-        font-size: var(--step-3);
-        line-height: 1.4;
-        margin-block-start: var(--space-xl);
-    }
-
-    &__header-meta {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: var(--space-m);
-        align-items: center;
-        padding-block-start: var(--space-2xs);
-        padding-block-end: var(--space-s);
+    .post-hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
+        gap: var(--space-l);
 
         @media (max-width: 50rem) {
+            gap: var(--space-m);
+        }
+
+        img {
+            aspect-ratio: 16 / 9;
+        }
+
+        &__details {
+            display: flex;
             flex-direction: column;
-            align-items: flex-start;
             gap: var(--space-s);
+
+            .post-article-title {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-2xs);
+
+                h1 {
+                    max-width: 28ch;
+                    font-size: var(--step-4);
+                    color: var(--clr-text-100);
+                }
+            }
+
+            .post-article-meta {
+                display: flex;
+                gap: var(--space-xs);
+
+                @media (max-width: 31.25rem) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: var(--space-2xs);
+
+                    .separator {
+                        border: 0;
+                        clip: rect(0 0 0 0);
+                        height: 0;
+                        margin: 0;
+                        overflow: hidden;
+                        padding: 0;
+                        position: absolute;
+                        width: 1px;
+                        white-space: nowrap;
+                    }
+                }
+
+                .reading-time {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: var(--space-2xs);
+                }
+            }
         }
     }
 
@@ -40,7 +73,11 @@ Layout and styling for single post pages.
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-2xl);
-        margin-block-start: var(--space-xl);
+        margin-block-start: var(--space-3xl);
+
+        @media (max-width: 50rem) {
+            margin-block-start: var(--space-xl);
+        }
 
         .article-body {
             flex-basis: 0;
@@ -78,6 +115,10 @@ Layout and styling for single post pages.
         }
 
         .post-content {
+            h2, h3, h4, h5, h6 {
+                margin-block-start: var(--space-2xl);
+            }
+
             p.lead {
                 font-size: var(--step-1);
                 font-weight: var(--fw-semibold);
@@ -86,7 +127,7 @@ Layout and styling for single post pages.
                 &::first-letter {
                     color: var(--clr-brand-accent);
                     font-family: var(--font-family-headings);
-                    font-size: 5rem;
+                    font-size: 4.5rem;
                     line-height: 0.3em;
                     margin-block-start: 1.6rem;
                     margin-inline-end: 0.5rem;

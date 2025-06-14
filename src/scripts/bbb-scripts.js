@@ -10,7 +10,8 @@ const CONFIG = {
         searchOverlay: '#searchOverlay',
         podcastMenu: '.pod-links-menu details',
         scrollContainer: '.posts-hori-scroll',
-        suggestedPosts: '.suggested-posts'
+        suggestedPosts: '.suggested-posts',
+        categorySwitcher: '.switch-btn'
     }
 };
 
@@ -63,6 +64,11 @@ const initSearch = () => {
     if (!searchIcon || !searchOverlay) return;
 
     const closeOverlay = () => {
+        const searchField = document.querySelector('#search-field');
+        if (searchField && document.activeElement === searchField) {
+            searchField.blur(); // ✅ Blur before hiding to prevent aria-hidden focus warning
+        }
+
         searchOverlay.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('overlay-active');
     };
@@ -71,6 +77,9 @@ const initSearch = () => {
         e.preventDefault();
         searchOverlay.setAttribute('aria-hidden', 'false');
         document.body.classList.add('overlay-active');
+
+        const searchField = document.querySelector('#search-field');
+        if (searchField) searchField.focus(); // ✅ Only after aria-hidden is false
     });
 
     searchOverlay.addEventListener('click', ({ target }) => {
@@ -159,7 +168,7 @@ const initScrollContainers = () => {
 // Add external link icons
 const initExternalLinkIcons = () => {
     const links = document.querySelectorAll('a[target="_blank"]:not(.has-external-icon)');
-    const themeUrl = window.themeUrl || '';
+    const themeUrl = themeSettings.themeUrl || '';
 
     links.forEach(link => {
         // Create <span> element for the icon
@@ -230,6 +239,48 @@ const initTardisScrollProgress = () => {
     updateProgress(); // initial state
 };
 
+// AJAX request for category switcher
+const initCategorySwitcher = () => {
+    const switchButtons = document.querySelectorAll(CONFIG.SELECTORS.categorySwitcher);
+    const postContainer = document.getElementById('ajax-posts-container');
+    if (!switchButtons.length || !postContainer) return;
+
+    const fetchCategoryPosts = (category) => {
+        fetch(themeSettings.ajaxUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                action: 'filter_posts_by_category',
+                category: category
+            })
+        })
+        .then(res => res.text())
+        .then(html => {
+            postContainer.innerHTML = html;
+        })
+        .catch(err => console.error('Category switch AJAX error:', err));
+    };
+
+    switchButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const category = button.dataset.category;
+
+            // Update aria-pressed and .is-active for all buttons
+            switchButtons.forEach(btn => {
+                btn.setAttribute('aria-pressed', 'false');
+                btn.classList.remove('is-active');
+            });
+
+            button.setAttribute('aria-pressed', 'true');
+            button.classList.add('is-active');
+
+            fetchCategoryPosts(category);
+        });
+    });
+};
+
+
 // Initialize all features
 const init = () => {
     initNavigation();
@@ -239,6 +290,7 @@ const init = () => {
     initScrollContainers();
     initExternalLinkIcons();
     initTardisScrollProgress();
+    initCategorySwitcher();
 };
 
 // Start when DOM is ready

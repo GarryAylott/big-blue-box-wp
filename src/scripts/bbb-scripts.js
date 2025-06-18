@@ -189,12 +189,14 @@ const initTardisScrollProgress = () => {
     const fillRect = document.getElementById('tardis-fill');
     const statusText = document.getElementById('tardisProgressStatus');
     const featuredImage = document.querySelector('.post-featured-image');
-    const article = document.querySelector('.single-post-article');
+    const article = document.querySelector('.post-article');
     const comments = document.querySelector('#comments');
 
-    if (!container || !fillRect || !statusText || !article) return;
+    if (!container || !fillRect || !statusText || !article) {
+        return;
+    }
 
-    const showAfter = featuredImage?.offsetHeight || 600;
+    const showAfter = featuredImage?.offsetHeight || 100;
     const fillHeight = 864; // Match SVG height
     let ticking = false;
 
@@ -211,7 +213,7 @@ const initTardisScrollProgress = () => {
         const percent = Math.round(progress * 100);
 
         // Show/hide logic
-        if (scrollY > showAfter && scrollY < (scrollDistance + viewportHeight + -600)) {
+        if (scrollY > showAfter && scrollY < (scrollDistance + viewportHeight + -700)) {
             container.classList.add('visible');
         } else {
             container.classList.remove('visible');

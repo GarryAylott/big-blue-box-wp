@@ -79,11 +79,16 @@ Layout and styling for the site footer
                 align-items: center;
                 gap: var(--space-s);
 
-                li a img {
+                li a {
+                    width: 45px;
+                    height: 45px;
+                    display: grid;
+                    place-items: center;
+                    border-radius: var(--radius-small);
                     transition: all .2s ease-out;
                     
                     &:hover {
-                        transform: translateY(-3px);
+                        background: var(--clr-surface-400);
                     }
                 }
             }

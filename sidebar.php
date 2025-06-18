@@ -9,14 +9,14 @@
 <aside id="secondary" class="main-sidebar flow-large">
 	<section class="social-channels flow">
 		<h5>
-			Connect and chat
+			Social and chat
 		</h5>
 		<ul role="list">
 			<li>
 				<a class="has-external-icon" href="https://bsky.app/profile/bigblueboxpodcast.bsky.social" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="X Bluesky link">
-						<p>Bluesky</p>
+						<p class="small">Bluesky</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
@@ -25,7 +25,7 @@
 				<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
-						<p>X (Twitter)</p>
+						<p class="small">X (Twitter)</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
@@ -34,7 +34,7 @@
 				<a class="has-external-icon" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
-						<p>Instagram</p>
+						<p class="small">Instagram</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
@@ -43,7 +43,7 @@
 				<a class="has-external-icon" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
-						<p>Facebook</p>
+						<p class="small">Facebook</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
@@ -52,7 +52,7 @@
 				<a class="has-external-icon" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
-						<p>Threads</p>
+						<p class="small">Threads</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
@@ -61,7 +61,7 @@
 				<a class="has-external-icon" href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
-						<p>RSS feed - Podcasts</p>
+						<p class="small">RSS feed - Podcasts</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
@@ -70,7 +70,7 @@
 				<a class="has-external-icon" href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
-						<p>RSS feed - Articles</p>
+						<p class="small">RSS feed - Articles</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>

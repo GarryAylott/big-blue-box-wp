@@ -37,7 +37,7 @@ Layout and styling for the closing paragraph and review score.
         }
 
         p {
-            color: var(--clr-text-900);
+            color: var(--clr-text-400);
         }
     }
 
@@ -80,9 +80,10 @@ Layout and styling for the closing paragraph and review score.
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: calc(var(--step-6) * 1.3);
+            transform: translate(calc(-50% + -4px), -50%);
+            font-size: calc(var(--step-6) * 1.2);
             font-weight: var(--fw-bold);
+            letter-spacing: -8px;
             color: var(--clr-brand-accent);
             pointer-events: none;
 

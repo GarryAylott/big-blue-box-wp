@@ -81,7 +81,7 @@
 				<div class="footer-top__col2">
 					<ul class="footer-list flow-tiny" role="list">
 						<li>
-							<h5>Legals</h5>
+							<h6>Legals</h6>
 						</li>
 						<li>
 							<a href="#">
@@ -99,7 +99,7 @@
 				<div class="footer-top__col3">
 					<ul class="footer-list flow-tiny" role="list">
 						<li>
-							<h5>The Big Blue Box</h5>
+							<h6>The Big Blue Box</h6>
 						</li>
 						<li>
 							<a href="#">

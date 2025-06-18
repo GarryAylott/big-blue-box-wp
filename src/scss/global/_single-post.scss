@@ -33,7 +33,7 @@ Layout and styling for single post pages.
 
                 h1 {
                     max-width: 28ch;
-                    font-size: var(--step-4);
+                    font-size: var(--step-5);
                     color: var(--clr-text-100);
                 }
             }
@@ -73,7 +73,7 @@ Layout and styling for single post pages.
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-2xl);
-        margin-block-start: var(--space-3xl);
+        margin-block-start: var(--space-2xl);
 
         @media (max-width: 50rem) {
             margin-block-start: var(--space-xl);
@@ -117,14 +117,22 @@ Layout and styling for single post pages.
         .post-content {
             h2, h3, h4, h5, h6 {
                 margin-block-start: var(--space-2xl);
+
+                + figure,
+                + .wp-block-image {
+                    padding-block-start: 0;
+                }
+                
             }
 
-            p.lead {
+            p.lead,
+            p.has-drop-cap {
                 font-size: var(--step-1);
-                font-weight: var(--fw-semibold);
+                font-weight: var(--fw-bold);
                 line-height: 1.5;
 
-                &::first-letter {
+                &:first-letter,
+                &:not(:focus):first-letter {
                     color: var(--clr-brand-accent);
                     font-family: var(--font-family-headings);
                     font-size: 4.5rem;

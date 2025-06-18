@@ -11,7 +11,7 @@ article {
         object-fit: cover;
     }
 
-    figure {
+    figure, .wp-post-image figure {
         max-width: 100%;
         margin-inline: auto;
         padding-block-start: var(--space-s);

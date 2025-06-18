@@ -18,10 +18,8 @@ Header styling for logo, nav etc.
     .header-backdrop { 
         position: absolute;
         inset: 0;
-        -webkit-backdrop-filter: saturate(150%) brightness(120%) blur(10px);
-        backdrop-filter: saturate(150%) brightness(120%) blur(10px);
-        background-color: rgba(0, 0, 0, 0.5);
-        border-bottom: 1px solid var(--clr-surface-400);
+        backdrop-filter: blur(5px) saturate(180%) brightness(150%) blur(10px);
+        background-color: rgba(0, 0, 0, 0.7);
         z-index: -1;
     }
 

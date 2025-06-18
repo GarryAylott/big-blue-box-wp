@@ -53,7 +53,7 @@ $facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $ur
             <a class="has-external-icon" href="<?php echo esc_url( $bluesky_url ); ?>" target="_blank" rel="noopener noreferrer">
                 <div class="social-channels__item">
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="X Bluesky link">
-                    <p>Bluesky</p>
+                    <p class="small">Bluesky</p>
                 </div>
                 <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
             </a>
@@ -62,7 +62,7 @@ $facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $ur
             <a class="has-external-icon" href="<?php echo esc_url( $twitter_url ); ?>" target="_blank" rel="noopener noreferrer">
                 <div class="social-channels__item">
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
-                    <p>X (Twitter)</p>
+                    <p class="small">X (Twitter)</p>
                 </div>
                 <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
             </a>
@@ -71,7 +71,7 @@ $facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $ur
             <a class="has-external-icon" href="<?php echo esc_url( $facebook_url ); ?>" target="_blank" rel="noopener noreferrer">
                 <div class="social-channels__item">
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
-                    <p>Facebook</p>
+                    <p class="small">Facebook</p>
                 </div>
                 <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
             </a>
@@ -80,7 +80,7 @@ $facebook_url = 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $ur
             <a class="has-external-icon" href="<?php echo esc_url( $threads_url ); ?>" target="_blank" rel="noopener noreferrer">
                 <div class="social-channels__item">
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
-                    <p>Threads</p>
+                    <p class="small">Threads</p>
                 </div>
                 <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
             </a>

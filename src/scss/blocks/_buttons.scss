@@ -94,8 +94,9 @@ button.button {
 // Button Group 
 .button-group {
     display: inline-flex;
+    width: fit-content;
+    margin-block-end: var(--space-m);
     background: var(--clr-surface-400);
-    margin-block-end: var(--space-s);
     border: 1px solid var(--clr-surface-200);
     overflow: hidden;
 

@@ -26,7 +26,7 @@
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-head__home">
 					<span class="visually-hidden">The Big Blue Box Podcast</span>
 					<div class="site-head__logo">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/BBB-logo.svg" width="250" height="64" alt="The Big Blue Box Podcast logo">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-horizontal.svg" width="251" height="53" alt="The Big Blue Box Podcast">
 					</div>
 				</a>
 

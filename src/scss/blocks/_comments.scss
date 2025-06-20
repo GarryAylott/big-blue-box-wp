@@ -1,0 +1,190 @@
+/* 
+POST COMMENTS
+Layout and styling for comments section at the end of articles.
+*/
+
+.comments-area {
+    // Add comment form area
+    max-width: 57.5rem;
+
+    .title {
+        margin-block-end: var(--space-l);
+    }
+
+    .no-comments {
+        flex-wrap: wrap;
+        gap: var(--space-m);
+        margin-block-end: var(--space-xl);
+    }
+
+    .comment-form-intro {
+        margin-block-start: var(--space-s);
+    }
+
+    .custom-comment-form {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-m);
+
+        .comment-form-intro {
+            color: var(--clr-text-900);
+        }
+
+        .comment-form-fields {
+            flex-wrap: wrap;
+            align-items: stretch;
+            gap: var(--space-m);
+
+            @media (max-width: 40rem) {
+                flex-direction: column;
+            }
+
+            > p {
+                flex: 1;
+            }
+        }
+
+        .comment-form-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-m);
+
+            .comment-form-cookies-consent {
+                flex: 1;
+            }
+        }
+    }
+
+    // Added comments and replies
+    .comment-list {
+        list-style: none;
+        margin-block-end: var(--space-xl);
+
+        .comment {
+            &:not(:last-child) {
+                margin-block-end: var(--space-l);
+                padding-block-end: var(--space-l);
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid var(--clr-border-darker);
+            }
+        }
+
+        .comment-body {
+            align-items: flex-start;
+            gap: var(--space-s);
+
+            img {
+                border-radius: var(--radius-small);
+            }
+
+            .team-img, .default-img {
+                width: 64px;
+                height: auto;
+            }
+
+            @media (max-width: 28.125rem) {
+                .team-img, .default-img, .gravatar-img {
+                    width: 48px;
+                }
+            }
+        }
+
+        .comment-container {
+            flex: 1;
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            gap: var(--space-s);
+            margin-block-end: var(--space-s);
+
+            .comment-meta {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--space-2xs) - 4px);
+
+                .comment-author {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--space-xs);
+                    font-weight: var(--fw-bold);
+
+                    @media (max-width: 48rem) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: var(--space-3xs);
+                    }
+
+                    .team-badge {
+                        font-size: var(--step--2);
+                        color: var(--clr-text-400);
+                        padding: 6px 12px;
+                        background: var(--clr-surface-300);
+                        border-radius: var(--radius-small);
+                        
+                    }
+                }
+
+                .comment-date {
+                    color: var(--clr-text-900);
+                    font-size: var(--step--1);
+                }
+            }
+        }
+
+        .comment-reply {
+            a {
+                font-size: var(--step--1);
+            }
+        }
+
+        .comment-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2xs);
+
+            .comment-awaiting-moderation {
+                color: var(--clr-brand-secondary);
+            }
+        }
+    }
+
+    // Reply form
+    .comment-respond {
+        margin-block-end: var(--space-2xl);
+
+        .comment-form-title {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+
+            small {
+                font-size: var(--step--1);
+            }
+        }
+
+        button {
+            align-self: flex-end;
+        }
+    }
+
+    // Replies
+    .depth-2, .depth-3, .depth-4, .depth-5 {
+        margin-inline-start: var(--space-2xl);
+        margin-block-start: var(--space-l);
+
+        @media (max-width: 48rem) {
+            margin-inline-start: var(--space-m);
+        }
+
+        @media (max-width: 28.125rem) {
+            margin-inline-start: var(--space-xs);
+        }
+    }
+}

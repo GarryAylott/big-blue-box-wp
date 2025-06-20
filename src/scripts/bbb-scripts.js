@@ -282,7 +282,6 @@ const initCategorySwitcher = () => {
     });
 };
 
-
 // Initialize all features
 const init = () => {
     initNavigation();

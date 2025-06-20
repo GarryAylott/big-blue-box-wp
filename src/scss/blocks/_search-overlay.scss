@@ -11,6 +11,7 @@ Search overlay that appears when the search icon is clicked
     height: 100%;
     background: rgba(1, 10, 29, 0.8);
     opacity: 0;
+    backdrop-filter: blur(8px);
     will-change: opacity;
     pointer-events: none;
     transition: opacity 0.2s ease;
@@ -39,6 +40,20 @@ Search overlay that appears when the search icon is clicked
             width: 50rem;
             padding-block-end: var(--space-s);
             border-bottom: 2px solid var(--clr-border-darker);
+
+            .search-form-title {
+                display: flex;
+                align-items: center;
+                gap: var(--space-xs);
+
+                svg {
+                    width: 3.5rem;
+                    height: 3.5rem;
+                    padding: var(--space-2xs);
+                    background: var(--clr-surface-300);
+                    border-radius: var(--radius-xs);
+                }
+            }
 
             .inputs {
                 display: flex;

@@ -283,55 +283,18 @@ function filter_posts_by_category() {
 add_action('wp_ajax_filter_posts_by_category', 'filter_posts_by_category');
 add_action('wp_ajax_nopriv_filter_posts_by_category', 'filter_posts_by_category');
 
+add_filter('query_vars', function($vars) {
+    $vars[] = 'replytocom';
+    return $vars;
+});
 
+// Custom comments section.
+require get_template_directory() . '/inc/custom-comments.php';
 
+// Enqueue scripts and styles.
+require get_template_directory() . '/inc/enqueue.php';
 
-
-/**
- * Manually add categories to body class.
- */
-// function add_categories( $classes = '' ) {
-
-//     $categories = get_the_category();
-//     foreach( $categories as $category ) {
-//     $classes[] = 'category-'.$category->slug;
-
-
-// }
-//  return $classes;
-// }
-// add_filter( 'body_class', 'add_categories' );
-
-
-
-
-
-
-
-/**
- * Enqueue scripts and styles.
- */
-function bigbluebox_scripts() {
-	wp_enqueue_style( 'bigbluebox-style', get_stylesheet_uri(), array(), _S_VERSION );
-
-	wp_enqueue_script( 'bigbluebox-scripts', get_template_directory_uri() . '/scripts/bbb-scripts.min.js', array(), _S_VERSION, true );
-
-	wp_localize_script( 'bigbluebox-scripts', 'themeSettings', array(
-		'themeUrl' => get_template_directory_uri(),
-		'ajaxUrl'  => admin_url( 'admin-ajax.php' ),
-	));
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'bigbluebox_scripts' );
-
-/* Includes from starter theme */
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
+// Includes from starter theme */
+// Functions which enhance the theme by hooking into WordPress.
 require get_template_directory() . '/inc/template-functions.php';
-
 ?>

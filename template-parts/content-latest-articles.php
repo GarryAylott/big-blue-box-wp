@@ -27,38 +27,7 @@
         ?>
         <?php if ( $query2->have_posts() ) :
             while ( $query2->have_posts() ) : $query2->the_post(); ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <a href="<?php the_permalink(); ?>">
-                    <?php if ( has_post_thumbnail() ) : ?>
-                        <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="387" height="217" alt="<?php echo the_title() ?>">
-                    <?php endif; ?>
-
-                    <header class="entry-header">
-                        <h5 class="balance">
-                            <?php
-                            $thetitle = $post->post_title;
-                            $getlength = strlen($thetitle);
-                            $thelength = 80;
-                            echo substr($thetitle, 0, $thelength);
-                            if ($getlength > $thelength) echo "...";
-                            ?>
-                        </h5>
-                    </header>
-                </a>
-
-
-                <div class="post-card-content">
-                    <div class="entry-content">
-                        <p class="small">
-                            <?php echo wp_trim_words( get_the_excerpt(), 15 ); ?>
-                        </p>
-                    </div>
-
-                    <footer class="entry-footer">
-                        <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
-                    </footer>
-                </div>
-            </article>
+            <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'latest')); ?>
         <?php
         $displayed_posts[] = get_the_ID();
         endwhile;

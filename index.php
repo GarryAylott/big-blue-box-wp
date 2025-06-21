@@ -103,31 +103,7 @@ get_header();
 
                     if ($query3->have_posts()) :
                         while ($query3->have_posts()) : $query3->the_post(); ?>
-                            <article id="post-<?php the_ID(); ?>" <?php post_class('post-card-alt'); ?>>
-                                <a href="<?php the_permalink(); ?>">
-                                    <div class="article-top">
-                                        <?php if (has_post_thumbnail()) : ?>
-                                            <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="391" height="220" alt="<?php echo the_title() ?>">
-                                        <?php endif; ?>
-
-                                        <header class="entry-header">
-                                            <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
-                                            <h5 class="balance">
-                                                <?php
-                                                $thetitle = $post->post_title;
-                                                $getlength = strlen($thetitle);
-                                                $thelength = 55;
-                                                echo substr($thetitle, 0, $thelength);
-                                                if ($getlength > $thelength) echo "...";
-                                                ?>
-                                            </h5>
-                                        </header>
-                                    </div>
-                                </a>
-                                <footer class="entry-footer">
-                                    <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
-                                </footer>
-                            </article>
+                            <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
                         <?php endwhile;
                         wp_reset_postdata();
                     endif; ?>

@@ -11,7 +11,19 @@ if ( post_password_required() ) {
 ?>
 
 <div id="comments" class="comments-area">
-    <h2 class="title">Comments</h2>
+    <h2 class="title">
+        <?php
+        $comments_number = get_comments_number();
+        if ($comments_number > 0) {
+            printf(
+                _n('%s comment so far', '%s comments so far', $comments_number, 'big-blue-box'),
+                number_format_i18n($comments_number)
+            );
+        } else {
+            echo 'Comments';
+        }
+        ?>
+    </h2>
 
     <?php if (have_comments()) : ?>
         <ol class="comment-list">

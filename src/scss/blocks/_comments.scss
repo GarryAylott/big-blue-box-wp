@@ -102,7 +102,7 @@ Layout and styling for comments section at the end of articles.
             display: flex;
             justify-content: space-between;
             gap: var(--space-s);
-            margin-block-end: var(--space-s);
+            margin-block-end: var(--space-2xs);
 
             .comment-meta {
                 display: flex;
@@ -176,15 +176,17 @@ Layout and styling for comments section at the end of articles.
 
     // Replies
     .depth-2, .depth-3, .depth-4, .depth-5 {
-        margin-inline-start: var(--space-2xl);
-        margin-block-start: var(--space-l);
+        margin-inline-start: var(--space-l);
+        margin-block-start: var(--space-m);
 
         @media (max-width: 48rem) {
             margin-inline-start: var(--space-m);
         }
 
-        @media (max-width: 28.125rem) {
-            margin-inline-start: var(--space-xs);
+        .comment-body {
+            margin-block-start: var(--space-s);
+            padding-block-start: var(--space-s);
+            border-block-end: none;
         }
     }
 }

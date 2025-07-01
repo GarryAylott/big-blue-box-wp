@@ -20,7 +20,7 @@ Layout and styling for the 'Continue reading/listening' section.
         display: flex;
         gap: var(--space-2xs);
     }
-    
+
     .scroll-nav-btn {
         position: relative;
         display: flex;
@@ -39,11 +39,11 @@ Layout and styling for the 'Continue reading/listening' section.
             fill: var(--clr-text-link);
         }
     }
-    
+
     .scroll-nav-btn:hover {
         background-color: var(--clr-surface-200);
     }
-    
+
     .scroll-nav-btn:disabled {
         background-color: transparent;
         opacity: 0.3;
@@ -58,36 +58,24 @@ Layout and styling for the 'Continue reading/listening' section.
         width: 100vw;
         overflow-x: auto;
         overscroll-behavior-x: contain;
+        scrollbar-width: none;
         scroll-snap-type: inline mandatory;
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
-
-        @media (max-width: 96.875rem) {
-            grid-auto-columns: 31%;
-        }
-
-        @media (max-width: 72.188rem) {
-            grid-auto-columns: 41%;
-        }
-
-        @media (max-width: 50rem) {
-            grid-auto-columns: 71%;
-        }
+        -ms-overflow-style: none;
 
         &::-webkit-scrollbar {
             display: none;
         }
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        
-        > article { 
+
+        > article {
             scroll-snap-align: start;
             scroll-snap-stop: always;
 
             &:hover {
                 cursor: grab;
             }
-    
+
             &:active {
                 cursor: grabbing;
             }
@@ -99,6 +87,18 @@ Layout and styling for the 'Continue reading/listening' section.
             display: block;
             width: 1px;
             flex-shrink: 0;
+        }
+
+        @media (max-width: 96.875rem) {
+            grid-auto-columns: 31%;
+        }
+
+        @media (max-width: 72.188rem) {
+            grid-auto-columns: 41%;
+        }
+
+        @media (max-width: 50rem) {
+            grid-auto-columns: 71%;
         }
     }
 }

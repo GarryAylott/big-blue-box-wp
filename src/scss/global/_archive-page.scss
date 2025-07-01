@@ -1,0 +1,36 @@
+@use "blocks" as *;
+
+/* 
+ARCHIVE PAGE STYLES
+Layout and styling for archive pages.
+*/
+
+.archive-hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  padding-block-end: var(--space-l);
+
+  .section-title {
+    margin-block-end: var(--space-2xs);
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+
+    p {
+      max-width: 60ch;
+      color: var(--clr-text-900);
+
+      span {
+        color: var(--clr-brand-secondary);
+      }
+    }
+  }
+}
+
+body.tag .archive-hero__group h1 {
+  color: var(--clr-brand-secondary);
+}

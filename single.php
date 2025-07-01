@@ -6,7 +6,7 @@
 get_header();
 ?>
 
-<div class="page-bg-inline bg-image-fade">
+<div class="hero-bg-image">
 	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg_single-post.webp" decoding="async" alt="" fetchpriority="high">
 </div>
 

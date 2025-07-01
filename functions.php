@@ -252,6 +252,33 @@ function bbb_get_icon( $name ) {
 }
 
 /**
+ * Add category slugs to body class on single posts
+ */
+add_filter('body_class', function($classes) {
+    if (is_single()) {
+        $categories = get_the_category();
+        if ($categories) {
+            foreach ($categories as $category) {
+                $classes[] = 'category-' . sanitize_html_class($category->slug);
+            }
+        }
+    }
+    return $classes;
+});
+
+/**
+ * Remove unwanted theme class from body_class
+ */
+add_filter('body_class', function($classes) {
+    foreach ($classes as $key => $class) {
+        if (strpos($class, 'wp-theme-') === 0) {
+            unset($classes[$key]);
+        }
+    }
+    return $classes;
+});
+
+/**
  * AJAX handler for category-based post filtering
  */
 function filter_posts_by_category() {
@@ -287,6 +314,19 @@ add_filter('query_vars', function($vars) {
     $vars[] = 'replytocom';
     return $vars;
 });
+
+/**
+ * Customize the number of posts per page for archives.
+ */
+add_action('pre_get_posts', function($query) {
+    // Only target main queries on frontend, and for archives
+    if (!is_admin() && $query->is_main_query() && (is_category() || is_tag() || is_post_type_archive())) {
+        $query->set('posts_per_page', 15);
+    }
+});
+
+// Pagination
+require get_template_directory() . '/inc/pagination.php';
 
 // Custom comments section.
 require get_template_directory() . '/inc/custom-comments.php';

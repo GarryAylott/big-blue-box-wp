@@ -1,3 +1,6 @@
 {
-    "cssvar.files" : ["src/scss/global/*.scss"]
+    "cssvar.files" : [
+        "src/scss/global/*.scss",
+        "src/scss/utilities/*.scss"
+    ]
 }

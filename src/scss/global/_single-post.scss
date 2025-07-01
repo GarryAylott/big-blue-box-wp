@@ -1,4 +1,4 @@
-@use 'blocks' as *;
+@use "blocks" as *;
 
 /* 
 SINGLE POST STYLES
@@ -94,7 +94,11 @@ Layout and styling for single post pages.
             background: var(--clr-surface-300);
 
             &:before {
-                background: linear-gradient(to bottom right, var(--clr-surface-200), var(--clr-surface-600) 50%);
+                background: linear-gradient(
+                    to bottom right,
+                    var(--clr-surface-200),
+                    var(--clr-surface-600) 50%
+                );
             }
 
             ul {
@@ -115,14 +119,18 @@ Layout and styling for single post pages.
         }
 
         .post-content {
-            h2, h3, h4, h5, h6 {
+            :is(h2, h3, h4, h5, h6):not(:first-child) {
                 margin-block-start: var(--space-2xl);
 
                 + figure,
                 + .wp-block-image {
                     padding-block-start: 0;
                 }
-                
+            }
+
+            // Remove margin if heading follows the first .lead paragraph
+            p.lead + :is(h2, h3, h4, h5, h6) {
+                margin-block-start: var(--space-l);
             }
 
             p.lead,
@@ -143,7 +151,8 @@ Layout and styling for single post pages.
                 }
             }
 
-            ul, ol {
+            ul,
+            ol {
                 margin-inline-start: 1.1rem;
                 @extend .flow-tiny;
             }

@@ -1,3 +1,5 @@
+@use 'post-cards' as *;
+
 /* 
 BROWSE ALL BLOCK
 Layout and styling for the browse all and side section.
@@ -26,9 +28,7 @@ Layout and styling for the browse all and side section.
         flex-grow: 999;
         min-inline-size: 50%;
 
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-        gap: var(--space-m);
+        @include post-cards-grid;
     }
 
     .main-sidebar {

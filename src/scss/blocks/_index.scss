@@ -1,10 +1,11 @@
 @forward 'header';
+@forward 'hero-background';
 @forward 'prose';
 @forward 'latest-pod-ep';
 @forward 'buttons';
 @forward 'blockquote';
 @forward 'podcast-apps-links';
-@forward 'post-preview-card';
+@forward 'post-cards';
 @forward 'author-meta';
 @forward 'category-tag';
 @forward 'article-cards';
@@ -26,4 +27,5 @@
 @forward 'home-hero';
 @forward 'footer';
 @forward 'comments';
+@forward 'pagination';
 

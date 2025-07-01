@@ -1,0 +1,44 @@
+/* 
+HERO BACKGROUND BLOCK
+Layout and styling for the large background image that appears at the top of most pages.
+*/
+
+.hero-bg-image {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -2;
+
+    > img {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        will-change: opacity;
+        opacity: 0;
+        transition: opacity 0.1s ease-out;
+
+        @media (max-width: 48rem) {
+            left: 0;
+            right: 0;
+            object-position: right center;
+        }
+    }
+}
+
+body:not(.home):not(.single) .hero-bg-image {
+    &::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: rgba(6, 12, 19, 0.2);
+        z-index: 1;
+        pointer-events: none;
+
+        @media (max-width: 48rem) {
+            background: rgba(6, 12, 19, 0.6);
+        }
+    }
+}

@@ -5,6 +5,20 @@ POST PREVIEW CARDS
 Layout and styling for articles post cards.
 */
 
+// Layout
+@mixin post-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-m);
+}
+
+.post-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    gap: var(--space-m);
+}
+
+// Card styles
 article {
     position: relative;
     display: flex;

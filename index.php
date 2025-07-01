@@ -6,7 +6,7 @@
 get_header();
 ?>
 
-<div class="page-bg-inline bg-image-fade">
+<div class="hero-bg-image">
 	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg_home.webp" decoding="async" alt="" fetchpriority="high">
 </div>
 
@@ -166,7 +166,7 @@ get_header();
                                     </a>
 
                                     <div class="post-meta">
-                                        <p class="small"><?php echo get_the_author_meta('display_name'); ?> • <?php the_date('j M, Y'); ?></p>
+                                        <p class="small"><?php echo get_the_author_meta('display_name'); ?> • <?php echo get_the_date('j M, Y'); ?></p>
                                     </div>
                                 </div>
                             </li>

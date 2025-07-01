@@ -5,7 +5,7 @@ const CONFIG = {
     SELECTORS: {
         nav: '.nav',
         navToggle: '.menu-nav-toggle',
-        bgImage: '.bg-image-fade img',
+        bgImage: '.hero-bg-image img',
         searchIcon: '.nav-search-icon',
         searchOverlay: '#searchOverlay',
         podcastMenu: '.pod-links-menu details',

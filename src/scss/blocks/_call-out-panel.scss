@@ -1,22 +1,20 @@
+@use "utilities" as *;
+
 /* 
 CALL OUT PANEL
 Layout and styling for panels that are styled differently to regular sections.
 */
 
-.call-out-panel, .call-out-panel-large {
+.call-out-panel,
+.call-out-panel-large {
     position: relative;
     padding: calc(var(--space-s) + 0.25rem);
     background: var(--clr-surface-300);
     border-radius: var(--radius-small);
 
-    &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(to bottom right, var(--clr-surface-100), var(--clr-surface-300) 40%);
-        margin: -1px;
-        border-radius: 8px;
-        z-index: -1;
+    &::after {
+        @include panel-border-highlight;
+        border-radius: var(--radius-small);
     }
 }
 

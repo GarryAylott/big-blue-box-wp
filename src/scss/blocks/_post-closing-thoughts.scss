@@ -56,8 +56,9 @@ Layout and styling for the closing paragraph and review score.
         .score-circle {
             width: 100%;
             height: auto;
-            background: transparent; /* Ensure no white box behind SVG */
+            background: transparent;
             transform: rotate(-90deg); /* Stroke starts from top */
+            filter: drop-shadow(0 0 12px var(--clr-brand-primary));
             position: relative;
 
             @media (max-width: 39.938rem) {
@@ -67,10 +68,10 @@ Layout and styling for the closing paragraph and review score.
             .score-circle-bg {
                 fill: transparent;
             }
-    
+
             .score-circle-stroke {
                 fill: none;
-                stroke: var(--clr-brand-accent);
+                stroke: var(--clr-surface-50);
                 stroke-width: 8;
                 stroke-linecap: round;
             }
@@ -84,7 +85,8 @@ Layout and styling for the closing paragraph and review score.
             font-size: calc(var(--step-6) * 1.2);
             font-weight: var(--fw-bold);
             letter-spacing: -8px;
-            color: var(--clr-brand-accent);
+            color: var(--clr-text-100);
+            filter: drop-shadow(0 0 12px var(--clr-brand-primary));
             pointer-events: none;
 
             @media (max-width: 39.938rem) {

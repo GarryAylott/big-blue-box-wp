@@ -19,14 +19,16 @@ $bg_pool = [
     'pagebg_tardis-int-8.webp'
 ];
 $author_bg_map = [
-    '1' => get_template_directory_uri() . '/images/author1.webp',
-    '2' => get_template_directory_uri() . '/images/author2.webp',
-    // Add additional author ID => bg image mappings as needed
+    '7' => get_template_directory_uri() . '/images/authors/pagebg_author-harry.webp',
+    '3' => get_template_directory_uri() . '/images/authors/pagebg_author-jordan.webp',
+    '4' => get_template_directory_uri() . '/images/authors/pagebg_author-maria.webp',
+    '8' => get_template_directory_uri() . '/images/authors/pagebg_author-matt.webp',
+    '1' => get_template_directory_uri() . '/images/authors/pagebg_author-garry.webp'
 ];
 
 // 2. Content logic
 if (is_tag()) {
-    $hero_heading = 'Articles and podcasts tagged ' . single_tag_title('', false);
+    $hero_heading = 'Articles and podcasts tagged:<br /><span>' . single_tag_title('', false) . '</span>';
     $hero_sub = tag_description();
     $bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_pool)];
 } elseif (is_author()) {
@@ -34,7 +36,7 @@ if (is_tag()) {
     $author = get_userdata($author_id);
     $bg_image = isset($author_bg_map[$author_id])
         ? $author_bg_map[$author_id]
-        : get_template_directory_uri() . '/images/pagebg_author_default.webp';
+        : get_template_directory_uri() . '/images/pagebg_tardis-int-2.webp';
 } else {
     $hero_heading = get_the_archive_title();
     $hero_sub = term_description() ?: '';
@@ -42,12 +44,12 @@ if (is_tag()) {
 }
 ?>
 
-<div class="page-bg-inline bg-image-fade">
+<div class="hero-bg-image">
     <img src="<?php echo esc_url($bg_image); ?>" decoding="async" alt="" fetchpriority="high">
 </div>
 
 <main id="primary" class="site-main">
-    <div class="wrapper flow-large">
+    <div class="wrapper flow">
 
         <?php if (is_author()) : ?>
             <?php
@@ -56,57 +58,102 @@ if (is_tag()) {
             $twitter   = get_field('twitter', 'user_' . $author_id);
             $instagram = get_field('instagram', 'user_' . $author_id);
             $facebook  = get_field('facebook', 'user_' . $author_id);
+            $tiktok  = get_field('tiktok', 'user_' . $author_id);
             $fav_doctor = get_field('fav_doctor', 'user_' . $author_id);
             $fav_story  = get_field('fav_story', 'user_' . $author_id);
+            $fav_doctor_image = get_field('fav_doctor_image', 'user_' . $author_id);
+            $fav_story_image = get_field('fav_story_image', 'user_' . $author_id);
 
             $article_count = count_user_posts($author_id, 'post');
             $bio = get_the_author_meta('description', $author_id);
+            $acf_bio = get_field('bio', 'user_' . $author_id);
             ?>
             <section class="author-hero">
-                <div class="author-hero__layout">
+                <div class="author-hero__container">
                     <div class="author-hero__image">
-                        <?php
-                        // Only show if profile image exists
-                        if ($profile_img_id) {
+                        <?php if ($profile_img_id): ?>
+                            <?php
                             echo wp_get_attachment_image($profile_img_id, 'large', false, [
                                 'alt' => esc_attr($author->display_name),
-                                'class' => 'author-hero__img',
+                                'class' => 'author-img rounded-small',
                                 'loading' => 'lazy'
                             ]);
-                        }
-                        ?>
+                            ?>
+                        <?php endif; ?>
                     </div>
-                    <div class="author-hero__content">
+                    <div class="author-hero__content flow-small">
                         <h1 class="author-hero__name"><?php echo esc_html($author->display_name); ?></h1>
-                        <div class="author-hero__meta-row">
+                        <?php if ($twitter || $instagram || $facebook || $tiktok): ?>
                             <div class="author-hero__socials">
                                 <?php if ($twitter): ?>
-                                    <a href="<?php echo esc_url($twitter); ?>" target="_blank" rel="noopener" aria-label="Twitter">
-                                        <!-- Twitter SVG -->
-                                        <svg viewBox="0 0 24 24" width="1.4em" height="1.4em" fill="currentColor" aria-hidden="true"><path d="M22.46 6c-.77.35-1.6.59-2.47.7a4.19 4.19 0 0 0 1.84-2.32c-.82.49-1.73.85-2.7 1.04A4.14 4.14 0 0 0 16.07 4c-2.27 0-4.1 1.83-4.1 4.08 0 .32.04.64.1.94C8 8.8 5.08 7.32 3 5.06c-.35.6-.56 1.29-.56 2.04 0 1.41.72 2.65 1.83 3.38-.67-.02-1.29-.21-1.83-.5v.05c0 1.97 1.41 3.62 3.28 4a4.19 4.19 0 0 1-1.82.07c.51 1.6 2 2.77 3.75 2.8A8.3 8.3 0 0 1 2 19.14 11.76 11.76 0 0 0 8.29 21c7.54 0 11.67-6.24 11.67-11.65 0-.18 0-.36-.01-.54A8.17 8.17 0 0 0 24 4.56c-.77.35-1.6.59-2.47.7Z"/></svg>
+                                    <a href="<?php echo esc_url($twitter); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="Twitter">
+                                        <img class="author-social-x img-hover" src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-x.svg" alt="Twitter" width="24" height="24">
+                                    </a>
                                 <?php endif; ?>
                                 <?php if ($instagram): ?>
-                                    <a href="<?php echo esc_url($instagram); ?>" target="_blank" rel="noopener" aria-label="Instagram">
-                                        <!-- Instagram SVG -->
-                                        <svg viewBox="0 0 24 24" width="1.4em" height="1.4em" fill="currentColor" aria-hidden="true"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 1 0 12 7.2zm0 7.92A3.12 3.12 0 1 1 12 8.88a3.12 3.12 0 0 1 0 6.24zm5.52-8.28a1.12 1.12 0 1 0 0 2.24 1.12 1.12 0 0 0 0-2.24zm3.16 1.14c-.07-1.46-.42-2.75-1.53-3.86C17.83 2.7 16.54 2.35 15.08 2.28 13.13 2.17 10.88 2.17 8.92 2.28c-1.46.07-2.75.42-3.86 1.53C2.7 6.17 2.35 7.46 2.28 8.92 2.17 10.87 2.17 13.13 2.28 15.08c.07 1.46.42 2.75 1.53 3.86 1.11 1.11 2.4 1.46 3.86 1.53 1.95.11 4.21.11 6.16 0 1.46-.07 2.75-.42 3.86-1.53 1.11-1.11 1.46-2.4 1.53-3.86.11-1.95.11-4.21 0-6.16zM21.6 17.57a5.31 5.31 0 0 1-1.18 1.88c-.82.82-1.8 1.21-2.87 1.28-1.93.11-4 .11-5.92 0-1.07-.07-2.05-.46-2.87-1.28a5.31 5.31 0 0 1-1.18-1.88c-.27-.64-.41-1.34-.47-2.06C2.89 13.13 2.89 10.87 2.99 8.92c.06-.72.2-1.42.47-2.06a5.31 5.31 0 0 1 1.18-1.88c.82-.82 1.8-1.21 2.87-1.28 1.93-.11 4-.11 5.92 0 1.07.07 2.05.46 2.87 1.28.51.51.92 1.15 1.18 1.88.27.64.41 1.34.47 2.06.11 1.95.11 4.21 0 6.16-.06.72-.2 1.42-.47 2.06z"/></svg>
+                                    <a href="<?php echo esc_url($instagram); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                                        <img class="author-social-insta img-hover" src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-insta.svg" alt="Instagram" width="24" height="24">   
+                                    </a>
                                 <?php endif; ?>
                                 <?php if ($facebook): ?>
-                                    <a href="<?php echo esc_url($facebook); ?>" target="_blank" rel="noopener" aria-label="Facebook">
-                                        <!-- Facebook SVG -->
-                                        <svg viewBox="0 0 24 24" width="1.4em" height="1.4em" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.63 17.51 2.07 12 2.07S2 6.63 2 12.07c0 5 3.66 9.12 8.44 9.87v-6.98h-2.54v-2.89h2.54V9.86c0-2.5 1.5-3.89 3.79-3.89 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.77-1.64 1.56v1.88h2.8l-.45 2.89h-2.35v6.98C18.34 21.19 22 17.07 22 12.07z"/></svg>
+                                    <a href="<?php echo esc_url($facebook); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
+                                        <img class="author-social-fb img-hover" src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-fb.svg" alt="Facebook" width="24" height="24">
+                                    </a>
+                                <?php endif; ?>
+                                <?php if ($tiktok): ?>
+                                    <a href="<?php echo esc_url($tiktok); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="TikTok">
+                                        <img class="author-social-tiktok img-hover" src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-tiktok.svg" alt="Facebook" width="24" height="24">
+                                    </a>
                                 <?php endif; ?>
                             </div>
-                            <span class="author-hero__badge">
-                                <span><?php echo esc_html($article_count); ?> Articles</span>
-                            </span>
-                        </div>
-                        <div class="author-hero__bio"><?php echo wpautop($bio); ?></div>
+                        <?php endif; ?>
+                        <span class="author-hero__badge">
+                            <span><?php echo esc_html($article_count); ?> Articles</span>
+                        </span>
+                        <div class="author-hero__bio"><?php echo wpautop($acf_bio); ?></div>
                         <div class="author-hero__favs">
+                            <?php
+                            if ($fav_doctor_image) {
+                                $doctor_width = round($fav_doctor_image['width'] / 2);
+                                $doctor_height = round($fav_doctor_image['height'] / 2);
+                            }
+
+                            if ($fav_story_image) {
+                                $story_width = round($fav_story_image['width'] / 2);
+                                $story_height = round($fav_story_image['height'] / 2);
+                            }
+                            ?>
+
                             <?php if ($fav_doctor): ?>
-                                <div>Favourite Doctor: <strong><?php echo esc_html($fav_doctor); ?></strong></div>
+                                <div class="fav-doctor" style="--image-width: <?php echo $doctor_width; ?>px;">
+                                    <div class="fav-image">
+                                        <?php if (!empty($fav_doctor_image['url'])): ?>
+                                            <img
+                                                src="<?php echo esc_url($fav_doctor_image['url']); ?>"
+                                                alt="<?php echo esc_attr($fav_doctor_image['alt']); ?>"
+                                                class="fav-doctor-image"
+                                                width="<?php echo $doctor_width; ?>"
+                                                height="<?php echo $doctor_height; ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <p>Fav Doctor: <strong><?php echo esc_html($fav_doctor); ?></strong></p>
+                                </div>
                             <?php endif; ?>
+
                             <?php if ($fav_story): ?>
-                                <div>Favourite Story: <strong><?php echo esc_html($fav_story); ?></strong></div>
+                                <div class="fav-story" style="--image-width: <?php echo $story_width; ?>px;">
+                                    <div class="fav-image">
+                                        <?php if (!empty($fav_story_image['url'])): ?>
+                                            <img
+                                                src="<?php echo esc_url($fav_story_image['url']); ?>"
+                                                alt="<?php echo esc_attr($fav_story_image['alt']); ?>"
+                                                class="fav-story-image"
+                                                width="<?php echo $story_width; ?>"
+                                                height="<?php echo $story_height; ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <p>Fav Story: <strong><?php echo esc_html($fav_story); ?></strong></p>
+                                </div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -118,6 +165,27 @@ if (is_tag()) {
                 'hero_sub'     => $hero_sub
             ]); ?>
         <?php endif; ?>
+
+        <?php
+        if (is_author()) {
+            $author_id = get_query_var('author');
+            $author = get_userdata($author_id);
+            $author_first_name = $author ? $author->first_name : '';
+            if (!$author_first_name) {
+                // Fallback to display name if first name is not set
+                $author_first_name = $author ? $author->display_name : '';
+            }
+            $is_garry = strtolower($author_first_name) === 'garry' || strtolower($author->display_name) === 'garry';
+            if ($is_garry) {
+                $articles_heading = "Garry's Podcast Episodes and Articles";
+            } else {
+                $articles_heading = esc_html($author_first_name) . "'s Articles";
+            }
+        } else {
+            $articles_heading = "";
+        }
+        ?>
+        <h4><?php echo $articles_heading; ?></h4>
 
         <div class="post-cards-grid">
             <?php

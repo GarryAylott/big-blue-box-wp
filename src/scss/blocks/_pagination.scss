@@ -1,71 +1,93 @@
+@use "utilities" as *;
+
 /* 
 PAGINATION BLOCK
 Styles for post pagination section.
 */
 
 .pagination {
-  display: grid;
-  place-content: center;
+    display: grid;
+    place-content: center;
 
-  &__list {
-    display: flex;
-    gap: var(--space-s);
-    flex-wrap: wrap;
-    list-style: none;
+    &__list {
+        display: flex;
+        gap: var(--space-s);
+        flex-wrap: wrap;
+        list-style: none;
 
-    .pagination-item:not(.pagination__dots) {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: var(--step--1);
-      border: 1px solid var(--clr-border-link);
-      border-radius: var(--radius-small);
+        .pagination-item:not(.pagination__dots) {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--step--1);
+            border: 1px solid var(--clr-border-link);
+            border-radius: var(--radius-small);
+        }
+
+        // Combine hover and current styles
+        :is(
+                .pagination-item:not(.pagination__dots):hover,
+                span.pagination-item.is-current
+            ) {
+            font-weight: var(--fw-bold);
+            color: var(--clr-surface-700);
+            text-decoration: none;
+            border: none;
+            background: var(--clr-brand-secondary);
+        }
+
+        .pagination__num {
+            aspect-ratio: 1 / 1;
+            width: 2.5rem;
+            height: auto;
+        }
+
+        .pagination__icon {
+            display: none;
+        }
+
+        .pagination__next,
+        .pagination__prev {
+            min-height: 2.5rem;
+            padding-inline: 1rem;
+            white-space: nowrap;
+        }
     }
-
-    // Combine hover and current styles
-    :is(
-        .pagination-item:not(.pagination__dots):hover,
-        span.pagination-item.is-current
-      ) {
-      font-weight: var(--fw-bold);
-      color: var(--clr-surface-700);
-      text-decoration: none;
-      border: none;
-      background: var(--clr-brand-secondary);
-    }
-
-    .pagination__num {
-      aspect-ratio: 1 / 1;
-      width: 2.5rem;
-      height: auto;
-    }
-
-    .pagination__icon {
-      display: none;
-    }
-
-    .pagination__next,
-    .pagination__prev {
-      min-height: 2.5rem;
-      padding-inline: 1rem;
-      white-space: nowrap;
-    }
-  }
 }
 
 // Hide pagination numbers and dots on smaller screens
 @media (max-width: 43rem) {
-  .pagination {
-    display: block;
-  }
+    .pagination {
+        display: block;
+    }
 
-  .pagination .pagination__list {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  .pagination .pagination__list .pagination-item.pagination__num,
-  .pagination .pagination__list .pagination-item.pagination__dots {
-    display: none;
-  }
+    .pagination .pagination__list {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .pagination .pagination__list .pagination-item.pagination__num,
+    .pagination .pagination__list .pagination-item.pagination__dots {
+        @include visually-hidden;
+    }
+}
+
+@media (max-width: 25.313rem) {
+    .pagination .pagination__list {
+        :is(:first-child),
+        :is(:last-child) {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 3rem;
+        }
+
+        :not(:first-child) .pagination__text {
+            justify-content: flex-end;
+        }
+
+        .pagination__icon {
+            @include visually-hidden;
+        }
+    }
 }

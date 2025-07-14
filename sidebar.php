@@ -82,7 +82,7 @@
 		<div class="intro">
 			<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-discord.svg" width="121" height="23" alt="Our free Discord server">
 			<p class="small">
-				Join the Big Blue Box Discord server - it’s free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!
+				Join the Big Blue Box Discord server - it's free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!
 			</p>
 		</div>
 		<a class="button-ghost" href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noreferrer noopener">
@@ -96,46 +96,54 @@
 		</h5>
 		<div class="author-section-small">
 			<div class="author-section-small__author-block">
-				<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-jordan.webp" width="56" height="56" alt="Jordan Shortman author image">
+				<a class="author-avatar" href="<?php echo esc_url( get_author_posts_url(3) ); ?>">
+					<?php echo get_avatar(3, 56, '', 'Jordan Shortman author image'); ?>
+				</a>
 				<div class="author-block-content">
 					<h6>
-						<?php the_author_posts_link(); ?>
+						<a href="<?php echo esc_url( get_author_posts_url(3) ); ?>">Jordan Shortman</a>
 					</h6>
 					<p class="small">
-						Big Finish and book reviews are Jordans cup of tea.
+						Loves getting stuck into Big Finish stories and Doctor Who books.
 					</p>
 				</div>
 			</div>
 			<div class="author-section-small__author-block">
-				<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-maria.webp" width="56" height="56" alt="Maria Kalotichou author image">
+				<a class="author-avatar" href="<?php echo esc_url( get_author_posts_url(4) ); ?>">
+					<?php echo get_avatar(4, 56, '', 'Maria Kalotichou author image'); ?>
+				</a>
 				<div class="author-block-content">
 					<h6>
-						Maria Kalotichou
+						<a href="<?php echo esc_url( get_author_posts_url(4) ); ?>">Maria Kalotichou</a>
 					</h6>
 					<p class="small">
-						Our roving on-location reviewer for UK cons and meet ups plus Big Finish reviews.
+						Our roving reporter for events plus regular reviews of TV episodes, Big Finish and more.
 					</p>
 				</div>
 			</div>
 			<div class="author-section-small__author-block">
-				<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-matt.webp" width="56" height="56" alt="Matt Steele author image">
+				<a class="author-avatar" href="<?php echo esc_url( get_author_posts_url(8) ); ?>">
+					<?php echo get_avatar(8, 56, '', 'Matt Steele author image'); ?>
+				</a>
 				<div class="author-block-content">
 					<h6>
-						Matt Steele
+						<a href="<?php echo esc_url( get_author_posts_url(8) ); ?>">Matt Steele</a>
 					</h6>
 					<p class="small">
-						Matt runs the merch updates area on our Discord server plus reviews TV episodes.
+						Covers the latest merch and reviews Doctor Who TV episodes and Big Finish.
 					</p>
 				</div>
 			</div>
 			<div class="author-section-small__author-block">
-				<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-harry.webp" width="56" height="56" alt="Harry Walker author image">
+				<a class="author-avatar" href="<?php echo esc_url( get_author_posts_url(7) ); ?>">
+					<?php echo get_avatar(7, 56, '', 'Harry Walker author image'); ?>
+				</a>
 				<div class="author-block-content">
 					<h6>
-						Harry Walker
+						<a href="<?php echo esc_url( get_author_posts_url(7) ); ?>">Harry Walker</a>
 					</h6>
 					<p class="small">
-						Harry puts his writing skills to work with creative editorials and reviews.
+						Creating editorials and opinion pieces plus reviews of Doctor Who TV episodes.
 					</p>
 				</div>
 			</div>
@@ -148,7 +156,7 @@
 						Maybe you?
 					</h6>
 					<p class="small">
-						We’re always looking for writers to volunteer for the blog. Do you know your Doctor Who and have decent writing skills? <a class="link-alt" href="#">Get in touch!</a>
+						We're always looking for writers to volunteer for the blog. Do you know your Doctor Who and have decent writing skills? <a class="link-alt" href="#">Get in touch!</a>
 					</p>
 				</div>
 			</div>

@@ -1,3 +1,4 @@
+@use "utilities" as *;
 @use "blocks" as *;
 
 /* 
@@ -5,32 +6,171 @@ ARCHIVE PAGE STYLES
 Layout and styling for archive pages.
 */
 
+// Archive layout for tags.
 .archive-hero {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3xs);
-  padding-block-end: var(--space-l);
-
-  .section-title {
-    margin-block-end: var(--space-2xs);
-  }
-
-  &__group {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2xs);
+    gap: var(--space-3xs);
+    padding-block-end: var(--space-l);
 
-    p {
-      max-width: 60ch;
-      color: var(--clr-text-900);
-
-      span {
-        color: var(--clr-brand-secondary);
-      }
+    .section-title {
+        margin-block-end: var(--space-2xs);
     }
-  }
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2xs);
+
+        p {
+            max-width: 60ch;
+            color: var(--clr-text-900);
+
+            span {
+                color: var(--clr-brand-secondary);
+            }
+        }
+    }
 }
 
 body.tag .archive-hero__group h1 {
-  color: var(--clr-brand-secondary);
+    font-size: var(--step-2);
+
+    span {
+        display: block;
+        font-size: var(--step-5);
+        color: var(--clr-brand-secondary);
+        margin-block-start: var(--space-2xs);
+    }
+}
+
+// Archive layout for authors.
+.author-hero {
+    padding-block-end: var(--space-l);
+
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-l);
+
+        @media (min-width: 50rem) {
+            grid-template-columns: 300px 1fr;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        aspect-ratio: 16 / 11;
+        object-fit: cover;
+        object-position: top;
+        border-radius: var(--radius-xs);
+        margin-inline: auto;
+
+        @media (min-width: 50rem) {
+            width: 300px;
+            aspect-ratio: auto;
+            height: auto;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 20%;
+        }
+    }
+
+    &__socials {
+        display: flex;
+        gap: var(--space-2xs);
+
+        a {
+            display: block;
+            padding: var(--space-3xs);
+            background: transparent;
+            border-radius: var(--radius-xs);
+            transition: all 0.1s ease-in-out;
+
+            &:hover {
+                background: var(--clr-surface-200);
+            }
+
+            .author-social-x,
+            .author-social-tiktok {
+                width: 23px;
+                height: auto;
+            }
+        }
+    }
+
+    &__badge {
+        display: inline-block;
+        font-size: var(--step--2);
+        font-weight: var(--fw-bold);
+        text-transform: uppercase;
+        padding: var(--space-3xs) var(--space-2xs);
+        background: var(--clr-surface-200);
+        border-radius: var(--radius-xs);
+    }
+
+    &__bio {
+        max-width: 60ch;
+    }
+
+    &__favs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-m);
+        margin-block-start: var(--space-s);
+
+        @media (max-width: 38rem) {
+            gap: var(--space-2xs);
+        }
+
+        > div {
+            position: relative;
+            display: flex;
+            padding-block-start: var(--space-l);
+            border-radius: var(--radius-xs);
+            overflow: hidden;
+
+            @media (max-width: 38rem) {
+                width: 100%;
+                padding-block-start: var(--space-xl);
+            }
+
+            .fav-image {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                z-index: 1;
+
+                img {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                    filter: drop-shadow(8px 12px 10px rgba(22, 24, 29, 0.8));
+                }
+            }
+
+            p {
+                display: block;
+                padding: var(--space-2xs) var(--space-s) var(--space-2xs)
+                    calc(var(--image-width) + var(--space-xs));
+                background: var(--clr-surface-200);
+                border-radius: var(--radius-xs);
+                text-wrap: unset;
+                z-index: 0;
+
+                @media (max-width: 38rem) {
+                    width: 100%;
+                    font-size: calc(var(--step-0) - 0.1rem);
+                }
+            }
+        }
+    }
+}
+
+body.archive .post-cards-grid {
+    margin-block-start: var(--space-l);
 }

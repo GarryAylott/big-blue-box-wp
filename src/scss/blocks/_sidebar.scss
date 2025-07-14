@@ -4,7 +4,6 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
 */
 
 .main-sidebar {
-
     .search-form {
         position: relative;
         display: grid;
@@ -22,7 +21,8 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
         }
     }
 
-    .discord-link, .intro {
+    .discord-link,
+    .intro {
         display: flex;
         flex-direction: column;
         gap: var(--space-s);
@@ -42,8 +42,13 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
             gap: var(--space-xs);
             padding-block: var(--space-xs);
 
-            img {
-                border-radius: var(--radius-xs);
+            .author-avatar {
+                min-width: 56px;
+                transition: all 0.1s ease-in-out;
+
+                &:hover {
+                    filter: drop-shadow(0 0 3px rgba(109, 153, 248, 1));
+                }
             }
 
             .author-block-content {
@@ -59,6 +64,10 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
                 min-width: 56px;
                 height: 56px;
                 background-color: var(--clr-surface-400);
+
+                img {
+                    align-self: center;
+                }
             }
 
             p:not(:first-child) {

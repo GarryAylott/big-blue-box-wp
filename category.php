@@ -17,7 +17,7 @@ switch ($slug) {
         break;
     case 'articles':
         $hero_heading = 'Articles';
-        $hero_sub = 'All our Doctor Who writing in one place: Big Finish, book, and merch reviews, editorials, and event coverage—updated regularly by the Big Blue Box team.';
+        $hero_sub = 'All our Doctor Who writing in one place: Reviews for Big Finish, books, and merch, editorials, plus event coverage—updated regularly by the Big Blue Box team.';
         break;
     default:
         $hero_heading = 'Category: ' . single_cat_title('', false);

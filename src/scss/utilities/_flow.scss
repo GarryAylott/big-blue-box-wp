@@ -6,21 +6,27 @@ Spacing value between content blocks.
 // Using :where to lower specificity to sections like blockquote, images, etc can override margin-block margins.
 
 :where(.flow-tiny) > :where(* + *) {
-  margin-block-start: var(--flow-space-tiny, 0.5em);
+    margin-block-start: var(--flow-space-tiny, 0.5em);
 }
 
 :where(.flow-small) > :where(* + *) {
-  margin-block-start: var(--flow-space-small, 0.5em);
+    margin-block-start: var(--flow-space-small, 0.5em);
 }
 
 :where(.flow) > :where(* + *) {
-  margin-block-start: var(--flow-space, 1em);
+    margin-block-start: var(--flow-space, 1em);
 }
 
 :where(.flow-large) > :where(* + *) {
-  margin-block-start: var(--flow-space-large, 2em);
+    margin-block-start: var(--flow-space-large, 2em);
 }
 
 :where(.flow-page-regions) > :where(* + *) {
-  margin-block-start: var(--flow-space-xl, 8em);
+    margin-block-start: var(--flow-space-xl, 8em);
+}
+
+@mixin flow-small {
+    :where(* + *) {
+        margin-block-start: var(--flow-space, 1em);
+    }
 }

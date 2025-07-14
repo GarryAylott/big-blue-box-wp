@@ -1,56 +1,54 @@
+@use "utilities" as *;
+
 /* 
 MULTI-COL POSTS
 Layout and styling for small post cards in multiple columns (desktop).
 */
 
 .more-articles {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: var(--space-2xl);
+
+    @media (max-width: 46rem) {
+        gap: var(--space-xl);
+    }
 
     &__column {
         display: flex;
         flex-direction: column;
         gap: var(--space-m);
-        height: 100%;
 
         ul {
-            flex: 1;
+            display: flex;
+            gap: var(--space-m);
+            flex-wrap: wrap;
+
+            @media (max-width: 46rem) {
+                flex-direction: column;
+                @include flow-small;
+            }
 
             li {
-                &:not(:last-child) {
-                    border-bottom: 1px solid var(--clr-border-darker);
-                    padding-block-end: var(--space-s);
-                    margin-block-end: var(--space-s);
-                }
+                flex: 1;
             }
         }
     }
 
-    @supports (grid-template-rows: subgrid) {
-        grid-template-rows: auto 1fr auto;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-s);
 
-        &__column {
-            display: grid;
-            grid-template-rows: subgrid;
-            grid-row: span 3;
-
-            ul {
-                display: grid;
-                grid-template-rows: repeat(3, 1fr);
-                gap: var(--space-s);
-            }
+        h5 {
+            margin: 0;
         }
     }
 
     // Content styling
     .more-articles-content {
-        display: flex;
-        flex-direction: column;
-
         a {
-            display: block;
-
             h6 {
                 margin-block: var(--space-s) var(--space-2xs);
                 text-wrap: pretty;
@@ -62,12 +60,21 @@ Layout and styling for small post cards in multiple columns (desktop).
                 object-fit: cover;
             }
         }
+
+        .post-meta {
+            margin: 0;
+
+            p {
+                color: var(--clr-text-900);
+            }
+        }
     }
 
     .button-ghost {
         width: fit-content;
+        white-space: nowrap;
 
-        @media (max-width: 48em) {
+        @media (max-width: 46em) {
             width: auto;
         }
     }

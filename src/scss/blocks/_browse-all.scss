@@ -1,4 +1,4 @@
-@use 'post-cards' as *;
+@use "post-cards" as *;
 
 /* 
 BROWSE ALL BLOCK
@@ -11,7 +11,7 @@ Layout and styling for the browse all and side section.
     background-repeat: no-repeat;
     background-size: contain;
 
-    @media (max-width: 989px) {
+    @media (max-width: 61.813rem) {
         background: none;
     }
 

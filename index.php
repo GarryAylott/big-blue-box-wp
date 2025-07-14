@@ -143,7 +143,10 @@ get_header();
 
                 if ($query->have_posts()) : ?>
                     <div class="more-articles__column">
-                        <h5><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h5>
+                        <div class="more-articles__header">
+                            <h4><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h4>
+                            <a class="button-ghost" href="<?php echo get_tag_link(get_term_by('slug', $tag, 'post_tag')->term_id); ?>" class="tag-archive-link">View all <?php echo ucwords(str_replace('-', ' ', $tag)); ?></a>
+                        </div>
                         <ul role="list">
                         <?php while ($query->have_posts()) : $query->the_post(); ?>
 
@@ -173,7 +176,6 @@ get_header();
                             
                         <?php endwhile; ?>
                         </ul>
-                        <a class="button-ghost" href="<?php echo get_tag_link(get_term_by('slug', $tag, 'post_tag')->term_id); ?>" class="tag-archive-link">View all <?php echo ucwords(str_replace('-', ' ', $tag)); ?></a>
                     </div>
                 <?php endif;
                 // Reset Post Data

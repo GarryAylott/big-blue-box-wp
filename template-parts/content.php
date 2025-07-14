@@ -21,17 +21,18 @@
 
 			<div class="post-article-meta flex">
 				<?php
-					$reading_time = sprintf(
-						'<p class="reading-time small">%s%s</p>',
-						bbb_get_icon( 'icon-clock' ),
-						esc_html( bbb_estimated_reading_time() )
-					);
-
 					echo '<p class="small">By ' . esc_html( get_the_author() ) . '</p>';
 					echo '<span class="separator">|</span>';
 					echo '<p class="small">' . esc_html( get_the_date() ) . '</p>';
-					echo '<span class="separator">|</span>';
-					echo $reading_time;
+					if ( ! has_category( 'podcasts' ) ) {
+						echo '<span class="separator">|</span>';
+						$reading_time = sprintf(
+							'<p class="reading-time small">%s%s</p>',
+							bbb_get_icon( 'icon-clock' ),
+							esc_html( bbb_estimated_reading_time() )
+						);
+						echo $reading_time;
+					}
 				?>
 			</div>
 
@@ -90,14 +91,14 @@
 			<section class="author-info flow-small">
 			<?php
 				$author_id = get_the_author_meta( 'ID' );
-				$short_bio = get_field( 'short_bio', 'user_' . $author_id );
+				$bio_short = get_field( 'bio_short', 'user_' . $author_id );
 				
 				// Output the author's avatar.
 				echo get_avatar( $author_id, 72, '', get_the_author() );
 
-				// Output the short bio if available; otherwise, fall back to the default description.
-				if ( $short_bio ) {
-					echo '<p class="small">' . wp_kses_post( $short_bio ) . '</p>';
+				// Output the custom bio_short if available; otherwise, fall back to the default description.
+				if ( $bio_short ) {
+					echo '<p class="small">' . wp_kses_post( $bio_short ) . '</p>';
 				} else {
 					echo '<p class="small">' . esc_html( get_the_author_meta( 'description' ) ) . '</p>';
 				}

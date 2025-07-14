@@ -1,3 +1,5 @@
+@use "utilities" as *;
+
 /* 
 HERO BACKGROUND BLOCK
 Layout and styling for the large background image that appears at the top of most pages.
@@ -19,11 +21,19 @@ Layout and styling for the large background image that appears at the top of mos
         will-change: opacity;
         opacity: 0;
         transition: opacity 0.1s ease-out;
+    }
+}
 
-        @media (max-width: 48rem) {
+body:is(.author) {
+    .hero-bg-image > img {
+        @media (max-width: 68.75rem) {
             left: 0;
             right: 0;
             object-position: right center;
+        }
+
+        @media (max-width: 49.938rem) {
+            @include visually-hidden;
         }
     }
 }

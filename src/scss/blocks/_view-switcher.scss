@@ -1,0 +1,52 @@
+@use "utilities" as *;
+
+/* 
+VIEW SWITCHER BLOCK
+Styling for minimal view switcher when a Button Group is overkill.
+*/
+
+.view-switcher {
+    display: flex;
+    gap: var(--space-s-m);
+    margin-block-end: var(--space-s);
+
+    button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-size: var(--step--1);
+        color: var(--clr-text-900);
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding-inline-start: 1rem;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            color: var(--clr-brand-accent);
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: var(--radius-circle);
+            background: var(--clr-surface-200);
+            transition: all 0.2s ease-in-out;
+        }
+
+        &:hover:before {
+            background: var(--clr-brand-accent);
+        }
+
+        &.is-active {
+            color: var(--clr-brand-accent);
+
+            &:before {
+                background: var(--clr-brand-accent);
+            }
+        }
+    }
+}

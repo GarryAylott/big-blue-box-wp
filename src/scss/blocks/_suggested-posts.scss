@@ -6,6 +6,8 @@ Layout and styling for the 'Continue reading/listening' section.
 .suggested-posts {
     position: relative;
     margin-block-end: var(--space-xl);
+    padding-block-start: var(--space-s);
+    border-block-start: 1px solid var(--clr-border-darker);
 
     .suggested-posts-header {
         position: relative;

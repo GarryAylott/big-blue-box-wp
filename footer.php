@@ -21,7 +21,33 @@
 							<path d="M25.4316 95.1697.00684 85.3796l.00586-.0722v-3.3936h1.95507l-.01074-58.8935-1.79004.0312H.00195L0 18.9871l.16504-.002L25.415 9.73413l.0166 85.43557ZM5.91797 38.574l.00293 9.414 5.7129-.3584-.002-9.9199-5.71383.8643Zm11.64453.8867c-1.2885.1715-2.3084 1.5078-2.3086 2.9941 0 1.4865 1.0198 2.6175 2.3106 2.5274 1.3309-.0946 2.4375-1.4451 2.4375-3.0108-.0001-1.5656-1.1065-2.6888-2.4395-2.5107ZM4.88965 25.0613l.00195 10.5332 7.8193-1.3389-.0029-11.3564-7.81835 2.1621Zm8.79885-2.4209.0019 11.3994 8.7959-1.4707-.0019-12.1768-8.7959 2.2481ZM26.3986 8.43484l-5.7957 2.11456V2.28472L26.3986 0"/>
 						</g>
 					</svg>
-					<p class="small">Your space-time coordinates for everything Doctor Who</p>
+					<?php
+						$phrases = [
+							"has been podcasting and blogging since March 2014.",
+							"has defeated approximately 2 Daleks. So far.",
+							"has published around 42,750 minutes of Doctor Who content and counting.",
+							"once tried to reverse the polarity. That didn't end well.",
+							"episode titles are 90% puns, 10% waffle.",
+							"has thoughts about the Timeless Child.",
+							"was created in the UK but also enjoyed around the world.",
+							"quotes “City of Death” in normal conversation.",
+							"has podcasted through two big anniversary years of the show.",
+							"has argued about “Love & Monsters”.",
+							"has 4 people on the writing team.",
+							"never calls it “NuWho”. Ever...",
+							"...nor uses the term “Whovian” for that matter.",
+							"has active listeners since the very first episode.",
+							"wishes there was unlimited Rice Pudding."
+						];
+
+						$default_phrase = $phrases[0];
+					?>
+					<p class="rotating-sentence small" data-phrases='<?php echo esc_attr(json_encode($phrases)); ?>'>
+						<span class="rotating-sentence__wrapper">
+							<span class="rotating-sentence__prefix">The Big Blue Box</span>
+							<span class="rotating-sentence__dynamic" aria-live="polite"><?php echo esc_html($default_phrase); ?></span>
+						</span>
+					</p>
 					<ul class="social-icons" role="list">
 						<li>
 							<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noopener noreferrer">

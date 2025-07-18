@@ -307,6 +307,44 @@ const initCategorySwitcher = () => {
     });
 };
 
+// Rotating sentences in footer
+const initRotatingSentence = () => {
+    const container = document.querySelector(".rotating-sentence");
+    if (!container) return;
+
+    const dynamicSpan = container.querySelector(".rotating-sentence__dynamic");
+    if (!dynamicSpan) return;
+
+    let phrases;
+    try {
+        phrases = JSON.parse(container.dataset.phrases);
+    } catch (err) {
+        console.error("Invalid phrases JSON:", err);
+        return;
+    }
+
+    if (!Array.isArray(phrases) || phrases.length < 2) return;
+
+    let index = 0;
+
+    // Show first phrase immediately
+    dynamicSpan.textContent = phrases[index];
+    dynamicSpan.classList.add("visible");
+    index = 1;
+
+    const rotateText = () => {
+        dynamicSpan.classList.remove("visible");
+
+        setTimeout(() => {
+            dynamicSpan.textContent = phrases[index];
+            dynamicSpan.classList.add("visible");
+            index = (index + 1) % phrases.length;
+        }, 250);
+    };
+
+    setInterval(rotateText, 5000);
+};
+
 // Initialize all features
 const init = () => {
     initNavigation();
@@ -317,6 +355,7 @@ const init = () => {
     initExternalLinkIcons();
     initTardisScrollProgress();
     initCategorySwitcher();
+    initRotatingSentence();
 };
 
 // Start when DOM is ready

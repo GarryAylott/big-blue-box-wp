@@ -1,4 +1,4 @@
-@use 'utilities' as *;
+@use "utilities" as *;
 
 /* 
 LINKS TO PODCAST APPS BLOCK
@@ -11,13 +11,12 @@ LINKS TO PODCAST APPS BLOCK
 
     &__links {
         display: grid;
+        grid-template-columns: repeat(4, auto);
         gap: 1rem;
         padding: 0;
         margin: 0;
         list-style: none;
         justify-content: center;
-
-        grid-template-columns: repeat(4, auto);
 
         @media (max-width: 64rem) {
             grid-template-columns: repeat(2, auto);

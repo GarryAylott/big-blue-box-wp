@@ -10,7 +10,6 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
 ?>
 
 <?php if ($card_type === 'browse') : ?>
-<!-- Browse All Card Layout -->
 <article id="post-<?php the_ID(); ?>" <?php post_class('post-card-alt'); ?>>
     <a href="<?php the_permalink(); ?>">
         <div class="article-top">

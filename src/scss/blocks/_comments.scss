@@ -6,6 +6,8 @@ Layout and styling for comments section at the end of articles.
 .comments-area {
     // Add comment form area
     max-width: 57.5rem;
+    padding-block-start: var(--space-s);
+    border-block-start: 1px solid var(--clr-border-darker);
 
     .title {
         margin-block-end: var(--space-l);
@@ -82,13 +84,16 @@ Layout and styling for comments section at the end of articles.
                 border-radius: var(--radius-small);
             }
 
-            .team-img, .default-img {
+            .team-img,
+            .default-img {
                 width: 64px;
                 height: auto;
             }
 
             @media (max-width: 28.125rem) {
-                .team-img, .default-img, .gravatar-img {
+                .team-img,
+                .default-img,
+                .gravatar-img {
                     width: 48px;
                 }
             }
@@ -127,7 +132,6 @@ Layout and styling for comments section at the end of articles.
                         padding: 6px 12px;
                         background: var(--clr-surface-300);
                         border-radius: var(--radius-small);
-                        
                     }
                 }
 
@@ -175,7 +179,10 @@ Layout and styling for comments section at the end of articles.
     }
 
     // Replies
-    .depth-2, .depth-3, .depth-4, .depth-5 {
+    .depth-2,
+    .depth-3,
+    .depth-4,
+    .depth-5 {
         margin-inline-start: var(--space-l);
         margin-block-start: var(--space-m);
 

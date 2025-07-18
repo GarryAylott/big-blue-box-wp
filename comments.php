@@ -51,11 +51,11 @@ if ( post_password_required() ) {
             'author_email_group' =>
                 '<div class="comment-form-fields flex">'
                 . '<p class="comment-form-author form-input-group">'
-                    . '<label for="author">Your name*</label>'
+                    . '<label for="author">Your name</label>'
                     . '<input id="author" name="author" type="text" placeholder="John Smith" value="' . esc_attr($commenter['comment_author']) . '" required />'
                 . '</p>'
                 . '<p class="comment-form-email form-input-group">'
-                    . '<label for="email">Your email address*</label>'
+                    . '<label for="email">Your email address</label>'
                     . '<input id="email" name="email" type="email" placeholder="johnsmith@gallifrey.com" value="' . esc_attr($commenter['comment_author_email']) . '" required />'
                 . '</p>'
                 . '</div>',
@@ -70,7 +70,7 @@ if ( post_password_required() ) {
         comment_form([
             'fields' => $fields,
             'comment_field' => '<p class="comment-form-comment form-input-group">'
-                . '<label for="comment">Comment*</label>'
+                . '<label for="comment">Comment</label>'
                 . '<textarea id="comment" name="comment" placeholder="Your comment here..." required></textarea>'
                 . '</p>',
             'class_form' => 'custom-comment-form',

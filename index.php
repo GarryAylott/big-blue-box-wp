@@ -83,7 +83,7 @@ get_header();
 
     <div class="browse-all">
         <div class="wrapper">
-            <div class="category-switcher button-group rounded-small" role="group" aria-label="Filter posts by type">
+            <div class="view-switcher" role="group" aria-label="Filter posts by type">
                 <button class="switch-btn is-active" data-category="all" aria-pressed="true">All</button>
                 <button class="switch-btn" data-category="articles" aria-pressed="true">Articles</button>
                 <button class="switch-btn" data-category="podcasts" aria-pressed="false">Podcasts</button>

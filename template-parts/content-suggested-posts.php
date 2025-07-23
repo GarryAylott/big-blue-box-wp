@@ -69,33 +69,7 @@
         <?php 
         if ( $query->have_posts() ) :
             while ( $query->have_posts() ) : $query->the_post(); ?>
-                <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-                    <?php if ( has_post_thumbnail() ) : ?>
-                        <a href="<?php echo esc_url(get_permalink()); ?>">
-                            <img class="post-thumb-img img-hover rounded-small" src="<?php echo esc_url(get_the_post_thumbnail_url(null, 'homepage-thumb')); ?>" width="387" height="217" alt="<?php echo esc_attr(get_the_title()); ?>">
-                        </a>
-                    <?php endif; ?>
-
-                    <div class="post-card-content">
-                        <header class="entry-header">
-                            <a href="<?php echo esc_url(get_permalink()); ?>">
-                                <h5 class="balance">
-                                    <?php
-                                        $thetitle = esc_html(get_the_title());
-                                        echo (strlen($thetitle) > 80) ? substr($thetitle, 0, 80) . "..." : $thetitle;
-                                    ?>
-                                </h5>
-                            </a>
-                        </header>
-
-                        <div class="entry-content">
-                            <p class="small">
-                                <?php echo wp_trim_words( get_the_excerpt(), 15 ); ?>
-                            </p>
-                        </div>
-                    </div>
-                </article>
+                <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
         <?php
         endwhile;
             wp_reset_postdata();

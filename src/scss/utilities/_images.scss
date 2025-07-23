@@ -1,0 +1,25 @@
+/* 
+IMAGE STATE STYLES
+Fancy css filter effects for image link hovers.
+*/
+
+// Container div mainly for post thumbnails but also other images where the zoom effect hover state is used.
+.img-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-small);
+    overflow: hidden;
+}
+
+.img-hover {
+    filter: saturate(1) brightness(1);
+    transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, filter;
+    transform-origin: center center;
+
+    &:hover {
+        filter: saturate(1.1) brightness(1.15);
+        transform: scale(1.03);
+    }
+}

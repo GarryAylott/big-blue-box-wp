@@ -5,18 +5,19 @@ Layout and styling for featured and preview card images.
 
 article {
     .post-thumb-img {
+        display: block;
         width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
+        height: 100%;
         object-fit: cover;
     }
 
-    figure, .wp-post-image figure {
+    figure,
+    .wp-post-image figure {
         max-width: 100%;
         margin-inline: auto;
         padding-block-start: var(--space-s);
         margin-block-end: var(--space-l);
-        
+
         img {
             border-radius: var(--radius-small);
         }

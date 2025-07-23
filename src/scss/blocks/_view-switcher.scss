@@ -7,34 +7,42 @@ Styling for minimal view switcher when a Button Group is overkill.
 
 .view-switcher {
     display: flex;
-    gap: var(--space-s-m);
+    gap: var(--space-2xs);
     margin-block-end: var(--space-s);
 
     button {
         position: relative;
         display: flex;
         align-items: center;
+        gap: var(--space-2xs);
         font-size: var(--step--1);
         color: var(--clr-text-900);
-        border: none;
+        padding-block: calc(var(--space-2xs) - 0.25rem);
+        padding-inline: calc(var(--space-2xs) + 0.25rem);
         background: none;
+        border: none;
+        border-radius: var(--radius-xs);
         cursor: pointer;
-        padding-inline-start: 1rem;
         transition: all 0.2s ease-in-out;
 
         &:hover {
             color: var(--clr-brand-accent);
+            background: var(--clr-surface-300);
         }
 
-        &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            width: 8px;
-            height: 8px;
-            border-radius: var(--radius-circle);
-            background: var(--clr-surface-200);
-            transition: all 0.2s ease-in-out;
+        &[data-category="all"] {
+            padding-inline-start: calc(var(--space-s) + 0.2rem);
+
+            &:before {
+                content: "";
+                position: absolute;
+                left: var(--space-2xs);
+                width: 8px;
+                height: 8px;
+                border-radius: var(--radius-circle);
+                background: var(--clr-surface-200);
+                transition: all 0.2s ease-in-out;
+            }
         }
 
         &:hover:before {
@@ -43,6 +51,7 @@ Styling for minimal view switcher when a Button Group is overkill.
 
         &.is-active {
             color: var(--clr-brand-accent);
+            background: var(--clr-surface-300);
 
             &:before {
                 background: var(--clr-brand-accent);

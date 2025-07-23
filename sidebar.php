@@ -164,8 +164,10 @@
 	</section>
 
 	<section>
-		<a href="https://www.youtube.com/user/thegeekshandbag" target="_blank" rel="noreferrer noopener">
-			<img class="sidebar-img img-hover" src="<?php echo get_bloginfo('template_url') ?>/images/sidebar-panel-geekshandbag.webp" width="329" height="205" alt="Adam's YouTube channel - The Geeks Handbag.">
+		<a class="has-external-icon" href="https://www.youtube.com/user/thegeekshandbag" target="_blank" rel="noreferrer noopener">
+			<div class="img-container">
+				<img class="sidebar-img img-hover" src="<?php echo get_bloginfo('template_url') ?>/images/sidebar-panel-geekshandbag.webp" width="329" height="205" alt="Adam's YouTube channel - The Geeks Handbag.">
+			</div>
 		</a>
 	</section>
 </aside><!-- #secondary -->

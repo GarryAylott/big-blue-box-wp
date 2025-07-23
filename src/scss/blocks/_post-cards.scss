@@ -1,4 +1,4 @@
-@use 'utilities' as *;
+@use "utilities" as *;
 
 /* 
 POST PREVIEW CARDS
@@ -28,6 +28,7 @@ article {
     margin-block-end: var(--space-s);
 
     .article-top {
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: var(--space-2xs);
@@ -46,6 +47,15 @@ article {
 
         footer {
             margin-block-start: auto;
+        }
+    }
+}
+
+// Specific tweak to suggested posts on single posts
+body:is(.single-post) {
+    article.has-post-thumbnail .author-meta {
+        &__author-name {
+            @include visually-hidden;
         }
     }
 }

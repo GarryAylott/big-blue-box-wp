@@ -299,7 +299,7 @@ function filter_posts_by_category() {
 
     if ($query->have_posts()) :
         while ($query->have_posts()) : $query->the_post();
-            get_template_part('template-parts/content', 'ajax-post-card');
+            get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse'));
         endwhile;
     else :
         echo '<p>No posts found.</p>';
@@ -330,6 +330,9 @@ require get_template_directory() . '/inc/pagination.php';
 
 // Custom comments section.
 require get_template_directory() . '/inc/custom-comments.php';
+
+// Default media player customisations.
+require get_template_directory() . '/inc/custom-media-player.php';
 
 // Enqueue scripts and styles.
 require get_template_directory() . '/inc/enqueue.php';

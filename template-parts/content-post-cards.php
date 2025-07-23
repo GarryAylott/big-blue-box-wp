@@ -14,7 +14,9 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
     <a href="<?php the_permalink(); ?>">
         <div class="article-top">
             <?php if (has_post_thumbnail()) : ?>
-                <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="391" height="220" alt="<?php echo the_title() ?>">
+                <div class="img-container">
+                    <img class="post-thumb-img img-hover" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="391" height="220" alt="<?php echo the_title() ?>">
+                </div>
             <?php endif; ?>
 
             <header class="entry-header">
@@ -40,7 +42,9 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
 <article id="post-<?php the_ID(); ?>" <?php post_class('post-card-author'); ?>>
     <a href="<?php the_permalink(); ?>">
         <?php if ( has_post_thumbnail() ) : ?>
-            <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="387" height="217" alt="<?php echo the_title() ?>">
+            <div class="img-container">
+                <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="387" height="217" alt="<?php echo the_title() ?>">
+            </div>
         <?php endif; ?>
 
         <header class="entry-header">

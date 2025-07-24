@@ -5,80 +5,26 @@ CUSTOM MEDIA PLAYER BLOCK
 Custom styles to replace the default WP MediaElement.js styles.
 */
 
-.my-podcast-player {
-    .mejs-container {
-        position: relative;
-        font-family: inherit;
-        background: #f6f6f6;
-        border-radius: 6px;
-        overflow: hidden;
-        max-width: 100%;
-    }
+.vlite-container {
+    font-family: inherit;
 
-    .mejs-controls {
+    .vlite-controls {
+        background: #f5f5f5;
+        height: 48px;
+        padding: 0 12px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        height: 48px;
-        background: #e5e5e5;
-        padding: 0 12px;
     }
 
-    .mejs-button button {
-        background: none;
-        border: none;
+    .vlite-play,
+    .vlite-pause {
         width: 32px;
         height: 32px;
-        text-indent: -9999px;
-        overflow: hidden;
-        cursor: pointer;
+        background: url("../icons/play.svg") center no-repeat;
+        background-size: contain;
     }
 
-    .mejs-playpause-button button {
-        background: url("../icons/play.svg") no-repeat center center;
-        background-size: 20px 20px;
-    }
-
-    .mejs-pause button {
-        background-image: url("../icons/pause.svg");
-    }
-
-    .mejs-time {
-        font-size: 14px;
-        color: #333;
-        white-space: nowrap;
-    }
-
-    .mejs-time-rail {
-        position: relative;
-        flex: 1;
-        margin: 0 12px;
-        height: 6px;
-        background: #ccc;
-        border-radius: 3px;
-    }
-
-    .mejs-time-current,
-    .mejs-time-loaded {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 6px;
-        border-radius: 3px;
-    }
-
-    .mejs-time-loaded {
-        background: #bbb;
-        z-index: 1;
-    }
-
-    .mejs-time-current {
-        background: #ff3366;
-        z-index: 2;
-    }
-
-    .mejs-volume-button,
-    .mejs-horizontal-volume-slider {
-        display: none; // Add volume controls later if needed
+    .vlite-svg-volume {
+        display: none;
     }
 }

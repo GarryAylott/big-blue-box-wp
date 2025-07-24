@@ -20,20 +20,41 @@
 			</div>
 
 			<div class="post-article-meta flex">
-				<?php
-					echo '<p class="small">By ' . esc_html( get_the_author() ) . '</p>';
-					echo '<span class="separator">|</span>';
-					echo '<p class="small">' . esc_html( get_the_date() ) . '</p>';
-					if ( ! has_category( 'podcasts' ) ) {
-						echo '<span class="separator">|</span>';
-						$reading_time = sprintf(
-							'<p class="reading-time small">%s%s</p>',
-							bbb_get_icon( 'icon-clock' ),
-							esc_html( bbb_estimated_reading_time() )
-						);
-						echo $reading_time;
+				<?php if ( has_category( 'podcasts' ) ) : ?>
+					<?php
+					$ep_label     = get_field( 'podcast_episode_number' );
+					$episode_type = get_field( 'podcast_episode_type' ); // e.g., 'bonus', 'trailer'
+					$is_bonus = is_string( $episode_type ) && strtolower( $episode_type ) === 'bonus';
+
+					// Build the label with fallback
+					if ( is_numeric( $ep_label ) ) {
+						$episode_text = 'Episode ' . esc_html( $ep_label );
+					} elseif ( ! empty( $ep_label ) ) {
+						$episode_text = esc_html( $ep_label );
+					} elseif ( $is_bonus ) {
+						$episode_text = 'Bonus Episode';
+					} else {
+						$episode_text = null;
 					}
-				?>
+
+					if ( $episode_text ) :
+						?>
+						<p class="small"><?php echo $episode_text; ?></p>
+						<span class="separator">|</span>
+					<?php endif; ?>
+
+					<p class="small"><?php echo esc_html( get_the_date() ); ?></p>
+
+				<?php else : ?>
+					<p class="small">By <?php echo esc_html( get_the_author() ); ?></p>
+					<span class="separator">|</span>
+					<p class="small"><?php echo esc_html( get_the_date() ); ?></p>
+					<span class="separator">|</span>
+					<p class="reading-time small">
+						<?php echo bbb_get_icon( 'icon-clock' ); ?>
+						<?php echo esc_html( bbb_estimated_reading_time() ); ?>
+					</p>
+				<?php endif; ?>
 			</div>
 
 			<?php if ( has_tag() ) : ?>
@@ -77,6 +98,36 @@
 					<?php
 				}
 			}
+			?>
+
+			<!-- Podcast player -->
+			<?php
+				if ( in_category( 'podcasts' ) ) :
+					$guid = get_field( 'captivate_episode_guid' );
+					error_log( '🎯 GUID from ACF: ' . print_r( $guid, true ) );
+
+					$audio_url = bbb_get_captivate_audio_url( $guid );
+
+					// Fallback for local dev
+					if ( ! $audio_url && wp_get_environment_type() === 'local' ) {
+						$audio_url = 'https://traffic.libsyn.com/secure/examplepodcast/example-episode.mp3';
+						error_log( '🔊 Using fallback audio URL for local dev.' );
+					}
+
+					echo '<!-- GUID: ' . esc_html( $guid ) . ' -->';
+					echo '<!-- Audio URL: ' . esc_url( $audio_url ) . ' -->';
+
+					if ( $audio_url ) :
+						?>
+						<div class="podcast-player flow">
+							<audio id="player" class="vlite-js" preload="none">
+								<source src="<?php echo esc_url( $audio_url ); ?>" type="audio/mpeg" />
+								Your browser does not support the audio element.
+							</audio>
+						</div>
+						<?php
+					endif;
+				endif;
 			?>
 
 			<section class="post-content flow">

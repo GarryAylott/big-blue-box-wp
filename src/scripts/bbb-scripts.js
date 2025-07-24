@@ -1,3 +1,5 @@
+import Vlitejs from "vlitejs";
+
 // Configuration object
 const CONFIG = {
     FADE_DISTANCE: 900,
@@ -345,6 +347,31 @@ const initRotatingSentence = () => {
     setInterval(rotateText, 5000);
 };
 
+// Audio player
+const initAudioPlayer = () => {
+    const waitForPlayer = setInterval(() => {
+        const audioPlayer = document.querySelector("#player");
+
+        if (audioPlayer && typeof Vlitejs !== "undefined") {
+            console.log("🎧 Initializing vLite…");
+
+            new Vlitejs("#player", {
+                controls: [
+                    "play",
+                    "current-time",
+                    "progress",
+                    "duration",
+                    "volume",
+                ],
+                volume: true,
+                autoplay: false,
+            });
+
+            clearInterval(waitForPlayer);
+        }
+    }, 100); // Check every 100ms
+};
+
 // Initialize all features
 const init = () => {
     initNavigation();
@@ -356,6 +383,7 @@ const init = () => {
     initTardisScrollProgress();
     initCategorySwitcher();
     initRotatingSentence();
+    window.addEventListener("DOMContentLoaded", initAudioPlayer);
 };
 
 // Start when DOM is ready

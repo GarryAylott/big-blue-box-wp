@@ -39,18 +39,27 @@ get_header();
                                     <a href="<?php the_permalink(); ?>">
                                         <h1>
                                             <?php
-                                            $thetitle = $post->post_title;
-                                            $getlength = strlen($thetitle);
-                                            $thelength = 80;
-                                            echo substr($thetitle, 0, $thelength);
-                                            if ($getlength > $thelength) echo "...";
+                                            $thetitle   = $post->post_title;
+                                            $getlength  = strlen( $thetitle );
+                                            $thelength  = 80;
+                                            echo substr( $thetitle, 0, $thelength );
+                                            if ( $getlength > $thelength ) echo "...";
                                             ?>
                                         </h1>
                                     </a>
                                     <p class="icon-text-group small">
-                                        Episode <?php the_field('podcast_episode_number'); ?> <span>•</span> <?php echo $publish_date = get_the_date('j M, Y'); ?>
+                                        <?php
+                                        $ep_label = get_field( 'podcast_episode_number' );
+                                        if ( is_numeric( $ep_label ) ) {
+                                            echo 'Episode ' . esc_html( $ep_label );
+                                        } elseif ( $ep_label ) {
+                                            echo esc_html( $ep_label );
+                                        }
+                                        ?>
+                                        <span>•</span> <?php echo get_the_date( 'j M, Y' ); ?>
                                     </p>
                                 </div>
+
                             </div>
 
                             <p class="latest-podcast-ep__excerpt">
@@ -185,16 +194,16 @@ get_header();
         </div>
     </div>
 
-    <div class="wrapper hero">
+    <div class="wrapper doctors-bbb">
         <picture>
             <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.avif" type="image/avif">
             <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.webp" type="image/webp">
             <img src="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.png" alt="Your space-time coordinates for everything Doctor Who...">
         </picture>
         <div class="podcast-app-links">
-            <p class="centered">
+            <h6 class="centered">
                 Listen to The Big Blue Box Podcast on your favourite podcast app
-            </p>
+            </h6>
             <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
         </div>
     </div>

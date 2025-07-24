@@ -9,6 +9,7 @@ Thumbs.db
 .sass-cache
 .env
 .cache
+wp-config-local.php
 
 # Node modules and output
 node_modules

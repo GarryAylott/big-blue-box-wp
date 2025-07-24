@@ -7,6 +7,7 @@ Version: 2
 Text Domain: bigbluebox
 */
 
-@use 'global';
-@use 'utilities';
-@use 'blocks';
+@use "vendors" as *;
+@use "global";
+@use "utilities";
+@use "blocks";

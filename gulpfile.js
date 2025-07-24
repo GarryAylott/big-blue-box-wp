@@ -6,8 +6,11 @@ import postcss from "gulp-postcss";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import browserSync from "browser-sync";
-import rename from "gulp-rename";
-import terser from "gulp-terser";
+import terser from "@rollup/plugin-terser";
+import { rollup } from "rollup";
+import resolve from "@rollup/plugin-node-resolve";
+import fs from "fs";
+import path from "path";
 
 const sass = gulpSass(dartSass);
 const bs = browserSync.create();
@@ -38,15 +41,31 @@ export function styles() {
 }
 
 // Scripts task
-export function scripts() {
-    return gulp
-        .src(paths.scripts.src)
-        .pipe(sourcemaps.init())
-        .pipe(terser())
-        .pipe(rename({ suffix: ".min" }))
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest(paths.scripts.dest))
-        .pipe(bs.stream());
+export async function scripts() {
+    const bundle = await rollup({
+        input: "src/scripts/bbb-scripts.js",
+        plugins: [resolve(), terser()],
+    });
+
+    const { output } = await bundle.generate({
+        format: "esm",
+        sourcemap: true,
+    });
+
+    // Write JS output manually
+    const jsFile = path.resolve("scripts/bbb-scripts.min.js");
+    const mapFile = `${jsFile}.map`;
+
+    for (const chunkOrAsset of output) {
+        if (chunkOrAsset.type === "chunk") {
+            fs.writeFileSync(jsFile, chunkOrAsset.code);
+            if (chunkOrAsset.map) {
+                fs.writeFileSync(mapFile, chunkOrAsset.map.toString());
+            }
+        }
+    }
+
+    bs.reload();
 }
 
 // BrowserSync

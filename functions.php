@@ -193,7 +193,7 @@ add_filter('the_content', 'bbbx_clean_gutenberg_images', 20);
 function bbbx_clean_gutenberg_images($content) {
     libxml_use_internal_errors(true);
     $doc = new DOMDocument();
-    $doc->loadHTML(mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8'));
+    $doc->loadHTML('<?xml encoding="utf-8" ?>' . $content);
 
     // Loop through all <img> and remove width/height
     foreach ($doc->getElementsByTagName('img') as $img) {
@@ -325,14 +325,31 @@ add_action('pre_get_posts', function($query) {
     }
 });
 
+// No need to load jQuery
+function bbb_remove_jquery_migrate( $scripts ) {
+	if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
+		$script = $scripts->registered['jquery'];
+		if ( $script->deps ) {
+			$script->deps = array_diff( $script->deps, array( 'jquery-migrate' ) );
+		}
+	}
+}
+add_action( 'wp_default_scripts', 'bbb_remove_jquery_migrate' );
+
 // Pagination
 require get_template_directory() . '/inc/pagination.php';
+
+// ACF Fields
+require get_template_directory() . '/inc/acf-fields.php';
+
+// API Shutdown
+require get_template_directory() . '/inc/api-shutdown.php';
 
 // Custom comments section.
 require get_template_directory() . '/inc/custom-comments.php';
 
-// Default media player customisations.
-require get_template_directory() . '/inc/custom-media-player.php';
+// Captivate external audio
+require get_template_directory() . '/inc/captivate-external-audio.php';
 
 // Enqueue scripts and styles.
 require get_template_directory() . '/inc/enqueue.php';

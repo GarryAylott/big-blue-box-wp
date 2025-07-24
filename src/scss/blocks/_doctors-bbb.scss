@@ -3,17 +3,17 @@ HOMEPAGE HERO
 Header styling for the hero section on the homepage.
 */
 
-.hero {
+.doctors-bbb {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-xl);
+    gap: var(--space-l);
 
     picture {
         filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.2));
     }
 
-    h5 {
-        text-align: center;
+    h6 {
+        margin-block-end: var(--space-xs);
     }
 }

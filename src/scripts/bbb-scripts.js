@@ -369,7 +369,7 @@ const initAudioPlayer = () => {
 
             clearInterval(waitForPlayer);
         }
-    }, 100); // Check every 100ms
+    }, 100);
 };
 
 // Initialize all features

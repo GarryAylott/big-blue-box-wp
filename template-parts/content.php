@@ -5,7 +5,7 @@
 
 ?>
 <article class="post-article region-small flow" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <div class="post-hero entry-header">
+	<div class="post-hero entry-header">
 		<?php
 		if (has_post_thumbnail()) :
 			?>
@@ -63,7 +63,7 @@
 				</div>
 			<?php endif; ?>
 		</div>
-    </div>
+	</div>
 
 	<div class="post-article__container">
 		<?php get_template_part('template-parts/content', 'read-progress'); ?>
@@ -119,7 +119,7 @@
 
 					if ( $audio_url ) :
 						?>
-						<div class="podcast-player flow">
+						<div class="podcast-player">
 							<audio id="player" class="vlite-js" preload="none">
 								<source src="<?php echo esc_url( $audio_url ); ?>" type="audio/mpeg" />
 								Your browser does not support the audio element.
@@ -130,11 +130,18 @@
 				endif;
 			?>
 
-			<section class="post-content flow">
-				<?php the_content(); ?>
-			</section>
+		   <section class="post-content flow">
+			   <?php the_content(); ?>
+		   </section>
+		   
+		   <?php get_template_part('template-parts/content', 'review-score'); ?> 
 
-			<?php get_template_part('template-parts/content', 'review-score'); ?> 
+		   <?php if ( in_category( 'podcasts' ) ) : ?>
+			   <div class="podcast-app-links">
+				   <p class="small">Want to listen in your fav podcast app?</p>
+				   <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
+			   </div>
+		   <?php endif; ?>
 			
 		</div>
 
@@ -169,6 +176,6 @@
 			</section>
 
 			<?php get_template_part('template-parts/content', 'social-share-links'); ?> 
-    	</aside>
+		</aside>
 	</div>
 </article>

@@ -33,13 +33,21 @@ function bbb_gravatar_exists($id_or_email) {
     }
 
     $hash = md5(strtolower(trim($email)));
+    $cache_key = 'bbb_gravatar_exists_' . $hash;
+
+    $cached = get_transient($cache_key);
+    if (false !== $cached) {
+        return (bool) $cached;
+    }
+
     $gravatar_url = 'https://www.gravatar.com/avatar/' . $hash . '?d=404&s=64';
 
     $response = wp_remote_head($gravatar_url);
-    if (!is_wp_error($response) && isset($response['response']['code']) && $response['response']['code'] == 200) {
-        return true;
-    }
-    return false;
+    $exists = !is_wp_error($response) && isset($response['response']['code']) && $response['response']['code'] == 200;
+
+    set_transient($cache_key, $exists ? 1 : 0, DAY_IN_SECONDS);
+
+    return $exists;
 }
 
 // Filter: Only override if no Gravatar exists

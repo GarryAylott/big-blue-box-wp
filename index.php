@@ -118,7 +118,7 @@ get_header();
                         'posts_per_page' => 10,
                         'post_status' => 'publish',
                         'post__not_in' => $displayed_posts,
-                        'post-type' => 'post'
+                        'post_type' => 'post'
                     );
                     $query3 = new WP_Query($args3);
 

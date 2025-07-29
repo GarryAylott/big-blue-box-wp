@@ -7,7 +7,7 @@ get_header();
 ?>
 
 <div class="hero-bg-image">
-	<img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg_home.webp" decoding="async" alt="" fetchpriority="high">
+    <img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg_home.webp" decoding="async" alt="" fetchpriority="high">
 </div>
 
 <main id="primary" class="site-main flow-page-regions">
@@ -50,8 +50,11 @@ get_header();
                                     <p class="icon-text-group small">
                                         <?php
                                         $ep_label = get_field( 'podcast_episode_number' );
+                                        $ep_type = get_field( 'podcast_episode_type' );
                                         if ( is_numeric( $ep_label ) ) {
                                             echo 'Episode ' . esc_html( $ep_label );
+                                        } elseif ( $ep_label === 'N/A' && ! empty( $ep_type ) ) {
+                                            echo esc_html( $ep_type );
                                         } elseif ( $ep_label ) {
                                             echo esc_html( $ep_label );
                                         }

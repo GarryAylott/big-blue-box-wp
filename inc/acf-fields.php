@@ -136,35 +136,43 @@ add_action( 'acf/save_post', function( $post_id ) {
 
 	$episode = $data['episode'] ?? null;
 
-	if ( ! is_array( $episode ) ) {
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( '❌ Failed to set episode number. Episode data missing or malformed.' );
-			error_log( print_r( $data, true ) );
-		}
-		return;
-	}
-
+// Extract episode_type and episode_number safely
+$episode_type = null;
+$episode_number = null;
+if ( is_array( $episode ) ) {
+	$episode_type = $episode['episode_type'] ?? null;
 	$episode_number = $episode['episode_number'] ?? null;
-	$episode_type   = $episode['episode_type'] ?? null;
+} else {
+	$episode_type = $data['episode_type'] ?? null;
+}
 
-	// Store raw episode_type for later use
-	if ( $episode_type ) {
-		update_field( 'podcast_episode_type', $episode_type, $post_id );
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( "📦 Saved episode type: $episode_type" );
-		}
+// Always update episode type if available
+if ( $episode_type ) {
+	$friendly_type = $episode_type;
+	if ( strtolower( $episode_type ) === 'full' ) {
+		$friendly_type = 'Standard Weekly Episode';
+	} elseif ( strtolower( $episode_type ) === 'bonus' ) {
+		$friendly_type = 'Bonus Episode';
+	} else {
+		$friendly_type = ucfirst( strtolower( $episode_type ) );
 	}
+	update_field( 'podcast_episode_type', $friendly_type, $post_id );
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		error_log( "📦 Saved episode type: $friendly_type" );
+	}
+}
 
-	if ( $episode_number !== null && $episode_number !== '' ) {
-		update_field( 'podcast_episode_number', $episode_number, $post_id );
+if ( $episode_number !== null && $episode_number !== '' ) {
+	update_field( 'podcast_episode_number', $episode_number, $post_id );
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		error_log( "✅ Episode number set to: $episode_number" );
+	}
+} else {
+	$normalized_type = ucfirst( strtolower( $episode_type ) );
+	if ( in_array( $normalized_type, [ 'Bonus', 'Trailer' ], true ) ) {
+		update_field( 'podcast_episode_number', 'N/A', $post_id );
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( "✅ Episode number set to: $episode_number" );
-		}
-	} elseif ( in_array( $episode_type, [ 'Bonus', 'Trailer' ], true ) ) {
-		$friendly_label = ucfirst( $episode_type ) . ' Episode';
-		update_field( 'podcast_episode_number', $friendly_label, $post_id );
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( "⚠️ $episode_type episode – no number. Fallback used." );
+			error_log( "⚠️ $episode_type episode – set episode number to N/A (fallback, episode data missing or malformed)." );
 		}
 	} else {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
@@ -172,6 +180,7 @@ add_action( 'acf/save_post', function( $post_id ) {
 			error_log( print_r( $data, true ) );
 		}
 	}
+}
 
 }, 20 );
 
@@ -181,6 +190,7 @@ add_filter( 'acf/load_field', function( $field ) {
 	$read_only_fields = [
 		'captivate_audio_url',
 		'podcast_episode_number',
+		'podcast_episode_type',
 	];
 
 	if ( in_array( $field['name'], $read_only_fields, true ) ) {

@@ -5,7 +5,7 @@
 
 ?>
 <article class="post-article region-small flow" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <div class="post-hero entry-header">
+	<div class="post-hero entry-header">
 		<?php
 		if (has_post_thumbnail()) :
 			?>
@@ -23,16 +23,15 @@
 				<?php if ( has_category( 'podcasts' ) ) : ?>
 					<?php
 					$ep_label     = get_field( 'podcast_episode_number' );
-					$episode_type = get_field( 'podcast_episode_type' ); // e.g., 'bonus', 'trailer'
-					$is_bonus = is_string( $episode_type ) && strtolower( $episode_type ) === 'bonus';
+					$episode_type = get_field( 'podcast_episode_type' );
 
 					// Build the label with fallback
 					if ( is_numeric( $ep_label ) ) {
 						$episode_text = 'Episode ' . esc_html( $ep_label );
+					} elseif ( $ep_label === 'N/A' && ! empty( $episode_type ) ) {
+						$episode_text = esc_html( $episode_type );
 					} elseif ( ! empty( $ep_label ) ) {
 						$episode_text = esc_html( $ep_label );
-					} elseif ( $is_bonus ) {
-						$episode_text = 'Bonus Episode';
 					} else {
 						$episode_text = null;
 					}
@@ -63,7 +62,7 @@
 				</div>
 			<?php endif; ?>
 		</div>
-    </div>
+	</div>
 
 	<div class="post-article__container">
 		<?php get_template_part('template-parts/content', 'read-progress'); ?>
@@ -135,6 +134,15 @@
 			</section>
 
 			<?php get_template_part('template-parts/content', 'review-score'); ?> 
+
+			<?php if ( in_category( 'podcasts' ) ) : ?>
+				<div class="podcast-app-links">
+					<h6 class="centered">
+						Want to listen on your favourite podcast app?
+					</h6>
+					<?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
+				</div>
+			<?php endif; ?>
 			
 		</div>
 
@@ -169,6 +177,6 @@
 			</section>
 
 			<?php get_template_part('template-parts/content', 'social-share-links'); ?> 
-    	</aside>
+		</aside>
 	</div>
 </article>

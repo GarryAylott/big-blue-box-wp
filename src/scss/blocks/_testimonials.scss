@@ -34,7 +34,8 @@ Styles for full-width and column based testimonials.
             margin-inline-start: -4px;
         }
 
-        h4, p {
+        h4,
+        p {
             color: var(--clr-text-400);
         }
 
@@ -55,7 +56,8 @@ Styles for full-width and column based testimonials.
         flex-direction: column;
         gap: calc(var(--space-3xs) - 3px);
 
-        h5, cite {
+        h5,
+        cite {
             font-family: var(--font-family-body);
             font-style: normal;
         }
@@ -69,6 +71,11 @@ Styles for full-width and column based testimonials.
             align-items: center;
             gap: var(--space-2xs);
             font-size: var(--step--1);
+
+            svg {
+                width: 100px;
+                height: 26px;
+            }
         }
     }
 

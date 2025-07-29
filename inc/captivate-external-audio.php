@@ -14,7 +14,8 @@ function bbb_get_captivate_audio_url( $guid ) {
 	// ✅ Check if API is globally disabled via admin
 	if ( get_option( 'disable_captivate_api' ) ) {
 		error_log( '🛑 API disabled via admin setting.' );
-		return false;
+		error_log( '🔊 Using fallback audio URL for local dev.' );
+		return 'https://big-blue-box.local/wp-content/uploads/2025/07/BBB-Ep426.mp3';
 	}
 
 	$cache_key = 'captivate_audio_' . md5( $guid );
@@ -24,7 +25,7 @@ function bbb_get_captivate_audio_url( $guid ) {
 		return $cached;
 	}
 
-	// 🛑 Avoid API calls outside admin or save_post
+	// Avoid API calls outside admin or save_post
 	if (
 		! is_admin() &&
 		! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) &&

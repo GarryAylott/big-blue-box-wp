@@ -83,9 +83,9 @@ Styles for the Roundtable link panel
             background: radial-gradient(
                 circle,
                 hsla(221, 91%, 70%, 0.15) 0,
-                hsla(216, 50%, 7%, 0) 60%
+                hsla(221, 91%, 70%, 0) 60%
             );
-            border-radius: 50%;
+            border-radius: var(--radius-circle);
             filter: blur(20px);
             z-index: -1;
 

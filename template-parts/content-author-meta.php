@@ -27,6 +27,14 @@ if ( array_key_exists($author_name, $author_images) ) {
     // Default author image if the author is not found in the array
     $author_image_url = get_template_directory_uri() . '/images/authors/author-avatar-small-default.webp';
 }
+
+// Display the author name, image, and post date
+if ( array_key_exists($author_name, $author_images) ) {
+    $author_image_url = get_template_directory_uri() . '/images/authors/' . $author_images[$author_name];
+} else {
+    // Default author image if the author is not found in the array
+    $author_image_url = get_template_directory_uri() . '/images/authors/author-avatar-small-default.webp';
+}
 ?>
 
 <div class="author-meta">

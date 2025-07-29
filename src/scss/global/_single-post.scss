@@ -173,9 +173,10 @@ Layout and styling for single post pages.
             }
 
             .author-info {
-                img.avatar {
-                    height: 104px;
-                }
+                // img.author-image {
+                //     width: calc(104px / 2);
+                //     height: auto;
+                // }
 
                 a {
                     display: block;

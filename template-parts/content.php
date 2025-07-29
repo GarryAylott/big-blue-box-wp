@@ -152,8 +152,21 @@
 				$author_id = get_the_author_meta( 'ID' );
 				$bio_short = get_field( 'bio_short', 'user_' . $author_id );
 				
-				// Output the author's avatar.
-				echo get_avatar( $author_id, 72, '', get_the_author() );
+				// Output the author's avatar using custom image array and fallback
+				$author_name = get_the_author_meta('display_name', $author_id);
+				$author_images = array(
+					'Garry' => 'author-avatar-small-garry.webp',
+					'Maria Kalotichou' => 'author-avatar-small-maria.webp',
+					'Jordan Shortman' => 'author-avatar-small-jordan.webp',
+					'Harry Walker' => 'author-avatar-small-harry.webp',
+					'Matt Steele' => 'author-avatar-small-matt.webp'
+				);
+				if ( array_key_exists($author_name, $author_images) ) {
+					$author_image_url = get_template_directory_uri() . '/images/authors/' . $author_images[$author_name];
+				} else {
+					$author_image_url = get_template_directory_uri() . '/images/authors/author-avatar-small-default.webp';
+				}
+				echo '<img class="author-image" src="' . esc_url($author_image_url) . '" width="80" height="80" alt="' . esc_attr($author_name) . '" />';
 
 				// Output the custom bio_short if available; otherwise, fall back to the default description.
 				if ( $bio_short ) {

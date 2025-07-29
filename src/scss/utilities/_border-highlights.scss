@@ -14,6 +14,7 @@ Top left border radius effect.
         linear-gradient(160deg, $highlight-color -20%, transparent 40%)
             border-box;
     border: 1px solid transparent;
+    border-radius: inherit;
     z-index: -2;
 }
 /**
@@ -37,6 +38,7 @@ img::before {
     height: 100%;
     margin: -1px;
     background: linear-gradient(to bottom right, $start-color, $end-color 40%);
+    border-radius: inherit;
     z-index: -1;
 }
 /**

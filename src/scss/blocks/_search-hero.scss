@@ -1,0 +1,70 @@
+@use "utilities" as *;
+
+/* 
+SEARCH RESULTS HERO BLOCK
+Layout and styling for the content in the hero section on the search results page.
+*/
+
+// Search query successful
+.search-hero {
+    h2 {
+        margin-block-end: var(--space-m);
+
+        span {
+            color: var(--clr-brand-accent);
+        }
+    }
+
+    .search-hero-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
+        width: 100%;
+
+        @media (min-width: 30rem) {
+            flex-direction: row;
+        }
+
+        @media (min-width: 46.125rem) {
+            flex-direction: row;
+            width: 75%;
+        }
+
+        @media (min-width: 68.5rem) {
+            width: 65.7%;
+        }
+
+        label {
+            flex-grow: 1;
+
+            input {
+                width: 100%;
+            }
+        }
+
+        button {
+            width: fit-content;
+
+            @media (max-width: 29.999rem) {
+                width: 100%;
+            }
+        }
+    }
+
+    .no-search-results {
+        margin-block-end: var(--space-l);
+
+        h2 {
+            max-width: 30ch;
+            margin-block-end: var(--space-m);
+        }
+
+        p {
+            margin-block-end: var(--space-s);
+        }
+
+        form {
+            margin-block-end: var(--space-m);
+        }
+    }
+}

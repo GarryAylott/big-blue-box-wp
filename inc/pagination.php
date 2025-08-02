@@ -5,10 +5,11 @@
  * @package Big_Blue_Box
  */
 
-function bbb_custom_pagination() {
+function bbb_custom_pagination($query = null) {
     global $wp_query;
+    $query = $query ?? $wp_query;
 
-    $total = intval($wp_query->max_num_pages);
+    $total = intval($query->max_num_pages);
     if ($total <= 1) return;
 
     $current = max(1, get_query_var('paged'));

@@ -268,6 +268,9 @@ const initTardisScrollProgress = () => {
 
 // AJAX request for category switcher
 const initCategorySwitcher = () => {
+    // Only enable on homepage or a specific template, NOT search results
+    if (document.body.classList.contains("search-results")) return;
+
     const switchButtons = document.querySelectorAll(
         CONFIG.SELECTORS.categorySwitcher
     );
@@ -275,13 +278,16 @@ const initCategorySwitcher = () => {
     if (!switchButtons.length || !postContainer) return;
 
     const fetchCategoryPosts = (category) => {
+        // Only for homepage/archive, so no search stuff
+        const params = {
+            action: "filter_posts_by_category",
+            category: category,
+        };
+
         fetch(themeSettings.ajaxUrl, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams({
-                action: "filter_posts_by_category",
-                category: category,
-            }),
+            body: new URLSearchParams(params),
         })
             .then((res) => res.text())
             .then((html) => {
@@ -295,7 +301,6 @@ const initCategorySwitcher = () => {
             e.preventDefault();
             const category = button.dataset.category;
 
-            // Update aria-pressed and .is-active for all buttons
             switchButtons.forEach((btn) => {
                 btn.setAttribute("aria-pressed", "false");
                 btn.classList.remove("is-active");

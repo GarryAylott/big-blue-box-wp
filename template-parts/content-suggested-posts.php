@@ -10,7 +10,10 @@
     <div class="suggested-posts-header">
         <h4>
             <?php
-            if (has_category('Podcasts', get_the_ID())) {
+            $header_type = isset($args['header_type']) ? $args['header_type'] : '';
+            if ($header_type === 'latest') {
+                echo 'Latest articles & podcast episodes';
+            } elseif (has_category('Podcasts', get_the_ID())) {
                 echo 'Continue listening';
             } else {
                 echo 'Continue reading';
@@ -36,44 +39,60 @@
             $current_post_categories = wp_get_post_categories($current_post_id);
             $current_post_tags = wp_get_post_tags($current_post_id);
 
-            if (has_category('Podcasts', $current_post_id)) {
-                $current_post_date = get_the_date('Y-m-d H:i:s', $current_post_id);
-
-                $args = array(
+            // Only show latest block on search results page
+            if (is_search() && isset($args['header_type']) && $args['header_type'] === 'latest') {
+                $latest_args = array(
                     'post_type'      => 'post',
                     'posts_per_page' => 10,
-                    'post__not_in'   => array($current_post_id),
-                    'category_name'  => 'Podcasts',
+                    'category_name'  => 'Podcasts,Articles',
                     'orderby'        => 'date',
-                    'order'          => 'DESC', // Fetch previous posts in reverse order
-                    'date_query'     => array(
-                        array(
-                            'before'    => $current_post_date,
-                            'inclusive' => false,
-                        ),
-                    ),
-                );
-            } else {
-                $args = array(
-                    'post_type'      => 'post',
-                    'posts_per_page' => 10,
-                    'post__not_in'   => array($current_post_id),
-                    'orderby'        => 'rand',
-                    'category__in'   => $current_post_categories,
-                    'tag__in'        => wp_list_pluck($current_post_tags, 'term_id'),
+                    'order'          => 'DESC',
                     'ignore_sticky_posts' => 1,
                 );
+                $latest_query = new WP_Query($latest_args);
+                if ($latest_query->have_posts()) :
+                    while ($latest_query->have_posts()) : $latest_query->the_post(); ?>
+                        <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
+                    <?php endwhile;
+                    wp_reset_postdata();
+                endif;
+            } else {
+                if (has_category('Podcasts', $current_post_id)) {
+                    $current_post_date = get_the_date('Y-m-d H:i:s', $current_post_id);
+
+                    $args = array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => 10,
+                        'post__not_in'   => array($current_post_id),
+                        'category_name'  => 'Podcasts',
+                        'orderby'        => 'date',
+                        'order'          => 'DESC',
+                        'date_query'     => array(
+                            array(
+                                'before'    => $current_post_date,
+                                'inclusive' => false,
+                            ),
+                        ),
+                    );
+                } else {
+                    $args = array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => 10,
+                        'post__not_in'   => array($current_post_id),
+                        'orderby'        => 'rand',
+                        'category__in'   => $current_post_categories,
+                        'tag__in'        => wp_list_pluck($current_post_tags, 'term_id'),
+                        'ignore_sticky_posts' => 1,
+                    );
+                }
+                $query = new WP_Query($args);
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post(); ?>
+                        <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
+                    <?php endwhile;
+                    wp_reset_postdata();
+                endif;
             }
-            $query = new WP_Query($args);
-        ?>
-        <?php 
-        if ( $query->have_posts() ) :
-            while ( $query->have_posts() ) : $query->the_post(); ?>
-                <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
-        <?php
-        endwhile;
-            wp_reset_postdata();
-        endif; 
         ?>
     </div>
 </div>

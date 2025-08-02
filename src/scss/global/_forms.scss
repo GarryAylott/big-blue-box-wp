@@ -6,10 +6,12 @@ Styling for all form elements.
 form {
     // Basic input styling
     input {
+        line-height: normal;
         accent-color: var(--clr-brand-primary);
     }
 
-    input, textarea {
+    input,
+    textarea {
         color: var(--clr-text-400);
         padding: var(--space-xs) var(--space-s);
         background: var(--clr-surface-400);
@@ -60,7 +62,7 @@ form {
         flex-direction: column;
         gap: var(--space-2xs);
     }
-    
+
     button.button-ghost {
         border-radius: 5px;
     }

@@ -2,52 +2,87 @@
 /**
  * The template for displaying search results pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
  * @package Big_Blue_Box
  */
 
 get_header();
+
+$bg_pool = [
+    'pagebg_tardis-int-1.webp',
+    'pagebg_tardis-int-2.webp',
+    'pagebg_tardis-int-3.webp',
+    'pagebg_tardis-int-4.webp',
+    'pagebg_tardis-int-5.webp',
+    'pagebg_tardis-int-6.webp',
+    'pagebg_tardis-int-7.webp',
+    'pagebg_tardis-int-8.webp'
+];
+$bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_pool)];
 ?>
 
-	<main id="primary" class="site-main">
+<div class="hero-bg-image">
+    <img src="<?php echo esc_url($bg_image); ?>" decoding="async" alt="" fetchpriority="high">
+</div>
 
-		<?php if ( have_posts() ) : ?>
+<main id="primary" class="site-main">
+    <div class="wrapper flow-large" data-search-term="<?php echo esc_attr(get_search_query()); ?>">
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'bigbluebox' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
+        <?php if (have_posts()) : ?>
+            <section class="archive-hero search-hero">
+                <h6 class="section-title">
+                    TARDIS Data-Core Query Complete&hellip; Data retrieved.
+                </h6>
+                <div class="archive-hero__group">
+                    <h2 class="archive-hero__heading">
+                        Articles and podcast episodes about:<br>
+                        <span><?php echo esc_html(get_search_query()); ?></span>
+                    </h2>
+                </div>
+                <form role="search" method="get" class="search-form search-hero-form" action="<?php echo esc_url(home_url('/')); ?>">
+                    <label>
+                        <span class="screen-reader-text">Search for:</span>
+                        <input type="search" class="search-field" placeholder="Enter your search..." value="<?php echo esc_attr(get_search_query()); ?>" name="s" />
+                    </label>
+                    <button type="submit" class="button search-submit">Search</button>
+                </form>
+            </section>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+            <div class="post-cards-grid">
+                <div class="browse-all__posts">
+                    <?php while (have_posts()) : the_post();
+                        get_template_part('template-parts/content', 'post-cards', ['card_type' => 'browse']);
+                    endwhile; ?>
+                </div>
+            </div>
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+            <?php 
+            // Pass the main query to pagination
+            global $wp_query;
+            bbb_custom_pagination($wp_query); 
+            ?>
 
-			endwhile;
+        <?php else : ?>
+            <section class="archive-hero search-hero">
+                <div class="no-search-results">
+                    <h6 class="section-title">
+                        TARDIS Data-Core Query Complete&hellip; Data not found.
+                    </h6>
+                    <h2>The TARDIS could not locate anything with that search</h2>
+                    <p>Try another search&hellip;</p>
+                    <form role="search" method="get" class="search-form search-hero-form" action="<?php echo esc_url(home_url('/')); ?>">
+                        <label>
+                            <span class="screen-reader-text">Search for:</span>
+                            <input type="search" class="search-field" placeholder="Enter your search..." value="<?php echo esc_attr(get_search_query()); ?>" name="s" />
+                        </label>
+                        <button type="submit" class="button search-submit">Search</button>
+                    </form>
+                    <p>Still no results? Catch up with the latest posts below or <a class="link-alt" href="<?php echo esc_url(home_url('/')); ?>">return to the homepage</a>.</p>
+                </div>
+                <?php get_template_part('template-parts/content', 'suggested-posts', array('header_type' => 'latest')); ?>
+            </section>
+        <?php endif; ?>
 
-			the_posts_navigation();
+    </div>
+</main>
 
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>

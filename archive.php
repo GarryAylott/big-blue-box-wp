@@ -49,7 +49,7 @@ if (is_tag()) {
 </div>
 
 <main id="primary" class="site-main">
-    <div class="wrapper flow">
+    <div class="wrapper flow-large">
 
         <?php if (is_author()) : ?>
             <?php

@@ -91,3 +91,10 @@ Styles for post pagination section.
         }
     }
 }
+
+// Add spacing for pages or sections not using flow
+// body:is(.search-results) {
+//     .pagination {
+//         margin-block-start: var(--space-s-m);
+//     }
+// }

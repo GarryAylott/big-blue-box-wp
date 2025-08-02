@@ -97,17 +97,17 @@ add_action( 'after_setup_theme', 'bigbluebox_setup' );
  * Add custom search icon to dynamic WP top nav
  */
 function add_search_icon_to_menu($items, $args) {
-    if ($args->theme_location === 'main-nav') {
-        $search_icon = '<li class="menu-item search-menu-item">
-            <a href="#" class="nav-search-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
-                    <path d="M13 6.5a6.499 6.499 0 0 1-1.25 3.844l3.938 3.969a.964.964 0 0 1 0 1.406.964.964 0 0 1-1.407 0l-3.969-3.969C9.25 12.563 7.906 13 6.5 13A6.495 6.495 0 0 1 0 6.5C0 2.937 2.906 0 6.5 0 10.063 0 13 2.938 13 6.5ZM6.5 11a4.463 4.463 0 0 0 3.875-2.25 4.458 4.458 0 0 0 0-4.5C9.562 2.875 8.094 2 6.5 2a4.54 4.54 0 0 0-3.906 2.25 4.458 4.458 0 0 0 0 4.5A4.475 4.475 0 0 0 6.5 11Z"/>
-                </svg>
-            </a>
-        </li>';
-        $items .= $search_icon;
-    }
-    return $items;
+	if ($args->theme_location === 'main-nav') {
+		$search_icon = '<li class="menu-item search-menu-item">
+			<a href="#" class="nav-search-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+					<path d="M13 6.5a6.499 6.499 0 0 1-1.25 3.844l3.938 3.969a.964.964 0 0 1 0 1.406.964.964 0 0 1-1.407 0l-3.969-3.969C9.25 12.563 7.906 13 6.5 13A6.495 6.495 0 0 1 0 6.5C0 2.937 2.906 0 6.5 0 10.063 0 13 2.938 13 6.5ZM6.5 11a4.463 4.463 0 0 0 3.875-2.25 4.458 4.458 0 0 0 0-4.5C9.562 2.875 8.094 2 6.5 2a4.54 4.54 0 0 0-3.906 2.25 4.458 4.458 0 0 0 0 4.5A4.475 4.475 0 0 0 6.5 11Z"/>
+				</svg>
+			</a>
+		</li>';
+		$items .= $search_icon;
+	}
+	return $items;
 }
 add_filter('wp_nav_menu_items', 'add_search_icon_to_menu', 10, 2);
 
@@ -116,7 +116,7 @@ add_filter('wp_nav_menu_items', 'add_search_icon_to_menu', 10, 2);
  * Custom admin footer
  */
 function modify_footer() {
-    echo 'Created by Garry Aylott for The Big Blue Box Podcast. ';
+	echo 'Created by Garry Aylott for The Big Blue Box Podcast. ';
 }
 add_filter( 'admin_footer_text', 'modify_footer' );
 
@@ -125,8 +125,8 @@ add_filter( 'admin_footer_text', 'modify_footer' );
  * Always show second edit bar in TinyMCE
  */
 function show_tinymce_toolbar( $in ) {
-    $in['wordpress_adv_hidden'] = false;
-    return $in;
+	$in['wordpress_adv_hidden'] = false;
+	return $in;
 }
 add_filter( 'tiny_mce_before_init', 'show_tinymce_toolbar' );
 
@@ -134,18 +134,18 @@ add_filter( 'tiny_mce_before_init', 'show_tinymce_toolbar' );
  * Add lead class to first paragraph
  */
 function first_paragraph( $content ) {
-    return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1 );
+	return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1 );
 }
 add_filter( 'the_content', 'first_paragraph' );
 
 function register_my_menus() {
-    register_nav_menus(
-        array(
-            'main-nav' => __( 'Main Nav' ),
-            'footer-menu-legals' => __( 'Footer Menu Legals' ),
-            'footer-menu-bbb' => __( 'Footer Menu BBB' ),
-        )
-    );
+	register_nav_menus(
+		array(
+			'main-nav' => __( 'Main Nav' ),
+			'footer-menu-legals' => __( 'Footer Menu Legals' ),
+			'footer-menu-bbb' => __( 'Footer Menu BBB' ),
+		)
+	);
 }
 add_action( 'init', 'register_my_menus' );
 
@@ -173,7 +173,7 @@ add_action( 'widgets_init', 'bigbluebox_widgets_init' );
  * Modify excerpt length
  */
 function custom_excerpt_length( $length ) {
-    return 80;
+	return 80;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
@@ -181,7 +181,7 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
  * Change More excerpt
  */
 function custom_more_excerpt( $more ) {
-    return '...';
+	return '...';
 }
 add_filter( 'excerpt_more', 'custom_more_excerpt' );
 
@@ -191,30 +191,30 @@ add_filter( 'excerpt_more', 'custom_more_excerpt' );
 add_filter('the_content', 'bbbx_clean_gutenberg_images', 20);
 
 function bbbx_clean_gutenberg_images($content) {
-    libxml_use_internal_errors(true);
-    $doc = new DOMDocument();
-    $doc->loadHTML('<?xml encoding="utf-8" ?>' . $content);
+	libxml_use_internal_errors(true);
+	$doc = new DOMDocument();
+	$doc->loadHTML('<?xml encoding="utf-8" ?>' . $content);
 
-    // Loop through all <img> and remove width/height
-    foreach ($doc->getElementsByTagName('img') as $img) {
-        $img->removeAttribute('width');
-        $img->removeAttribute('height');
-    }
+	// Loop through all <img> and remove width/height
+	foreach ($doc->getElementsByTagName('img') as $img) {
+		$img->removeAttribute('width');
+		$img->removeAttribute('height');
+	}
 
-    // Loop through all <figure> and remove style="width: ..."
-    foreach ($doc->getElementsByTagName('figure') as $figure) {
-        if ($figure->hasAttribute('style')) {
-            $figure->removeAttribute('style');
-        }
-    }
+	// Loop through all <figure> and remove style="width: ..."
+	foreach ($doc->getElementsByTagName('figure') as $figure) {
+		if ($figure->hasAttribute('style')) {
+			$figure->removeAttribute('style');
+		}
+	}
 
-    $body = $doc->getElementsByTagName('body')->item(0);
-    $new_content = '';
-    foreach ($body->childNodes as $child) {
-        $new_content .= $doc->saveHTML($child);
-    }
+	$body = $doc->getElementsByTagName('body')->item(0);
+	$new_content = '';
+	foreach ($body->childNodes as $child) {
+		$new_content .= $doc->saveHTML($child);
+	}
 
-    return $new_content;
+	return $new_content;
 }
 
 /**
@@ -255,74 +255,101 @@ function bbb_get_icon( $name ) {
  * Add category slugs to body class on single posts
  */
 add_filter('body_class', function($classes) {
-    if (is_single()) {
-        $categories = get_the_category();
-        if ($categories) {
-            foreach ($categories as $category) {
-                $classes[] = 'category-' . sanitize_html_class($category->slug);
-            }
-        }
-    }
-    return $classes;
+	if (is_single()) {
+		$categories = get_the_category();
+		if ($categories) {
+			foreach ($categories as $category) {
+				$classes[] = 'category-' . sanitize_html_class($category->slug);
+			}
+		}
+	}
+	return $classes;
 });
 
 /**
  * Remove unwanted theme class from body_class
  */
 add_filter('body_class', function($classes) {
-    foreach ($classes as $key => $class) {
-        if (strpos($class, 'wp-theme-') === 0) {
-            unset($classes[$key]);
-        }
-    }
-    return $classes;
+	foreach ($classes as $key => $class) {
+		if (strpos($class, 'wp-theme-') === 0) {
+			unset($classes[$key]);
+		}
+	}
+	return $classes;
 });
 
 /**
  * AJAX handler for category-based post filtering
  */
 function filter_posts_by_category() {
-    $category = sanitize_text_field($_POST['category']);
+	$category = sanitize_text_field($_POST['category'] ?? '');
+	$search_term = sanitize_text_field($_POST['s'] ?? '');
+	$context = sanitize_text_field($_POST['context'] ?? '');
 
-    $args = array(
-        'posts_per_page' => 10,
-        'post_status'    => 'publish',
-        'post_type'      => 'post',
-    );
+	$args = [
+		'post_status'    => 'publish',
+		'posts_per_page' => get_option('posts_per_page'),
+		'post_type'      => 'post',
+		'paged'          => isset($_POST['paged']) ? (int) $_POST['paged'] : 1,
+	];
 
-    // Only add category_name if filtering by a specific category
-    if ($category !== 'all') {
-        $args['category_name'] = $category;
-    }
+	if ($context === 'search') {
+		if (!empty($search_term)) {
+			$args['s'] = $search_term;
+		}
+		if ($category !== 'all') {
+			$args['category_name'] = $category;
+		}
+	} else {
+		if ($category !== 'all') {
+			$args['category_name'] = $category;
+		}
+		unset($args['s']); // ensure no accidental search
+	}
 
-    $query = new WP_Query($args);
+	// Make category/search term available to pagination.php
+	if ($context === 'search') {
+		$_GET['category'] = $category;
+		$_GET['s'] = $search_term;
+	}
 
-    if ($query->have_posts()) :
-        while ($query->have_posts()) : $query->the_post();
-            get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse'));
-        endwhile;
-    else :
-        echo '<p>No posts found.</p>';
-    endif;
+	$query = new WP_Query($args);
 
-    wp_die();
+	if ($query->have_posts()) {
+		ob_start();
+
+		while ($query->have_posts()) {
+			$query->the_post();
+			get_template_part('template-parts/content', 'post-cards', ['card_type' => 'browse']);
+		}
+
+		// Important: we must call pagination here
+		bbb_custom_pagination($query);
+
+		wp_reset_postdata();
+		echo ob_get_clean();
+	} else {
+		echo '<p>No posts found.</p>';
+	}
+
+	wp_die();
 }
 add_action('wp_ajax_filter_posts_by_category', 'filter_posts_by_category');
 add_action('wp_ajax_nopriv_filter_posts_by_category', 'filter_posts_by_category');
 
 add_filter('query_vars', function($vars) {
-    $vars[] = 'replytocom';
-    return $vars;
+	$vars[] = 'replytocom';
+	return $vars;
 });
 
 /**
  * Customize the number of posts per page for archives.
  */
 add_action('pre_get_posts', function($query) {
-    // Only target main queries on frontend, and for archives
-    if (!is_admin() && $query->is_main_query() && (is_category() || is_tag() || is_post_type_archive())) {
-        $query->set('posts_per_page', 15);
-    }
+	// Only target main queries on frontend, and for archives
+	if (!is_admin() && $query->is_main_query() && (is_category() || is_tag() || is_post_type_archive())) {
+		$query->set('posts_per_page', 15);
+	}
 });
 
 // No need to load jQuery

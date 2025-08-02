@@ -17,18 +17,19 @@
                 </clipPath>
             </defs>
         </svg>
-        <h4>Search The Big Blue Box</h4>
+        <h4>Search for anything in The Big Blue Box</h4>
     </div>
     <div class="inputs">
-        <label for="search-field" class="screen-reader-text"><?php _e('Search for:', 'bigbluebox'); ?></label>
-        <input type="search" id="search-field" class="search-field" 
+        <?php $search_input_id = 'search-field-' . uniqid(); ?>
+        <label for="<?php echo esc_attr($search_input_id); ?>" class="screen-reader-text"><?php _e('Search for:', 'bigbluebox'); ?></label>
+        <input type="search" id="<?php echo esc_attr($search_input_id); ?>" class="search-field" 
             placeholder="<?php esc_attr_e('Where is Dalek Tat?', 'bigbluebox'); ?>" 
-            value="<?php echo get_search_query(); ?>" name="s" required />
-        <button type="submit" class="search-submit">
+            value="<?php echo esc_attr(get_search_query()); ?>" name="s" required />
+        <button type="submit" class="search-submit" aria-label="<?php esc_attr_e('Submit search', 'bigbluebox'); ?>">
             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                 <path fill="#FFFFFF" d="M13 6.5a6.499 6.499 0 0 1-1.25 3.844l3.938 3.969a.964.964 0 0 1 0 1.406.964.964 0 0 1-1.407 0l-3.969-3.969C9.25 12.563 7.906 13 6.5 13A6.495 6.495 0 0 1 0 6.5C0 2.937 2.906 0 6.5 0 10.063 0 13 2.938 13 6.5ZM6.5 11a4.463 4.463 0 0 0 3.875-2.25 4.458 4.458 0 0 0 0-4.5C9.562 2.875 8.094 2 6.5 2a4.54 4.54 0 0 0-3.906 2.25 4.458 4.458 0 0 0 0 4.5A4.475 4.475 0 0 0 6.5 11Z"/>
             </svg> -->
-            <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-search.svg" alt="Search icon">
+            <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-search.svg" alt="<?php esc_attr_e('Search icon', 'bigbluebox'); ?>">
         </button>
     </div>
 </form>

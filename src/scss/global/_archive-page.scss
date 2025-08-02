@@ -11,7 +11,7 @@ Layout and styling for archive pages.
     display: flex;
     flex-direction: column;
     gap: var(--space-3xs);
-    padding-block-end: var(--space-l);
+    // padding-block-end: var(--space-l);
 
     .section-title {
         margin-block-end: var(--space-2xs);
@@ -46,8 +46,6 @@ body.tag .archive-hero__group h1 {
 
 // Archive layout for authors.
 .author-hero {
-    padding-block-end: var(--space-l);
-
     &__container {
         display: grid;
         grid-template-columns: 1fr;

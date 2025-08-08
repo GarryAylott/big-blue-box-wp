@@ -107,7 +107,7 @@ body.tag .archive-hero__group h1 {
         font-weight: var(--fw-bold);
         text-transform: uppercase;
         padding: var(--space-3xs) var(--space-2xs);
-        background: var(--clr-surface-200);
+        background: var(--clr-surface-300);
         border-radius: var(--radius-xs);
     }
 
@@ -147,17 +147,19 @@ body.tag .archive-hero__group h1 {
                     display: block;
                     max-width: 100%;
                     height: auto;
-                    filter: drop-shadow(8px 12px 10px rgba(22, 24, 29, 0.8));
+                    filter: drop-shadow(8px 12px 10px rgba(22, 24, 29, 1));
                 }
             }
 
             p {
                 display: block;
+                font-size: var(--step--1);
+                color: var(--clr-text-400);
+                text-wrap: unset;
                 padding: var(--space-2xs) var(--space-s) var(--space-2xs)
                     calc(var(--image-width) + var(--space-xs));
-                background: var(--clr-surface-200);
+                background: var(--clr-surface-300);
                 border-radius: var(--radius-xs);
-                text-wrap: unset;
                 z-index: 0;
 
                 @media (max-width: 38rem) {

@@ -121,7 +121,8 @@ get_header();
                         'posts_per_page' => 10,
                         'post_status' => 'publish',
                         'post__not_in' => $displayed_posts,
-                        'post_type' => 'post'
+                        'post_type' => 'post',
+                        'no_found_rows' => true
                     );
                     $query3 = new WP_Query($args3);
 
@@ -154,35 +155,34 @@ get_header();
                 Explore more articles
             </h6>
             <div class="more-articles">
-            <?php
-            $tags = ['big-finish', 'events', 'reading'];
+                <?php
+                $tags = ['big-finish', 'events', 'reading'];
 
-            foreach ($tags as $tag) {
-                $args = array(
-                    'tag' => $tag,
-                    'posts_per_page' => 3,
-                );
+                foreach ($tags as $tag) {
+                    $args = array(
+                        'tag' => $tag,
+                        'posts_per_page' => 3,
+                    );
 
-                $query = new WP_Query($args);
+                    $query = new WP_Query($args);
 
-                if ($query->have_posts()) : ?>
-                    <div class="more-articles__column">
-                        <div class="more-articles__header">
-                            <h4><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h4>
-                            <a class="button-ghost" href="<?php echo get_tag_link(get_term_by('slug', $tag, 'post_tag')->term_id); ?>" class="tag-archive-link">View all <?php echo ucwords(str_replace('-', ' ', $tag)); ?></a>
+                    if ($query->have_posts()) : ?>
+                        <div class="more-articles__column">
+                            <div class="more-articles__header">
+                                <h4><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h4>
+                                <a class="button-ghost" href="<?php echo get_tag_link(get_term_by('slug', $tag, 'post_tag')->term_id); ?>" class="tag-archive-link">View all <?php echo ucwords(str_replace('-', ' ', $tag)); ?></a>
+                            </div>
+                            <ul role="list">
+                            <?php while ($query->have_posts()) : $query->the_post(); ?>
+                                <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
+                            <?php endwhile; ?>
+                            </ul>
                         </div>
-                        <ul role="list">
-                        <?php while ($query->have_posts()) : $query->the_post(); ?>
-                            <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
-                        <?php endwhile; ?>
-                        </ul>
-                    </div>
-                <?php endif;
-                // Reset Post Data
-                wp_reset_postdata();
-            }
-            ?>
-
+                    <?php endif;
+                    // Reset Post Data
+                    wp_reset_postdata();
+                }
+                ?>
             </div>
         </div>
     </section>

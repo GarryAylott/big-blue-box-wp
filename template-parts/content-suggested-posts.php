@@ -35,61 +35,36 @@
     </div>
     <div class="posts-hori-scroll">
         <?php
-            $current_post_id = get_the_ID();
-            $current_post_categories = wp_get_post_categories($current_post_id);
-            $current_post_tags = wp_get_post_tags($current_post_id);
+            // Keep the special "latest" carousel for search results exactly as-is
+            $is_latest_header = ( is_search() && isset($args['header_type']) && $args['header_type'] === 'latest' );
 
-            // Only show latest block on search results page
-            if (is_search() && isset($args['header_type']) && $args['header_type'] === 'latest') {
+            if ( $is_latest_header ) {
                 $latest_args = array(
-                    'post_type'      => 'post',
-                    'posts_per_page' => 10,
-                    'category_name'  => 'Podcasts,Articles',
-                    'orderby'        => 'date',
-                    'order'          => 'DESC',
+                    'post_type'           => 'post',
+                    'posts_per_page'      => 10,
+                    'category_name'       => 'Podcasts,Articles',
+                    'orderby'             => 'date',
+                    'order'               => 'DESC',
                     'ignore_sticky_posts' => 1,
                 );
-                $latest_query = new WP_Query($latest_args);
-                if ($latest_query->have_posts()) :
-                    while ($latest_query->have_posts()) : $latest_query->the_post(); ?>
-                        <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
+                $latest_query = new WP_Query( $latest_args );
+                if ( $latest_query->have_posts() ) :
+                    while ( $latest_query->have_posts() ) : $latest_query->the_post(); ?>
+                        <?php get_template_part( 'template-parts/content', 'post-cards', array( 'card_type' => 'browse' ) ); ?>
                     <?php endwhile;
                     wp_reset_postdata();
                 endif;
             } else {
-                if (has_category('Podcasts', $current_post_id)) {
-                    $current_post_date = get_the_date('Y-m-d H:i:s', $current_post_id);
+                // 🔁 Reuse the single source of truth for related content
+                // Requires: inc/related-articles.php (bbb_get_related_articles)
+                $context = has_category( 'Podcasts', get_the_ID() ) ? 'podcasts' : 'articles';
+                $related_posts = function_exists('bbb_get_related_articles') ? bbb_get_related_articles( 10, $context ) : array();
 
-                    $args = array(
-                        'post_type'      => 'post',
-                        'posts_per_page' => 10,
-                        'post__not_in'   => array($current_post_id),
-                        'category_name'  => 'Podcasts',
-                        'orderby'        => 'date',
-                        'order'          => 'DESC',
-                        'date_query'     => array(
-                            array(
-                                'before'    => $current_post_date,
-                                'inclusive' => false,
-                            ),
-                        ),
-                    );
-                } else {
-                    $args = array(
-                        'post_type'      => 'post',
-                        'posts_per_page' => 10,
-                        'post__not_in'   => array($current_post_id),
-                        'orderby'        => 'rand',
-                        'category__in'   => $current_post_categories,
-                        'tag__in'        => wp_list_pluck($current_post_tags, 'term_id'),
-                        'ignore_sticky_posts' => 1,
-                    );
-                }
-                $query = new WP_Query($args);
-                if ($query->have_posts()) :
-                    while ($query->have_posts()) : $query->the_post(); ?>
-                        <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'browse')); ?>
-                    <?php endwhile;
+                if ( ! empty( $related_posts ) ) :
+                    foreach ( $related_posts as $post ) :
+                        setup_postdata( $post ); ?>
+                        <?php get_template_part( 'template-parts/content', 'post-cards', array( 'card_type' => 'browse' ) ); ?>
+                    <?php endforeach;
                     wp_reset_postdata();
                 endif;
             }

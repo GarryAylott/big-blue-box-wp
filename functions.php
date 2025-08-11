@@ -378,10 +378,22 @@ require get_template_directory() . '/inc/custom-comments.php';
 // Captivate external audio
 require get_template_directory() . '/inc/captivate-external-audio.php';
 
+// Helper for suggested/related posts
+require get_template_directory() . '/inc/related-articles.php';
+
+// Logic for post promo banner insertion
+require get_template_directory() . '/inc/article-promo-banners.php';
+
 // Enqueue scripts and styles.
 require get_template_directory() . '/inc/enqueue.php';
 
 // Includes from starter theme */
 // Functions which enhance the theme by hooking into WordPress.
 require get_template_directory() . '/inc/template-functions.php';
+
+
+if (isset($_GET['auto_assign_captivate_episodes'])) {
+	include __DIR__ . '/auto-assign-captivate-episodes.php';
+	exit;
+}
 

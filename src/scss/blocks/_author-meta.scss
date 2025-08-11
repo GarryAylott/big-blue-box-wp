@@ -1,4 +1,4 @@
-@use 'utilities' as *;
+@use "utilities" as *;
 
 /* 
 AUTHOR META BLOCK
@@ -23,7 +23,8 @@ Author image and post meta styling.
     }
 }
 
-.post-card-alt {
+.post-card-alt,
+.article-promo-banner {
     .author-meta {
         padding-block-start: 0;
 
@@ -43,7 +44,7 @@ Author image and post meta styling.
         }
 
         &__author-name::after {
-            content: '•';
+            content: "•";
             color: inherit;
             padding-inline-start: var(--space-3xs);
         }

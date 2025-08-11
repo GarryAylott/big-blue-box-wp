@@ -27,7 +27,7 @@
         ?>
         <?php if ( $query2->have_posts() ) :
             while ( $query2->have_posts() ) : $query2->the_post(); ?>
-            <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'latest')); ?>
+            <?php get_template_part('template-parts/content', 'post-cards', array('card_type' => 'latest', 'link_author_name' => true)); ?>
         <?php
         $displayed_posts[] = get_the_ID();
         endwhile;

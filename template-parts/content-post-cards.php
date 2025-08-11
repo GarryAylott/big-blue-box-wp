@@ -34,7 +34,7 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
         </div>
     </a>
     <footer class="entry-footer">
-        <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
+        <?php get_template_part( 'template-parts/content', 'author-meta', array( 'link_author_name' => false ) ); ?>
     </footer>
 </article>
 <?php elseif ($card_type === 'latest') : ?>
@@ -67,7 +67,7 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
         </div>
 
         <footer class="entry-footer">
-            <?php get_template_part( 'template-parts/content', 'author-meta' ); ?>
+            <?php get_template_part( 'template-parts/content', 'author-meta', array( 'link_author_name' => true ) ); ?>
         </footer>
     </div>
 </article>

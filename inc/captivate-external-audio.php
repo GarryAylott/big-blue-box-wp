@@ -25,14 +25,16 @@ function bbb_get_captivate_audio_url( $guid ) {
 		return $cached;
 	}
 
-	// Avoid API calls outside admin or save_post
-	if (
-		! is_admin() &&
-		! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) &&
-		! ( defined( 'REST_REQUEST' ) && REST_REQUEST )
-	) {
-		error_log( '🚫 Skipping API fetch – front-end context and no cache.' );
-		return false;
+	// 5-minute rate limit for API calls from the front end
+	$rate_limit_key = 'captivate_audio_rate_' . md5( $guid );
+	$rate_limited = get_transient( $rate_limit_key );
+	if ( ! is_admin() && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && ! ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
+		if ( $rate_limited ) {
+			error_log( '⏳ Rate limit hit for front-end API fetch.' );
+			return false;
+		}
+		// Set rate limit for 5 minutes
+		set_transient( $rate_limit_key, 1, 5 * MINUTE_IN_SECONDS );
 	}
 
 	error_log( '🚀 Starting auth request...' );
@@ -54,7 +56,8 @@ function bbb_get_captivate_audio_url( $guid ) {
 	$bearer_token = $auth_data['user']['token'] ?? null;
 
 	if ( ! $bearer_token ) {
-		error_log( '❌ Captivate auth failed. Response body: ' . $auth_body );
+		$snippet = substr( $auth_body, 0, 200 );
+		error_log( '❌ Captivate auth failed. Response body (truncated): ' . $snippet );
 		return false;
 	}
 
@@ -70,11 +73,13 @@ function bbb_get_captivate_audio_url( $guid ) {
 		return false;
 	}
 
-	$episode_data = json_decode( wp_remote_retrieve_body( $episode_response ), true );
+	$episode_body = wp_remote_retrieve_body( $episode_response );
+	$episode_data = json_decode( $episode_body, true );
 	$media_id = $episode_data['episode']['media_id'] ?? null;
 
 	if ( ! $media_id ) {
-		error_log( '❌ No media_id found in episode. Will retry next time.' );
+		$snippet = substr( $episode_body, 0, 200 );
+		error_log( '❌ No media_id found in episode. Will retry next time. Body (truncated): ' . $snippet );
 		return false;
 	}
 
@@ -89,7 +94,8 @@ function bbb_get_captivate_audio_url( $guid ) {
 		return false;
 	}
 
-	$media_data = json_decode( wp_remote_retrieve_body( $media_response ), true );
+	$media_body = wp_remote_retrieve_body( $media_response );
+	$media_data = json_decode( $media_body, true );
 	$audio_url = $media_data['media']['media_url'] ?? null;
 
 	if ( $audio_url ) {
@@ -98,6 +104,7 @@ function bbb_get_captivate_audio_url( $guid ) {
 		return $audio_url;
 	}
 
-	error_log( '❌ No media_url found in media response.' );
+	$snippet = substr( $media_body, 0, 200 );
+	error_log( '❌ No media_url found in media response. Body (truncated): ' . $snippet );
 	return false;
 }

@@ -175,3 +175,51 @@ Header styling for logo, nav etc.
         }
     }
 }
+
+// Header items fade in animation
+$drop-distance: 1.5rem;
+$drop-duration: 700ms; // movement
+$fade-duration: 1000ms; // fade finishes a bit earlier
+$easing-drop: cubic-bezier(0, 0, 0.2, 1); // gentle ease-out
+$easing-fade: ease-out;
+
+// Starting state
+.site-head__logo,
+.site-head__navigation .nav li {
+    opacity: 0;
+    transform: translateY(-#{$drop-distance});
+}
+
+// Logo
+.site-head__logo {
+    animation: headerDrop $drop-duration $easing-drop forwards,
+        headerFade $fade-duration $easing-fade forwards;
+    animation-delay: 0.3s, 0.3s; // same delay for both
+}
+
+// Nav items
+.site-head__navigation .nav li {
+    animation: headerDrop $drop-duration $easing-drop forwards,
+        headerFade $fade-duration $easing-fade forwards;
+    // delays added by your loop below
+}
+
+// Stagger (keep yours, example shown)
+@for $i from 1 through 10 {
+    .site-head__navigation .nav li:nth-child(#{$i}) {
+        // same delay applied to both animations
+        animation-delay: #{0.5s + ($i - 1) * 0.2s}, #{0.5s + ($i - 1) * 0.2s};
+    }
+}
+
+// Keyframes (no mid-stops)
+@keyframes headerDrop {
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes headerFade {
+    to {
+        opacity: 1;
+    }
+}

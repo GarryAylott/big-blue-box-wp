@@ -29,6 +29,14 @@ Self-hosted font details.
 
 @font-face {
     font-family: "Jakarta";
+    font-weight: 400;
+    font-style: italic;
+    src: url("fonts/PlusJakartaSans-Italic.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Jakarta";
     font-weight: 600;
     font-style: normal;
     src: url("fonts/PlusJakartaSans-SemiBold.woff2") format("woff2");

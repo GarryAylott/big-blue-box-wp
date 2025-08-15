@@ -1,0 +1,33 @@
+/* 
+COLOUR TOKENS
+Base list of all colour custom props for intellisense extensions.
+*/
+
+:root {
+    /* Text */
+    --clr-text-100: hsl(0, 0%, 100%);
+    --clr-text-400: hsl(214, 14%, 90%);
+    --clr-text-900: hsl(219, 11%, 70%);
+    --clr-text-link: hsl(221, 91%, 70%);
+    --clr-text-link-hover: hsl(221, 91%, 63%);
+
+    /* Surface */
+    --clr-surface-700: hsl(215, 50%, 5%);
+    --clr-surface-600: hsl(217, 50%, 7%);
+    --clr-surface-400: hsl(222, 15%, 13%);
+    --clr-surface-300: hsl(247, 21%, 13%);
+    --clr-surface-200: hsl(218, 15%, 25%);
+    --clr-surface-100: hsl(219, 13%, 38%);
+    --clr-surface-50: hsl(0, 0%, 100%);
+
+    /* Border */
+    --clr-border-default: hsl(219, 11%, 50%);
+    --clr-border-darker: hsl(218, 15%, 16%);
+    --clr-border-link: hsl(221, 91%, 70%);
+
+    /* Brand */
+    --clr-brand-primary: hsl(215, 95%, 55%);
+    --clr-brand-secondary: hsl(42, 91%, 58%);
+    --clr-brand-accent: hsl(334, 88%, 68%);
+    --clr-brand-accent-darker: hsl(334, 88%, 41%);
+}

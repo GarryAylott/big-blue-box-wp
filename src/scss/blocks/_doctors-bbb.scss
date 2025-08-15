@@ -10,7 +10,9 @@ Header styling for the hero section on the homepage.
     gap: var(--space-l);
 
     picture {
-        filter: drop-shadow(0 0 1rem rgba(255, 255, 255, 0.2));
+        filter: drop-shadow(
+            0 0 1.25rem hsl(var(--clr-brand-primary-hsl) / 0.3)
+        );
     }
 
     h6 {

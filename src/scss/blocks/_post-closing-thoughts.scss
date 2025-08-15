@@ -37,7 +37,7 @@ Layout and styling for the closing paragraph and review score.
     }
 
     &::after {
-        @include img-border-highlight(var(--clr-border));
+        @include img-border-highlight(var(--clr-border-default));
     }
 
     &__text {

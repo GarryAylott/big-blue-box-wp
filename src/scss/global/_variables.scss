@@ -1,3 +1,5 @@
+@use "sass:color";
+
 :root {
     /* Font sizes */
     /* Step -2: 12.5px → 13.8889px */
@@ -67,26 +69,45 @@
     --flow-space-xl: calc(var(--space-2xl-3xl) + var(--space-s));
 
     /* Colours */
-    --clr-text-100: hsl(0, 0%, 100%); // Core white
-    --clr-text-400: hsl(214, 14%, 90%); // Default
-    --clr-text-900: hsl(219, 11%, 70%); // Subtle
-    --clr-text-link: hsl(221, 91%, 70%); // Text links
-    --clr-text-link-hover: hsl(221, 91%, 63%); // Text links
+    // Map of all colours
+    $colors: (
+        text-100: hsl(0, 0%, 100%),
+        text-400: hsl(214, 14%, 90%),
+        text-900: hsl(219, 11%, 70%),
+        text-link: hsl(221, 91%, 70%),
+        text-link-hover: hsl(221, 91%, 63%),
+        surface-700: hsl(215, 50%, 5%),
+        surface-600: hsl(217, 50%, 7%),
+        surface-400: hsl(222, 15%, 13%),
+        surface-300: hsl(247, 21%, 13%),
+        surface-200: hsl(218, 15%, 25%),
+        surface-100: hsl(219, 13%, 38%),
+        surface-50: hsl(0, 0%, 100%),
+        border-default: hsl(219, 11%, 50%),
+        border-darker: hsl(218, 15%, 16%),
+        border-link: hsl(221, 91%, 70%),
+        brand-primary: hsl(215, 95%, 55%),
+        brand-secondary: hsl(42, 91%, 58%),
+        brand-accent: hsl(334, 88%, 68%),
+        brand-accent-darker: hsl(334, 88%, 41%)
+    );
 
-    --clr-surface-700: hsl(215, 50%, 5%); // Page background
-    --clr-surface-600: hsl(217, 50%, 7%); // Dark logo and vector fills
-    --clr-surface-400: hsl(222, 15%, 13%); // Default/Section backgorunds
-    --clr-surface-300: hsl(247, 21%, 13%); // Call out panels
-    --clr-surface-200: hsl(218, 15%, 25%); // Component backgrounds
-    --clr-surface-100: hsl(219, 13%, 38%); // Card backgrounds
-    --clr-surface-50: hsl(0, 0%, 100%); // White page and section backgrounds
+    // For future Garry or new dev, this list is paired with "_colour-tokens.scss" so make sure that is updated.
 
-    --clr-border: hsl(219, 11%, 50%);
-    --clr-border-darker: hsl(218, 15%, 16%);
-    --clr-border-link: hsl(221, 91%, 70%); // Ghost button outline
-
-    --clr-brand-primary: hsl(215, 95%, 55%);
-    --clr-brand-secondary: hsl(42, 91%, 58%);
-    --clr-brand-accent: hsl(334, 88%, 68%);
-    --clr-brand-accent-darker: hsl(334, 88%, 41%);
+    // Output colours to various versions e.g. full/basic, RGB and HSL
+    @each $name, $col in $colors {
+    --clr-#{$name}-rgb: #{color.channel($col, "red", $space: rgb)},
+                        #{color.channel($col, "green", $space: rgb)},
+                        #{color.channel($col, "blue", $space: rgb)};
+    --clr-#{$name}-hsl: #{color.channel($col, "hue", $space: hsl)}
+                        #{color.channel($col, "saturation", $space: hsl)}
+                        #{color.channel($col, "lightness", $space: hsl)};
+  }
 }
+
+// Usage (watch for the "/" vs ",")...
+// Full color variable	    var(--clr-brand-accent)
+// RGB no alpha	            rgb(var(--clr-brand-accent-rgb))
+// RGB with alpha	        rgba(var(--clr-brand-accent-rgb), 0.4)
+// HSL no alpha	            hsl(var(--clr-brand-accent-hsl))
+// HSL with alpha	        hsl(var(--clr-brand-accent-hsl) / 0.4)

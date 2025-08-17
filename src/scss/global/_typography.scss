@@ -197,3 +197,7 @@ a[target="_blank"] {
 .article-body a.has-external-icon {
     padding-inline-end: var(--space-3xs);
 }
+
+a.no-external-icon {
+    @include visually-hidden;
+}

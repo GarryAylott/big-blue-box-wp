@@ -282,6 +282,7 @@ const initCategorySwitcher = () => {
         const params = {
             action: "filter_posts_by_category",
             category: category,
+            context: "home",
         };
 
         fetch(themeSettings.ajaxUrl, {

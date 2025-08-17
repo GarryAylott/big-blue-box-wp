@@ -25,7 +25,7 @@
     <li class="app">
         <a class="button-ghost has-external-icon text-button" href="https://lnkfi.re/bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
             <img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-headphones.svg" width="16" height="16" alt="More Podcast Apps">
-        <span class="small">More Podcast Apps</span>
+        <span>More Podcast Apps</span>
         </a>
     </li>
 </ul>

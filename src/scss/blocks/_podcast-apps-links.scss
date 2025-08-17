@@ -12,7 +12,7 @@ LINKS TO PODCAST APPS BLOCK
     &__links {
         display: grid;
         grid-template-columns: repeat(4, auto);
-        gap: 1rem;
+        gap: var(--space-s);
         padding: 0;
         margin: 0;
         list-style: none;
@@ -36,13 +36,14 @@ LINKS TO PODCAST APPS BLOCK
                 align-items: center;
                 justify-content: center;
                 width: 100%;
+                min-height: 3.25rem;
                 text-align: center;
-                padding: var(--space-xs) var(--space-m);
+                padding-inline: var(--space-s);
                 border-radius: var(--radius-small);
+            }
 
-                // &:hover {
-                //     background: var(--clr-surface-400);
-                // }
+            img {
+                width: 85%;
             }
 
             a.text-button {
@@ -53,6 +54,10 @@ LINKS TO PODCAST APPS BLOCK
                 img {
                     width: auto;
                     height: 1.4rem;
+                }
+
+                span {
+                    font-size: var(--step--2);
                 }
 
                 &:hover {

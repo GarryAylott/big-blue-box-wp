@@ -78,18 +78,6 @@
 		</ul>
 	</section>
 
-	<section class="call-out-panel discord-link">
-		<div class="intro">
-			<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-discord.svg" width="121" height="23" alt="Our free Discord server">
-			<p class="small">
-				Join the Big Blue Box Discord server - it's free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!
-			</p>
-		</div>
-		<a class="button-ghost" href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noreferrer noopener">
-			Join us on Discord now
-		</a>
-	</section>
-
 	<section class="flow">
 		<h5>
 			Meet your writers
@@ -161,6 +149,18 @@
 				</div>
 			</div>
 		</div>
+	</section>
+
+	<section class="call-out-panel discord-link">
+		<div class="intro">
+			<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-discord.svg" width="121" height="23" alt="Our free Discord server">
+			<p class="small">
+				Join the Big Blue Box Discord server - it's free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!
+			</p>
+		</div>
+		<a class="button-ghost" href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noreferrer noopener">
+			Join us on Discord now
+		</a>
 	</section>
 
 	<section>

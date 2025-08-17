@@ -24,7 +24,7 @@ if ( $closing_text || ($closing_score && $closing_score > 0) ) :
     
     <div class="closing-thoughts rounded">
         <div class="closing-thoughts__text">
-            <h4 class="closing-thoughts-title"><?php esc_html_e( 'Our Score and Final Thoughts', 'bigbluebox' ); ?></h4>
+            <h4 class="closing-thoughts-title"><?php esc_html_e( 'Final Thoughts', 'bigbluebox' ); ?></h4>
             
             <?php if ( $closing_text ) : ?>
                 <p><?php echo esc_html( $closing_text ); ?></p>

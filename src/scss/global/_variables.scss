@@ -87,9 +87,10 @@
         border-darker: hsl(218, 15%, 16%),
         border-link: hsl(221, 91%, 70%),
         brand-primary: hsl(215, 95%, 55%),
-        brand-secondary: hsl(42, 91%, 58%),
+        brand-primary-darker: hsl(215, 95%, 5%),
         brand-accent: hsl(334, 88%, 68%),
-        brand-accent-darker: hsl(334, 88%, 41%)
+        brand-accent-darker: hsl(334, 88%, 41%),
+        brand-secondary: hsl(42, 91%, 58%)
     );
 
     // For future Garry or new dev, this list is paired with "_colour-tokens.scss" so make sure that is updated.

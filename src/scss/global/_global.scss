@@ -25,7 +25,7 @@ main {
         --space-2xl
     ); // Spacing after main content between the footer
     padding-block-start: calc(
-        var(--space-3xl) + var(--space-xs)
+        var(--space-3xl) + var(--space-3xs)
     ); // Space below fixed header
 }
 

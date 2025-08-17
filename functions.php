@@ -323,8 +323,10 @@ function filter_posts_by_category() {
 			get_template_part('template-parts/content', 'post-cards', ['card_type' => 'browse']);
 		}
 
-		// Important: we must call pagination here
-		bbb_custom_pagination($query);
+		// Only show pagination if not on homepage (context !== 'home')
+		if ($context !== 'home') {
+			bbb_custom_pagination($query);
+		}
 
 		wp_reset_postdata();
 		echo ob_get_clean();

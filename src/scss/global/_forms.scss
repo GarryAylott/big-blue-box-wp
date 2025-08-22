@@ -73,3 +73,78 @@ form {
         appearance: none;
     }
 }
+
+// Out-of-form dropdown select
+select {
+    font-size: var(--step--1);
+    padding: 0.6rem 1rem;
+    background: var(--clr-surface-600);
+    color-scheme: dark;
+    border: 1px solid var(--clr-border-darker);
+    border-radius: var(--radius-xs);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+select,
+::picker(select) {
+    appearance: base-select;
+}
+
+select::picker-icon {
+    color: var(--clr-brand-accent);
+    margin-block-start: 2px;
+    transition: 0.4s rotate;
+}
+
+select:open::picker-icon {
+    rotate: 180deg;
+}
+
+::picker(select) {
+    border: none;
+}
+
+option {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    padding-inline: 1.6rem 1rem;
+    padding-block: 0.5rem;
+    color: var(--clr-text-400);
+    background: var(--clr-surface-400);
+    border: 1px solid var(--clr-surface-200);
+    transition: 0.4s;
+
+    &:nth-of-type(odd) {
+        background: color-mix(in srgb, var(--clr-surface-400) 100%, #fff 5%);
+    }
+
+    &:hover,
+    &:focus {
+        background: var(--clr-surface-200);
+    }
+
+    &:first-of-type {
+        font-weight: var(--fw-bold);
+        background: var(--clr-surface-400);
+        padding-inline-start: 1rem;
+        border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+        pointer-events: none;
+    }
+
+    &:last-of-type {
+        border-radius: 0 0 var(--radius-xs) var(--radius-xs);
+    }
+
+    &:not(option:last-of-type) {
+        border-bottom: none;
+    }
+
+    &::checkmark {
+        content: "↓";
+        font-size: 1.2rem;
+        order: 1;
+        margin-left: auto;
+    }
+}

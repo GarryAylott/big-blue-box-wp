@@ -378,6 +378,46 @@ const initAudioPlayer = () => {
     }, 100); // Check every 100ms
 };
 
+// Smooth scroll + focus for the reviews compendium era jump dropdown
+const initEraJumpDropdown = () => {
+    const sel = document.getElementById("era-jump");
+    if (!sel) return;
+    sel.addEventListener("change", function (e) {
+        const hash = this.value;
+        if (!hash || !hash.startsWith("#")) return;
+
+        // Remove the leading '#' for getElementById
+        const targetId = hash.slice(1);
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        // Scroll into view
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Focus the heading inside the section, or the section itself as fallback
+        const heading = target.querySelector("h2, .table-heading");
+        if (heading) {
+            heading.setAttribute("tabindex", "-1");
+            setTimeout(() => {
+                heading.focus({ preventScroll: true });
+                heading.removeAttribute("tabindex");
+            }, 350);
+        } else {
+            target.setAttribute("tabindex", "-1");
+            setTimeout(() => {
+                target.focus({ preventScroll: true });
+                target.removeAttribute("tabindex");
+            }, 350);
+        }
+
+        history.replaceState(null, "", hash);
+        this.selectedIndex = 0;
+
+        // Prevent default if inside a form (shouldn't be, but just in case)
+        if (e && typeof e.preventDefault === "function") e.preventDefault();
+    });
+};
+
 // Initialize all features
 const init = () => {
     initNavigation();
@@ -389,6 +429,7 @@ const init = () => {
     initTardisScrollProgress();
     initCategorySwitcher();
     initRotatingSentence();
+    initEraJumpDropdown();
     window.addEventListener("DOMContentLoaded", initAudioPlayer);
 };
 

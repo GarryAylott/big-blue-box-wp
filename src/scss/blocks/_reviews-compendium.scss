@@ -1,0 +1,157 @@
+@use "utilities" as *;
+
+/* 
+REVIEW COMPENDIUM TABLES
+*/
+
+.reviews-compendium {
+    .page-header {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
+        margin-block-end: var(--space-m);
+
+        p {
+            color: var(--clr-text-900);
+            max-width: 60ch;
+        }
+    }
+
+    &__toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-s);
+        margin-block-end: var(--space-xl);
+
+        select {
+            width: 100%;
+            max-width: 22rem;
+        }
+
+        p {
+            font-size: var(--step--2);
+            color: var(--clr-text-900);
+        }
+    }
+
+    .reviews-era {
+        position: relative;
+        scroll-margin-top: 6rem;
+
+        h2 {
+            font-size: var(--step-2);
+            margin-block-end: var(--space-xs);
+            margin-inline-start: calc(var(--space-3xl) - var(--space-2xs));
+        }
+    }
+
+    .table-wrap {
+        position: relative;
+        background: var(--clr-surface-600);
+        border: 1px solid var(--clr-border-darker);
+        border-radius: var(--radius-small);
+        overflow-x: auto;
+        z-index: 1;
+    }
+
+    .reviews-table {
+        width: 100%;
+        font-size: var(--step--1);
+        color: var(--clr-text-400);
+        text-align: left;
+        border-collapse: collapse;
+
+        // Apply bottom border to all rows
+        thead,
+        tbody {
+            tr {
+                border-bottom: 1px solid var(--clr-border-darker);
+            }
+        }
+
+        thead {
+            th {
+                color: var(--clr-text-900);
+                background: hsl(216, 49%, 6%);
+            }
+        }
+
+        // Subhead row (reviewer names under Scores colgroup)
+        thead .subhead th {
+            background: var(--clr-surface-600);
+        }
+
+        // Apply consistent padding to all table cells
+        th,
+        td {
+            padding: calc(var(--space-2xs) + 0.2rem) var(--space-s);
+
+            &:not(:last-child) {
+                border-right: 1px solid var(--clr-border-darker);
+            }
+        }
+
+        // Remove/override any previous cell padding rules
+        tbody {
+            th,
+            td {
+                vertical-align: middle;
+            }
+        }
+
+        // Zebra striping for readability (resets per tbody/season)
+        tbody tr:nth-child(odd):not(.season-row) {
+            background: hsl(216, 50%, 4%);
+        }
+        tbody tr:nth-child(even):not(.season-row) {
+            background: hsl(216, 49%, 6%);
+        }
+
+        // Season header row
+        .season-row th {
+            color: var(--clr-brand-secondary);
+            background: hsl(42, 91%, 58%, 0.03);
+        }
+
+        // Score cells
+        .cell--score {
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        // Podcast links
+        .cell--pod a {
+            color: var(--color-link, #007acc);
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        // Remove border from only the very last row in the table (last tr of last tbody)
+        > tbody:last-of-type > tr:last-of-type {
+            border-bottom: none;
+        }
+
+        // Remove border from last cell in each row
+        th:last-child,
+        td:last-child {
+            border-right: none;
+        }
+    }
+
+    // Doctor / Spin-off image "behind" the table
+    .era-image {
+        position: absolute;
+        top: -1rem;
+        left: 1rem;
+        width: 80px;
+        height: auto;
+        pointer-events: none;
+        z-index: 0;
+    }
+}

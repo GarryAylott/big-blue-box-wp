@@ -1,0 +1,103 @@
+{
+    "eras": [
+        {
+            "slug": "first-doctor",
+            "label": "First Doctor",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "An Unearthly Child",
+                            "podcast": 42,
+                            "scores": { "garry": 8, "adam": 7 }
+                        },
+                        {
+                            "title": "The Daleks",
+                            "podcast": 178,
+                            "scores": { "garry": 6, "adam": 7 }
+                        },
+                        {
+                            "title": "The Edge of Destruction",
+                            "podcast": 3,
+                            "scores": { "garry": 5, "adam": 6 }
+                        },
+                        {
+                            "title": "Marco Polo",
+                            "podcast": "Not Reviewed",
+                            "scores": { "garry": 0, "adam": 0 }
+                        },
+                        {
+                            "title": "The Keys of Marinus",
+                            "podcast": "232",
+                            "scores": { "garry": 6, "adam": 7 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "second-doctor",
+            "label": "Second Doctor",
+            "season_start": 3,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "The Power of the Daleks",
+                            "podcast": 55,
+                            "scores": { "garry": 9, "adam": 8 }
+                        },
+                        {
+                            "title": "The Highlanders",
+                            "podcast": 56,
+                            "scores": { "garry": 7, "adam": 6 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "tenth-doctor",
+            "label": "Tenth Doctor",
+            "season_start": 28,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "The Christmas Invasion",
+                            "podcast": 140,
+                            "scores": { "garry": 9, "adam": 8 }
+                        },
+                        {
+                            "title": "Tooth and Claw",
+                            "podcast": 141,
+                            "scores": { "garry": 7, "adam": 7 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "torchwood",
+            "label": "Torchwood",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Everything Changes",
+                            "podcast": 200,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Day One",
+                            "podcast": 201,
+                            "scores": { "garry": 6, "adam": 6 }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

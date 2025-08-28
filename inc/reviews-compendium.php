@@ -54,6 +54,8 @@ function bbb_get_reviews_compendium(): array {
 
 /**
  * Build a lookup of podcast episode number => permalink.
+ * 
+ * @return array Lookup table of episode numbers to post URLs
  */
 function bbb_get_podcast_episode_lookup(): array {
     static $map = null;
@@ -61,22 +63,70 @@ function bbb_get_podcast_episode_lookup(): array {
         return $map;
     }
 
-    $posts = get_posts([
+    // Query for posts in the podcasts category
+    $podcast_posts = get_posts([
         'post_type'      => 'post',
         'posts_per_page' => -1,
-        'fields'         => 'ids',
-        'meta_key'       => 'podcast_episode_number',
+        'category_name'  => 'podcasts', 
+        'orderby'        => 'date',
+        'order'          => 'DESC'
     ]);
 
     $map = [];
-    foreach ($posts as $post_id) {
-        $ep = get_post_meta($post_id, 'podcast_episode_number', true);
-        if ($ep !== '') {
-            $ep_int = (int) $ep; // normalise to integer
-            $map[$ep_int] = get_permalink($post_id);
+    foreach ($podcast_posts as $post) {
+        // Try multiple potential sources for episode numbers
+        $ep = null;
+        
+        // Method 1: ACF field (direct)
+        $ep = get_field('podcast_episode_number', $post->ID);
+        
+        // Method 2: Try alternative ACF field names
+        if (empty($ep)) {
+            $possible_field_names = ['episode_number', 'episode', 'pod_episode', 'podcast_episode'];
+            foreach ($possible_field_names as $field_name) {
+                $ep = get_field($field_name, $post->ID);
+                if (!empty($ep)) {
+                    break;
+                }
+            }
+        }
+        
+        // Method 3: Try post meta directly (ACF might store with prefix)
+        if (empty($ep)) {
+            $meta_keys = get_post_custom_keys($post->ID);
+            if (is_array($meta_keys)) {
+                foreach ($meta_keys as $key) {
+                    if (strpos($key, 'episode') !== false || strpos($key, 'podcast') !== false) {
+                        $ep = get_post_meta($post->ID, $key, true);
+                        if (!empty($ep) && is_numeric($ep)) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Method 4: Parse from title (e.g., "Episode 42: The Title")
+        if (empty($ep)) {
+            $title = $post->post_title;
+            if (preg_match('/episode\s*(\d+)/i', $title, $matches)) {
+                $ep = $matches[1];
+            }
+        }
+        
+        if (is_string($ep)) {
+            $ep = trim($ep);
+        }
+        
+        if (!empty($ep) && is_numeric($ep)) {
+            $ep_int = (int) $ep;
+            $ep_str = (string) $ep_int;
+            $permalink = get_permalink($post->ID);
+            $map[$ep_int] = $permalink;
+            $map[$ep_str] = $permalink;
         }
     }
-
+    
     return $map;
 }
 
@@ -84,10 +134,18 @@ function bbb_get_podcast_episode_lookup(): array {
  * Format podcast cell as a link if a matching post is found.
  */
 function bbb_format_podcast_cell($number, array $lookup): string {
-    $num = (int) $number; // force integer
-    if (isset($lookup[$num])) {
-        $url = esc_url($lookup[$num]);
-        return sprintf('<a href="%s">%d</a>', $url, $num);
+    // Try both int and string keys for maximum compatibility
+    $key_int = is_numeric($number) ? (int) $number : null;
+    $key_str = is_numeric($number) ? (string) ((int) $number) : (string) $number;
+
+    if ($key_int !== null && isset($lookup[$key_int])) {
+        $url = esc_url($lookup[$key_int]);
+        return sprintf('<a href="%s">%s</a>', $url, esc_html($number));
     }
-    return (string) $num;
+    if (isset($lookup[$key_str])) {
+        $url = esc_url($lookup[$key_str]);
+        return sprintf('<a href="%s">%s</a>', $url, esc_html($number));
+    }
+    
+    return esc_html((string) $number);
 }

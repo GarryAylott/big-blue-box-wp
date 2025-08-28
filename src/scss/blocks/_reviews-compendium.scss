@@ -40,28 +40,71 @@ REVIEW COMPENDIUM TABLES
         position: relative;
         scroll-margin-top: 6rem;
 
+        // Add more vertical spacing between eras on mobile
+        @media (max-width: 768px) {
+            margin-block-end: var(--space-xl);
+        }
+
         h2 {
             font-size: var(--step-2);
             margin-block-end: var(--space-xs);
             margin-inline-start: calc(var(--space-3xl) - var(--space-2xs));
+
+            @media (max-width: 768px) {
+                margin-inline-start: calc(
+                    var(--space-xl) + var(--space-xs)
+                ); // Less offset on mobile
+            }
         }
     }
 
     .table-wrap {
         position: relative;
+        width: 100%;
         background: var(--clr-surface-600);
         border: 1px solid var(--clr-border-darker);
         border-radius: var(--radius-small);
         overflow-x: auto;
         z-index: 1;
+        box-sizing: border-box;
+
+        // Add mobile-friendly scrolling indicator
+        &::after {
+            content: "← Scroll to view more →";
+            display: block;
+            text-align: center;
+            padding: var(--space-2xs);
+            font-size: var(--step--2);
+            color: var(--clr-text-900);
+            background: hsl(215, 50%, 5%, 0.5);
+            position: sticky;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        // Hide scrolling indicator on larger screens
+        @media (min-width: 768px) {
+            &::after {
+                display: none;
+            }
+        }
     }
 
     .reviews-table {
         width: 100%;
+        min-width: 100%;
         font-size: var(--step--1);
         color: var(--clr-text-400);
         text-align: left;
         border-collapse: collapse;
+        table-layout: fixed; // Forces the table to respect column widths exactly
+        box-sizing: border-box;
+
+        // For narrow screens, set a minimum table width to ensure proper column sizes
+        @media (max-width: 768px) {
+            min-width: 650px; // Minimum width to ensure all columns are reasonably sized on mobile
+        }
 
         // Apply bottom border to all rows
         thead,
@@ -91,6 +134,12 @@ REVIEW COMPENDIUM TABLES
             &:not(:last-child) {
                 border-right: 1px solid var(--clr-border-darker);
             }
+
+            // Adjust padding on mobile for better use of space
+            @media (max-width: 768px) {
+                padding: var(--space-2xs) calc(var(--space-xs) - 0.2rem);
+                font-size: var(--step--2); // Slightly smaller text on mobile
+            }
         }
 
         // Remove/override any previous cell padding rules
@@ -99,6 +148,44 @@ REVIEW COMPENDIUM TABLES
             td {
                 vertical-align: middle;
             }
+        }
+
+        // Column width settings - responsive
+        th:first-child,
+        td:first-child {
+            // Story column (first column) - exactly 50% of table width on desktop
+            width: 50%;
+
+            @media (max-width: 768px) {
+                width: 45%; // Slightly narrower on mobile for better column balance
+            }
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            // Podcast episode column
+            width: 16.67%;
+
+            @media (max-width: 768px) {
+                width: 25%; // Wider on mobile for better readability of episode numbers
+            }
+        }
+
+        th:nth-child(3),
+        td:nth-child(3),
+        th:nth-child(4),
+        td:nth-child(4) {
+            // Score columns
+            width: 16.67%;
+
+            @media (max-width: 768px) {
+                width: 15%; // Slightly narrower on mobile
+            }
+        }
+
+        // Make sure the "Scores" header spans both score columns properly
+        thead tr:first-child th[colspan="2"] {
+            text-align: center;
         }
 
         // Zebra striping for readability (resets per tbody/season)
@@ -113,6 +200,26 @@ REVIEW COMPENDIUM TABLES
         .season-row th {
             color: var(--clr-brand-secondary);
             background: hsl(42, 91%, 58%, 0.03);
+
+            @media (max-width: 768px) {
+                font-size: var(--step--1); // Keep season headers more prominent
+                padding-block: calc(
+                    var(--space-xs) - 0.2rem
+                ); // More vertical space
+            }
+        }
+
+        // Make sure the season header spans across columns properly
+        .season-row th[colspan="2"] {
+            text-align: left;
+        }
+
+        // Story title column
+        .cell--story {
+            word-break: normal;
+            hyphens: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         // Score cells
@@ -122,13 +229,20 @@ REVIEW COMPENDIUM TABLES
         }
 
         // Podcast links
-        .cell--pod a {
-            color: var(--color-link, #007acc);
-            text-decoration: none;
+        .cell--pod {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
-            &:hover,
-            &:focus {
-                text-decoration: underline;
+            a {
+                font-weight: var(--fw-semibold);
+                color: var(--color-link, #007acc);
+                text-decoration: none;
+
+                &:hover,
+                &:focus {
+                    text-decoration: underline;
+                }
             }
         }
 
@@ -153,5 +267,12 @@ REVIEW COMPENDIUM TABLES
         height: auto;
         pointer-events: none;
         z-index: 0;
+
+        @media (max-width: 768px) {
+            width: 60px; // Smaller image on mobile
+            top: -0.5rem;
+            left: 0.5rem;
+            opacity: 0.8; // Slightly more transparent on mobile
+        }
     }
 }

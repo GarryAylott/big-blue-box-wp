@@ -371,7 +371,7 @@ require get_template_directory() . '/inc/pagination.php';
 // ACF Fields
 require get_template_directory() . '/inc/acf-fields.php';
 
-// API Shutdown
+// Captivate API Tools
 require get_template_directory() . '/inc/api-shutdown.php';
 
 // Custom comments section.

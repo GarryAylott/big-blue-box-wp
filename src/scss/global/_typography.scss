@@ -8,8 +8,8 @@ Font styling for headings, paragraphs etc.
 :root {
     // Main font settings
     --font-family-headings: "Jakarta", sans-serif;
-    --font-family-body: "Lora", sans-serif;
-    // --fw-light: 300;
+    --font-family-body: "Jakarta", sans-serif;
+    --fw-light: 300;
     --fw-reg: 400;
     --fw-semibold: 600;
     --fw-bold: 700;
@@ -170,7 +170,7 @@ a {
 
 // Standard text links within body text
 a.link-alt,
-body:is(.single-post) :is(.entry-content) a {
+body:is(.single-post) :is(.post-content) a {
     color: var(--clr-text-link);
     text-decoration: underline;
 

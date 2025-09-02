@@ -13,7 +13,6 @@ button.button {
     min-width: 10ch;
     min-height: 2.75rem;
     padding: calc(var(--space-2xs) + 0.2rem) var(--space-s);
-    font-family: var(--font-family-headings);
     font-size: var(--step--1);
     font-weight: var(--fw-semibold);
     text-align: center;
@@ -62,6 +61,7 @@ a.button {
 button.button {
     border: none;
     background-color: transparent;
+    font-family: inherit;
     cursor: pointer;
 }
 
@@ -73,7 +73,6 @@ a.button-ghost {
     align-items: center;
     justify-content: center;
     min-width: 6ch;
-    font-family: var(--font-family-headings);
     font-size: var(--step--1);
     font-weight: var(--fw-semibold);
     color: var(--clr-text-100);

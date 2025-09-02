@@ -12,37 +12,85 @@ if ( ! defined( '_S_VERSION' ) ) {
  * Theme defaults and registers support for various WordPress features.
  */
 function bigbluebox_setup() {
+	/*
+	* Make theme available for translation.
+	*/
 	load_theme_textdomain( 'bigbluebox', get_template_directory() . '/languages' );
+
+	/*
+	* Add default posts and comments RSS feed links to head.
+	*/
 	add_theme_support( 'automatic-feed-links' );
+
+	/*
+	* Let WordPress manage the document title.
+	* By adding theme support, we declare that this theme does not use a
+	* hard-coded <title> tag in the document head, and expect WordPress to
+	* provide it for us.
+	*/
 	add_theme_support( 'title-tag' );
+
+	/*
+	* Enable support for Post Thumbnails on posts and pages.
+	*
+	* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+	*/
 	add_theme_support( 'post-thumbnails' );
 
+	add_image_size( 'homepage-thumb', 690, 999 );
+	add_image_size( 'singlepost-feat', 1200, 600 );
+	add_image_size( 'singlepost-wide', 1200, 675, true );
+	add_image_size( 'singlepost-square', 1200, 9999, true );
+	add_image_size( 'post-list-thumb', 400, 225, true );
+
+	/*
+	* Switch default core markup for search form, comment form, and comments
+	* to output valid HTML5.
+	*/
 	add_theme_support(
 		'html5',
-		[ 'search-form','comment-form','comment-list','gallery','caption','style','script' ]
+		array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+			'style',
+			'script',
+		)
 	);
 
-	// Add theme support for selective refresh in Customizer
+	// Set up the WordPress core custom background feature.
+	add_theme_support(
+		'custom-background',
+		apply_filters(
+			'bigbluebox_custom_background_args',
+			array(
+				'default-color' => 'ffffff',
+				'default-image' => '',
+			)
+		)
+	);
+
+	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
 
+	/**
+	 * Add support for core custom logo.
+	 *
+	 * @link https://codex.wordpress.org/Theme_Logo
+	 */
 	add_theme_support(
 		'custom-logo',
-		[ 'height' => 250, 'width' => 250, 'flex-width' => true, 'flex-height' => true ]
+		array(
+			'height'      => 250,
+			'width'       => 250,
+			'flex-width'  => true,
+			'flex-height' => true,
+		)
 	);
 }
 add_action( 'after_setup_theme', 'bigbluebox_setup' );
-
-/**
- * Custom nav menus.
- */
-function register_my_menus() {
-	register_nav_menus( [
-		'main-nav'           => __( 'Main Nav' ),
-		'footer-menu-legals' => __( 'Footer Menu Legals' ),
-		'footer-menu-bbb'    => __( 'Footer Menu BBB' ),
-	] );
-}
-add_action( 'init', 'register_my_menus' );
 
 
 /**
@@ -90,6 +138,16 @@ function first_paragraph( $content ) {
 }
 add_filter( 'the_content', 'first_paragraph' );
 
+function register_my_menus() {
+	register_nav_menus(
+		array(
+			'main-nav' => __( 'Main Nav' ),
+			'footer-menu-legals' => __( 'Footer Menu Legals' ),
+			'footer-menu-bbb' => __( 'Footer Menu BBB' ),
+		)
+	);
+}
+add_action( 'init', 'register_my_menus' );
 
 /**
  * Register widget area.
@@ -112,10 +170,57 @@ function bigbluebox_widgets_init() {
 add_action( 'widgets_init', 'bigbluebox_widgets_init' );
 
 /**
- * Excerpts.
+ * Modify excerpt length
  */
-add_filter( 'excerpt_length', fn() => 80, 999 );
-add_filter( 'excerpt_more', fn() => '...' );
+function custom_excerpt_length( $length ) {
+	return 80;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+/**
+ * Change More excerpt
+ */
+function custom_more_excerpt( $more ) {
+	return '...';
+}
+add_filter( 'excerpt_more', 'custom_more_excerpt' );
+
+/**
+ * Strip WP inline image and figure hard widths and heights
+ */
+add_filter('the_content', 'bbbx_clean_gutenberg_images', 20);
+
+function bbbx_clean_gutenberg_images($content) {
+	libxml_use_internal_errors(true);
+	$doc = new DOMDocument();
+	$doc->loadHTML('<?xml encoding="utf-8" ?>' . $content);
+
+	// Loop through all <img> and remove width/height
+	foreach ($doc->getElementsByTagName('img') as $img) {
+		$img->removeAttribute('width');
+		$img->removeAttribute('height');
+	}
+
+	// Loop through all <figure> and remove style="width: ..."
+	foreach ($doc->getElementsByTagName('figure') as $figure) {
+		if ($figure->hasAttribute('style')) {
+			$figure->removeAttribute('style');
+		}
+	}
+
+	$body = $doc->getElementsByTagName('body')->item(0);
+	$new_content = '';
+	foreach ($body->childNodes as $child) {
+		$new_content .= $doc->saveHTML($child);
+	}
+
+	return $new_content;
+}
+
+/**
+ * Stop WP interferring with front-end image manipulation when images are set to "auto" (this will likely be fixed in an upcoming WP update).
+ */
+add_filter( 'wp_img_tag_add_auto_sizes', '__return_false' );
 
 /**
  * Single post reading time estimation.
@@ -147,18 +252,30 @@ function bbb_get_icon( $name ) {
 }
 
 /**
- * Body class tweaks.
+ * Add category slugs to body class on single posts
  */
 add_filter('body_class', function($classes) {
 	if (is_single()) {
-		foreach (get_the_category() as $category) {
-			$classes[] = 'category-' . sanitize_html_class($category->slug);
+		$categories = get_the_category();
+		if ($categories) {
+			foreach ($categories as $category) {
+				$classes[] = 'category-' . sanitize_html_class($category->slug);
+			}
 		}
 	}
 	return $classes;
 });
+
+/**
+ * Remove unwanted theme class from body_class
+ */
 add_filter('body_class', function($classes) {
-	return array_filter($classes, fn($c) => strpos($c, 'wp-theme-') !== 0 );
+	foreach ($classes as $key => $class) {
+		if (strpos($class, 'wp-theme-') === 0) {
+			unset($classes[$key]);
+		}
+	}
+	return $classes;
 });
 
 /**
@@ -237,21 +354,16 @@ add_action('pre_get_posts', function($query) {
 	}
 });
 
-/**
- * Remove jQuery Migrate.
- */
-add_action( 'wp_default_scripts', function( $scripts ) {
+// No need to load jQuery
+function bbb_remove_jquery_migrate( $scripts ) {
 	if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
-		$scripts->registered['jquery']->deps = array_diff(
-			$scripts->registered['jquery']->deps, ['jquery-migrate']
-		);
+		$script = $scripts->registered['jquery'];
+		if ( $script->deps ) {
+			$script->deps = array_diff( $script->deps, array( 'jquery-migrate' ) );
+		}
 	}
-});
-
-/**
- * Disable WP's automatic fetchpriority guessing
- */
-add_filter( 'wp_img_tag_add_fetchpriority', '__return_false' );
+}
+add_action( 'wp_default_scripts', 'bbb_remove_jquery_migrate' );
 
 // Pagination
 require get_template_directory() . '/inc/pagination.php';
@@ -265,6 +377,9 @@ require get_template_directory() . '/inc/api-shutdown.php';
 // Custom comments section.
 require get_template_directory() . '/inc/custom-comments.php';
 
+// Captivate external audio
+require get_template_directory() . '/inc/captivate-external-audio.php';
+
 // Helper for suggested/related posts
 require get_template_directory() . '/inc/related-articles.php';
 
@@ -274,15 +389,16 @@ require get_template_directory() . '/inc/article-promo-banners.php';
 // Compendium data helper
 require_once get_stylesheet_directory() . '/inc/reviews-compendium.php';
 
-// Image optimisation
-require get_template_directory() . '/inc/image-optimisation.php';
-
-// Image sizes
-require get_template_directory() . '/inc/image-sizes.php';
-
 // Enqueue scripts and styles.
 require get_template_directory() . '/inc/enqueue.php';
 
 // Includes from starter theme */
 // Functions which enhance the theme by hooking into WordPress.
 require get_template_directory() . '/inc/template-functions.php';
+
+
+if (isset($_GET['auto_assign_captivate_episodes'])) {
+	include __DIR__ . '/auto-assign-captivate-episodes.php';
+	exit;
+}
+

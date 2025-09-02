@@ -99,9 +99,8 @@ Layout and styling for the closing paragraph and review score.
             top: 50%;
             left: 50%;
             transform: translate(calc(-50% + -4px), -50%);
-            font-family: var(--font-family-headings);
             font-size: calc(var(--step-6) * 1.2);
-            font-weight: var(--fw-semibold);
+            font-weight: var(--fw-bold);
             letter-spacing: -8px;
             color: var(--clr-text-100);
             filter: drop-shadow(0 0 4px var(--clr-brand-primary));

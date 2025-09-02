@@ -3,26 +3,17 @@ POST IMAGES
 Layout and styling for featured and preview card images.
 */
 
-.post-thumb-img {
-    display: block;
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Post content area */
-.entry-content {
-    img {
-        max-width: 100%;
-        height: auto;
+article {
+    .post-thumb-img {
         display: block;
-        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     figure,
     .wp-post-image figure {
-        inline-size: fit-content;
+        max-width: 100%;
         margin-inline: auto;
         padding-block-start: var(--space-s);
         margin-block-end: var(--space-l);
@@ -32,7 +23,6 @@ Layout and styling for featured and preview card images.
         }
 
         figcaption {
-            contain: inline-size;
             font-size: var(--step--1);
             font-style: italic;
             color: var(--clr-text-900);

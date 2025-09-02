@@ -1,0 +1,16 @@
+{
+  "scripts/bbb-scripts.js": {
+    "file": "scripts/bbb-scripts-qnZod907.js",
+    "name": "bbb-scripts",
+    "src": "scripts/bbb-scripts.js",
+    "isEntry": true
+  },
+  "scss/style.scss": {
+    "file": "assets/style-3rE4QgjA.css",
+    "src": "scss/style.scss",
+    "isEntry": true,
+    "names": [
+      "style.css"
+    ]
+  }
+}

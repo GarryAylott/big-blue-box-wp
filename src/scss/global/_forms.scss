@@ -63,6 +63,10 @@ form {
         gap: var(--space-2xs);
     }
 
+    label {
+        font-family: var(--font-family-headings);
+    }
+
     button.button-ghost {
         border-radius: 5px;
     }
@@ -77,6 +81,7 @@ form {
 // Out-of-form dropdown select
 select {
     font-size: var(--step--1);
+    font-family: var(--font-family-headings);
     padding: 0.6rem 1rem;
     background: var(--clr-surface-600);
     color-scheme: dark;

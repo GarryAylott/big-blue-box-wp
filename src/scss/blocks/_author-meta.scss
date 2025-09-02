@@ -21,6 +21,10 @@ Author image and post meta styling.
             background: none;
         }
     }
+
+    &__author-name {
+        font-family: var(--font-family-headings);
+    }
 }
 
 .post-card-alt,
@@ -43,10 +47,14 @@ Author image and post meta styling.
             }
         }
 
-        &__author-name::after {
-            content: "•";
-            color: inherit;
-            padding-inline-start: var(--space-3xs);
+        &__author-name {
+            font-family: inherit;
+
+            &::after {
+                content: "•";
+                color: inherit;
+                padding-inline-start: var(--space-3xs);
+            }
         }
     }
 }

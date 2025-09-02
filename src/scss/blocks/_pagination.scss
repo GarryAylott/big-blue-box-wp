@@ -13,6 +13,8 @@ Styles for post pagination section.
         display: flex;
         gap: var(--space-s);
         flex-wrap: wrap;
+        font-family: var(--font-family-headings);
+        font-weight: var(--fw-semibold);
         list-style: none;
 
         .pagination-item:not(.pagination__dots) {
@@ -29,10 +31,9 @@ Styles for post pagination section.
                 .pagination-item:not(.pagination__dots):hover,
                 span.pagination-item.is-current
             ) {
-            font-weight: var(--fw-bold);
             color: var(--clr-surface-700);
             text-decoration: none;
-            border: none;
+            border: 1px solid transparent;
             background: var(--clr-brand-secondary);
         }
 

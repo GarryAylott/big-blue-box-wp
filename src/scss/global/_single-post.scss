@@ -17,13 +17,6 @@ Layout and styling for single post pages.
             gap: var(--space-m);
         }
 
-        img {
-            aspect-ratio: 16 / 9;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         &__details {
             display: flex;
             flex-direction: column;
@@ -121,7 +114,7 @@ Layout and styling for single post pages.
             }
         }
 
-        .post-content {
+        .entry-content {
             :is(h2, h3, h4, h5, h6):not(:first-child) {
                 margin-block-start: var(--space-2xl);
 
@@ -139,13 +132,12 @@ Layout and styling for single post pages.
             p.lead,
             p.has-drop-cap {
                 font-size: var(--step-1);
-                font-weight: var(--fw-bold);
+                font-weight: var(--fw-semibold);
                 line-height: 1.5;
 
                 &:first-letter,
                 &:not(:focus):first-letter {
                     color: var(--clr-brand-accent);
-                    font-family: var(--font-family-headings);
                     font-size: 4.5rem;
                     line-height: 0.3em;
                     margin-block-start: 1.6rem;

@@ -12,76 +12,84 @@ get_header();
 
 <main id="primary" class="site-main flow-page-regions">
     <div class="wrapper">
-            <?php
-            $displayed_posts = array();
+        <?php
+        $displayed_posts = array();
 
-            $args1 = array(
-                'category_name' => 'podcasts',
-                'posts_per_page' => 1
-            );
-            $query1 = new WP_Query($args1);
+        $args1 = array(
+            'category_name' => 'podcasts',
+            'posts_per_page' => 1
+        );
+        $query1 = new WP_Query($args1);
 
-            if ($query1->have_posts()) :
-                while ($query1->have_posts()) : $query1->the_post(); ?>
-
-                    <?php $bg_img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'singlepost-feat') : ''; ?>
-
-                    <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep rounded'); ?> style="background-image: url('<?php echo esc_url($bg_img_url); ?>');">
-                        <div class="latest-podcast-ep__content">
-                            <div class="latest-podcast-ep__details">
-                                <h6 class="section-title">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16">
-                                        <path d="M7.5 3c0-.813-.688-1.5-1.5-1.5A1.5 1.5 0 0 0 4.5 3v5c0 .844.656 1.5 1.5 1.5A1.5 1.5 0 0 0 7.5 8V3ZM3 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3ZM2 6.75V8c0 2.219 1.781 4 4 4 2.188 0 4-1.781 4-4V6.75a.74.74 0 0 1 .75-.75.76.76 0 0 1 .75.75V8c0 2.813-2.094 5.094-4.75 5.469V14.5h1.5a.76.76 0 0 1 .75.75.74.74 0 0 1-.75.75h-4.5a.722.722 0 0 1-.75-.75.74.74 0 0 1 .75-.75h1.5v-1.031A5.502 5.502 0 0 1 .5 8V6.75A.74.74 0 0 1 1.25 6a.76.76 0 0 1 .75.75Z"/>
-                                    </svg>
-                                    Latest podcast episode
-                                </h6>
-                                <div class="latest-podcast-ep__copy">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <h1>
-                                            <?php
-                                            $thetitle   = $post->post_title;
-                                            $getlength  = strlen( $thetitle );
-                                            $thelength  = 80;
-                                            echo substr( $thetitle, 0, $thelength );
-                                            if ( $getlength > $thelength ) echo "...";
-                                            ?>
-                                        </h1>
-                                    </a>
-                                    <p class="icon-text-group small">
+        if ($query1->have_posts()) :
+            while ($query1->have_posts()) : $query1->the_post(); ?>
+                <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep rounded'); ?>>
+                    <?php if ( has_post_thumbnail() ) : ?>
+                        <?php the_post_thumbnail(
+                            'singlepost-feat',
+                            [
+                                'class'    => 'latest-podcast-ep__bg',
+                                'decoding' => 'async',
+                                'alt'      => '',
+                                'sizes'    => '(max-width: 768px) 100vw, (max-width: 1080px) 100vw, 1080px',
+                            ]
+                        ); ?>
+                    <?php endif; ?>
+                    <div class="latest-podcast-ep__content">
+                        <div class="latest-podcast-ep__details">
+                            <h6 class="section-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16">
+                                    <path d="M7.5 3c0-.813-.688-1.5-1.5-1.5A1.5 1.5 0 0 0 4.5 3v5c0 .844.656 1.5 1.5 1.5A1.5 1.5 0 0 0 7.5 8V3ZM3 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3ZM2 6.75V8c0 2.219 1.781 4 4 4 2.188 0 4-1.781 4-4V6.75a.74.74 0 0 1 .75-.75.76.76 0 0 1 .75.75V8c0 2.813-2.094 5.094-4.75 5.469V14.5h1.5a.76.76 0 0 1 .75.75.74.74 0 0 1-.75.75h-4.5a.722.722 0 0 1-.75-.75.74.74 0 0 1 .75-.75h1.5v-1.031A5.502 5.502 0 0 1 .5 8V6.75A.74.74 0 0 1 1.25 6a.76.76 0 0 1 .75.75Z"/>
+                                </svg>
+                                Latest podcast episode
+                            </h6>
+                            <div class="latest-podcast-ep__copy">
+                                <a href="<?php the_permalink(); ?>">
+                                    <h1>
                                         <?php
-                                        $ep_label = get_field( 'podcast_episode_number' );
-                                        $ep_type = get_field( 'podcast_episode_type' );
-                                        if ( is_numeric( $ep_label ) ) {
-                                            echo 'Episode ' . esc_html( $ep_label );
-                                        } elseif ( $ep_label === 'N/A' && ! empty( $ep_type ) ) {
-                                            echo esc_html( $ep_type );
-                                        } elseif ( $ep_label ) {
-                                            echo esc_html( $ep_label );
-                                        }
+                                        $thetitle   = $post->post_title;
+                                        $getlength  = strlen( $thetitle );
+                                        $thelength  = 80;
+                                        echo substr( $thetitle, 0, $thelength );
+                                        if ( $getlength > $thelength ) echo "...";
                                         ?>
-                                        <span>•</span> <?php echo get_the_date( 'j M, Y' ); ?>
-                                    </p>
-                                </div>
-
+                                    </h1>
+                                </a>
+                                <p class="icon-text-group small">
+                                    <?php
+                                    $ep_label = get_field( 'podcast_episode_number' );
+                                    $ep_type = get_field( 'podcast_episode_type' );
+                                    if ( is_numeric( $ep_label ) ) {
+                                        echo 'Episode ' . esc_html( $ep_label );
+                                    } elseif ( $ep_label === 'N/A' && ! empty( $ep_type ) ) {
+                                        echo esc_html( $ep_type );
+                                    } elseif ( $ep_label ) {
+                                        echo esc_html( $ep_label );
+                                    }
+                                    ?>
+                                    <span>•</span> <?php echo get_the_date( 'j M, Y' ); ?>
+                                </p>
                             </div>
 
-                            <p class="latest-podcast-ep__excerpt">
-                                <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
-                            </p>
-
-                            <a href="<?php the_permalink(); ?>" class="button flex">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
-                                    <path fill="#fff" fill-rule="evenodd" d="M8 1.5A5.5 5.5 0 0 0 2.5 7v1h4v7H4a3 3 0 0 1-3-3V7a7 7 0 0 1 14 0v5a3 3 0 0 1-3 3H9.5V8h4V7A5.5 5.5 0 0 0 8 1.5Zm-3 8H2.5V12A1.5 1.5 0 0 0 4 13.5h1v-4Zm6 0h2.5V12a1.5 1.5 0 0 1-1.5 1.5h-1v-4Z" clip-rule="evenodd"/>
-                                </svg>
-                                Listen Now
-                            </a>
                         </div>
-                    </article>
-                <?php
-                $displayed_posts[] = get_the_ID();
-                endwhile;
-                wp_reset_postdata();
-            endif; ?>
+
+                        <p class="latest-podcast-ep__excerpt">
+                            <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
+                        </p>
+
+                        <a href="<?php the_permalink(); ?>" class="button flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+                                <path fill="#fff" fill-rule="evenodd" d="M8 1.5A5.5 5.5 0 0 0 2.5 7v1h4v7H4a3 3 0 0 1-3-3V7a7 7 0 0 1 14 0v5a3 3 0 0 1-3 3H9.5V8h4V7A5.5 5.5 0 0 0 8 1.5Zm-3 8H2.5V12A1.5 1.5 0 0 0 4 13.5h1v-4Zm6 0h2.5V12a1.5 1.5 0 0 1-1.5 1.5h-1v-4Z" clip-rule="evenodd"/>
+                            </svg>
+                            Listen Now
+                        </a>
+                    </div>
+                </article>
+            <?php
+            $displayed_posts[] = get_the_ID();
+            endwhile;
+            wp_reset_postdata();
+        endif; ?>
     </div>
 
     <?php

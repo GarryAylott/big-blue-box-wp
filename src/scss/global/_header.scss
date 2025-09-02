@@ -60,6 +60,7 @@ Header styling for logo, nav etc.
             }
 
             a {
+                font-family: var(--font-family-headings);
                 font-size: var(--step--1);
                 line-height: 2.4rem;
             }

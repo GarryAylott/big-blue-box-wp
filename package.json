@@ -1,33 +1,34 @@
 {
-  "name": "big-blue-box-wp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Garry Aylott",
-  "license": "ISC",
-  "type": "module",
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-terser": "^0.4.4",
-    "autoprefixer": "^10.4.16",
-    "browser-sync": "^3.0.0",
-    "cssnano": "^7.0.7",
-    "gulp": "^5.0.1",
-    "gulp-postcss": "^10.0.0",
-    "gulp-rollup": "^2.17.0",
-    "gulp-sass": "^6.0.1",
-    "gulp-sourcemaps": "^2.6.5",
-    "postcss": "^8.4.31",
-    "rollup": "^2.79.2",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-stream": "^1.24.1",
-    "sass": "^1.69.5",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0",
-    "vlitejs": "^7.4.0"
-  }
+    "name": "big-blue-box-wp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "node --no-deprecation $(which gulp)",
+        "build": "node --no-deprecation $(which gulp) build"
+    },
+    "author": "Garry Aylott",
+    "license": "ISC",
+    "type": "module",
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^16.0.1",
+        "@rollup/plugin-terser": "^0.4.4",
+        "autoprefixer": "^10.4.16",
+        "browser-sync": "^3.0.4",
+        "cssnano": "^7.1.1",
+        "gulp": "^5.0.1",
+        "gulp-postcss": "^10.0.0",
+        "gulp-rollup": "^2.17.0",
+        "gulp-sass": "^6.0.1",
+        "gulp-sourcemaps": "^3.0.0",
+        "postcss": "^8.4.31",
+        "rollup": "^4.50.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-stream": "^1.24.1",
+        "sass": "^1.92.0",
+        "vinyl-buffer": "^1.0.1",
+        "vinyl-source-stream": "^2.0.0",
+        "vlitejs": "^7.4.0"
+    }
 }

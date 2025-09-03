@@ -28,23 +28,31 @@ const paths = {
     php: "**/*.php",
 };
 
-// Sass task
-export function styles() {
+// Sass tasks
+export function stylesDev() {
     return gulp
         .src(paths.styles.src)
         .pipe(sourcemaps.init())
-        .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
-        .pipe(postcss([autoprefixer(), cssnano()]))
+        .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
+        .pipe(postcss([autoprefixer()]))
         .pipe(sourcemaps.write("."))
         .pipe(gulp.dest(paths.styles.dest))
         .pipe(bs.stream());
 }
 
+export function stylesProd() {
+    return gulp
+        .src(paths.styles.src)
+        .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
+        .pipe(postcss([autoprefixer(), cssnano()]))
+        .pipe(gulp.dest(paths.styles.dest));
+}
+
 // Scripts task
-export async function scripts() {
+export async function scriptsDev() {
     const bundle = await rollup({
         input: "src/scripts/bbb-scripts.js",
-        plugins: [resolve(), terser()],
+        plugins: [resolve()],
     });
 
     const { output } = await bundle.generate({
@@ -52,7 +60,6 @@ export async function scripts() {
         sourcemap: true,
     });
 
-    // Write JS output manually
     const jsFile = path.resolve("scripts/bbb-scripts.min.js");
     const mapFile = `${jsFile}.map`;
 
@@ -66,6 +73,26 @@ export async function scripts() {
     }
 
     bs.reload();
+}
+
+export async function scriptsProd() {
+    const bundle = await rollup({
+        input: "src/scripts/bbb-scripts.js",
+        plugins: [resolve(), terser()],
+    });
+
+    const { output } = await bundle.generate({
+        format: "esm",
+        sourcemap: false,
+    });
+
+    const jsFile = path.resolve("scripts/bbb-scripts.min.js");
+
+    for (const chunkOrAsset of output) {
+        if (chunkOrAsset.type === "chunk") {
+            fs.writeFileSync(jsFile, chunkOrAsset.code);
+        }
+    }
 }
 
 // BrowserSync
@@ -86,15 +113,15 @@ export function serve(done) {
 
 // Watch files
 export function watchFiles() {
-    gulp.watch(paths.styles.src, styles);
-    gulp.watch(paths.scripts.src, scripts);
+    gulp.watch(paths.styles.src, stylesDev);
+    gulp.watch(paths.scripts.src, scriptsDev);
     gulp.watch(paths.php).on("change", bs.reload);
 }
 
 // Default task
-export const dev = gulp.series(
-    gulp.parallel(styles, scripts),
-    serve,
-    watchFiles
-);
+export const dev = gulp.series(gulp.parallel(stylesDev, scriptsDev), serve, watchFiles);
+
+// Production build (no server/watch)
+export const build = gulp.series(gulp.parallel(stylesProd, scriptsProd));
+
 export default dev;

@@ -7,11 +7,18 @@
 
 // Update your enqueue script (functions.php) to remove the vLite CDN
 function bigbluebox_scripts() {
-	// Main stylesheet
-	wp_enqueue_style('bigbluebox-style', get_stylesheet_uri(), array(), _S_VERSION);
+	// File-based versions for cache busting
+	$style_path  = get_stylesheet_directory() . '/style.css';
+	$script_path = get_template_directory() . '/scripts/bbb-scripts.min.js';
 
-	// Main JS bundle — now includes vLite
-	wp_enqueue_script('bigbluebox-scripts', get_template_directory_uri() . '/scripts/bbb-scripts.min.js', array(), _S_VERSION, true);
+	$style_ver  = file_exists($style_path) ? filemtime($style_path) : _S_VERSION;
+	$script_ver = file_exists($script_path) ? filemtime($script_path) : _S_VERSION;
+
+	// Main stylesheet
+	wp_enqueue_style('bigbluebox-style', get_stylesheet_uri(), array(), $style_ver);
+
+	// Main JS bundle — ESM
+	wp_enqueue_script('bigbluebox-scripts', get_template_directory_uri() . '/scripts/bbb-scripts.min.js', array(), $script_ver, true);
 	wp_script_add_data( 'bigbluebox-scripts', 'type', 'module' );
 
 	wp_localize_script('bigbluebox-scripts', 'themeSettings', array(

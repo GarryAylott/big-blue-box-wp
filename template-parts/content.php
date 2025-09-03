@@ -129,7 +129,7 @@
 				endif;
 			?>
 
-			<section class="entry-content flow">
+			<section class="post-content flow">
 				<?php the_content(); ?>
 			</section>
 

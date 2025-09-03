@@ -32,7 +32,6 @@ REVIEW COMPENDIUM TABLES
 
         p {
             font-size: var(--step--2);
-            font-family: var(--font-family-headings);
             color: var(--clr-text-900);
         }
     }
@@ -117,7 +116,6 @@ REVIEW COMPENDIUM TABLES
 
         thead {
             th {
-                font-family: var(--font-family-headings);
                 color: var(--clr-text-900);
                 background: hsl(216, 49%, 6%);
             }

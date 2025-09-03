@@ -23,7 +23,8 @@ Layout and styling for archive pages.
         gap: var(--space-2xs);
 
         p {
-            max-width: 70ch;
+            max-width: 60ch;
+            color: var(--clr-text-900);
 
             span {
                 color: var(--clr-brand-secondary);
@@ -102,9 +103,8 @@ body.tag .archive-hero__group h1 {
 
     &__badge {
         display: inline-block;
-        font-family: var(--font-family-headings);
         font-size: var(--step--2);
-        font-weight: var(--fw-semibold);
+        font-weight: var(--fw-bold);
         text-transform: uppercase;
         padding: var(--space-3xs) var(--space-2xs);
         background: var(--clr-surface-300);
@@ -153,7 +153,6 @@ body.tag .archive-hero__group h1 {
 
             p {
                 display: block;
-                font-family: var(--font-family-headings);
                 font-size: var(--step--1);
                 color: var(--clr-text-400);
                 text-wrap: unset;

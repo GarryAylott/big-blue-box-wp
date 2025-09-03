@@ -3,26 +3,18 @@ LATEST PODCAST EPISODE BLOCK
 */
 
 .latest-podcast-ep {
-    position: relative;
     padding: calc(var(--space-3xl) + var(--space-xl)) var(--space-l)
         var(--space-l);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     overflow: hidden;
-
-    &__bg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 0;
-    }
 
     &:before {
         content: "";
         position: absolute;
         inset: 0;
         background: hsl(var(--clr-brand-primary-darker-hsl) / 0.7);
-        z-index: 1;
     }
 
     &:after {
@@ -40,7 +32,7 @@ LATEST PODCAST EPISODE BLOCK
         border-radius: 50%;
         filter: blur(8px);
         pointer-events: none;
-        z-index: 2;
+        z-index: 0;
     }
 
     &__content {
@@ -68,7 +60,6 @@ LATEST PODCAST EPISODE BLOCK
         .icon-text-group {
             display: flex;
             flex-wrap: wrap;
-            color: var(--clr-text-100);
         }
     }
 
@@ -83,7 +74,6 @@ LATEST PODCAST EPISODE BLOCK
     }
 
     &__excerpt {
-        color: var(--clr-text-100);
         line-height: 1.4;
 
         @media (max-width: 930px) {

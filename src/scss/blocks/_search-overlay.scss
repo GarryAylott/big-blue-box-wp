@@ -63,7 +63,6 @@ Search overlay that appears when the search icon is clicked
 
             .search-field {
                 flex-grow: 1;
-                font-family: var(--font-family-headings);
                 font-size: 1.25rem;
                 padding: 0;
                 color: var(--clr-text-100);
@@ -79,7 +78,7 @@ Search overlay that appears when the search icon is clicked
                     color: var(--clr-surface-200);
                 }
             }
-
+            
             .search-submit {
                 background: none;
                 border: none;

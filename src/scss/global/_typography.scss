@@ -170,7 +170,7 @@ a {
 
 // Standard text links within body text
 a.link-alt,
-body:is(.single-post) :is(.entry-content) a {
+body:is(.single-post) :is(.post-content) a {
     color: var(--clr-text-link);
     text-decoration: underline;
 

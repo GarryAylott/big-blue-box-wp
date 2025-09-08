@@ -57,11 +57,11 @@ add_filter( 'acf/load_field/name=captivate_episode_selector', function( $field )
 	}
 
 	// Show latest 5
-	$recent_episodes = array_slice( $all_episodes, 0, 15 );
+	// $recent_episodes = array_slice( $all_episodes, 0, 15 );
 
 	$field['choices'] = [];
 
-	foreach ( $recent_episodes as $ep ) {
+	foreach ( $all_episodes as $ep ) {
 		$title = $ep['title'] ?? 'Untitled Episode';
 		$guid  = $ep['id'] ?? '';
 		if ( $guid ) {

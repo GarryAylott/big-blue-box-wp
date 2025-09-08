@@ -5,6 +5,7 @@
  * @package Big_Blue_Box
  */
 
+if ( ! function_exists( 'bbb_get_captivate_audio_url' ) ) {
 function bbb_get_captivate_audio_url( $guid ) {
 	if ( ! $guid ) {
 		error_log( '❌ GUID missing in bbb_get_captivate_audio_url.' );
@@ -107,4 +108,5 @@ function bbb_get_captivate_audio_url( $guid ) {
 	$snippet = substr( $media_body, 0, 200 );
 	error_log( '❌ No media_url found in media response. Body (truncated): ' . $snippet );
 	return false;
+}
 }

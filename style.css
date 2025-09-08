@@ -484,24 +484,12 @@ Importing vLite styles from NPM package
     overflow-x: clip;
   }
   /* Set shorter line heights on headings and interactive elements */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  button,
-  input,
-  label {
+  h1, h2, h3, h4, h5,
+  button, input, label {
     line-height: 1.1;
   }
   /* Avoid text overflows */
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
   }
   /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -515,12 +503,7 @@ Importing vLite styles from NPM package
             text-decoration-skip-ink: auto;
   }
   /* Make images easier to work with */
-  img,
-  picture,
-  video,
-  canvas,
-  svg,
-  figure {
+  img, picture, video, canvas, svg, figure {
     max-width: 100%;
     height: auto;
     display: block;
@@ -535,25 +518,20 @@ Importing vLite styles from NPM package
   figure.aligncenter img {
     margin-inline: auto;
   }
-  figure.wp-embed-aspect-16-9 iframe,
-  iframe {
+  figure.wp-embed-aspect-16-9 iframe {
     width: 100%;
     height: 100%;
     aspect-ratio: 16/9;
   }
   /* Inherit fonts for inputs and buttons */
-  input,
-  button,
-  textarea,
-  select {
+  input, button, textarea, select {
     font: inherit;
     letter-spacing: inherit;
     word-spacing: inherit;
     color: currentColor;
   }
   /* Remove input and field default styles */
-  input,
-  textarea {
+  input, textarea {
     padding: 0;
     margin: 0;
   }
@@ -913,8 +891,8 @@ Consistent block padding for page sections.
 FLOW UTILITY
 Spacing value between content blocks.
 */
-:where(.flow-tiny, .post-article__container .entry-content ul,
-.post-article__container .entry-content ol) > :where(* + *) {
+:where(.flow-tiny, .post-article__container .post-content ul,
+.post-article__container .post-content ol) > :where(* + *) {
   margin-block-start: var(--flow-space-tiny, 0.5em);
 }
 
@@ -1261,13 +1239,13 @@ a:focus-visible {
 }
 
 a.link-alt,
-body:is(.single-post) :is(.entry-content) a {
+body:is(.single-post) :is(.post-content) a {
   color: var(--clr-text-link);
   text-decoration: underline;
 }
 a.link-alt:hover, a.link-alt:active,
-body:is(.single-post) :is(.entry-content) a:hover,
-body:is(.single-post) :is(.entry-content) a:active {
+body:is(.single-post) :is(.post-content) a:hover,
+body:is(.single-post) :is(.post-content) a:active {
   color: var(--clr-text-link-hover);
   text-decoration: underline;
   text-decoration-color: var(--clr-text-link-hover);
@@ -1313,7 +1291,6 @@ button.button {
   min-width: 10ch;
   min-height: 2.75rem;
   padding: calc(var(--space-2xs) + 0.2rem) var(--space-s);
-  font-family: var(--font-family-headings);
   font-size: var(--step--1);
   font-weight: var(--fw-semibold);
   text-align: center;
@@ -1363,6 +1340,7 @@ a.button {
 button.button {
   border: none;
   background-color: transparent;
+  font-family: inherit;
   cursor: pointer;
 }
 
@@ -1374,7 +1352,6 @@ a.button-ghost {
   align-items: center;
   justify-content: center;
   min-width: 6ch;
-  font-family: var(--font-family-headings);
   font-size: var(--step--1);
   font-weight: var(--fw-semibold);
   color: var(--clr-text-100);
@@ -1500,9 +1477,6 @@ form .form-input-group {
   flex-direction: column;
   gap: var(--space-2xs);
 }
-form label {
-  font-family: var(--font-family-headings);
-}
 form button.button-ghost {
   border-radius: 5px;
 }
@@ -1514,7 +1488,6 @@ form [type=search]::-webkit-search-cancel-button {
 
 select {
   font-size: var(--step--1);
-  font-family: var(--font-family-headings);
   padding: 0.6rem 1rem;
   background: var(--clr-surface-600);
   color-scheme: dark;
@@ -1642,7 +1615,6 @@ Header styling for logo, nav etc.
   white-space: nowrap;
 }
 .site-head__navigation .nav a {
-  font-family: var(--font-family-headings);
   font-size: var(--step--1);
   line-height: 2.4rem;
 }
@@ -2010,25 +1982,17 @@ Default value for spacing between text paragraphs.
 LATEST PODCAST EPISODE BLOCK
 */
 .latest-podcast-ep {
-  position: relative;
   padding: calc(var(--space-3xl) + var(--space-xl)) var(--space-l) var(--space-l);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   overflow: hidden;
-}
-.latest-podcast-ep__bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  z-index: 0;
 }
 .latest-podcast-ep:before {
   content: "";
   position: absolute;
   inset: 0;
   background: hsl(var(--clr-brand-primary-darker-hsl)/0.7);
-  z-index: 1;
 }
 .latest-podcast-ep:after {
   content: "";
@@ -2041,7 +2005,7 @@ LATEST PODCAST EPISODE BLOCK
   border-radius: 50%;
   filter: blur(8px);
   pointer-events: none;
-  z-index: 2;
+  z-index: 0;
 }
 .latest-podcast-ep__content {
   max-width: 50rem;
@@ -2065,7 +2029,6 @@ LATEST PODCAST EPISODE BLOCK
 .latest-podcast-ep__details .icon-text-group {
   display: flex;
   flex-wrap: wrap;
-  color: var(--clr-text-100);
 }
 .latest-podcast-ep__copy {
   display: flex;
@@ -2076,7 +2039,6 @@ LATEST PODCAST EPISODE BLOCK
   font-size: var(--step-5);
 }
 .latest-podcast-ep__excerpt {
-  color: var(--clr-text-100);
   line-height: 1.4;
 }
 @media (max-width: 930px) {
@@ -2297,9 +2259,6 @@ Author image and post meta styling.
     background: none;
   }
 }
-.author-meta__author-name {
-  font-family: var(--font-family-headings);
-}
 
 .post-card-alt .author-meta,
 .article-promo-banner .author-meta {
@@ -2329,10 +2288,6 @@ Author image and post meta styling.
   width: -moz-max-content;
   width: max-content;
 }
-.post-card-alt .author-meta__author-name,
-.article-promo-banner .author-meta__author-name {
-  font-family: inherit;
-}
 .post-card-alt .author-meta__author-name::after,
 .article-promo-banner .author-meta__author-name::after {
   content: "•";
@@ -2349,7 +2304,6 @@ CATEGORY TAG BLOCK
   gap: var(--space-3xs);
   width: -moz-fit-content;
   width: fit-content;
-  font-family: var(--font-family-headings);
   color: var(--clr-text-900);
 }
 .category-tag svg {
@@ -2963,7 +2917,6 @@ Search overlay that appears when the search icon is clicked
 }
 .search-overlay__content .search-form .search-field {
   flex-grow: 1;
-  font-family: var(--font-family-headings);
   font-size: 1.25rem;
   padding: 0;
   color: var(--clr-text-100);
@@ -3085,7 +3038,6 @@ Layout and styling for single post page and search results tags.
   display: inline-block;
   width: -moz-max-content;
   width: max-content;
-  font-family: var(--font-family-headings);
   font-size: calc(var(--step--1) - 0.2em);
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
@@ -3123,37 +3075,26 @@ Layout and styling for mainly single post meta information.
 POST IMAGES
 Layout and styling for featured and preview card images.
 */
-.post-thumb-img {
+article .post-thumb-img {
   display: block;
-  aspect-ratio: 16/9;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-
-/* Post content area */
-.entry-content img {
+article figure,
+article .wp-post-image figure {
   max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-.entry-content figure,
-.entry-content .wp-post-image figure {
-  inline-size: -moz-fit-content;
-  inline-size: fit-content;
   margin-inline: auto;
   padding-block-start: var(--space-s);
   margin-block-end: var(--space-l);
 }
-.entry-content figure img,
-.entry-content .wp-post-image figure img {
+article figure img,
+article .wp-post-image figure img {
   border-radius: var(--radius-small);
 }
-.entry-content figure figcaption,
-.entry-content .wp-post-image figure figcaption {
-  contain: inline-size;
+article figure figcaption,
+article .wp-post-image figure figcaption {
   font-size: var(--step--1);
   font-style: italic;
   color: var(--clr-text-900);
@@ -3256,9 +3197,8 @@ Layout and styling for the closing paragraph and review score.
   top: 50%;
   left: 50%;
   transform: translate(calc(-50% - 4px), -50%);
-  font-family: var(--font-family-headings);
   font-size: calc(var(--step-6) * 1.2);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-bold);
   letter-spacing: -8px;
   color: var(--clr-text-100);
   filter: drop-shadow(0 0 4px var(--clr-brand-primary));
@@ -3530,7 +3470,6 @@ Layout and styling for comments section at the end of articles.
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  font-family: var(--font-family-headings);
   font-weight: var(--fw-bold);
 }
 @media (max-width: 48rem) {
@@ -3541,7 +3480,6 @@ Layout and styling for comments section at the end of articles.
   }
 }
 .comments-area .comment-list .comment-header .comment-meta .comment-author .team-badge {
-  font-family: var(--font-family-headings);
   font-size: var(--step--2);
   color: var(--clr-text-400);
   padding: 6px 12px;
@@ -3553,7 +3491,6 @@ Layout and styling for comments section at the end of articles.
   font-size: var(--step--1);
 }
 .comments-area .comment-list .comment-reply a {
-  font-family: var(--font-family-headings);
   font-size: var(--step--1);
 }
 .comments-area .comment-list .comment-content {
@@ -3614,8 +3551,6 @@ Styles for post pagination section.
   display: flex;
   gap: var(--space-s);
   flex-wrap: wrap;
-  font-family: var(--font-family-headings);
-  font-weight: var(--fw-semibold);
   list-style: none;
 }
 .pagination__list .pagination-item:not(.pagination__dots) {
@@ -3628,9 +3563,10 @@ Styles for post pagination section.
 }
 .pagination__list :is(.pagination-item:not(.pagination__dots):hover,
 span.pagination-item.is-current) {
+  font-weight: var(--fw-bold);
   color: var(--clr-surface-700);
   text-decoration: none;
-  border: 1px solid transparent;
+  border: none;
   background: var(--clr-brand-secondary);
 }
 .pagination__list .pagination__num {
@@ -3965,7 +3901,6 @@ REVIEW COMPENDIUM TABLES
 }
 .reviews-compendium__toolbar p {
   font-size: var(--step--2);
-  font-family: var(--font-family-headings);
   color: var(--clr-text-900);
 }
 .reviews-compendium .reviews-era {
@@ -4035,7 +3970,6 @@ REVIEW COMPENDIUM TABLES
   border-bottom: 1px solid var(--clr-border-darker);
 }
 .reviews-compendium .reviews-table thead th {
-  font-family: var(--font-family-headings);
   color: var(--clr-text-900);
   background: hsl(216, 49%, 6%);
 }
@@ -4183,6 +4117,13 @@ Layout and styling for single post pages.
     gap: var(--space-m);
   }
 }
+.post-article .post-hero img {
+  aspect-ratio: 16/9;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .post-article .post-hero__details {
   display: flex;
   flex-direction: column;
@@ -4265,34 +4206,35 @@ Layout and styling for single post pages.
 .post-article__container .post-summary ul li::marker {
   color: var(--clr-brand-accent);
 }
-.post-article__container .entry-content :is(h2, h3, h4, h5, h6):not(:first-child) {
+.post-article__container .post-content :is(h2, h3, h4, h5, h6):not(:first-child) {
   margin-block-start: var(--space-2xl);
 }
-.post-article__container .entry-content :is(h2, h3, h4, h5, h6):not(:first-child) + figure,
-.post-article__container .entry-content :is(h2, h3, h4, h5, h6):not(:first-child) + .wp-block-image {
+.post-article__container .post-content :is(h2, h3, h4, h5, h6):not(:first-child) + figure,
+.post-article__container .post-content :is(h2, h3, h4, h5, h6):not(:first-child) + .wp-block-image {
   padding-block-start: 0;
 }
-.post-article__container .entry-content p.lead + :is(h2, h3, h4, h5, h6) {
+.post-article__container .post-content p.lead + :is(h2, h3, h4, h5, h6) {
   margin-block-start: var(--space-l);
 }
-.post-article__container .entry-content p.lead,
-.post-article__container .entry-content p.has-drop-cap {
+.post-article__container .post-content p.lead,
+.post-article__container .post-content p.has-drop-cap {
   font-size: var(--step-1);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-bold);
   line-height: 1.5;
 }
-.post-article__container .entry-content p.lead:first-letter, .post-article__container .entry-content p.lead:not(:focus):first-letter,
-.post-article__container .entry-content p.has-drop-cap:first-letter,
-.post-article__container .entry-content p.has-drop-cap:not(:focus):first-letter {
+.post-article__container .post-content p.lead:first-letter, .post-article__container .post-content p.lead:not(:focus):first-letter,
+.post-article__container .post-content p.has-drop-cap:first-letter,
+.post-article__container .post-content p.has-drop-cap:not(:focus):first-letter {
   color: var(--clr-brand-accent);
+  font-family: var(--font-family-headings);
   font-size: 4.5rem;
   line-height: 0.3em;
   margin-block-start: 1.6rem;
   margin-inline-end: 0.5rem;
   float: left;
 }
-.post-article__container .entry-content ul,
-.post-article__container .entry-content ol {
+.post-article__container .post-content ul,
+.post-article__container .post-content ol {
   margin-inline-start: 1.1rem;
 }
 .post-article__container .article-sidebar {
@@ -4337,7 +4279,8 @@ Layout and styling for archive pages.
   gap: var(--space-2xs);
 }
 .archive-hero__group p {
-  max-width: 70ch;
+  max-width: 60ch;
+  color: var(--clr-text-900);
 }
 .archive-hero__group p span {
   color: var(--clr-brand-secondary);
@@ -4409,9 +4352,8 @@ body.tag .archive-hero__group h1 span {
 }
 .author-hero__badge {
   display: inline-block;
-  font-family: var(--font-family-headings);
   font-size: var(--step--2);
-  font-weight: var(--fw-semibold);
+  font-weight: var(--fw-bold);
   text-transform: uppercase;
   padding: var(--space-3xs) var(--space-2xs);
   background: var(--clr-surface-300);
@@ -4458,7 +4400,6 @@ body.tag .archive-hero__group h1 span {
 }
 .author-hero__favs > div p {
   display: block;
-  font-family: var(--font-family-headings);
   font-size: var(--step--1);
   color: var(--clr-text-400);
   text-wrap: unset;

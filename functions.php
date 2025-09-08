@@ -378,7 +378,7 @@ require get_template_directory() . '/inc/api-shutdown.php';
 require get_template_directory() . '/inc/custom-comments.php';
 
 // Captivate external audio
-require get_template_directory() . '/inc/captivate-external-audio.php';
+require_once get_template_directory() . '/inc/captivate-external-audio.php';
 
 // Helper for suggested/related posts
 require get_template_directory() . '/inc/related-articles.php';
@@ -401,4 +401,3 @@ if (isset($_GET['auto_assign_captivate_episodes'])) {
 	include __DIR__ . '/auto-assign-captivate-episodes.php';
 	exit;
 }
-

@@ -405,39 +405,26 @@ const initAudioPlayer = () => {
 const initEraJumpDropdown = () => {
     const sel = document.getElementById("era-jump");
     if (!sel) return;
-    sel.addEventListener("change", function (e) {
+    sel.addEventListener("change", function () {
         const hash = this.value;
         if (!hash || !hash.startsWith("#")) return;
 
-        // Remove the leading '#' for getElementById
-        const targetId = hash.slice(1);
-        const target = document.getElementById(targetId);
-        if (!target) return;
+        // Use native anchor navigation (CSS handles smooth scroll)
+        window.location.hash = hash;
 
-        // Scroll into view
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        // After the browser scrolls, move focus for accessibility
+        requestAnimationFrame(() => {
+            const target = document.getElementById(hash.slice(1));
+            if (!target) return;
+            const heading = target.querySelector("h2, .table-heading");
+            const focusEl = heading || target;
+            focusEl.setAttribute("tabindex", "-1");
+            focusEl.focus({ preventScroll: true });
+            setTimeout(() => focusEl.removeAttribute("tabindex"), 150);
+        });
 
-        // Focus the heading inside the section, or the section itself as fallback
-        const heading = target.querySelector("h2, .table-heading");
-        if (heading) {
-            heading.setAttribute("tabindex", "-1");
-            setTimeout(() => {
-                heading.focus({ preventScroll: true });
-                heading.removeAttribute("tabindex");
-            }, 350);
-        } else {
-            target.setAttribute("tabindex", "-1");
-            setTimeout(() => {
-                target.focus({ preventScroll: true });
-                target.removeAttribute("tabindex");
-            }, 350);
-        }
-
-        history.replaceState(null, "", hash);
+        // Reset dropdown back to placeholder
         this.selectedIndex = 0;
-
-        // Prevent default if inside a form (shouldn't be, but just in case)
-        if (e && typeof e.preventDefault === "function") e.preventDefault();
     });
 };
 

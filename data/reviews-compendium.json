@@ -8,34 +8,156 @@
                 {
                     "stories": [
                         {
-                            "title": "The Christmas Invasion",
-                            "podcast": 426,
-                            "scores": { "garry": 8, "adam": 7 }
-                        },
-                        {
                             "title": "An Unearthly Child",
-                            "podcast": 42,
-                            "scores": { "garry": 8, "adam": 7 }
+                            "podcast": 124,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
                         },
                         {
                             "title": "The Daleks",
-                            "podcast": 178,
-                            "scores": { "garry": 6, "adam": 7 }
+                            "podcast": 304,
+                            "scores": { "garry": 8.5, "adam": 8 }
                         },
                         {
                             "title": "The Edge of Destruction",
-                            "podcast": 3,
-                            "scores": { "garry": 5, "adam": 6 }
+                            "podcast": 168,
+                            "scores": { "garry": 5.5, "adam": 6.5 }
                         },
                         {
                             "title": "Marco Polo",
-                            "podcast": "Not Reviewed",
-                            "scores": { "garry": 0, "adam": 0 }
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
                         },
                         {
                             "title": "The Keys of Marinus",
-                            "podcast": "232",
-                            "scores": { "garry": 6, "adam": 7 }
+                            "podcast": 232,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "The Aztecs",
+                            "podcast": 93,
+                            "scores": { "garry": 9, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Sensorites",
+                            "podcast": 285,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Reign of Terror",
+                            "podcast": 375,
+                            "scores": { "garry": 7, "adam": 7 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Planet of Giants",
+                            "podcast": "343",
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Dalek Invasion of Earth",
+                            "podcast": 318,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "The Rescue",
+                            "podcast": 354,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Romans",
+                            "podcast": 108,
+                            "scores": { "garry": 6, "adam": 5 }
+                        },
+                        {
+                            "title": "The Web Planet",
+                            "podcast": 378,
+                            "scores": { "garry": 4, "adam": 4 }
+                        },
+                        {
+                            "title": "The Crusade",
+                            "podcast": "410",
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Space Museum",
+                            "podcast": 369,
+                            "scores": { "garry": 7, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Chase",
+                            "podcast": 406,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Time Meddler",
+                            "podcast": 38,
+                            "scores": { "garry": 8, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Galaxy 4",
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Myth Makers",
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Daleks' Master Plan",
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Massacre",
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Ark",
+                            "podcast": 151,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Celestial Toymaker",
+                            "podcast": 405,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Gunfighters",
+                            "podcast": 327,
+                            "scores": { "garry": 4.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Savages",
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The War Machines",
+                            "podcast": 78,
+                            "scores": { "garry": 8, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Smugglers",
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Tenth Planet",
+                            "podcast": 204,
+                            "scores": { "garry": 8, "adam": 8 }
                         }
                     ]
                 }
@@ -44,19 +166,864 @@
         {
             "slug": "second-doctor",
             "label": "Second Doctor",
-            "season_start": 3,
+            "season_start": 4,
             "seasons": [
                 {
                     "stories": [
                         {
                             "title": "The Power of the Daleks",
-                            "podcast": 55,
-                            "scores": { "garry": 9, "adam": 8 }
+                            "podcast": "411",
+                            "scores": { "garry": 8.5, "adam": 8.5 }
                         },
                         {
                             "title": "The Highlanders",
-                            "podcast": 56,
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Underwater Menace",
+                            "podcast": "Not Yet Reviewed",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Moonbase",
+                            "podcast": 249,
+                            "scores": { "garry": 7, "adam": 8 }
+                        },
+                        {
+                            "title": "The Macra Terror",
+                            "podcast": 228,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Faceless Ones",
+                            "podcast": 341,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Evil of the Daleks",
+                            "podcast": 329,
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Tomb of the Cybermen",
+                            "podcast": 85,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Abominable Snowmen",
+                            "podcast": "407",
+                            "scores": { "garry": 5.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Ice Warriors",
+                            "podcast": "Not yet reviewed",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Enemy of the World",
+                            "podcast": 155,
+                            "scores": { "garry": 7.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Web of Fear",
+                            "podcast": 24,
+                            "scores": { "garry": 9, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Fury from the Deep",
+                            "podcast": "Not yet reviewed",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Wheel in Space",
+                            "podcast": "Not yet reviewed",
+                            "scores": { "garry": null, "adam": null }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Dominators",
+                            "podcast": 130,
+                            "scores": { "garry": 4.5, "adam": 5 }
+                        },
+                        {
+                            "title": "The Mind Robber",
+                            "podcast": 51,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Invasion",
+                            "podcast": 289,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Krotons",
+                            "podcast": 114,
+                            "scores": { "garry": 6, "adam": 7 }
+                        },
+                        {
+                            "title": "The Seeds of Death",
+                            "podcast": 175,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "The Space Pirates",
+                            "podcast": "Missing story",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The War Games",
+                            "podcast": 100,
+                            "scores": { "garry": 9, "adam": 9 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "third-doctor",
+            "label": "Third Doctor",
+            "season_start": 7,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Spearhead from Space",
+                            "podcast": 2,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Doctor Who and the Silurians",
+                            "podcast": 365,
+                            "scores": { "garry": 7, "adam": 8 }
+                        },
+                        {
+                            "title": "The Ambassadors of Death",
+                            "podcast": 245,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Inferno",
+                            "podcast": 260,
+                            "scores": { "garry": 9, "adam": 9 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Terror of the Autons",
+                            "podcast": 281,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Mind of Evil",
+                            "podcast": 293,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Claws of Axos",
+                            "podcast": 80,
+                            "scores": { "garry": 7, "adam": 8 }
+                        },
+                        {
+                            "title": "Colony in Space",
+                            "podcast": 380,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Dæmons",
+                            "podcast": "28",
+                            "scores": { "garry": 8, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Day of the Daleks",
+                            "podcast": 339,
+                            "scores": { "garry": 6, "adam": 7 }
+                        },
+                        {
+                            "title": "The Curse of Peladon",
+                            "podcast": 126,
+                            "scores": { "garry": 7.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Sea Devils",
+                            "podcast": 96,
+                            "scores": { "garry": 8, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Mutants",
+                            "podcast": 221,
+                            "scores": { "garry": 5, "adam": 5 }
+                        },
+                        {
+                            "title": "The Time Monster",
+                            "podcast": 183,
+                            "scores": { "garry": 6, "adam": 6.5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Three Doctors",
+                            "podcast": 171,
+                            "scores": { "garry": 8, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Carnival of Monsters",
+                            "podcast": 42,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Frontier in Space",
+                            "podcast": 389,
                             "scores": { "garry": 7, "adam": 6 }
+                        },
+                        {
+                            "title": "Planet of the Daleks",
+                            "podcast": 377,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Green Death",
+                            "podcast": 110,
+                            "scores": { "garry": 7, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Time Warrior",
+                            "podcast": 162,
+                            "scores": { "garry": 7.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Invasion of the Dinosaurs",
+                            "podcast": 373,
+                            "scores": { "garry": 7, "adam": 8 }
+                        },
+                        {
+                            "title": "Death to the Daleks",
+                            "podcast": 153,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Monster of Peladon",
+                            "podcast": 391,
+                            "scores": { "garry": 5, "adam": 5 }
+                        },
+                        {
+                            "title": "Planet of the Spiders",
+                            "podcast": 5,
+                            "scores": { "garry": 7, "adam": 8 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "fourth-doctor",
+            "label": "Fourth Doctor",
+            "season_start": 12,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Robot",
+                            "podcast": 32,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Ark in Space",
+                            "podcast": 370,
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        },
+                        {
+                            "title": "The Sontaran Experiment",
+                            "podcast": 118,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Genesis of the Daleks",
+                            "podcast": 217,
+                            "scores": { "garry": 9.5, "adam": 9 }
+                        },
+                        {
+                            "title": "Revenge of the Cybermen",
+                            "podcast": 388,
+                            "scores": { "garry": 5.5, "adam": 7 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Terror of the Zygons",
+                            "podcast": 296,
+                            "scores": { "garry": 8, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Planet of Evil",
+                            "podcast": 10,
+                            "scores": { "garry": 7, "adam": "N/A" }
+                        },
+                        {
+                            "title": "Pyramids of Mars",
+                            "podcast": 164,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Android Invasion",
+                            "podcast": 376,
+                            "scores": { "garry": 6, "adam": 8 }
+                        },
+                        {
+                            "title": "The Brain of Morbius",
+                            "podcast": 74,
+                            "scores": { "garry": 9, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Seeds of Doom",
+                            "podcast": 372,
+                            "scores": { "garry": 9, "adam": 9 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Masque of Mandragora",
+                            "podcast": 190,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Hand of Fear",
+                            "podcast": 337,
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        },
+                        {
+                            "title": "The Deadly Assassin",
+                            "podcast": 55,
+                            "scores": { "garry": 6, "adam": 8 }
+                        },
+                        {
+                            "title": "The Face of Evil",
+                            "podcast": 396,
+                            "scores": { "garry": 6, "adam": 7 }
+                        },
+                        {
+                            "title": "The Robots of Death",
+                            "podcast": 89,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Talons of Weng-Chiang",
+                            "podcast": 104,
+                            "scores": { "garry": 8, "adam": 9 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Horror of Fang Rock",
+                            "podcast": 21,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "The Invisible Enemy",
+                            "podcast": "358",
+                            "scores": { "garry": 6, "adam": 5 }
+                        },
+                        {
+                            "title": "Image of the Fendahl",
+                            "podcast": 177,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Sun Makers",
+                            "podcast": 134,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Underworld",
+                            "podcast": 379,
+                            "scores": { "garry": 2, "adam": 3 }
+                        },
+                        {
+                            "title": "The Invasion of Time",
+                            "podcast": 390,
+                            "scores": { "garry": 4, "adam": 7.5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Ribos Operation",
+                            "podcast": 273,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Pirate Planet",
+                            "podcast": 274,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Stones of Blood",
+                            "podcast": 275,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Androids of Tara",
+                            "podcast": 276,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        },
+                        {
+                            "title": "The Power of Kroll",
+                            "podcast": 277,
+                            "scores": { "garry": 4, "adam": 5.5 }
+                        },
+                        {
+                            "title": "The Armageddon Factor",
+                            "podcast": 278,
+                            "scores": { "garry": 5, "adam": 5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Destiny of the Daleks",
+                            "podcast": 393,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "City of Death",
+                            "podcast": 44,
+                            "scores": { "garry": 9, "adam": 9.5 }
+                        },
+                        {
+                            "title": "The Creature from the Pit",
+                            "podcast": 347,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Nightmare of Eden",
+                            "podcast": 395,
+                            "scores": { "garry": 5.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Horns of Nimon",
+                            "podcast": 157,
+                            "scores": { "garry": 5, "adam": 6 }
+                        },
+                        {
+                            "title": "Shada",
+                            "podcast": 408,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Leisure Hive",
+                            "podcast": 236,
+                            "scores": { "garry": 5.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Meglos",
+                            "podcast": 393,
+                            "scores": { "garry": 4, "adam": 5.5 }
+                        },
+                        {
+                            "title": "Full Circle",
+                            "podcast": 305,
+                            "scores": { "garry": 6, "adam": 7.5 }
+                        },
+                        {
+                            "title": "State of Decay",
+                            "podcast": 306,
+                            "scores": { "garry": 6, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Warriors' Gate",
+                            "podcast": "307",
+                            "scores": { "garry": 6, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Keeper of Traken",
+                            "podcast": 308,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Logopolis",
+                            "podcast": 309,
+                            "scores": { "garry": 7, "adam": 8.5 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "fifth-doctor",
+            "label": "Fifth Doctor",
+            "season_start": 19,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Castrovalva",
+                            "podcast": 322,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Four to Doomsday",
+                            "podcast": 83,
+                            "scores": { "garry": 5, "adam": 4 }
+                        },
+                        {
+                            "title": "Kinda",
+                            "podcast": 264,
+                            "scores": { "garry": 6, "adam": 8 }
+                        },
+                        {
+                            "title": "The Visitation",
+                            "podcast": 30,
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Black Orchid",
+                            "podcast": "40",
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Earthshock",
+                            "podcast": 200,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Time-Flight",
+                            "podcast": 128,
+                            "scores": { "garry": 6, "adam": 5.5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Arc of Infinity",
+                            "podcast": 241,
+                            "scores": { "garry": 7, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Snakedance",
+                            "podcast": 197,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Mawdryn Undead",
+                            "podcast": 98,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Terminus",
+                            "podcast": 160,
+                            "scores": { "garry": 4, "adam": 3.5 }
+                        },
+                        {
+                            "title": "Enlightenment",
+                            "podcast": 351,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The King's Demons",
+                            "podcast": 224,
+                            "scores": { "garry": 5, "adam": 5.5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Warriors of the Deep",
+                            "podcast": 173,
+                            "scores": { "garry": 4.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Awakening",
+                            "podcast": 112,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Frontios",
+                            "podcast": 374,
+                            "scores": { "garry": 5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Resurrection of the Daleks",
+                            "podcast": 53,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Planet of Fire",
+                            "podcast": 381,
+                            "scores": { "garry": 6, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Caves of Androzani",
+                            "podcast": 166,
+                            "scores": { "garry": 9, "adam": 8.5 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "sixth-doctor",
+            "label": "Sixth Doctor",
+            "season_start": 22,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Attack of the Cybermen",
+                            "podcast": 116,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Vengeance on Varos",
+                            "podcast": 102,
+                            "scores": { "garry": 6, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Mark of the Rani",
+                            "podcast": 36,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Two Doctors",
+                            "podcast": 132,
+                            "scores": { "garry": 5.5, "adam": 6 }
+                        },
+                        {
+                            "title": "Timelash",
+                            "podcast": 48,
+                            "scores": { "garry": 2, "adam": 2.5 }
+                        },
+                        {
+                            "title": "Revelation of the Daleks",
+                            "podcast": "72",
+                            "scores": { "garry": 8, "adam": 8.5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Mysterious Planet",
+                            "podcast": 266,
+                            "scores": { "garry": 6, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Mindwarp",
+                            "podcast": 267,
+                            "scores": { "garry": 4.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Terror of the Vervoids",
+                            "podcast": 268,
+                            "scores": { "garry": 4, "adam": 5 }
+                        },
+                        {
+                            "title": "The Ultimate Foe",
+                            "podcast": 269,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "seventh-doctor",
+            "label": "Seventh Doctor",
+            "season_start": 24,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Time and the Rani",
+                            "podcast": 46,
+                            "scores": { "garry": 5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Paradise Towers",
+                            "podcast": 26,
+                            "scores": { "garry": 5, "adam": 6 }
+                        },
+                        {
+                            "title": "Delta and the Bannermen",
+                            "podcast": 76,
+                            "scores": { "garry": 6, "adam": 7 }
+                        },
+                        {
+                            "title": "Dragonfire",
+                            "podcast": 194,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Remembrance of the Daleks",
+                            "podcast": 163,
+                            "scores": { "garry": 9, "adam": 9.5 }
+                        },
+                        {
+                            "title": "The Happiness Patrol",
+                            "podcast": 179,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Silver Nemesis",
+                            "podcast": 136,
+                            "scores": { "garry": 5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Greatest Show in the Galaxy",
+                            "podcast": 91,
+                            "scores": { "garry": 9, "adam": 9 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Battlefield",
+                            "podcast": 106,
+                            "scores": { "garry": 5.5, "adam": 5.5 }
+                        },
+                        {
+                            "title": "Ghost Light",
+                            "podcast": 120,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Curse of Fenric",
+                            "podcast": 404,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Survival",
+                            "podcast": 34,
+                            "scores": { "garry": 3, "adam": 7 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "eighth-doctor",
+            "label": "Eighth Doctor",
+            "season_start": 27,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Doctor Who: The TV Movie",
+                            "podcast": 165,
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "ninth-doctor",
+            "label": "Ninth Doctor",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Rose",
+                            "podcast": 7,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "The End of the World",
+                            "podcast": 88,
+                            "scores": { "garry": 6, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Unquiet Dead",
+                            "podcast": 29,
+                            "scores": { "garry": 6, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Aliens of London",
+                            "podcast": 105,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "World War Three",
+                            "podcast": 107,
+                            "scores": { "garry": 7.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Dalek",
+                            "podcast": 75,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Long Game",
+                            "podcast": 97,
+                            "scores": { "garry": 5, "adam": 5.5 }
+                        },
+                        {
+                            "title": "Father's Day",
+                            "podcast": 41,
+                            "scores": { "garry": 8, "adam": 9 }
+                        },
+                        {
+                            "title": "The Empty Child",
+                            "podcast": 131,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Doctor Dances",
+                            "podcast": 133,
+                            "scores": { "garry": 9.5, "adam": 10 }
+                        },
+                        {
+                            "title": "Boom Town",
+                            "podcast": 54,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Bad Wolf",
+                            "podcast": 158,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "The Parting of the Ways",
+                            "podcast": 159,
+                            "scores": { "garry": 9.5, "adam": 9.5 }
                         }
                     ]
                 }
@@ -65,19 +1032,1026 @@
         {
             "slug": "tenth-doctor",
             "label": "Tenth Doctor",
-            "season_start": 28,
+            "season_start": 2,
             "seasons": [
                 {
                     "stories": [
                         {
                             "title": "The Christmas Invasion",
-                            "podcast": 140,
-                            "scores": { "garry": 9, "adam": 8 }
+                            "podcast": 22,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "New Earth",
+                            "podcast": 45,
+                            "scores": { "garry": 4, "adam": 5 }
                         },
                         {
                             "title": "Tooth and Claw",
-                            "podcast": 141,
+                            "podcast": 115,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "School Reunion",
+                            "podcast": 172,
+                            "scores": { "garry": 9, "adam": 8 }
+                        },
+                        {
+                            "title": "The Girl in the Fireplace",
+                            "podcast": 125,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Rise of the Cybermen",
+                            "podcast": 230,
+                            "scores": { "garry": 4.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Age of Steel",
+                            "podcast": 230,
+                            "scores": { "garry": 4.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Idiot's Lantern",
+                            "podcast": 90,
+                            "scores": { "garry": 3, "adam": 4.5 }
+                        },
+                        {
+                            "title": "The Impossible Planet",
+                            "podcast": 192,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Satan Pit",
+                            "podcast": 195,
+                            "scores": { "garry": 8, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Love & Monsters",
+                            "podcast": 50,
+                            "scores": { "garry": 6, "adam": 5 }
+                        },
+                        {
+                            "title": "Fear Her",
+                            "podcast": 222,
+                            "scores": { "garry": 5.5, "adam": 5 }
+                        },
+                        {
+                            "title": "Army of Ghosts",
+                            "podcast": 291,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Doomsday",
+                            "podcast": 291,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Runaway Bride",
+                            "podcast": 152,
+                            "scores": { "garry": 9, "adam": 8 }
+                        },
+                        {
+                            "title": "Smith and Jones",
+                            "podcast": 121,
+                            "scores": { "garry": 8, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Shakespeare Code",
+                            "podcast": 176,
                             "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Gridlock",
+                            "podcast": 135,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Daleks in Manhattan",
+                            "podcast": 324,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Evolution of the Daleks",
+                            "podcast": 324,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Lazarus Experiment",
+                            "podcast": 109,
+                            "scores": { "garry": 5, "adam": 5.5 }
+                        },
+                        {
+                            "title": "42",
+                            "podcast": 77,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Human Nature",
+                            "podcast": 238,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Family of Blood",
+                            "podcast": 238,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Blink",
+                            "podcast": 99,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Utopia",
+                            "podcast": 262,
+                            "scores": { "garry": 7.5, "adam": 9.5 }
+                        },
+                        {
+                            "title": "The Sound of Drums",
+                            "podcast": 312,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Last of the Time Lords",
+                            "podcast": 312,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Voyage of the Damned",
+                            "podcast": 167,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Partners in Crime",
+                            "podcast": 302,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "The Fires of Pompeii",
+                            "podcast": 33,
+                            "scores": { "garry": 8, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Planet of the Ood",
+                            "podcast": 56,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Sontaran Stratagem",
+                            "podcast": 180,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Poison Sky",
+                            "podcast": 181,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Doctor's Daughter",
+                            "podcast": 27,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Unicorn and the Wasp",
+                            "podcast": 20,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Silence in the Library",
+                            "podcast": 283,
+                            "scores": { "garry": 9.5, "adam": 9 }
+                        },
+                        {
+                            "title": "Forest of the Dead",
+                            "podcast": 283,
+                            "scores": { "garry": 9.5, "adam": 9 }
+                        },
+                        {
+                            "title": "Midnight",
+                            "podcast": 84,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Turn Left",
+                            "podcast": 247,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Stolen Earth",
+                            "podcast": 367,
+                            "scores": { "garry": 8.5, "adam": 9 }
+                        },
+                        {
+                            "title": "Journey's End",
+                            "podcast": 367,
+                            "scores": { "garry": 8.5, "adam": 9 }
+                        },
+                        {
+                            "title": "The Next Doctor",
+                            "podcast": 345,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Planet of the Dead",
+                            "podcast": 39,
+                            "scores": { "garry": 5.5, "adam": 4 }
+                        },
+                        {
+                            "title": "The Waters of Mars",
+                            "podcast": 356,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The End of Time – Part One",
+                            "podcast": 69,
+                            "scores": { "garry": 8, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The End of Time – Part Two",
+                            "podcast": 70,
+                            "scores": { "garry": 8.5, "adam": 7.5 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "eleventh-doctor",
+            "label": "Eleventh Doctor",
+            "season_start": 5,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "The Eleventh Hour",
+                            "podcast": 310,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Beast Below",
+                            "podcast": 25,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Victory of the Daleks",
+                            "podcast": 92,
+                            "scores": { "garry": 4, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Time of Angels",
+                            "podcast": 234,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Flesh and Stone",
+                            "podcast": 234,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "The Vampires of Venice",
+                            "podcast": 86,
+                            "scores": { "garry": 5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Amy's Choice",
+                            "podcast": 37,
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        },
+                        {
+                            "title": "The Hungry Earth",
+                            "podcast": 243,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Cold Blood",
+                            "podcast": 243,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Vincent and the Doctor",
+                            "podcast": 79,
+                            "scores": { "garry": 9.5, "adam": 9 }
+                        },
+                        {
+                            "title": "The Lodger",
+                            "podcast": 43,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Pandorica Opens",
+                            "podcast": 316,
+                            "scores": { "garry": 8.5, "adam": 9 }
+                        },
+                        {
+                            "title": "The Big Bang",
+                            "podcast": 316,
+                            "scores": { "garry": 8.5, "adam": 9 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "A Christmas Carol",
+                            "podcast": "Not yet reviewed",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Impossible Astronaut",
+                            "podcast": 271,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Day of the Moon",
+                            "podcast": 271,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "The Curse of the Black Spot",
+                            "podcast": 49,
+                            "scores": { "garry": 4, "adam": 4.5 }
+                        },
+                        {
+                            "title": "The Doctor's Wife",
+                            "podcast": 31,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Rebel Flesh",
+                            "podcast": 219,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Almost People",
+                            "podcast": 219,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "A Good Man Goes to War",
+                            "podcast": 185,
+                            "scores": { "garry": 7, "adam": 6 }
+                        },
+                        {
+                            "title": "Let's Kill Hitler",
+                            "podcast": 188,
+                            "scores": { "garry": 6, "adam": "N/A" }
+                        },
+                        {
+                            "title": "Night Terrors",
+                            "podcast": 127,
+                            "scores": { "garry": 7, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Girl Who Waited",
+                            "podcast": 178,
+                            "scores": { "garry": 9, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The God Complex",
+                            "podcast": 73,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Closing Time",
+                            "podcast": 226,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Wedding of River Song",
+                            "podcast": 287,
+                            "scores": { "garry": 5, "adam": 7 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Doctor, the Widow and the Wardrobe",
+                            "podcast": 122,
+                            "scores": { "garry": 4, "adam": 4 }
+                        },
+                        {
+                            "title": "Asylum of the Daleks",
+                            "podcast": 174,
+                            "scores": { "garry": 6, "adam": 5 }
+                        },
+                        {
+                            "title": "Dinosaurs on a Spaceship",
+                            "podcast": 117,
+                            "scores": { "garry": 7, "adam": 6.5 }
+                        },
+                        {
+                            "title": "A Town Called Mercy",
+                            "podcast": 137,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Power of Three",
+                            "podcast": 161,
+                            "scores": { "garry": 6, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Angels Take Manhattan",
+                            "podcast": 298,
+                            "scores": { "garry": 6, "adam": 8 }
+                        },
+                        {
+                            "title": "The Snowmen",
+                            "podcast": 360,
+                            "scores": { "garry": 7, "adam": 8 }
+                        },
+                        {
+                            "title": "The Bells of Saint John",
+                            "podcast": 320,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Rings of Akhaten",
+                            "podcast": 111,
+                            "scores": { "garry": 7, "adam": 5.5 }
+                        },
+                        {
+                            "title": "Cold War",
+                            "podcast": 279,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Hide",
+                            "podcast": 52,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Journey to the Centre of the TARDIS",
+                            "podcast": 202,
+                            "scores": { "garry": 4, "adam": 6 }
+                        },
+                        {
+                            "title": "The Crimson Horror",
+                            "podcast": 101,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Nightmare in Silver",
+                            "podcast": 154,
+                            "scores": { "garry": 3.5, "adam": 3 }
+                        },
+                        {
+                            "title": "The Name of the Doctor",
+                            "podcast": 328,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Day of the Doctor",
+                            "podcast": 352,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Time of the Doctor",
+                            "podcast": 349,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "twelfth-doctor",
+            "label": "Twelfth Doctor",
+            "season_start": 8,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Deep Breath",
+                            "podcast": 11,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Into the Dalek",
+                            "podcast": 12,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Robot of Sherwood",
+                            "podcast": 95,
+                            "scores": { "garry": 6, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Listen",
+                            "podcast": 103,
+                            "scores": { "garry": 4.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Time Heist",
+                            "podcast": 119,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Caretaker",
+                            "podcast": 156,
+                            "scores": { "garry": 6, "adam": 6 }
+                        },
+                        {
+                            "title": "Kill the Moon",
+                            "podcast": 113,
+                            "scores": { "garry": 5.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Mummy on the Orient Express",
+                            "podcast": 81,
+                            "scores": { "garry": 8, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Flatline",
+                            "podcast": 15,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "In the Forest of the Night",
+                            "podcast": 16,
+                            "scores": { "garry": 4.5, "adam": 5.5 }
+                        },
+                        {
+                            "title": "Dark Water",
+                            "podcast": 17,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Death in Heaven",
+                            "podcast": 18,
+                            "scores": { "garry": 5, "adam": 7 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Last Christmas",
+                            "podcast": 23,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        },
+                        {
+                            "title": "The Magician's Apprentice",
+                            "podcast": 57,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Witch's Familiar",
+                            "podcast": 58,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Under the Lake",
+                            "podcast": 59,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Before the Flood",
+                            "podcast": 60,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Girl Who Died",
+                            "podcast": 61,
+                            "scores": { "garry": 4.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Woman Who Lived",
+                            "podcast": 62,
+                            "scores": { "garry": 4.5, "adam": 4.5 }
+                        },
+                        {
+                            "title": "The Zygon Invasion",
+                            "podcast": 63,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Zygon Inversion",
+                            "podcast": 64,
+                            "scores": { "garry": 9.5, "adam": 9 }
+                        },
+                        {
+                            "title": "Sleep No More",
+                            "podcast": 65,
+                            "scores": { "garry": 1, "adam": 4.5 }
+                        },
+                        {
+                            "title": "Face the Raven",
+                            "podcast": 66,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Heaven Sent",
+                            "podcast": 67,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Hell Bent",
+                            "podcast": 68,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Husbands of River Song",
+                            "podcast": 71,
+                            "scores": { "garry": 5, "adam": 4 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Return of Doctor Mysterio",
+                            "podcast": 123,
+                            "scores": { "garry": 3, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Pilot",
+                            "podcast": 138,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Smile",
+                            "podcast": 139,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Thin Ice",
+                            "podcast": 140,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Knock Knock",
+                            "podcast": 141,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Oxygen",
+                            "podcast": 142,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Extremis",
+                            "podcast": 143,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Pyramid at the End of the World",
+                            "podcast": 144,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Lie of the Land",
+                            "podcast": 145,
+                            "scores": { "garry": 6, "adam": 6 }
+                        },
+                        {
+                            "title": "Empress of Mars",
+                            "podcast": 146,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "The Eaters of Light",
+                            "podcast": 147,
+                            "scores": { "garry": 5, "adam": 5 }
+                        },
+                        {
+                            "title": "World Enough and Time",
+                            "podcast": 148,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Doctor Falls",
+                            "podcast": 149,
+                            "scores": { "garry": 8, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Twice Upon a Time",
+                            "podcast": 170,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "thirteenth-doctor",
+            "label": "Thirteenth Doctor",
+            "season_start": 11,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "The Woman Who Fell to Earth",
+                            "podcast": 205,
+                            "scores": { "garry": 8.5, "adam": 9 }
+                        },
+                        {
+                            "title": "The Ghost Monument",
+                            "podcast": 206,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Rosa",
+                            "podcast": 207,
+                            "scores": { "garry": 9, "adam": 9.5 }
+                        },
+                        {
+                            "title": "Arachnids in the UK",
+                            "podcast": 207,
+                            "scores": { "garry": 5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Tsuranga Conundrum",
+                            "podcast": 208,
+                            "scores": { "garry": 5.5, "adam": 4.5 }
+                        },
+                        {
+                            "title": "Demons of the Punjab",
+                            "podcast": 209,
+                            "scores": { "garry": 8.5, "adam": 9 }
+                        },
+                        {
+                            "title": "Kerblam!",
+                            "podcast": 210,
+                            "scores": { "garry": 4, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Witchfinders",
+                            "podcast": 211,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "It Takes You Away",
+                            "podcast": 212,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Battle of Ranskoor Av Kolos",
+                            "podcast": 213,
+                            "scores": { "garry": 5, "adam": 5 }
+                        },
+                        {
+                            "title": "Resolution",
+                            "podcast": 215,
+                            "scores": { "garry": 7.5, "adam": 8.5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Spyfall, Part 1",
+                            "podcast": 250,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Spyfall, Part 2",
+                            "podcast": 250,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Orphan 55",
+                            "podcast": 251,
+                            "scores": { "garry": 5.5, "adam": 5.5 }
+                        },
+                        {
+                            "title": "Nikola Tesla's Night of Terror",
+                            "podcast": 252,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Fugitive of the Judoon",
+                            "podcast": 253,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Praxeus",
+                            "podcast": 254,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Can You Hear Me?",
+                            "podcast": 255,
+                            "scores": { "garry": 6, "adam": 4.5 }
+                        },
+                        {
+                            "title": "The Haunting of Villa Diodati",
+                            "podcast": 256,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Ascension of the Cybermen",
+                            "podcast": 257,
+                            "scores": { "garry": 8.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Timeless Children",
+                            "podcast": 258,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Revolution of the Daleks",
+                            "podcast": 294,
+                            "scores": { "garry": 5, "adam": 7 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Halloween Apocalypse",
+                            "podcast": 330,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "War of the Sontarans",
+                            "podcast": 331,
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Once, Upon Time",
+                            "podcast": 332,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        },
+                        {
+                            "title": "Village of the Angels",
+                            "podcast": 333,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Survivors of the Flux",
+                            "podcast": 334,
+                            "scores": { "garry": 4, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Vanquishers",
+                            "podcast": 335,
+                            "scores": { "garry": 5, "adam": 5 }
+                        },
+                        {
+                            "title": "Eve of the Daleks",
+                            "podcast": 336,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        },
+                        {
+                            "title": "Legend of the Sea Devils",
+                            "podcast": 348,
+                            "scores": { "garry": 2, "adam": 5.5 }
+                        },
+                        {
+                            "title": "The Power of the Doctor",
+                            "podcast": 363,
+                            "scores": { "garry": 8, "adam": 8.5 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "fourteenth-doctor",
+            "label": "Fourteenth Doctor",
+            "season_start": 14,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "The Star Beast",
+                            "podcast": 384,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Wild Blue Yonder",
+                            "podcast": 385,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Giggle",
+                            "podcast": 386,
+                            "scores": { "garry": 8.5, "adam": 9 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "fifteenth-doctor",
+            "label": "Fifteenth Doctor",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Space Babies",
+                            "podcast": 398,
+                            "scores": { "garry": 4, "adam": 4 }
+                        },
+                        {
+                            "title": "The Devil's Chord",
+                            "podcast": 398,
+                            "scores": { "garry": 5.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Boom",
+                            "podcast": 399,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "73 Yards",
+                            "podcast": 399,
+                            "scores": { "garry": 7.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Dot and Bubble",
+                            "podcast": 400,
+                            "scores": { "garry": 3, "adam": 7 }
+                        },
+                        {
+                            "title": "Rogue",
+                            "podcast": 401,
+                            "scores": { "garry": 6, "adam": 5 }
+                        },
+                        {
+                            "title": "The Legend of Ruby Sunday",
+                            "podcast": 402,
+                            "scores": { "garry": 8, "adam": 8.5 }
+                        },
+                        {
+                            "title": "Empire of Death",
+                            "podcast": 403,
+                            "scores": { "garry": 5, "adam": 5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Joy to the World",
+                            "podcast": 416,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Robot Revolution",
+                            "podcast": 420,
+                            "scores": { "garry": 6, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Lux",
+                            "podcast": 421,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Well",
+                            "podcast": 422,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Lucky Day",
+                            "podcast": 423,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Story & the Engine",
+                            "podcast": 424,
+                            "scores": { "garry": 7, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Interstellar Song Contest",
+                            "podcast": 425,
+                            "scores": { "garry": 8.5, "adam": 5 }
+                        },
+                        {
+                            "title": "Wish World",
+                            "podcast": 426,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Reality War",
+                            "podcast": 427,
+                            "scores": { "garry": 5.5, "adam": 4 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "war-between-land-and-sea",
+            "label": "The War Between the Land and the Sea",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "The War Between the Land and the Sea",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
                         }
                     ]
                 }
@@ -92,13 +2066,618 @@
                     "stories": [
                         {
                             "title": "Everything Changes",
-                            "podcast": 200,
+                            "podcast": 184,
                             "scores": { "garry": 8, "adam": 8 }
                         },
                         {
                             "title": "Day One",
+                            "podcast": 187,
+                            "scores": { "garry": 6, "adam": "N/A" }
+                        },
+                        {
+                            "title": "Ghost Machine",
+                            "podcast": 191,
+                            "scores": { "garry": 7.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Cyberwoman",
+                            "podcast": 198,
+                            "scores": { "garry": 3.5, "adam": 4.5 }
+                        },
+                        {
+                            "title": "Small Worlds",
                             "podcast": 201,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Countrycide",
+                            "podcast": 218,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Greeks Bearing Gifts",
+                            "podcast": 225,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "They Keep Killing Suzie",
+                            "podcast": 229,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Random Shoes",
+                            "podcast": 233,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Out of Time",
+                            "podcast": 237,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Combat",
+                            "podcast": 242,
+                            "scores": { "garry": 3, "adam": 5.5 }
+                        },
+                        {
+                            "title": "Captain Jack Harkness",
+                            "podcast": 246,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "End of Days",
+                            "podcast": 261,
+                            "scores": { "garry": 7, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Kiss Kiss, Bang Bang",
+                            "podcast": 265,
+                            "scores": { "garry": 7, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Sleeper",
+                            "podcast": 270,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "To the Last Man",
+                            "podcast": 282,
+                            "scores": { "garry": 7, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Meat",
+                            "podcast": 286,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Adam",
+                            "podcast": 290,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Reset",
+                            "podcast": 297,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Dead Man Walking",
+                            "podcast": 301,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        },
+                        {
+                            "title": "A Day in the Death",
+                            "podcast": 315,
+                            "scores": { "garry": 6.5, "adam": 5 }
+                        },
+                        {
+                            "title": "Something Borrowed",
+                            "podcast": 317,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "From Out of the Rain",
+                            "podcast": 319,
+                            "scores": { "garry": 2.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Adrift",
+                            "podcast": 321,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Fragments",
+                            "podcast": 323,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Exit Wounds",
+                            "podcast": 325,
+                            "scores": { "garry": 9, "adam": 9 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Children of Earth: Day One",
+                            "podcast": 187,
+                            "scores": { "garry": 6, "adam": "N/A" }
+                        },
+                        {
+                            "title": "Children of Earth: Day Two",
+                            "podcast": 340,
+                            "scores": { "garry": 8, "adam": 8 }
+                        },
+                        {
+                            "title": "Children of Earth: Day Three",
+                            "podcast": 342,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "Children of Earth: Day Four",
+                            "podcast": 344,
+                            "scores": { "garry": 9, "adam": 8 }
+                        },
+                        {
+                            "title": "Children of Earth: Day Five",
+                            "podcast": 346,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The New World",
+                            "podcast": 350,
+                            "scores": { "garry": 6, "adam": 7 }
+                        },
+                        {
+                            "title": "Rendition",
+                            "podcast": 353,
                             "scores": { "garry": 6, "adam": 6 }
+                        },
+                        {
+                            "title": "Dead of Night",
+                            "podcast": 355,
+                            "scores": { "garry": 5.5, "adam": 5.5 }
+                        },
+                        {
+                            "title": "Escape to L.A.",
+                            "podcast": 357,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        },
+                        {
+                            "title": "The Categories of Life",
+                            "podcast": 359,
+                            "scores": { "garry": 6, "adam": 6 }
+                        },
+                        {
+                            "title": "The Middle Men",
+                            "podcast": 361,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Immortal Sins",
+                            "podcast": 364,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "End of the Road",
+                            "podcast": 366,
+                            "scores": { "garry": 4, "adam": 4.5 }
+                        },
+                        {
+                            "title": "The Gathering",
+                            "podcast": 368,
+                            "scores": { "garry": 5, "adam": 6 }
+                        },
+                        {
+                            "title": "The Blood Line",
+                            "podcast": 371,
+                            "scores": { "garry": 5.5, "adam": 6 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "sarah-jane-adventures",
+            "label": "The Sarah Jane Adventures",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Invasion of the Bane",
+                            "podcast": 182,
+                            "scores": { "garry": 7, "adam": 7 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Revenge of the Slitheen",
+                            "podcast": 186,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Eye of the Gorgon",
+                            "podcast": 189,
+                            "scores": { "garry": 8.5, "adam": "N/A" }
+                        },
+                        {
+                            "title": "Warriors of Kudlak",
+                            "podcast": 193,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        },
+                        {
+                            "title": "Whatever Happened to Sarah Jane?",
+                            "podcast": 196,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Lost Boy",
+                            "podcast": 199,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Last Sontaran",
+                            "podcast": 203,
+                            "scores": { "garry": 9, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Day of the Clown",
+                            "podcast": 216,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "Secrets of the Stars",
+                            "podcast": 220,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Mark of the Berserker",
+                            "podcast": 223,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "The Temptation of Sarah Jane Smith",
+                            "podcast": 227,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "Enemy of the Bane",
+                            "podcast": 231,
+                            "scores": { "garry": 8, "adam": 8 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Prisoner of the Judoon",
+                            "podcast": 235,
+                            "scores": { "garry": 7.5, "adam": 7 }
+                        },
+                        {
+                            "title": "The Mad Woman in the Attic",
+                            "podcast": 239,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Wedding of Sarah Jane Smith",
+                            "podcast": 244,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Eternity Trap",
+                            "podcast": 248,
+                            "scores": { "garry": 8.5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Mona Lisa's Revenge",
+                            "podcast": 263,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Gift",
+                            "podcast": 272,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "The Nightmare Man",
+                            "podcast": 280,
+                            "scores": { "garry": 8.5, "adam": 8 }
+                        },
+                        {
+                            "title": "The Vault of Secrets",
+                            "podcast": 284,
+                            "scores": { "garry": 6.5, "adam": 6.5 }
+                        },
+                        {
+                            "title": "Death of the Doctor",
+                            "podcast": 288,
+                            "scores": { "garry": 9, "adam": 9 }
+                        },
+                        {
+                            "title": "The Empty Planet",
+                            "podcast": 292,
+                            "scores": { "garry": 7, "adam": 6 }
+                        },
+                        {
+                            "title": "Lost in Time",
+                            "podcast": 295,
+                            "scores": { "garry": 8, "adam": 7.5 }
+                        },
+                        {
+                            "title": "Goodbye, Sarah Jane Smith",
+                            "podcast": 299,
+                            "scores": { "garry": 9, "adam": 9 }
+                        }
+                    ]
+                },
+                {
+                    "stories": [
+                        {
+                            "title": "Sky",
+                            "podcast": 303,
+                            "scores": { "garry": 7, "adam": 7 }
+                        },
+                        {
+                            "title": "The Curse of Clyde Langer",
+                            "podcast": 311,
+                            "scores": { "garry": 8.5, "adam": 8.5 }
+                        },
+                        {
+                            "title": "The Man Who Never Was",
+                            "podcast": 313,
+                            "scores": { "garry": 6.5, "adam": 7 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "class",
+            "label": "Class",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "For Tonight We Might Die",
+                            "podcast": 114,
+                            "scores": { "garry": 5, "adam": 7.5 }
+                        },
+                        {
+                            "title": "The Coach with the Dragon Tattoo",
+                            "podcast": 114,
+                            "scores": { "garry": 4, "adam": 6 }
+                        },
+                        {
+                            "title": "Nightvisiting",
+                            "podcast": 115,
+                            "scores": {
+                                "garry": "N/A",
+                                "adam": "N/A"
+                            }
+                        },
+                        {
+                            "title": "Co-Owner of a Lonely Heart",
+                            "podcast": 116,
+                            "scores": { "garry": 4, "adam": 3 }
+                        },
+                        {
+                            "title": "Brave-ish Heart",
+                            "podcast": 117,
+                            "scores": { "garry": 3, "adam": 4 }
+                        },
+                        {
+                            "title": "Detained",
+                            "podcast": 118,
+                            "scores": { "garry": 3, "adam": 3 }
+                        },
+                        {
+                            "title": "The Metaphysical Engine, or What Quill Did",
+                            "podcast": 119,
+                            "scores": { "garry": 7, "adam": 6.5 }
+                        },
+                        {
+                            "title": "The Lost",
+                            "podcast": 120,
+                            "scores": { "garry": 3, "adam": 5 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "k9-and-company",
+            "label": "K-9 and Company",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "A Girl's Best Friend",
+                            "podcast": 409,
+                            "scores": { "garry": 6.5, "adam": 6 }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "k9",
+            "label": "K9",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "Regeneration",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Liberation",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Korven",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Bounty Hunter",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Sirens of Ceres",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Fear Itself",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Fall of The House of Gryffen",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Jaws of Orthrus",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Dream-Eaters",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Curse of Anubis",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Oroborus",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Alien Avatar",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Aeolian",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Last Oak Tree",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Black Hunger",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Cambridge Spy",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Lost Library of Ukko",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Mutant Copper",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Custodians",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Taphony and the Time Loop",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Robot Gladiators",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Mind Snap",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Angel of The North",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Last Precinct",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Hound of the Korven",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Eclipse of the Korven",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "animated-serials",
+            "label": "Animated Serials",
+            "season_start": 1,
+            "seasons": [
+                {
+                    "stories": [
+                        {
+                            "title": "The Infinite Quest",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Dreamland",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
                         }
                     ]
                 }

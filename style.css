@@ -1566,6 +1566,7 @@ Header styling for logo, nav etc.
   right: 0;
   width: 100%;
   padding: var(--space-xs) 0;
+  border-bottom: 1px solid hsl(var(--clr-border-link-hsl)/0.1);
   transform: translateZ(0);
   z-index: 10;
 }
@@ -1574,7 +1575,7 @@ Header styling for logo, nav etc.
   inset: 0;
   backdrop-filter: blur(5px) saturate(180%) brightness(150%) blur(10px);
   -webkit-backdrop-filter: blur(10px) saturate(130%) brightness(150%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: hsl(var(--clr-surface-700-hsl)/0.5);
   z-index: -1;
 }
 .site-head__inner {
@@ -3085,6 +3086,8 @@ article .post-thumb-img {
 article figure,
 article .wp-post-image figure {
   max-width: 100%;
+  inline-size: -moz-fit-content;
+  inline-size: fit-content;
   margin-inline: auto;
   padding-block-start: var(--space-s);
   margin-block-end: var(--space-l);
@@ -3095,6 +3098,7 @@ article .wp-post-image figure img {
 }
 article figure figcaption,
 article .wp-post-image figure figcaption {
+  contain: inline-size;
   font-size: var(--step--1);
   font-style: italic;
   color: var(--clr-text-900);
@@ -3884,13 +3888,12 @@ REVIEW COMPENDIUM TABLES
   margin-block-end: var(--space-m);
 }
 .reviews-compendium .page-header p {
-  color: var(--clr-text-900);
   max-width: 60ch;
 }
 .reviews-compendium__toolbar {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
   gap: var(--space-s);
   margin-block-end: var(--space-xl);
@@ -3905,21 +3908,81 @@ REVIEW COMPENDIUM TABLES
 }
 .reviews-compendium .reviews-era {
   position: relative;
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 7rem;
 }
 @media (max-width: 768px) {
   .reviews-compendium .reviews-era {
     margin-block-end: var(--space-xl);
   }
 }
-.reviews-compendium .reviews-era h2 {
-  font-size: var(--step-2);
-  margin-block-end: var(--space-xs);
-  margin-inline-start: calc(var(--space-3xl) - var(--space-2xs));
+.reviews-compendium .reviews-era .era-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-m);
 }
-@media (max-width: 768px) {
-  .reviews-compendium .reviews-era h2 {
-    margin-inline-start: calc(var(--space-xl) + var(--space-xs));
+.reviews-compendium .reviews-era .era-header .era-title {
+  display: flex;
+  align-items: end;
+  gap: var(--space-xs);
+  padding-inline-start: var(--space-xs);
+}
+.reviews-compendium .reviews-era .era-header .era-title .era-image {
+  align-self: flex-end;
+  width: auto;
+  height: 108px;
+}
+.reviews-compendium .reviews-era .era-header .era-title__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-block-end: var(--space-s);
+}
+.reviews-compendium .reviews-era .era-header .era-title__text h2 {
+  font-size: var(--step-2);
+}
+.reviews-compendium .reviews-era .era-header .era-title__text p {
+  max-width: 60ch;
+  color: var(--clr-text-900);
+  font-style: italic;
+  line-height: 1.3;
+}
+@media (max-width: 30rem) {
+  .reviews-compendium .reviews-era .era-header .era-title__text p {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+  }
+}
+.reviews-compendium .reviews-era .era-header .back-to-top {
+  margin-block-end: var(--space-xs);
+  padding: 0.6rem 1.2rem;
+  font-size: var(--step--2);
+  text-wrap: nowrap;
+  text-decoration: none;
+  border-radius: var(--radius-small);
+  transition: all 0.2s ease-out;
+}
+.reviews-compendium .reviews-era .era-header .back-to-top:hover, .reviews-compendium .reviews-era .era-header .back-to-top:focus {
+  background: var(--clr-surface-400);
+}
+@media (max-width: 46rem) {
+  .reviews-compendium .reviews-era .era-header .back-to-top {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
   }
 }
 .reviews-compendium .table-wrap {
@@ -3970,6 +4033,7 @@ REVIEW COMPENDIUM TABLES
   border-bottom: 1px solid var(--clr-border-darker);
 }
 .reviews-compendium .reviews-table thead th {
+  font-weight: var(--fw-semibold);
   color: var(--clr-text-900);
   background: hsl(216, 49%, 6%);
 }
@@ -3978,6 +4042,7 @@ REVIEW COMPENDIUM TABLES
 }
 .reviews-compendium .reviews-table th,
 .reviews-compendium .reviews-table td {
+  font-weight: var(--fw-reg);
   padding: calc(var(--space-2xs) + 0.2rem) var(--space-s);
 }
 .reviews-compendium .reviews-table th:not(:last-child),
@@ -4040,7 +4105,7 @@ REVIEW COMPENDIUM TABLES
 }
 .reviews-compendium .reviews-table .season-row th {
   color: var(--clr-brand-secondary);
-  background: hsla(42, 91%, 58%, 0.03);
+  background: hsla(42, 91%, 58%, 0.04);
 }
 @media (max-width: 768px) {
   .reviews-compendium .reviews-table .season-row th {
@@ -4068,7 +4133,6 @@ REVIEW COMPENDIUM TABLES
   text-overflow: ellipsis;
 }
 .reviews-compendium .reviews-table .cell--pod a {
-  font-weight: var(--fw-semibold);
   color: var(--color-link, #007acc);
   text-decoration: none;
 }
@@ -4081,23 +4145,6 @@ REVIEW COMPENDIUM TABLES
 .reviews-compendium .reviews-table th:last-child,
 .reviews-compendium .reviews-table td:last-child {
   border-right: none;
-}
-.reviews-compendium .era-image {
-  position: absolute;
-  top: -1rem;
-  left: 1rem;
-  width: 80px;
-  height: auto;
-  pointer-events: none;
-  z-index: 0;
-}
-@media (max-width: 768px) {
-  .reviews-compendium .era-image {
-    width: 60px;
-    top: -0.5rem;
-    left: 0.5rem;
-    opacity: 0.8;
-  }
 }
 
 /* 

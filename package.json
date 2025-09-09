@@ -9,7 +9,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "node --no-deprecation $(which gulp)",
-        "build": "node --no-deprecation $(which gulp) build"
+        "build": "node --no-deprecation $(which gulp) build",
+        "build:compendium": "node scripts/build-reviews-compendium.mjs"
     },
     "author": "Garry Aylott",
     "license": "ISC",
@@ -29,5 +30,10 @@
         "sass": "^1.92.0",
         "vlitejs": "^7.4.0",
         "gsap": "^3.13.0"
+    },
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.12",
+        "papaparse": "^5.4.1",
+        "xlsx": "^0.18.5"
     }
 }

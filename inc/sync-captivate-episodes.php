@@ -173,7 +173,7 @@ if ( ! function_exists( 'bbb_apply_episode_to_post' ) ) {
 		$guid     = $episode['id'] ?? '';
 		$ep_type  = $episode['episode_type'] ?? '';
 		$ep_num   = $episode['episode_number'] ?? null;
-
+		
 		// 🔎 Debug log to inspect what fields Captivate actually returns
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			error_log( '🔍 Captivate episode data for post ' . $post_id . ': ' . print_r( $episode, true ) );

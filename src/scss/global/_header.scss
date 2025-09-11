@@ -82,6 +82,11 @@ Header styling for logo, nav etc.
                     fill: var(--clr-text-100);
                 }
             }
+
+            // Hidden by default; shown in mobile drawer
+            .nav-mobile-logo {
+                display: none;
+            }
         }
 
         .menu-nav-toggle {
@@ -96,26 +101,45 @@ Header styling for logo, nav etc.
 
         .nav {
             position: fixed;
-            width: 80%;
+            width: 100%;
             height: 100vh;
             inset: 0 0 0 100%;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
-            padding: var(--space-3xl) var(--space-l);
-            gap: var(--space-l);
+            padding: var(--space-3xl) var(--space-2xl);
+            gap: var(--space-xs);
             font-size: var(--step-1);
-            background: var(--clr-surface-400);
-            z-index: 1000;
+            background: hsl(var(--clr-surface-600-hsl) / 0.95);
+            backdrop-filter: blur(3px) saturate(180%) brightness(150%) blur(5px);
+            -webkit-backdrop-filter: blur(3px) saturate(130%) brightness(150%);
             transform: translateX(0);
-            transition: transform 0.3s cubic-bezier(0.77, 0, 0.18, 1);
+            transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+            z-index: 1000;
 
             &[data-visible="true"] {
                 transform: translateX(-100%);
             }
 
             a {
-                font-size: var(--step-0);
+                display: block;
+                font-size: var(--step-1);
+            }
+
+            // Mobile-only logo at the end of the list
+            .nav-mobile-logo {
+                display: block;
+                margin-top: var(--space-xl);
+                width: 100%;
+            }
+
+            .nav-mobile-logo__link {
+                display: inline-block;
+            }
+
+            .nav-mobile-logo img {
+                width: 180px;
+                height: auto;
             }
         }
 
@@ -123,7 +147,7 @@ Header styling for logo, nav etc.
             display: block;
             position: absolute;
             right: 0.35rem;
-            width: 2.25rem;
+            width: 1.6rem;
             aspect-ratio: 1;
             background: none;
             border: none;
@@ -146,17 +170,21 @@ Header styling for logo, nav etc.
                 top: 50%;
                 display: block;
                 width: 100%;
-                height: 5px;
+                height: 3px;
                 background-color: var(--clr-text-100);
                 transition: 0.25s ease-out;
             }
 
             span:nth-of-type(1) {
-                top: 30%;
+                top: 15%;
             }
 
             span:nth-of-type(2) {
-                top: 70%;
+                top: 50%;
+            }
+
+            span:nth-of-type(3) {
+                top: 85%;
             }
         }
 
@@ -178,6 +206,10 @@ Header styling for logo, nav etc.
                 transform: rotate(-45deg);
             }
 
+            span:nth-of-type(3) {
+                @include visually-hidden;
+            }
+
             @media (max-width: 599px) {
                 right: 2rem;
             }
@@ -188,36 +220,59 @@ Header styling for logo, nav etc.
 // Header items fade in animation
 $drop-distance: 1.5rem;
 $drop-duration: 700ms; // movement
-$fade-duration: 1000ms; // fade finishes a bit earlier
+$fade-duration: 800ms; // fade finishes a bit earlier
 $easing-drop: cubic-bezier(0, 0, 0.2, 1); // gentle ease-out
 $easing-fade: ease-out;
 
-// Starting state
-.site-head__logo,
-.site-head__navigation .nav li {
+// Reusable animation helpers
+@mixin header-fade-start {
     opacity: 0;
     transform: translateY(-#{$drop-distance});
 }
 
+@mixin header-fade-animate($count: 10, $delay-start: 0.5s, $delay-step: 0.2s) {
+    animation: headerDrop $drop-duration $easing-drop forwards,
+        headerFade $fade-duration $easing-fade forwards;
+
+    @for $i from 1 through $count {
+        &:nth-child(#{$i}) {
+            // same delay applied to both animations
+            animation-delay: #{$delay-start + ($i - 1) * $delay-step},
+                #{$delay-start + ($i - 1) * $delay-step};
+        }
+    }
+}
+
 // Logo
 .site-head__logo {
+    @include header-fade-start;
     animation: headerDrop $drop-duration $easing-drop forwards,
         headerFade $fade-duration $easing-fade forwards;
     animation-delay: 0.3s, 0.3s; // same delay for both
 }
 
-// Nav items
-.site-head__navigation .nav li {
-    animation: headerDrop $drop-duration $easing-drop forwards,
-        headerFade $fade-duration $easing-fade forwards;
-    // delays added by your loop below
+// Desktop: animate nav items on load
+@media (min-width: 55rem) {
+    .site-head__navigation .nav li {
+        @include header-fade-start;
+        @include header-fade-animate(10, 0.5s, 0.2s);
+    }
 }
 
-// Stagger (keep yours, example shown)
-@for $i from 1 through 10 {
-    .site-head__navigation .nav li:nth-child(#{$i}) {
-        // same delay applied to both animations
-        animation-delay: #{0.5s + ($i - 1) * 0.2s}, #{0.5s + ($i - 1) * 0.2s};
+// Mobile: only animate when drawer opens
+@media (max-width: 55rem) {
+    .site-head__navigation .nav li {
+        width: 100%;
+        @include header-fade-start;
+        animation: none; // don’t run on page load while closed
+
+        &:last-child {
+            width: auto;
+        }
+    }
+
+    .site-head__navigation .nav[data-visible="true"] li {
+        @include header-fade-animate(10, 0.5s, 0.2s);
     }
 }
 

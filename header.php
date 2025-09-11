@@ -35,6 +35,7 @@
 						<p class="visually-hidden">Menu</p>
 						<span></span>
 						<span></span>
+						<span></span>
 					</button>
 
 					<?php wp_nav_menu(

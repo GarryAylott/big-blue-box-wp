@@ -65,7 +65,9 @@
 	</div>
 
 	<div class="post-article__container">
-		<?php get_template_part('template-parts/content', 'read-progress'); ?>
+		<?php if ( is_single() && in_category( 'articles' ) ) : ?>
+			<?php get_template_part('template-parts/content', 'read-progress'); ?>
+		<?php endif; ?>
 		<div class="article-body flow-large">
 			<?php
 			if ( function_exists( 'get_field' ) ) {

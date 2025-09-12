@@ -136,15 +136,15 @@
 				</div>
 			</div>
 			<div class="author-section-small__author-block">
-				<div class="new-author-img rounded-small">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-newauthor.svg" width="40" height="40" alt="Maybe you could join the team?">
-				</div>
+				<span class="author-avatar">
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-small-default.webp" width="56" height="81" alt="Maybe you could join the team?">
+				</span>
 				<div class="author-block-content">
 					<h6>
 						Maybe you?
 					</h6>
 					<p class="small">
-						We're always looking for writers to volunteer for the blog. Do you know your Doctor Who and have decent writing skills? <a class="link-alt" href="#">Get in touch!</a>
+						We're always looking for writers to volunteer for the blog. Do you know your Doctor Who and have decent writing skills? <a class="link-alt" href="mailto:hello@bigblueboxpodcast.co.uk?subject=From the website:I'm interested in writing for The Big Blue Box!">Get in touch!</a>
 					</p>
 				</div>
 			</div>

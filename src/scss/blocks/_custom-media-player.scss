@@ -9,35 +9,56 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
 /* Scope all vLite custom styles to .podcast-player */
 .podcast-player {
     .v-vlite {
-        --vlite-colorPrimary: var(--clr-brand-primary);
+        --vlite-colorPrimary: var(--clr-brand-secondary);
         --vlite-background: var(--clr-surface-400);
         --vlite-color: var(--clr-text-100);
         --vlite-accent: var(--clr-brand-primary);
         --vlite-control-background: var(--clr-surface-200);
         --vlite-control-hover: var(--clr-surface-100);
         --vlite-progress-bg: var(--clr-surface-100);
-        --vlite-progress-fg: var(--clr-brand-primary);
+        --vlite-progress-fg: var(--clr-brand-secondary);
         --vlite-progress-buffer: var(--clr-surface-50);
         --vlite-volume-bg: var(--clr-surface-100);
         --vlite-volume-fg: var(--clr-brand-primary);
         --vlite-transition: all 0.25s ease;
 
-        --vlite-controlBarHeight: 4rem;
-        --vlite-controlBarHorizontalPadding: 10px;
+        --vlite-controlBarHeight: 5rem;
+        --vlite-controlBarHorizontalPadding: 1rem;
         --vlite-controlBarBackground: linear-gradient(
             0deg,
             #000 -50%,
             transparent
         );
         --vlite-controlsColor: #fff;
-        --vlite-controlsOpacity: 0.9;
+        --vlite-controlsOpacity: 1;
         --vlite-progressBarHeight: 5px;
-        --vlite-progressBarBackground: rgba(0, 0, 0, 0.25);
+        --vlite-progressBarBackground: rgba(255, 255, 255, 0.15);
+
+        border-radius: var(--radius-normal);
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(140deg, #09101b 0%, #09101b 0%)
+                    padding-box,
+                linear-gradient(
+                        160deg,
+                        var(--clr-brand-secondary) -20%,
+                        transparent 40%
+                    )
+                    border-box;
+            border: 1px solid transparent;
+            border-radius: inherit;
+            backdrop-filter: blur(5px) saturate(180%) brightness(150%)
+                blur(10px);
+        }
     }
 
     // Specificity wrapper from vLite
     .v-vlite.v-audio {
-        border-radius: var(--radius-circle);
         box-shadow: none;
 
         /* vLite main container */
@@ -53,18 +74,6 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
             gap: var(--space-s);
             padding-inline-start: calc(var(--space-s) + 0.35rem);
             padding-inline-end: calc(var(--space-s) + 0.15rem);
-            background-color: hsla(221, 90%, 70%, 1);
-            background-image: radial-gradient(
-                    circle at 2% 67%,
-                    hsla(214.00000000000048, 51%, 25%, 1) 32.50734172435179%,
-                    transparent 78.00104881218239%
-                ),
-                radial-gradient(
-                    circle at 98% 31%,
-                    hsla(333.00000000000006, 48%, 33%, 1) 21.764379914072503%,
-                    transparent 78.71913699883962%
-                );
-            background-blend-mode: normal, normal;
         }
 
         /* Play/Pause button */
@@ -106,7 +115,7 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
         }
 
         .v-progressBarStyle {
-            scrollbar-color: red;
+            scrollbar-color: var(--clr-brand-accent);
         }
 
         /* Volume button */

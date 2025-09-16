@@ -1,23 +1,54 @@
+@use "utilities" as *;
+
 /* 
 SIDEBAR
 Layout and styling for the main sidebar that appears on the homepage and a select other pages.
 */
 
 .main-sidebar {
-    .search-form {
-        position: relative;
-        display: grid;
+    .widget .popular-posts {
+        .wpp-list {
+            li {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: var(--space-xs);
+                margin-bottom: 0;
 
-        .search-field {
-            width: 100%;
-        }
+                @media (max-width: 59.75rem) {
+                    margin-block-end: var(--space-l);
+                }
 
-        button {
-            position: absolute;
-            right: var(--space-2xs);
-            top: 50%;
-            height: calc(100% - var(--space-xs));
-            transform: translateY(-50%);
+                @media (max-width: 25rem) {
+                    grid-template-columns: 1fr;
+                }
+
+                a:not(.wpp-post-title) {
+                    max-width: 135px;
+                    border-radius: var(--radius-xs);
+                    overflow: hidden;
+                }
+
+                img.wpp-thumbnail {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: var(--radius-xs);
+                    @include img-hover-effect;
+                }
+
+                a.wpp-post-title {
+                    display: block;
+                    text-box-trim: trim-both;
+                    text-box-edge: cap alphabetic;
+                    font-size: var(--step--1);
+                    font-weight: var(--fw-semibold);
+                    line-height: 1.4;
+                    text-wrap: unset;
+
+                    @media (max-width: 59.75rem) {
+                        font-size: var(--step-0);
+                    }
+                }
+            }
         }
     }
 

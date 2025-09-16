@@ -9,7 +9,7 @@
 <aside id="secondary" class="main-sidebar flow-large">
 	<section class="social-channels flow">
 		<h5>
-			Social and chat
+			Find us on social media
 		</h5>
 		<ul role="list">
 			<li>
@@ -61,7 +61,7 @@
 				<a class="has-external-icon" href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
-						<p class="small">RSS feed - Podcasts</p>
+						<p class="small">RSS: Podcasts</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
@@ -70,7 +70,16 @@
 				<a class="has-external-icon" href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
-						<p class="small">RSS feed - Articles</p>
+						<p class="small">RSS: Articles</p>
+					</div>
+					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+				 </a>
+			</li>
+			<li>
+				<a class="has-external-icon" href="https://www.bigblueboxpodcast.co.uk/feed/" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
+						<p class="small">RSS: Everything</p>
 					</div>
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
 				 </a>
@@ -78,7 +87,25 @@
 		</ul>
 	</section>
 
-	<section class="flow">
+	<section class="call-out-panel discord-link">
+		<div class="intro">
+			<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-discord.svg" width="121" height="23" alt="Our free Discord server">
+			<p class="small">
+				Join the Big Blue Box Discord server - it's free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!
+			</p>
+		</div>
+		<a class="button-ghost has-external-icon" href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noreferrer noopener">
+			Join us on Discord now
+		</a>
+	</section>
+
+	<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
+		<section class="widget-area">
+			<?php dynamic_sidebar( 'sidebar-1' ); ?>
+		</section>
+	<?php endif; ?>
+
+	<!-- <section class="flow">
 		<h5>
 			Meet your writers
 		</h5>
@@ -149,19 +176,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
-
-	<section class="call-out-panel discord-link">
-		<div class="intro">
-			<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-discord.svg" width="121" height="23" alt="Our free Discord server">
-			<p class="small">
-				Join the Big Blue Box Discord server - it's free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!
-			</p>
-		</div>
-		<a class="button-ghost" href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noreferrer noopener">
-			Join us on Discord now
-		</a>
-	</section>
+	</section>-->
 
 	<section>
 		<a class="has-external-icon" href="https://www.youtube.com/user/thegeekshandbag" target="_blank" rel="noreferrer noopener">

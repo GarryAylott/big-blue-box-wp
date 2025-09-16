@@ -300,7 +300,29 @@ const initCategorySwitcher = () => {
     const postContainer = document.getElementById("ajax-posts-container");
     if (!switchButtons.length || !postContainer) return;
 
+    let requestCounter = 0;
+
+    const setButtonsDisabled = (disabled) => {
+        switchButtons.forEach((btn) => {
+            btn.disabled = disabled;
+        });
+    };
+
+    const beginLoading = () => {
+        postContainer.setAttribute('aria-busy', 'true');
+    };
+
+    const endLoading = () => {
+        postContainer.removeAttribute('aria-busy');
+    };
+
     const fetchCategoryPosts = (category) => {
+        const reqId = ++requestCounter;
+
+        // Disable controls and mark busy (no pre-fade-out)
+        setButtonsDisabled(true);
+        beginLoading();
+
         // Only for homepage/archive, so no search stuff
         const params = {
             action: "filter_posts_by_category",
@@ -315,9 +337,32 @@ const initCategorySwitcher = () => {
         })
             .then((res) => res.text())
             .then((html) => {
+                // Ignore stale responses from earlier clicks
+                if (reqId !== requestCounter) return;
+
+                // Swap content, then run entry-only animation
                 postContainer.innerHTML = html;
+
+                // Setup initial hidden state for children, then activate transition
+                postContainer.classList.add('enter-setup');
+                // Force reflow to commit styles
+                void postContainer.offsetHeight;
+                postContainer.classList.remove('enter-setup');
+                postContainer.classList.add('enter-active');
+
+                // Clean up after animation window
+                setTimeout(() => {
+                    postContainer.classList.remove('enter-active');
+                }, 260);
+
+                endLoading();
+                setButtonsDisabled(false);
             })
-            .catch((err) => console.error("Category switch AJAX error:", err));
+            .catch((err) => {
+                console.error("Category switch AJAX error:", err);
+                endLoading();
+                setButtonsDisabled(false);
+            });
     };
 
     switchButtons.forEach((button) => {

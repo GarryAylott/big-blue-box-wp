@@ -11,7 +11,7 @@ Fancy css filter effects for image link hovers.
     overflow: hidden;
 }
 
-.img-hover {
+@mixin img-hover-effect {
     filter: saturate(1) brightness(1);
     transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
         transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -22,4 +22,8 @@ Fancy css filter effects for image link hovers.
         filter: saturate(1.1) brightness(1.15);
         transform: scale(1.03);
     }
+}
+
+.img-hover {
+    @include img-hover-effect;
 }

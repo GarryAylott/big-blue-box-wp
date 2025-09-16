@@ -18,17 +18,49 @@ Layout and styling for the browse all and side section.
     &__container {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--space-2xl);
+        gap: var(--space-3xl);
         align-items: flex-start;
         margin-block-end: var(--space-l);
     }
 
     &__posts {
+        position: relative;
         flex-basis: 0;
         flex-grow: 999;
         min-inline-size: 50%;
+        transition: opacity 10ms ease;
+        will-change: opacity;
 
         @include post-cards-grid;
+
+        &.is-fading {
+            opacity: 0;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
+
+        &.enter-setup > * {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        &.enter-active > * {
+            opacity: 1;
+            transform: none;
+            transition: opacity 700ms ease, transform 700ms ease;
+            will-change: opacity, transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            &.enter-setup > *,
+            &.enter-active > * {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
     }
 
     .main-sidebar {

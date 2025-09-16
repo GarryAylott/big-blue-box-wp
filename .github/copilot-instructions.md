@@ -16,7 +16,7 @@ These instructions define how code should be written, organized, and maintained 
 ## 2. Tech Targets
 
 -   WordPress: **6.8.2**
--   PHP: **8.2.27**
+-   PHP: **8.3.17**
 -   Node: **20.9.0**
 -   Modern browsers: **latest 2 versions**, no polyfills.
 -   Editor: Hybrid (classic now, custom Gutenberg blocks later).
@@ -32,7 +32,6 @@ These instructions define how code should be written, organized, and maintained 
     -   Sourcemaps for **dev only**.
     -   Minification in **both dev and prod**.
 -   Prettier is used for SCSS/JS formatting.
--   Follow **Conventional Commits** for commit messages.
 
 ## 4. PHP & Templating Standards
 

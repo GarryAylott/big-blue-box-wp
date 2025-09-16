@@ -5,119 +5,77 @@ LINKS TO PODCAST APPS BLOCK
 */
 
 .podcast-app-links {
-    p {
-        margin-block-end: var(--space-xs);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+
+    h6 {
+        font-size: var(--step-0);
+        font-weight: var(--fw-bold);
     }
 
-    &__links {
-        display: grid;
-        grid-template-columns: repeat(4, auto);
-        gap: var(--space-s);
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        justify-content: center;
+    &__links-block {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-xl);
+        padding-block: var(--space-m);
+        padding-inline: var(--space-l);
+        background: var(--clr-surface-400);
+        border-radius: var(--radius-normal);
 
-        @media (max-width: 64rem) {
-            grid-template-columns: repeat(2, auto);
-        }
-
-        @media (max-width: 35.938rem) {
-            grid-template-columns: 1fr;
-        }
-
-        .app {
+        li.app {
             display: flex;
-            justify-content: center;
             align-items: center;
+            font-size: var(--step--1);
 
             a {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                min-height: 3.25rem;
-                text-align: center;
-                padding-inline: var(--space-s);
-                border-radius: var(--radius-small);
-            }
-
-            img {
-                width: 85%;
-            }
-
-            a.text-button {
                 display: flex;
                 align-items: center;
                 gap: var(--space-2xs);
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+        }
 
-                img {
-                    width: auto;
-                    height: 1.4rem;
-                }
+        @media (max-width: 31.25rem) {
+            li {
+                width: 100%;
+            }
+        }
 
-                span {
-                    font-size: var(--step--2);
-                }
+        li:nth-child(1) {
+            a:hover {
+                color: hsl(283, 96%, 71%);
+            }
+        }
 
-                &:hover {
-                    text-decoration: none;
-                }
+        li:nth-child(2) {
+            a:hover {
+                color: hsl(141, 76%, 48%);
+            }
+        }
+
+        li:nth-child(3) {
+            a:hover {
+                color: hsl(360, 100%, 50%);
+            }
+        }
+
+        li:nth-child(4) {
+            a:hover {
+                color: var(--clr-brand-primary);
             }
         }
     }
 }
 
-body:is(.category-podcasts) {
-    .podcast-app-links {
-        position: relative;
-        padding: var(--space-s);
-        border-radius: var(--radius-normal);
-        overflow: hidden;
-        z-index: 1;
+:is(body.home) .podcast-app-links {
+    gap: var(--space-s);
+    text-align: center;
 
-        h6 {
-            font-size: var(--step-0);
-            font-weight: var(--fw-reg);
-            text-align: left;
-            margin-block-end: var(--space-s);
-        }
-
-        &__links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: start;
-
-            @media (max-width: 31.25rem) {
-                li {
-                    width: 100%;
-                }
-            }
-
-            li:nth-child(3) {
-                @include visually-hidden;
-            }
-        }
-
-        &::before {
-            @include img-border-highlight(var(--clr-border-default));
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: -130px;
-            left: -450px;
-            width: 1200px;
-            height: 250px;
-            background: radial-gradient(
-                circle,
-                hsla(247, 21%, 13%, 1) 0,
-                hsla(247, 21%, 13%, 0) 70%
-            );
-            border-radius: var(--radius-circle);
-            filter: blur(20px);
-            z-index: -1;
-        }
+    &__links-block {
+        padding: 0;
+        background: none;
     }
 }

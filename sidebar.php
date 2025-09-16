@@ -105,7 +105,7 @@
 		</section>
 	<?php endif; ?>
 
-	<!-- <section class="flow">
+	<section class="flow">
 		<h5>
 			Meet your writers
 		</h5>
@@ -176,7 +176,7 @@
 				</div>
 			</div>
 		</div>
-	</section>-->
+	</section>
 
 	<section>
 		<a class="has-external-icon" href="https://www.youtube.com/user/thegeekshandbag" target="_blank" rel="noreferrer noopener">

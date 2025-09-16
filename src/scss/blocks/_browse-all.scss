@@ -21,6 +21,10 @@ Layout and styling for the browse all and side section.
         gap: var(--space-3xl);
         align-items: flex-start;
         margin-block-end: var(--space-l);
+
+        // @media (min-width: 60rem) {
+        //     gap: var(--space-3xl);
+        // }
     }
 
     &__posts {

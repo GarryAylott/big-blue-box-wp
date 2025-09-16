@@ -1,97 +1,123 @@
 @layer reset {
+    /* Box sizing rules */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
 
-  /* Box sizing rules */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+    /* Remove default margin */
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-  /* Remove default margin */
-  * {
-    margin: 0;
-    padding: 0;
-  }
+    html {
+        overflow-y: scroll;
+    }
 
-  html {
-    overflow-y: scroll;
-  }
+    html,
+    body {
+        overscroll-behavior-x: none;
+        overflow-x: clip;
+    }
 
-  html,
-  body {
-    overscroll-behavior-x: none;
-    overflow-x: clip;
-  }
+    /* Set shorter line heights on headings and interactive elements */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    button,
+    input,
+    label {
+        line-height: 1.1;
+    }
 
-  /* Set shorter line heights on headings and interactive elements */
-  h1, h2, h3, h4, h5,
-  button, input, label {
-    line-height: 1.1;
-  }
+    /* Avoid text overflows */
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        overflow-wrap: break-word;
+    }
 
-  /* Avoid text overflows */
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-  }
+    /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+    ul[role="list"],
+    ol[role="list"] {
+        list-style: none;
+    }
 
-  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-  ul[role='list'],
-  ol[role='list'] {
-    list-style: none;
-  }
+    /* A elements that don't have a class get default styles */
+    a:not([class]) {
+        text-decoration-skip-ink: auto;
+    }
 
-  /* A elements that don't have a class get default styles */
-  a:not([class]) {
-    text-decoration-skip-ink: auto;
-  }
+    /* Make images easier to work with */
+    img,
+    picture,
+    video,
+    canvas,
+    svg,
+    figure {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
 
-  /* Make images easier to work with */
-  img, picture, video, canvas, svg, figure {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+    /* WP block images reset */
+    figure.wp-caption,
+    .wp-block-image img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
 
-  /* WP block images reset */
-  figure.wp-caption,
-  .wp-block-image img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+    figure.aligncenter img {
+        margin-inline: auto;
+    }
 
-  figure.aligncenter img {
-    margin-inline: auto;
-  }
+    figure.wp-embed-aspect-16-9 iframe {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16 / 9;
+    }
 
-  figure.wp-embed-aspect-16-9 iframe {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 16 / 9;
-  }
+    .entry-content iframe {
+        min-width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--radius-small);
+    }
 
-  /* Inherit fonts for inputs and buttons */
-  input, button, textarea, select {
-    font: inherit;
-    letter-spacing: inherit;
-    word-spacing: inherit;
-    color: currentColor;
-  }
+    /* Inherit fonts for inputs and buttons */
+    input,
+    button,
+    textarea,
+    select {
+        font: inherit;
+        letter-spacing: inherit;
+        word-spacing: inherit;
+        color: currentColor;
+    }
 
-  /* Remove input and field default styles */
-  input, textarea {
-    padding: 0;
-    margin: 0;
-  }
+    /* Remove input and field default styles */
+    input,
+    textarea {
+        padding: 0;
+        margin: 0;
+    }
 
-  /* Make sure textareas without a rows attribute are not tiny */
-  textarea:not([rows]) {
-    min-height: 8em;
-  }
+    /* Make sure textareas without a rows attribute are not tiny */
+    textarea:not([rows]) {
+        min-height: 8em;
+    }
 
-  /* Anything that has been anchored to should have extra scroll margin */
-  :target {
-    scroll-margin-block: 5ex;
-  }
-
+    /* Anything that has been anchored to should have extra scroll margin */
+    :target {
+        scroll-margin-block: 5ex;
+    }
 }

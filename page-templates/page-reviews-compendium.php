@@ -251,7 +251,7 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                                                // Inline specials breaks for specific seasons
                                                 // Tenth Doctor: Series 4 specials (insert before The Next Doctor)
                                                 if ($slug === 'tenth-doctor' && $season_number === 4 && stripos($title, 'The Next Doctor') === 0 && empty($injected_breaks['tenth_s4'])) {
-                                                    $print_heading_row(__('Series 4: The Specials', 'bbb'));
+                                                    $print_heading_row(__('Season 4: The Specials', 'bbb'));
                                                     $injected_breaks['tenth_s4'] = true;
                                                 }
                                                 // Eleventh Doctor: Season 7 specials (insert before The Day of the Doctor)

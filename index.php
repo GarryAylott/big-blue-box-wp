@@ -118,7 +118,7 @@ get_header();
                     $displayed_posts = get_query_var('displayed_posts');
 
                     $args3 = array(
-                        'posts_per_page' => 10,
+                        'posts_per_page' => 12,
                         'post_status' => 'publish',
                         'post__not_in' => $displayed_posts,
                         'post_type' => 'post',

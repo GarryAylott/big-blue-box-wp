@@ -1,0 +1,24 @@
+/* 
+TYPOGRAPHY TOKENS
+Theme typography variables.
+*/
+
+$font-sizes: (
+    -2: clamp(0.7813rem, 0.7436rem + 0.1606vw, 0.8681rem),
+    // Step -2: 12.5px → 13.8889px
+    -1: clamp(0.9375rem, 0.8923rem + 0.1927vw, 1.0417rem),
+    // Step -1: 15px → 16.6667px
+    0: clamp(1.125rem, 1.0708rem + 0.2312vw, 1.25rem),
+    // Step 0: 18px → 20px
+    1: clamp(1.35rem, 1.285rem + 0.2775vw, 1.5rem),
+    // Step 1: 21.6px → 24px
+    2: clamp(1.44rem, 1.2839rem + 0.6659vw, 1.8rem),
+    // Step 2: 23px → 28.8px
+    3: clamp(1.728rem, 1.5407rem + 0.7991vw, 2.16rem),
+    // Step 3: 27px → 34.56px
+    4: clamp(2.0736rem, 1.8489rem + 0.9589vw, 2.592rem),
+    // Step 4: 33px → 41.472px
+    5: clamp(2.4883rem, 2.2186rem + 1.1507vw, 3.1104rem),
+    // Step 5: 39px → 49.7664px
+    6: clamp(2.375rem, 1.75rem + 2.8571vw, 4rem) // Step 6: 38px → 64px
+);

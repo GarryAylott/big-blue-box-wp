@@ -131,29 +131,6 @@ Layout and styling for single post pages.
                 }
             }
 
-            // Remove margin if heading follows the first .lead paragraph
-            p.lead + :is(h2, h3, h4, h5, h6) {
-                margin-block-start: var(--space-l);
-            }
-
-            p.lead,
-            p.has-drop-cap {
-                font-size: var(--step-1);
-                font-weight: var(--fw-bold);
-                line-height: 1.5;
-
-                &:first-letter,
-                &:not(:focus):first-letter {
-                    color: var(--clr-brand-accent);
-                    font-family: var(--font-family-headings);
-                    font-size: 4.5rem;
-                    line-height: 0.3em;
-                    margin-block-start: 1.6rem;
-                    margin-inline-end: 0.5rem;
-                    float: left;
-                }
-            }
-
             ul,
             ol {
                 margin-inline-start: 1.1rem;

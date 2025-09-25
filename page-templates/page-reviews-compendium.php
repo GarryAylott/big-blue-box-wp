@@ -54,12 +54,12 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
     <img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg_compendium.webp" decoding="async" alt="" fetchpriority="high">
 </div>
 
-<main id="primary" class="site-main reviews-compendium flow">
+<main id="primary" class="site-main reviews-compendium">
     <div class="wrapper">
         <?php if (have_posts()) :
             while (have_posts()) : the_post(); ?>
-                <header class="page-header">
-                    <h1 class="page-title"><?php the_title(); ?></h1>
+                <header class="page-title text-block">
+                    <h1><?php the_title(); ?></h1>
                     <?php the_content(); ?>
                 </header>
             <?php endwhile;
@@ -299,5 +299,4 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
     </div>
 </main>
 
-<?php
-get_footer();
+<?php get_footer(); ?>

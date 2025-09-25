@@ -389,6 +389,9 @@ require get_template_directory() . '/inc/article-promo-banners.php';
 // Compendium data helper
 require_once get_stylesheet_directory() . '/inc/reviews-compendium.php';
 
+// Gutenberg blocks initialisation
+require get_template_directory() . '/inc/blocks/init.php';
+
 // Enqueue scripts and styles.
 require get_template_directory() . '/inc/enqueue.php';
 

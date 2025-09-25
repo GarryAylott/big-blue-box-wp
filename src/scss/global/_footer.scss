@@ -105,25 +105,25 @@ Layout and styling for the site footer
                 }
             }
 
-            ul {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                gap: var(--space-s);
+            // ul {
+            //     display: flex;
+            //     flex-wrap: wrap;
+            //     align-items: center;
+            //     gap: var(--space-s);
 
-                li a {
-                    width: 45px;
-                    height: 45px;
-                    display: grid;
-                    place-items: center;
-                    border-radius: var(--radius-small);
-                    transition: all 0.2s ease-out;
+            //     li a {
+            //         width: 45px;
+            //         height: 45px;
+            //         display: grid;
+            //         place-items: center;
+            //         border-radius: var(--radius-small);
+            //         transition: all 0.2s ease-out;
 
-                    &:hover {
-                        background: var(--clr-surface-400);
-                    }
-                }
-            }
+            //         &:hover {
+            //             background: var(--clr-surface-400);
+            //         }
+            //     }
+            // }
         }
 
         ul.footer-list li {

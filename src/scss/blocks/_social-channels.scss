@@ -34,3 +34,24 @@ Layout and styling for the list of social channels.
         gap: var(--space-xs);
     }
 }
+
+// Icons horizontal list
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-s);
+
+    li a {
+        width: 45px;
+        height: 45px;
+        display: grid;
+        place-items: center;
+        border-radius: var(--radius-small);
+        transition: all 0.2s ease-out;
+
+        &:hover {
+            background: var(--clr-surface-400);
+        }
+    }
+}

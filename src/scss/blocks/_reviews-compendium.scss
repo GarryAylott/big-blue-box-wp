@@ -5,18 +5,6 @@ REVIEW COMPENDIUM TABLES
 */
 
 .reviews-compendium {
-    .page-header {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-s);
-        margin-block-end: var(--space-m);
-
-        p {
-            // color: var(--clr-text-900);
-            max-width: 60ch;
-        }
-    }
-
     &__toolbar {
         display: flex;
         flex-wrap: wrap;

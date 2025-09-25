@@ -1,6 +1,7 @@
 import gulp from "gulp";
 import * as dartSass from "sass";
 import gulpSass from "gulp-sass";
+import rename from "gulp-rename";
 import sourcemaps from "gulp-sourcemaps";
 import postcss from "gulp-postcss";
 import autoprefixer from "autoprefixer";
@@ -9,6 +10,7 @@ import browserSync from "browser-sync";
 import terser from "@rollup/plugin-terser";
 import { rollup } from "rollup";
 import resolve from "@rollup/plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
 import fs from "fs";
 import path from "path";
 
@@ -29,30 +31,44 @@ const paths = {
 };
 
 // Sass tasks
-export function stylesDev() {
-    return gulp
-        .src(paths.styles.src)
-        .pipe(sourcemaps.init())
-        .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
-        .pipe(postcss([autoprefixer()]))
-        .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest(paths.styles.dest))
-        .pipe(bs.stream());
-}
+export const stylesDev = gulp.series(
+    buildColourTokens,
+    function stylesDevTask() {
+        return gulp
+            .src(paths.styles.src)
+            .pipe(sourcemaps.init())
+            .pipe(sass({ outputStyle: "expanded" }).on("error", sass.logError))
+            .pipe(postcss([autoprefixer()]))
+            .pipe(sourcemaps.write("."))
+            .pipe(gulp.dest(paths.styles.dest))
+            .pipe(bs.stream());
+    }
+);
 
-export function stylesProd() {
-    return gulp
-        .src(paths.styles.src)
-        .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
-        .pipe(postcss([autoprefixer(), cssnano()]))
-        .pipe(gulp.dest(paths.styles.dest));
-}
+export const stylesProd = gulp.series(
+    buildColourTokens,
+    function stylesProdTask() {
+        return gulp
+            .src(paths.styles.src)
+            .pipe(
+                sass({ outputStyle: "compressed" }).on("error", sass.logError)
+            )
+            .pipe(postcss([autoprefixer(), cssnano()]))
+            .pipe(gulp.dest(paths.styles.dest));
+    }
+);
 
 // Scripts task
 export async function scriptsDev() {
     const bundle = await rollup({
         input: "src/scripts/bbb-scripts.js",
-        plugins: [resolve()],
+        plugins: [
+            resolve(),
+            replace({
+                "process.env.NODE_ENV": JSON.stringify("development"),
+                preventAssignment: true,
+            }),
+        ],
     });
 
     const { output } = await bundle.generate({
@@ -78,7 +94,14 @@ export async function scriptsDev() {
 export async function scriptsProd() {
     const bundle = await rollup({
         input: "src/scripts/bbb-scripts.js",
-        plugins: [resolve(), terser()],
+        plugins: [
+            resolve(),
+            replace({
+                "process.env.NODE_ENV": JSON.stringify("production"),
+                preventAssignment: true,
+            }),
+            terser(),
+        ],
     });
 
     const { output } = await bundle.generate({
@@ -119,7 +142,11 @@ export function watchFiles() {
 }
 
 // Default task
-export const dev = gulp.series(gulp.parallel(stylesDev, scriptsDev), serve, watchFiles);
+export const dev = gulp.series(
+    gulp.parallel(stylesDev, scriptsDev),
+    serve,
+    watchFiles
+);
 
 // Production build (no server/watch)
 export const build = gulp.series(gulp.parallel(stylesProd, scriptsProd));

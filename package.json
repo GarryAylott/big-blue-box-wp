@@ -17,23 +17,22 @@
     "type": "module",
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^16.0.1",
+        "@rollup/plugin-replace": "^6.0.2",
         "@rollup/plugin-terser": "^0.4.4",
         "autoprefixer": "^10.4.16",
         "browser-sync": "^3.0.4",
         "cssnano": "^7.1.1",
         "gulp": "^5.0.1",
         "gulp-postcss": "^10.0.0",
+        "gulp-rename": "^2.1.0",
         "gulp-sass": "^6.0.1",
         "gulp-sourcemaps": "^3.0.0",
+        "lucide": "^0.544.0",
         "postcss": "^8.4.31",
         "rollup": "^4.50.0",
-        "sass": "^1.92.0",
-        "vlitejs": "^7.4.0",
-        "gsap": "^3.13.0"
+        "sass": "^1.92.0"
     },
     "dependencies": {
-        "cheerio": "^1.0.0-rc.12",
-        "papaparse": "^5.4.1",
-        "xlsx": "^0.18.5"
+        "vlitejs": "^7.4.0"
     }
 }

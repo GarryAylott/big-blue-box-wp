@@ -1,0 +1,33 @@
+@use "utilities" as *;
+
+/* 
+WPBLOCKS
+Styles for custom Guttenberg blocks.
+*/
+
+// Team post ariticle additions block
+.team-post-additions {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    border-left: 3px solid hsl(210 80% 50%);
+
+    &__author {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+
+        img {
+            border-radius: 50%;
+        }
+    }
+
+    &__name {
+        font-weight: 600;
+    }
+
+    &__content {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+}

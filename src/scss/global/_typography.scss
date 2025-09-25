@@ -108,6 +108,49 @@ h6 {
     }
 }
 
+.page-title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    margin-block-end: var(--space-m);
+
+    p {
+        // color: var(--clr-text-900);
+        max-width: 60ch;
+    }
+}
+
+// Remove margin if heading follows the first .lead paragraph
+p.lead + :is(h2, h3, h4, h5, h6) {
+    margin-block-start: var(--space-l);
+}
+
+.single,
+.page {
+    p.lead,
+    p.has-drop-cap {
+        font-size: var(--step-1);
+        font-weight: var(--fw-semibold);
+        line-height: 1.5;
+    }
+}
+
+.single {
+    p.lead,
+    p.has-drop-cap {
+        &:first-letter,
+        &:not(:focus):first-letter {
+            color: var(--clr-brand-accent);
+            font-family: var(--font-family-headings);
+            font-size: 4.5rem;
+            line-height: 0.3em;
+            margin-block-start: 1.6rem;
+            margin-inline-end: 0.5rem;
+            float: left;
+        }
+    }
+}
+
 .balance {
     text-wrap: balance;
 }
@@ -118,6 +161,16 @@ h6 {
 
 p {
     text-wrap: pretty;
+}
+
+.text-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+
+    p {
+        max-width: 60ch;
+    }
 }
 
 // Global max-width for paragraphs

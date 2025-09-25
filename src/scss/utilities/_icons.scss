@@ -1,0 +1,95 @@
+@use "../tokens" as *;
+
+/* 
+ICONS
+Styling for Lucide Icons
+*/
+
+[data-lucide] {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    font-size: inherit;
+    line-height: 1;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    shape-rendering: geometricPrecision;
+
+    &[aria-hidden="true"] {
+        display: none;
+    }
+}
+
+// Size utilities
+.icon-step--2 {
+    font-size: var(--step--2);
+}
+.icon-step--1 {
+    font-size: var(--step--1);
+}
+.icon-step-0 {
+    font-size: var(--step-0);
+}
+.icon-step-1 {
+    font-size: var(--step-1);
+}
+.icon-step-2 {
+    font-size: var(--step-2);
+}
+.icon-step-3 {
+    font-size: var(--step-3);
+}
+.icon-step-4 {
+    font-size: var(--step-4);
+}
+.icon-step-5 {
+    font-size: var(--step-5);
+}
+.icon-step-6 {
+    font-size: var(--step-6);
+}
+
+// Stroke weight utilities
+.icon-thin {
+    stroke-width: 1;
+}
+// Default...
+.icon-base {
+    stroke-width: 2;
+}
+.icon-bold {
+    stroke-width: 2.5;
+}
+.icon-heavy {
+    stroke-width: 3;
+}
+
+// Import colours from colour map in _variables.scss
+@each $name, $col in $colors {
+    .icon-#{$name} {
+        color: var(--clr-#{$name});
+    }
+}
+
+// Example usage...
+//
+// Default behaviour (inherits size + color from parent):
+//   <h1>Podcast <i data-lucide="mic"></i></h1>
+//   <p>Listen now <i data-lucide="headphones"></i></p>
+//
+// Color utilities (from $colors map):
+//   <i data-lucide="rss" class="icon-brand-accent"></i>
+//   <i data-lucide="tag" class="icon-text-400"></i>
+//
+// Size overrides (step system):
+//   <i data-lucide="mic" class="icon-step--1"></i>  // smaller than text
+//   <i data-lucide="mic" class="icon-step-2"></i>   // larger than text
+//
+// Stroke weight overrides:
+//   <i data-lucide="clock" class="icon-thin"></i>
+//   <i data-lucide="clock" class="icon-bold"></i>
+//
+// Multiple utilities can be combined:
+//   <i data-lucide="arrow-right" class="icon-step-1 icon-brand-primary icon-bold"></i>

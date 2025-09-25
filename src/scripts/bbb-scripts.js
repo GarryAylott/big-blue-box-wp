@@ -1,7 +1,51 @@
 import Vlitejs from "vlitejs";
-import { gsap } from "gsap";
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-gsap.registerPlugin(ScrambleTextPlugin);
+import {
+    createIcons,
+    Mic,
+    Headphones,
+    ArrowUp,
+    ArrowDown,
+    ArrowRight,
+    ChevronDown,
+    Newspaper,
+    Rss,
+    ListTree,
+    Clock,
+    Search,
+    X,
+    Tag,
+} from "lucide";
+
+// Lucide setup
+let icons = {};
+
+if (process.env.NODE_ENV === "production") {
+    icons = {
+        Mic,
+        Headphones,
+        ArrowUp,
+        ArrowDown,
+        ArrowRight,
+        ChevronDown,
+        Newspaper,
+        Rss,
+        ListTree,
+        Clock,
+        Search,
+        X,
+        Tag,
+    };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (Object.keys(icons).length > 0) {
+        // Production: only registered icons
+        createIcons({ icons });
+    } else {
+        // Development: load all icons
+        createIcons();
+    }
+});
 
 // Configuration object
 const CONFIG = {
@@ -104,27 +148,6 @@ const initSearch = () => {
         ) {
             closeOverlay();
         }
-    });
-};
-
-// Scramble the search section title text on search pages
-const initSearchScramble = () => {
-    if (!document.body.matches(".search-results, .search-no-results")) return;
-    const titles = document.querySelectorAll(".search-hero .section-title");
-    if (!titles.length) return;
-
-    titles.forEach((el) => {
-        const finalText = el.textContent.trim();
-        gsap.to(el, {
-            duration: 1.8,
-            ease: "none",
-            scrambleText: {
-                text: finalText,
-                chars: "hexadecimal",
-                speed: 1.4,
-                revealDelay: 0.15,
-            },
-        });
     });
 };
 
@@ -292,7 +315,7 @@ const initTardisScrollProgress = () => {
 // AJAX request for category switcher
 const initCategorySwitcher = () => {
     // Only enable on homepage or a specific template, NOT search results
-    if (document.body.matches('.search-results, .search-no-results')) return;
+    if (document.body.matches(".search-results, .search-no-results")) return;
 
     const switchButtons = document.querySelectorAll(
         CONFIG.SELECTORS.categorySwitcher
@@ -309,11 +332,11 @@ const initCategorySwitcher = () => {
     };
 
     const beginLoading = () => {
-        postContainer.setAttribute('aria-busy', 'true');
+        postContainer.setAttribute("aria-busy", "true");
     };
 
     const endLoading = () => {
-        postContainer.removeAttribute('aria-busy');
+        postContainer.removeAttribute("aria-busy");
     };
 
     const fetchCategoryPosts = (category) => {
@@ -344,15 +367,15 @@ const initCategorySwitcher = () => {
                 postContainer.innerHTML = html;
 
                 // Setup initial hidden state for children, then activate transition
-                postContainer.classList.add('enter-setup');
+                postContainer.classList.add("enter-setup");
                 // Force reflow to commit styles
                 void postContainer.offsetHeight;
-                postContainer.classList.remove('enter-setup');
-                postContainer.classList.add('enter-active');
+                postContainer.classList.remove("enter-setup");
+                postContainer.classList.add("enter-active");
 
                 // Clean up after animation window
                 setTimeout(() => {
-                    postContainer.classList.remove('enter-active');
+                    postContainer.classList.remove("enter-active");
                 }, 260);
 
                 endLoading();
@@ -478,7 +501,6 @@ const init = () => {
     initNavigation();
     initBackgroundFade();
     initSearch();
-    initSearchScramble();
     initPodcastMenu();
     initScrollContainers();
     initExternalLinkIcons();

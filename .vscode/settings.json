@@ -1,9 +1,8 @@
 {
     // Variable location for CSS Var Complete extension.
     "cssvar.files": [
-        "src/scss/global/*.scss",
-        "src/scss/tokens/*.scss",
-        "src/scss/utilities/*.scss"
+        "src/scss/global/_custom-props.scss",
+        "src/scss/global/_colour-tokens.scss"
     ],
 
     // Github commit and branch management settings.

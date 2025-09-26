@@ -9,13 +9,19 @@
 $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
 ?>
 
-<?php if ($card_type === 'browse') : ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class('post-card-alt'); ?>>
+<?php if ( 'browse' === $card_type ) : ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-card-alt' ); ?>>
     <a href="<?php the_permalink(); ?>">
         <div class="article-top">
-            <?php if (has_post_thumbnail()) : ?>
+            <?php if ( has_post_thumbnail() ) : ?>
                 <div class="img-container">
-                    <img class="post-thumb-img img-hover" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="391" height="220" alt="<?php echo the_title() ?>">
+                    <img
+                        class="post-thumb-img img-hover"
+                        src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'homepage-thumb' ) ); ?>"
+                        width="391"
+                        height="220"
+                        alt="<?php echo esc_attr( get_the_title() ); ?>"
+                    >
                 </div>
             <?php endif; ?>
 
@@ -23,11 +29,8 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
                 <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
                 <h5 class="balance">
                     <?php
-                    $thetitle = $post->post_title;
-                    $getlength = strlen($thetitle);
-                    $thelength = 55;
-                    echo substr($thetitle, 0, $thelength);
-                    if ($getlength > $thelength) echo "...";
+                    $title_excerpt = wp_html_excerpt( get_the_title(), 55, '…' );
+                    echo esc_html( $title_excerpt );
                     ?>
                 </h5>
             </header>
@@ -43,18 +46,21 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
     <a href="<?php the_permalink(); ?>">
         <?php if ( has_post_thumbnail() ) : ?>
             <div class="img-container">
-                <img class="post-thumb-img img-hover rounded-small" src="<?php echo the_post_thumbnail_url('homepage-thumb'); ?>" width="387" height="217" alt="<?php echo the_title() ?>">
+                <img
+                    class="post-thumb-img img-hover rounded-small"
+                    src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'homepage-thumb' ) ); ?>"
+                    width="387"
+                    height="217"
+                    alt="<?php echo esc_attr( get_the_title() ); ?>"
+                >
             </div>
         <?php endif; ?>
 
         <header class="entry-header">
             <h5 class="balance">
                 <?php
-                $thetitle = $post->post_title;
-                $getlength = strlen($thetitle);
-                $thelength = 80;
-                echo substr($thetitle, 0, $thelength);
-                if ($getlength > $thelength) echo "...";
+                $title_excerpt = wp_html_excerpt( get_the_title(), 80, '…' );
+                echo esc_html( $title_excerpt );
                 ?>
             </h5>
         </header>
@@ -62,7 +68,7 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
     <div class="post-card-content">
         <div class="entry-content">
             <p class="small">
-                <?php echo wp_trim_words( get_the_excerpt(), 15 ); ?>
+                <?php echo esc_html( wp_trim_words( get_the_excerpt(), 15 ) ); ?>
             </p>
         </div>
 

@@ -19,11 +19,15 @@ if ( ! $post ) {
 }
 
 $post_id = $post->ID;
-$title   = get_the_title( $post_id );
+$title   = wp_strip_all_tags( get_the_title( $post_id ) );
 $url     = get_permalink( $post_id );
 
 // Core share text (note the full stop already ends with punctuation).
-$share_text = $title . ' by The Big Blue Box Podcast.';
+$share_text = sprintf(
+    /* translators: %s: Post title */
+    __( '%s by The Big Blue Box Podcast.', 'bigbluebox' ),
+    $title
+);
 
 // Bluesky — ensure space + double newline + URL
 $bluesky_text = $share_text . " \n\n" . $url;
@@ -42,40 +46,40 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
 ?>
 
 <section class="social-channels flow">
-    <h5>Share</h5>
+    <h5><?php esc_html_e( 'Share', 'bigbluebox' ); ?></h5>
     <ul role="list">
         <li>
-            <a class="has-external-icon" href="<?php echo esc_url( $bluesky_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Share this post on Bluesky">
+            <a class="has-external-icon" href="<?php echo esc_url( $bluesky_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on Bluesky', 'bigbluebox' ); ?>">
                 <div class="social-channels__item">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="">
-                    <p class="small">Bluesky</p>
+                    <p class="small"><?php esc_html_e( 'Bluesky', 'bigbluebox' ); ?></p>
                 </div>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
             </a>
         </li>
         <li>
-            <a class="has-external-icon" href="<?php echo esc_url( $twitter_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Share this post on X (Twitter)">
+            <a class="has-external-icon" href="<?php echo esc_url( $twitter_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on X (Twitter)', 'bigbluebox' ); ?>">
                 <div class="social-channels__item">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="">
-                    <p class="small">X (Twitter)</p>
+                    <p class="small"><?php esc_html_e( 'X (Twitter)', 'bigbluebox' ); ?></p>
                 </div>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
             </a>
         </li>
         <li>
-            <a class="has-external-icon" href="<?php echo esc_url( $facebook_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Share this post on Facebook">
+            <a class="has-external-icon" href="<?php echo esc_url( $facebook_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on Facebook', 'bigbluebox' ); ?>">
                 <div class="social-channels__item">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="">
-                    <p class="small">Facebook</p>
+                    <p class="small"><?php esc_html_e( 'Facebook', 'bigbluebox' ); ?></p>
                 </div>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
             </a>
         </li>
         <li>
-            <a class="has-external-icon" href="<?php echo esc_url( $threads_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="Share this post on Threads">
+            <a class="has-external-icon" href="<?php echo esc_url( $threads_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on Threads', 'bigbluebox' ); ?>">
                 <div class="social-channels__item">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="">
-                    <p class="small">Threads</p>
+                    <p class="small"><?php esc_html_e( 'Threads', 'bigbluebox' ); ?></p>
                 </div>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
             </a>

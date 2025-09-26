@@ -282,59 +282,59 @@ add_filter('body_class', function($classes) {
  * AJAX handler for category-based post filtering
  */
 function filter_posts_by_category() {
-	$category = sanitize_text_field($_POST['category'] ?? '');
-	$search_term = sanitize_text_field($_POST['s'] ?? '');
-	$context = sanitize_text_field($_POST['context'] ?? '');
+	check_ajax_referer( 'bbb_filter_posts', 'nonce' );
 
-	$args = [
+	$category    = isset( $_POST['category'] ) ? sanitize_key( wp_unslash( $_POST['category'] ) ) : '';
+	$search_term = isset( $_POST['s'] ) ? sanitize_text_field( wp_unslash( $_POST['s'] ) ) : '';
+	$context     = isset( $_POST['context'] ) ? sanitize_key( wp_unslash( $_POST['context'] ) ) : '';
+	$paged       = isset( $_POST['paged'] ) ? max( 1, (int) $_POST['paged'] ) : 1;
+
+	$args = array(
 		'post_status'    => 'publish',
-		'posts_per_page' => get_option('posts_per_page'),
+		'posts_per_page' => get_option( 'posts_per_page' ),
 		'post_type'      => 'post',
-		'paged'          => isset($_POST['paged']) ? (int) $_POST['paged'] : 1,
-	];
+		'paged'          => $paged,
+	);
 
-	if ($context === 'search') {
-		if (!empty($search_term)) {
+	if ( 'search' === $context ) {
+		if ( $search_term ) {
 			$args['s'] = $search_term;
 		}
-		if ($category !== 'all') {
+		if ( $category && 'all' !== $category ) {
 			$args['category_name'] = $category;
 		}
 	} else {
-		if ($category !== 'all') {
+		if ( $category && 'all' !== $category ) {
 			$args['category_name'] = $category;
 		}
-		unset($args['s']); // ensure no accidental search
 	}
 
-	// Make category/search term available to pagination.php
-	if ($context === 'search') {
-		$_GET['category'] = $category;
-		$_GET['s'] = $search_term;
-	}
+	$query = new WP_Query( $args );
+	$html  = '';
 
-	$query = new WP_Query($args);
-
-	if ($query->have_posts()) {
+	if ( $query->have_posts() ) {
 		ob_start();
 
-		while ($query->have_posts()) {
+		while ( $query->have_posts() ) {
 			$query->the_post();
-			get_template_part('template-parts/content', 'post-cards', ['card_type' => 'browse']);
+			get_template_part( 'template-parts/content', 'post-cards', array( 'card_type' => 'browse' ) );
 		}
 
-		// Only show pagination if not on homepage (context !== 'home')
-		if ($context !== 'home') {
-			bbb_custom_pagination($query);
+		if ( 'home' !== $context ) {
+			bbb_custom_pagination( $query );
 		}
 
+		$html = ob_get_clean();
 		wp_reset_postdata();
-		echo ob_get_clean();
 	} else {
-		echo '<p>No posts found.</p>';
+		$html = '<p>' . esc_html__( 'No posts found.', 'bigbluebox' ) . '</p>';
 	}
 
-	wp_die();
+	wp_send_json_success(
+		array(
+			'content' => $html,
+		)
+	);
 }
 add_action('wp_ajax_filter_posts_by_category', 'filter_posts_by_category');
 add_action('wp_ajax_nopriv_filter_posts_by_category', 'filter_posts_by_category');

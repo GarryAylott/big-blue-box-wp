@@ -11,12 +11,12 @@
         <h4>
             <?php
             $header_type = isset($args['header_type']) ? $args['header_type'] : '';
-            if ($header_type === 'latest') {
-                echo 'Latest articles & podcast episodes';
-            } elseif (has_category('Podcasts', get_the_ID())) {
-                echo 'Continue listening';
+            if ( 'latest' === $header_type ) {
+                esc_html_e( 'Latest articles & podcast episodes', 'bigbluebox' );
+            } elseif ( has_category( 'podcasts', get_the_ID() ) ) {
+                esc_html_e( 'Continue listening', 'bigbluebox' );
             } else {
-                echo 'Continue reading';
+                esc_html_e( 'Continue reading', 'bigbluebox' );
             }
             ?>
         </h4>
@@ -42,7 +42,7 @@
                 $latest_args = array(
                     'post_type'           => 'post',
                     'posts_per_page'      => 10,
-                    'category_name'       => 'Podcasts,Articles',
+                    'category_name'       => 'podcasts,articles',
                     'orderby'             => 'date',
                     'order'               => 'DESC',
                     'ignore_sticky_posts' => 1,
@@ -57,7 +57,7 @@
             } else {
                 // 🔁 Reuse the single source of truth for related content
                 // Requires: inc/related-articles.php (bbb_get_related_articles)
-                $context = has_category( 'Podcasts', get_the_ID() ) ? 'podcasts' : 'articles';
+                $context = has_category( 'podcasts', get_the_ID() ) ? 'podcasts' : 'articles';
                 $related_posts = function_exists('bbb_get_related_articles') ? bbb_get_related_articles( 10, $context ) : array();
 
                 if ( ! empty( $related_posts ) ) :

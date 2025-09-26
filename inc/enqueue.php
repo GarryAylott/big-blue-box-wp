@@ -22,8 +22,9 @@ function bigbluebox_scripts() {
 	wp_script_add_data( 'bigbluebox-scripts', 'type', 'module' );
 
 	wp_localize_script('bigbluebox-scripts', 'themeSettings', array(
-		'themeUrl' => get_template_directory_uri(),
-		'ajaxUrl'  => admin_url('admin-ajax.php'),
+		'themeUrl'     => get_template_directory_uri(),
+		'ajaxUrl'      => admin_url('admin-ajax.php'),
+		'filterNonce'  => wp_create_nonce( 'bbb_filter_posts' ),
 	));
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {

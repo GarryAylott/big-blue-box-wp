@@ -13,15 +13,26 @@ if ( ! function_exists( 'bbb_get_captivate_audio_url' ) ) {
 
 		// ✅ Check if API is globally disabled via admin
 		if ( get_option( 'disable_captivate_api' ) ) {
-			error_log( '🛑 API disabled via admin setting.' );
-			error_log( '🔊 Using fallback audio URL for local dev.' );
-			return 'https://big-blue-box.local/wp-content/uploads/2025/07/BBB-Ep426.mp3';
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				error_log( '🛑 API disabled via admin setting.' );
+			}
+
+			if ( 'local' === wp_get_environment_type() ) {
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					error_log( '🔊 Using fallback audio URL for local dev.' );
+				}
+				return 'https://big-blue-box.local/wp-content/uploads/2025/07/BBB-Ep426.mp3';
+			}
+
+			return false;
 		}
 
 		$cache_key = 'captivate_audio_' . md5( $guid );
 		$cached = get_transient( $cache_key );
 		if ( $cached ) {
-			error_log( '✅ Returning cached audio URL.' );
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				error_log( '✅ Returning cached audio URL.' );
+			}
 			return $cached;
 		}
 
@@ -30,14 +41,18 @@ if ( ! function_exists( 'bbb_get_captivate_audio_url' ) ) {
 		$rate_limited = get_transient( $rate_limit_key );
 		if ( ! is_admin() && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && ! ( defined( 'REST_REQUEST' ) && REST_REQUEST ) ) {
 			if ( $rate_limited ) {
-				error_log( '⏳ Rate limit hit for front-end API fetch.' );
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					error_log( '⏳ Rate limit hit for front-end API fetch.' );
+				}
 				return false;
 			}
 			// Set rate limit for 5 minutes
 			set_transient( $rate_limit_key, 1, 5 * MINUTE_IN_SECONDS );
 		}
 
-		error_log( '🚀 Starting auth request...' );
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			error_log( '🚀 Starting auth request...' );
+		}
 
 		$auth_response = wp_remote_post( 'https://api.captivate.fm/authenticate/token', [
 			'body' => [
@@ -61,7 +76,9 @@ if ( ! function_exists( 'bbb_get_captivate_audio_url' ) ) {
 			return false;
 		}
 
-		error_log( '✅ Got bearer token.' );
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			error_log( '✅ Got bearer token.' );
+		}
 
 		// Fetch episode
 		$episode_response = wp_remote_get( "https://api.captivate.fm/episodes/$guid", [
@@ -83,7 +100,9 @@ if ( ! function_exists( 'bbb_get_captivate_audio_url' ) ) {
 			return false;
 		}
 
-		error_log( "✅ Got media_id: $media_id" );
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+			error_log( "✅ Got media_id: $media_id" );
+		}
 
 		$media_response = wp_remote_get( "https://api.captivate.fm/media/$media_id", [
 			'headers' => [ 'Authorization' => 'Bearer ' . $bearer_token ],
@@ -100,7 +119,9 @@ if ( ! function_exists( 'bbb_get_captivate_audio_url' ) ) {
 
 		if ( $audio_url ) {
 			set_transient( $cache_key, $audio_url, DAY_IN_SECONDS );
-			error_log( '✅ Audio URL found and cached.' );
+			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+				error_log( '✅ Audio URL found and cached.' );
+			}
 			return $audio_url;
 		}
 

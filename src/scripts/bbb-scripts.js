@@ -1,6 +1,6 @@
 import Vlitejs from "vlitejs";
+import { createIcons } from "lucide";
 import {
-    createIcons,
     Mic,
     Headphones,
     ArrowUp,
@@ -16,36 +16,24 @@ import {
     Tag,
 } from "lucide";
 
-// Lucide setup
-let icons = {};
+// Only register icons we use so the bundle stays lean.
+const icons = {
+    Mic,
+    Headphones,
+    ArrowUp,
+    ArrowDown,
+    ArrowRight,
+    ChevronDown,
+    Newspaper,
+    Rss,
+    ListTree,
+    Clock,
+    Search,
+    X,
+    Tag,
+};
 
-if (process.env.NODE_ENV === "production") {
-    icons = {
-        Mic,
-        Headphones,
-        ArrowUp,
-        ArrowDown,
-        ArrowRight,
-        ChevronDown,
-        Newspaper,
-        Rss,
-        ListTree,
-        Clock,
-        Search,
-        X,
-        Tag,
-    };
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    if (Object.keys(icons).length > 0) {
-        // Production: only registered icons
-        createIcons({ icons });
-    } else {
-        // Development: load all icons
-        createIcons();
-    }
-});
+createIcons({ icons });
 
 // Configuration object
 const CONFIG = {
@@ -119,8 +107,11 @@ const initSearch = () => {
     );
     if (!searchIcon || !searchOverlay) return;
 
+    const getOverlaySearchField = () =>
+        searchOverlay.querySelector(".search-field");
+
     const closeOverlay = () => {
-        const searchField = document.querySelector("#search-field");
+        const searchField = getOverlaySearchField();
         if (searchField && document.activeElement === searchField) {
             searchField.blur(); // ✅ Blur before hiding to prevent aria-hidden focus warning
         }
@@ -133,7 +124,7 @@ const initSearch = () => {
         e.preventDefault();
         searchOverlay.setAttribute("aria-hidden", "false");
         document.body.classList.add("overlay-active");
-        const searchField = document.querySelector("#search-field");
+        const searchField = getOverlaySearchField();
         if (searchField) searchField.focus(); // ✅ Only after aria-hidden is false
     });
 
@@ -347,21 +338,28 @@ const initCategorySwitcher = () => {
         beginLoading();
 
         // Only for homepage/archive, so no search stuff
-        const params = {
+        const params = new URLSearchParams({
             action: "filter_posts_by_category",
-            category: category,
+            category,
             context: "home",
-        };
+            nonce: themeSettings.filterNonce ?? "",
+        });
 
         fetch(themeSettings.ajaxUrl, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(params),
+            body: params,
         })
-            .then((res) => res.text())
-            .then((html) => {
+            .then((res) => res.json())
+            .then((payload) => {
                 // Ignore stale responses from earlier clicks
                 if (reqId !== requestCounter) return;
+
+                if (!payload?.success) {
+                    throw new Error(payload?.data || "Request failed");
+                }
+
+                const html = payload.data?.content ?? "";
 
                 // Swap content, then run entry-only animation
                 postContainer.innerHTML = html;
@@ -383,6 +381,10 @@ const initCategorySwitcher = () => {
             })
             .catch((err) => {
                 console.error("Category switch AJAX error:", err);
+                postContainer.innerHTML =
+                    '<p class="ajax-error">' +
+                    (err?.message || "Unable to load posts.") +
+                    "</p>";
                 endLoading();
                 setButtonsDisabled(false);
             });
@@ -450,8 +452,6 @@ const initAudioPlayer = () => {
         const audioPlayer = document.querySelector("#player");
 
         if (audioPlayer && typeof Vlitejs !== "undefined") {
-            console.log("🎧 Initializing vLite…");
-
             new Vlitejs("#player", {
                 controls: [
                     "play",

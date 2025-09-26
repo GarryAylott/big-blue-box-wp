@@ -54,7 +54,7 @@ if ( ! function_exists( 'bbb_sync_can_use_api' ) ) {
  */
 if ( ! function_exists( 'bbb_captivate_fetch_all_episodes' ) ) {
 	function bbb_captivate_fetch_all_episodes( $force_refresh = false ) {
-		$cache_key = 'captivate_episodes_cache_full';
+		$cache_key = 'captivate_episodes_cache';
 		if ( ! $force_refresh ) {
 			$cached = get_transient( $cache_key );
 			if ( is_array( $cached ) && $cached ) {

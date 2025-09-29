@@ -5,68 +5,90 @@ SINGLE POST STYLES
 Layout and styling for single post pages.
 */
 
-.post-article {
+.post-content {
     padding: 0 0 var(--space-xl) 0;
 
     .post-hero {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
-        gap: var(--space-l);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-s);
 
         @media (max-width: 50rem) {
             gap: var(--space-m);
         }
 
         img {
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 16 / 11;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: var(--radius-small);
+
+            @media (min-width: 37.5rem) {
+                aspect-ratio: 16 / 7;
+                border-radius: var(--radius-normal);
+            }
         }
 
         &__details {
             display: flex;
             flex-direction: column;
-            gap: var(--space-s);
+            gap: var(--space-m);
 
-            .post-article-title {
+            .post-content-title {
                 display: flex;
                 flex-direction: column;
                 gap: var(--space-2xs);
 
                 h1 {
-                    max-width: 28ch;
                     font-size: var(--step-5);
                     color: var(--clr-text-100);
                 }
             }
 
-            .post-article-meta {
+            .post-meta {
                 display: flex;
-                gap: var(--space-xs);
+                gap: var(--space-xl);
 
-                @media (max-width: 31.25rem) {
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: var(--space-2xs);
-
-                    .separator {
-                        border: 0;
-                        clip: rect(0 0 0 0);
-                        height: 0;
-                        margin: 0;
-                        overflow: hidden;
-                        padding: 0;
-                        position: absolute;
-                        width: 1px;
-                        white-space: nowrap;
-                    }
+                p.post-meta-title {
+                    font-size: var(--step--2);
+                    font-weight: var(--fw-semibold);
                 }
 
-                .reading-time {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: var(--space-2xs);
+                .post-content-meta {
+                    display: flex;
+                    flex-direction: column;
+                    gap: var(--space-3xs);
+
+                    .post-meta-content {
+                        display: flex;
+                        align-items: center;
+                        gap: 3px;
+
+                        @media (max-width: 31.25rem) {
+                            flex-direction: column;
+                            align-items: flex-start;
+                            gap: var(--space-2xs);
+
+                            .separator {
+                                border: 0;
+                                clip: rect(0 0 0 0);
+                                height: 0;
+                                margin: 0;
+                                overflow: hidden;
+                                padding: 0;
+                                position: absolute;
+                                width: 1px;
+                                white-space: nowrap;
+                            }
+                        }
+
+                        .reading-time {
+                            display: inline-flex;
+                            align-items: center;
+                            gap: var(--space-2xs);
+                        }
+                    }
                 }
             }
         }
@@ -76,11 +98,7 @@ Layout and styling for single post pages.
         display: flex;
         flex-wrap: wrap;
         gap: var(--space-2xl);
-        margin-block-start: var(--space-2xl);
-
-        @media (max-width: 50rem) {
-            margin-block-start: var(--space-xl);
-        }
+        margin-block-start: var(--space-l);
 
         .article-body {
             flex-basis: 0;

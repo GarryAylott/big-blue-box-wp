@@ -26,7 +26,6 @@ REVIEW COMPENDIUM TABLES
 
     .reviews-era {
         position: relative;
-        scroll-margin-top: 7rem;
 
         // Add more vertical spacing between eras on mobile
         @media (max-width: 768px) {
@@ -71,25 +70,6 @@ REVIEW COMPENDIUM TABLES
                             @include visually-hidden;
                         }
                     }
-                }
-            }
-
-            .back-to-top {
-                margin-block-end: var(--space-xs);
-                padding: 0.6rem 1.2rem;
-                font-size: var(--step--2);
-                text-wrap: nowrap;
-                text-decoration: none;
-                border-radius: var(--radius-small);
-                transition: all 0.2s ease-out;
-
-                &:hover,
-                &:focus {
-                    background: var(--clr-surface-400);
-                }
-
-                @media (max-width: 46rem) {
-                    @include visually-hidden;
                 }
             }
         }

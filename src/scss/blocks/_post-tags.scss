@@ -4,38 +4,35 @@ Layout and styling for single post page and search results tags.
 */
 
 .post-tags {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2xs);
-
-  @media (max-width: 50rem) {
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: flex-start;
-  }
-
-  ul {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2xs);
-    list-style: none;
+    flex-direction: column;
 
-    li a {
-      display: inline-block;
-      width: max-content;
-      font-size: calc(var(--step--1) - 0.2em);
-      font-weight: var(--fw-semibold);
-      text-transform: uppercase;
-      color: var(--clr-brand-secondary);
-      padding: 0.25rem 0.75rem 0.25rem;
-      border: 1px solid var(--clr-brand-secondary);
-      border-radius: var(--radius-circle);
-
-      &:hover {
-        text-decoration: none;
-        background-color: var(--clr-brand-secondary);
-        color: var(--clr-surface-700);
-      }
+    p {
+        font-size: var(--step--2);
     }
-  }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2xs);
+        list-style: none;
+
+        li a {
+            display: inline-block;
+            width: max-content;
+            font-size: calc(var(--step--1) - 0.2em);
+            font-weight: var(--fw-semibold);
+            text-transform: uppercase;
+            color: var(--clr-brand-secondary);
+            padding: 1px 5px;
+            border: 1px solid var(--clr-brand-secondary);
+            border-radius: var(--radius-xs);
+
+            &:hover {
+                text-decoration: none;
+                background-color: var(--clr-brand-secondary);
+                color: var(--clr-surface-700);
+            }
+        }
+    }
 }

@@ -1,9 +1,6 @@
 {
     // Variable location for CSS Var Complete extension.
-    "cssvar.files": [
-        "src/scss/global/_custom-props.scss",
-        "src/scss/global/_colour-tokens.scss"
-    ],
+    "cssvar.files": ["src/scss/global/*.scss", "src/scss/utilities/*.scss"],
 
     // Github commit and branch management settings.
     "github.copilot.chat.commitMessageGeneration.instructions": [

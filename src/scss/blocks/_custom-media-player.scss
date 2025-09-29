@@ -136,15 +136,3 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
         }
     }
 }
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-    .podcast-player .v-controlBar {
-        height: 40px;
-        padding: 0 8px;
-    }
-    .podcast-player .v-playPauseButton {
-        width: 28px;
-        height: 28px;
-    }
-}

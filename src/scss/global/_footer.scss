@@ -57,7 +57,7 @@ Layout and styling for the site footer
         position: relative;
         display: grid;
         grid-template-columns: 1fr max-content max-content;
-        gap: var(--space-xl);
+        gap: var(--space-2xl);
         padding-block-end: var(--space-l);
         background: linear-gradient(
             to right,
@@ -104,26 +104,6 @@ Layout and styling for the site footer
                     }
                 }
             }
-
-            // ul {
-            //     display: flex;
-            //     flex-wrap: wrap;
-            //     align-items: center;
-            //     gap: var(--space-s);
-
-            //     li a {
-            //         width: 45px;
-            //         height: 45px;
-            //         display: grid;
-            //         place-items: center;
-            //         border-radius: var(--radius-small);
-            //         transition: all 0.2s ease-out;
-
-            //         &:hover {
-            //             background: var(--clr-surface-400);
-            //         }
-            //     }
-            // }
         }
 
         ul.footer-list li {
@@ -151,7 +131,7 @@ Layout and styling for the site footer
         z-index: 3;
 
         p {
-            max-width: 75ch;
+            max-width: var(--measure-m);
         }
     }
 }

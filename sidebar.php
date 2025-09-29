@@ -18,7 +18,7 @@
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="X Bluesky link">
 						<p class="small">Bluesky</p>
 					</div>
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 			<li>
@@ -27,7 +27,7 @@
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
 						<p class="small">X (Twitter)</p>
 					</div>
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 			<li>
@@ -36,7 +36,7 @@
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
 						<p class="small">Instagram</p>
 					</div>
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 			<li>
@@ -45,7 +45,7 @@
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
 						<p class="small">Facebook</p>
 					</div>
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 			<li>
@@ -54,7 +54,7 @@
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
 						<p class="small">Threads</p>
 					</div>
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 			<li>
@@ -63,7 +63,7 @@
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
 						<p class="small">RSS: Podcasts</p>
 					</div>
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 			<li>
@@ -72,7 +72,7 @@
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
 						<p class="small">RSS: Articles</p>
 					</div>
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 			<li>
@@ -81,7 +81,7 @@
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
 						<p class="small">RSS: Everything</p>
 					</div>
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 		</ul>

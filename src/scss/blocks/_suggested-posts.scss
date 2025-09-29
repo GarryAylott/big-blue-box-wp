@@ -36,10 +36,6 @@ Layout and styling for the 'Continue reading/listening' section.
         transition: all 0.2s ease;
         cursor: pointer;
         z-index: 2;
-
-        svg {
-            fill: var(--clr-text-link);
-        }
     }
 
     .scroll-nav-btn:hover {

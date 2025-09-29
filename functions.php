@@ -100,9 +100,7 @@ function add_search_icon_to_menu($items, $args) {
 	if ($args->theme_location === 'main-nav') {
 		$search_icon = '<li class="menu-item search-menu-item">
 			<a href="#" class="nav-search-icon">
-				<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
-					<path d="M13 6.5a6.499 6.499 0 0 1-1.25 3.844l3.938 3.969a.964.964 0 0 1 0 1.406.964.964 0 0 1-1.407 0l-3.969-3.969C9.25 12.563 7.906 13 6.5 13A6.495 6.495 0 0 1 0 6.5C0 2.937 2.906 0 6.5 0 10.063 0 13 2.938 13 6.5ZM6.5 11a4.463 4.463 0 0 0 3.875-2.25 4.458 4.458 0 0 0 0-4.5C9.562 2.875 8.094 2 6.5 2a4.54 4.54 0 0 0-3.906 2.25 4.458 4.458 0 0 0 0 4.5A4.475 4.475 0 0 0 6.5 11Z"/>
-				</svg>
+				<i data-lucide="search" class="icon-bold"></i>
 			</a>
 		</li>';
 		$items .= $search_icon;
@@ -235,7 +233,7 @@ function bbb_estimated_reading_time( $post_id = null ) {
 	$reading_time = max( 1, ceil( $word_count / 200 ) );
 
 	$reading_time_text = sprintf(
-		_n( '%d min to read', '%d mins to read', $reading_time, 'bigbluebox' ),
+		_n( '%d min', '%d mins', $reading_time, 'bigbluebox' ),
 		$reading_time
 	);
 
@@ -243,8 +241,22 @@ function bbb_estimated_reading_time( $post_id = null ) {
 }
 
 function bbb_get_icon( $name ) {
-	$path = get_template_directory() . '/images/icons/' . sanitize_file_name( $name ) . '.svg';
+	if ( ! is_string( $name ) ) {
+		return '';
+	}
 
+	if ( str_contains( $name, '<' ) ) {
+		$allowed_tags = array(
+			'i' => array(
+				'aria-hidden' => true,
+				'class' => true,
+				'data-lucide' => true,
+			),
+		);
+		return wp_kses( $name, $allowed_tags );
+	}
+
+	$path = get_template_directory() . '/images/icons/' . sanitize_file_name( $name ) . '.svg';
 	if ( file_exists( $path ) ) {
 		return file_get_contents( $path );
 	}

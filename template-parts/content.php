@@ -4,7 +4,7 @@
  */
 
 ?>
-<article class="post-article region-small flow" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article class="post-content region-small flow" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="post-hero entry-header">
 		<?php
 		if ( has_post_thumbnail() ) :
@@ -20,57 +20,67 @@
 		endif;
 		?>
 		<div class="post-hero__details">
-			<div class="post-article-title">
-				<?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
+			<div class="post-content-title">
 				<?php the_title( '<h1 class="entry-title">', '</h1>' );?>
 			</div>
 
-			<div class="post-article-meta flex">
-				<?php if ( has_category( 'podcasts' ) ) : ?>
-					<?php
-					$ep_label     = get_field( 'podcast_episode_number' );
-					$episode_type = get_field( 'podcast_episode_type' );
+			<div class="post-meta">
+				<div class="post-content-meta">
+					<p class="post-meta-title">Publish Info</p>
+					<div class="post-meta-content">
+						<?php if ( has_category( 'podcasts' ) ) : ?>
+							<?php
+							$ep_label     = get_field( 'podcast_episode_number' );
+							$episode_type = get_field( 'podcast_episode_type' );
 
-					// Build the label with fallback
-					if ( is_numeric( $ep_label ) ) {
-						$episode_text = sprintf( esc_html__( 'Episode %s', 'bigbluebox' ), esc_html( $ep_label ) );
-					} elseif ( $ep_label === 'N/A' && ! empty( $episode_type ) ) {
-						$episode_text = esc_html( $episode_type );
-					} elseif ( ! empty( $ep_label ) ) {
-						$episode_text = esc_html( $ep_label );
-					} else {
-						$episode_text = null;
-					}
+							// Build the label with fallback
+							if ( is_numeric( $ep_label ) ) {
+								$episode_text = sprintf( esc_html__( 'Episode %s', 'bigbluebox' ), esc_html( $ep_label ) );
+							} elseif ( $ep_label === 'N/A' && ! empty( $episode_type ) ) {
+								$episode_text = esc_html( $episode_type );
+							} elseif ( ! empty( $ep_label ) ) {
+								$episode_text = esc_html( $ep_label );
+							} else {
+								$episode_text = null;
+							}
 
-					if ( $episode_text ) :
-						?>
-						<p class="small"><?php echo esc_html( $episode_text ); ?></p>
-						<span class="separator">|</span>
+							if ( $episode_text ) :
+								?>
+								<p class="small"><?php echo esc_html( $episode_text ); ?>,</p>
+							<?php endif; ?>
+
+							<p class="small"><?php echo esc_html( get_the_date() ); ?></p>
+
+					<?php else : ?>
+						<p class="small">By <?php echo esc_html( get_the_author() ); ?> on</p>
+						<p class="small"><?php echo esc_html( get_the_date() ); ?></p>
 					<?php endif; ?>
+					</div>
+				</div>
 
-					<p class="small"><?php echo esc_html( get_the_date() ); ?></p>
+				<?php if ( ! has_category( 'podcasts' ) ) : ?>
+					<section class="post-content-meta">
+						<p class="post-meta-title"><?php esc_html_e( 'Reading Time', 'bigbluebox' ); ?></p>
+						<div class="post-meta-content">
+							<p class="reading-time small">
+								<?php echo bbb_get_icon( '<i data-lucide="clock"></i>' ); ?>
+								<?php echo esc_html( bbb_estimated_reading_time() ); ?>
+							</p>
+						</div>
+					</section>
+				<?php endif; ?>
 
-				<?php else : ?>
-					<p class="small">By <?php echo esc_html( get_the_author() ); ?></p>
-					<span class="separator">|</span>
-					<p class="small"><?php echo esc_html( get_the_date() ); ?></p>
-					<span class="separator">|</span>
-					<p class="reading-time small">
-						<?php echo bbb_get_icon( 'icon-clock' ); ?>
-						<?php echo esc_html( bbb_estimated_reading_time() ); ?>
-					</p>
+				<?php if ( has_tag() ) : ?>
+					<div class="post-tags">
+						<p class="post-meta-title">Tags</p>
+						<?php the_tags( '<ul role="list"><li>', '</li><li>', '</li></ul>' ); ?>
+					</div>
 				<?php endif; ?>
 			</div>
-
-			<?php if ( has_tag() ) : ?>
-				<div class="post-tags">
-					<?php the_tags( '<ul role="list"><li>', '</li><li>', '</li></ul>' ); ?>
-				</div>
-			<?php endif; ?>
 		</div>
 	</div>
 
-	<div class="post-article__container">
+	<div class="post-content__container">
 		<?php if ( is_single() && in_category( 'articles' ) ) : ?>
 			<?php get_template_part('template-parts/content', 'read-progress'); ?>
 		<?php endif; ?>

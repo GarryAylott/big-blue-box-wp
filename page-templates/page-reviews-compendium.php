@@ -150,7 +150,7 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                                 </div>
                             </div>
                             <?php if ($era_index > 0) : ?>
-                                <a href="#primary" class="has-external-icon back-to-top" aria-label="<?php esc_attr_e('Back to the top of the page', 'bbb'); ?>">
+                                <a href="#primary" class="link-action" aria-label="<?php esc_attr_e('Back to the top of the page', 'bbb'); ?>">
                                     <?php esc_html_e('Back to top', 'bbb'); ?>
                                 </a>
                             <?php endif; ?>

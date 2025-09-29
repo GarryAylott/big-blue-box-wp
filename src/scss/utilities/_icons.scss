@@ -1,4 +1,4 @@
-@use "../tokens" as *;
+@use "../global/variables" as variables;
 
 /* 
 ICONS
@@ -67,7 +67,7 @@ Styling for Lucide Icons
 }
 
 // Import colours from colour map in _variables.scss
-@each $name, $col in $colors {
+@each $name, $col in variables.$colors {
     .icon-#{$name} {
         color: var(--clr-#{$name});
     }

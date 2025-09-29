@@ -5,11 +5,14 @@ import {
     Headphones,
     ArrowUp,
     ArrowDown,
+    ArrowLeft,
     ArrowRight,
+    ArrowUpRight,
     ChevronDown,
     Newspaper,
     Rss,
-    ListTree,
+    LayoutList,
+    Reply,
     Clock,
     Search,
     X,
@@ -22,11 +25,14 @@ const icons = {
     Headphones,
     ArrowUp,
     ArrowDown,
+    ArrowLeft,
     ArrowRight,
+    ArrowUpRight,
     ChevronDown,
     Newspaper,
     Rss,
-    ListTree,
+    LayoutList,
+    Reply,
     Clock,
     Search,
     X,
@@ -158,7 +164,7 @@ const initPodcastMenu = () => {
     document.addEventListener("click", closeHandler, { passive: true });
 };
 
-// Scroll containers
+// TARDIS progress image on scroll
 const initScrollContainers = () => {
     const scrollContainers = document.querySelectorAll(
         CONFIG.SELECTORS.scrollContainer
@@ -224,21 +230,36 @@ const initScrollContainers = () => {
 
 // Add external link icons
 const initExternalLinkIcons = () => {
-    const links = document.querySelectorAll(
-        'a[target="_blank"]:not(.has-external-icon)'
-    );
+    if (!document.body.classList.contains("single-post")) {
+        return;
+    }
+
+    const contentAreas = document.querySelectorAll(".post-content");
+    if (!contentAreas.length) {
+        return;
+    }
+
     const themeUrl = themeSettings.themeUrl || "";
 
-    links.forEach((link) => {
-        // Create <span> element for the icon
-        const icon = document.createElement("span");
-        icon.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" class="external-link-icon">
-            <path d="M13 3L3 13M13 3H4M13 3V12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`;
+    contentAreas.forEach((contentArea) => {
+        const links = contentArea.querySelectorAll(
+            'a[target="_blank"]:not(.has-external-icon)'
+        );
 
-        // Append icon and mark as processed
-        link.appendChild(icon);
-        link.classList.add("has-external-icon");
+        links.forEach((link) => {
+            if (themeUrl && link.href.startsWith(themeUrl)) {
+                return;
+            }
+
+            // Create <span> element for the icon
+            const icon = document.createElement("span");
+            icon.innerHTML = `<i data-lucide="arrow-up-right" class="icon-step-1"></i>`;
+
+            // Append icon, render it via Lucide, and mark as processed
+            link.appendChild(icon);
+            createIcons({ icons, root: icon });
+            link.classList.add("has-external-icon");
+        });
     });
 };
 
@@ -248,7 +269,7 @@ const initTardisScrollProgress = () => {
     const fillRect = document.getElementById("tardis-fill");
     const statusText = document.getElementById("tardisProgressStatus");
     const featuredImage = document.querySelector(".post-featured-image");
-    const article = document.querySelector(".post-article");
+    const article = document.querySelector(".post-content");
     const comments = document.querySelector("#comments");
 
     if (!container || !fillRect || !statusText || !article) {

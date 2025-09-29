@@ -61,9 +61,74 @@ add_filter('get_avatar_url', function($url, $id_or_email, $args) {
     return $url;
 }, 20, 3);
 
-/**
- * Comments custom callback
- */
+// Add custom class to comment reply link
+add_filter(
+    'comment_reply_link',
+    function ($link, $args) {
+        if (empty($args['class_reply'])) {
+            return $link;
+        }
+
+        $classes = array_filter(array_map('trim', explode(' ', (string) $args['class_reply'])));
+
+        if (empty($classes) || false === strpos($link, 'comment-reply-link')) {
+            return $link;
+        }
+
+        $classes = array_map('sanitize_html_class', $classes);
+        $extra_class = implode(' ', $classes);
+
+        return str_replace(
+            'class="comment-reply-link"',
+            'class="comment-reply-link ' . $extra_class . '"',
+            $link
+        );
+    },
+    10,
+    2
+);
+
+// Add custom class to cancel reply link
+add_filter(
+    'cancel_comment_reply_link',
+    function ($link_html) {
+        if (!is_string($link_html) || '' === $link_html) {
+            return $link_html;
+        }
+
+        $cancel_link_class = sanitize_html_class('link-action');
+
+        if (str_contains($link_html, $cancel_link_class)) {
+            return $link_html;
+        }
+
+        if (str_contains($link_html, 'class=')) {
+            return preg_replace_callback(
+                "/class=(['\"])([^'\"]*)\\1/",
+                function ($matches) use ($cancel_link_class) {
+                    $existing_classes = preg_split('/\s+/', trim($matches[2]));
+                    if (!is_array($existing_classes)) {
+                        $existing_classes = [];
+                    }
+
+                    if (!in_array($cancel_link_class, $existing_classes, true)) {
+                        $existing_classes[] = $cancel_link_class;
+                    }
+
+                    $class_value = trim(implode(' ', array_filter($existing_classes)));
+
+                    return sprintf('class=%1$s%2$s%1$s', $matches[1], $class_value);
+                },
+                $link_html,
+                1
+            );
+        }
+
+        return str_replace('<a ', sprintf('<a class="%s" ', $cancel_link_class), $link_html);
+    }
+);
+
+// Custom comments callback
 function custom_comments_callback($comment, $args, $depth) {
     $tag = ($args['style'] === 'div') ? 'div' : 'li';
     $comment_id = get_comment_ID();
@@ -118,7 +183,7 @@ function custom_comments_callback($comment, $args, $depth) {
                             <?php if ($is_post_author) : ?>
                                 <span class="team-badge">AUTHOR</span>
                             <?php elseif ($is_team_member) : ?>
-                                <span class="team-badge">TEAM MEMBER</span>
+                                <span class="team-badge">BIG BLUE BOX TEAM</span>
                             <?php endif; ?>
                         </div>
                         <div class="comment-date"><?php echo esc_html($date); ?></div>
@@ -131,9 +196,8 @@ function custom_comments_callback($comment, $args, $depth) {
                                 'respond_id'  => 'respond',
                                 'depth'       => $depth,
                                 'max_depth'   => $args['max_depth'],
-                                'reply_text'  => __('Reply') . ' <span class="reply-icon">↩</span>',
-                                'class_reply' => 'comment-reply-link',
-                                'before'      => '',
+                                'reply_text'  => __('Reply') . ' <span class="reply-icon"><i data-lucide="reply" class="icon-step-0"></i></span>',
+                                'class_reply'     => 'link-action',
                                 'after'       => '',
                             ],
                             $comment,

@@ -66,20 +66,17 @@ Header styling for logo, nav etc.
             }
 
             .nav-search-icon {
-                display: block;
-                padding: 0.45rem;
+                display: grid;
+                place-items: center;
+                width: 2rem;
+                height: 2rem;
+                margin-inline-start: -0.5rem;
                 background: transparent;
                 border-radius: var(--radius-circle);
                 transform: translateY(1px);
 
                 &:hover {
                     background: var(--clr-border-link);
-                }
-
-                svg {
-                    width: 18px;
-                    height: 18px;
-                    fill: var(--clr-text-100);
                 }
             }
 

@@ -46,7 +46,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
 ?>
 
 <section class="social-channels flow">
-    <h5><?php esc_html_e( 'Share', 'bigbluebox' ); ?></h5>
+    <h5><?php esc_html_e( 'Share post', 'bigbluebox' ); ?></h5>
     <ul role="list">
         <li>
             <a class="has-external-icon" href="<?php echo esc_url( $bluesky_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on Bluesky', 'bigbluebox' ); ?>">
@@ -54,7 +54,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="">
                     <p class="small"><?php esc_html_e( 'Bluesky', 'bigbluebox' ); ?></p>
                 </div>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+                <i data-lucide="arrow-up-right"></i>
             </a>
         </li>
         <li>
@@ -63,7 +63,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="">
                     <p class="small"><?php esc_html_e( 'X (Twitter)', 'bigbluebox' ); ?></p>
                 </div>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+                <i data-lucide="arrow-up-right"></i>
             </a>
         </li>
         <li>
@@ -72,7 +72,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="">
                     <p class="small"><?php esc_html_e( 'Facebook', 'bigbluebox' ); ?></p>
                 </div>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+                <i data-lucide="arrow-up-right"></i>
             </a>
         </li>
         <li>
@@ -81,7 +81,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="">
                     <p class="small"><?php esc_html_e( 'Threads', 'bigbluebox' ); ?></p>
                 </div>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/icons/icon-arrow-up-right.svg" width="16" height="16" alt="">
+                <i data-lucide="arrow-up-right"></i>
             </a>
         </li>
     </ul>

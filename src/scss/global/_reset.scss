@@ -6,7 +6,7 @@
         box-sizing: border-box;
     }
 
-    /* Remove default margin */
+    /* Remove default spacing */
     * {
         margin: 0;
         padding: 0;
@@ -118,6 +118,16 @@
 
     /* Anything that has been anchored to should have extra scroll margin */
     :target {
-        scroll-margin-block: 5ex;
+        scroll-margin: 6rlh;
+    }
+
+    /* Nicer looking HRs */
+    hr {
+        border-style: solid;
+        border-width: 1px 0 0;
+        color: inherit;
+        height: 0;
+        overflow: visible;
+        margin-block: 2.5rem;
     }
 }

@@ -33,7 +33,7 @@ get_header();
 
             <div class="about-page-hosts__hosts">
                 <div class="host-card">
-                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/garry-host-img.webp' ) ); ?>"
+                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-garry.webp' ) ); ?>"
                         alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
                     <h3>Garry Aylott</h3>
                     <p>Creator, Producer and Co-Host</p>
@@ -56,11 +56,16 @@ get_header();
                     </ul>
                 </div>
                 <div class="host-card">
-                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/garry-host-img.webp' ) ); ?>"
+                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-adam.webp' ) ); ?>"
                         alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
                     <h3>Adam Charlton</h3>
                     <p>Co-Host</p>
                     <ul class="social-icons" role="list">
+                        <li>
+                            <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                                <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-yt.svg' ) ); ?>" alt="YouTube" width="29" height="28">
+                            </a>
+                        </li>
                         <li>
                             <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
                                 <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="X (Twitter)" width="24" height="24">

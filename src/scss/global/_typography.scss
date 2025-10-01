@@ -13,7 +13,7 @@ Font styling for headings, paragraphs etc.
     --fw-reg: 400;
     --fw-semibold: 600;
     --fw-bold: 700;
-    --measure-m: 65ch;
+    --measure-m: 56ch;
     --measure-s: 34ch;
 }
 
@@ -26,7 +26,6 @@ h5,
 h6 {
     font-family: var(--font-family-headings);
     font-weight: var(--fw-bold);
-    max-width: var(--measure-s);
     text-wrap: balance;
 }
 

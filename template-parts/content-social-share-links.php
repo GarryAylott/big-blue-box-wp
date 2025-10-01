@@ -46,7 +46,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
 ?>
 
 <section class="social-channels flow">
-    <h5><?php esc_html_e( 'Share post', 'bigbluebox' ); ?></h5>
+    <h5><?php esc_html_e( 'Share', 'bigbluebox' ); ?></h5>
     <ul role="list">
         <li>
             <a class="has-external-icon" href="<?php echo esc_url( $bluesky_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on Bluesky', 'bigbluebox' ); ?>">

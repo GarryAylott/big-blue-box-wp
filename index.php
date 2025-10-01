@@ -146,9 +146,16 @@ get_header();
             <h3 class="section-title-heading">Explore more articles</h3>
             <div class="more-articles">
                 <?php
-                $tags = ['big-finish', 'events', 'reading'];
+                $tags         = array( 'big-finish', 'events', 'reading' );
+                $skipped_tags = array();
 
-                foreach ($tags as $tag) {
+                foreach ( $tags as $tag ) {
+                    $term = get_term_by( 'slug', $tag, 'post_tag' );
+
+                    if ( ! $term ) {
+                        $skipped_tags[] = $tag;
+                        continue;
+                    }
                     $args = array(
                         'tag' => $tag,
                         'posts_per_page' => 3,
@@ -160,7 +167,7 @@ get_header();
                         <div class="more-articles__column">
                             <div class="more-articles__header">
                                 <h4><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h4>
-                                <a class="button-ghost" href="<?php echo get_tag_link(get_term_by('slug', $tag, 'post_tag')->term_id); ?>" class="tag-archive-link">View all <?php echo ucwords(str_replace('-', ' ', $tag)); ?></a>
+                                <a class="button-ghost" href="<?php echo get_tag_link($term->term_id); ?>" class="tag-archive-link">View all <?php echo ucwords(str_replace('-', ' ', $tag)); ?></a>
                             </div>
                             <ul role="list">
                             <?php while ($query->have_posts()) : $query->the_post(); ?>
@@ -171,6 +178,10 @@ get_header();
                     <?php endif;
                     // Reset Post Data
                     wp_reset_postdata();
+                }
+
+                if ( ! empty( $skipped_tags ) ) {
+                    error_log( 'Missing post_tag terms for slugs: ' . implode( ', ', $skipped_tags ) );
                 }
                 ?>
             </div>

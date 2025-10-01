@@ -25,12 +25,12 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <div {...useBlockProps()}>
             <InspectorControls>
-                <PanelBody title={__("Team Post Additions Settings", "bbb")}>
+                <PanelBody title={__("Team Post Additions Settings", "bigbluebox")}>
                     <SelectControl
-                        label={__("Contributor", "bbb")}
+                        label={__("Contributor", "bigbluebox")}
                         value={userId}
                         options={[
-                            { label: __("Select a user", "bbb"), value: 0 },
+                            { label: __("Select a user", "bigbluebox"), value: 0 },
                             ...options,
                         ]}
                         onChange={(val) =>
@@ -41,10 +41,10 @@ export default function Edit({ attributes, setAttributes }) {
             </InspectorControls>
 
             <TextareaControl
-                label={__("Contribution", "bbb")}
+                label={__("Contribution", "bigbluebox")}
                 value={content}
                 onChange={(val) => setAttributes({ content: val })}
-                placeholder={__("Add your thoughts here…", "bbb")}
+                placeholder={__("Add your thoughts here…", "bigbluebox")}
             />
         </div>
     );

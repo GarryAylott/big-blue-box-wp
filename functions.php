@@ -114,7 +114,7 @@ add_filter('wp_nav_menu_items', 'add_search_icon_to_menu', 10, 2);
  * Custom admin footer
  */
 function modify_footer() {
-	echo 'Created by Garry Aylott for The Big Blue Box Podcast. ';
+        echo esc_html__( 'Created by Garry Aylott for The Big Blue Box Podcast.', 'bigbluebox' ) . ' ';
 }
 add_filter( 'admin_footer_text', 'modify_footer' );
 
@@ -137,13 +137,13 @@ function first_paragraph( $content ) {
 add_filter( 'the_content', 'first_paragraph' );
 
 function register_my_menus() {
-	register_nav_menus(
-		array(
-			'main-nav' => __( 'Main Nav' ),
-			'footer-menu-legals' => __( 'Footer Menu Legals' ),
-			'footer-menu-bbb' => __( 'Footer Menu BBB' ),
-		)
-	);
+        register_nav_menus(
+                array(
+                        'main-nav'            => esc_html__( 'Main Nav', 'bigbluebox' ),
+                        'footer-menu-legals' => esc_html__( 'Footer Menu Legals', 'bigbluebox' ),
+                        'footer-menu-bbb'    => esc_html__( 'Footer Menu BBB', 'bigbluebox' ),
+                )
+        );
 }
 add_action( 'init', 'register_my_menus' );
 

@@ -68,11 +68,11 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
         <?php if (! empty($eras)) : ?>
             <div class="reviews-compendium__toolbar">
                 <label for="era-jump" class="screen-reader-text">
-                    <?php esc_html_e('Select a Doctor era or Spin-Off', 'bbb'); ?>
+                    <?php esc_html_e('Select a Doctor era or Spin-Off', 'bigbluebox'); ?>
                 </label>
 
-                <select id="era-jump" class="era-jump" aria-label="<?php esc_attr_e('Select a Doctor era or Spin-Off', 'bbb'); ?>">
-                    <option value=""><?php esc_html_e('Select a Doctor era or Spin-Off', 'bbb'); ?></option>
+                <select id="era-jump" class="era-jump" aria-label="<?php esc_attr_e('Select a Doctor era or Spin-Off', 'bigbluebox'); ?>">
+                    <option value=""><?php esc_html_e('Select a Doctor era or Spin-Off', 'bigbluebox'); ?></option>
                     <?php
                     // Output Doctors first, then Spin-Offs, as a flat list
                     if ($doctors) :
@@ -102,7 +102,7 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                     <p class="reviews-compendium__updated text-sm">
                         <?php
                         printf(
-                            esc_html__('Last updated: %s', 'bbb'),
+                            esc_html__('Last updated: %s', 'bigbluebox'),
                             esc_html(date_i18n('j F, Y', $last_updated))
                         );
                         ?>
@@ -123,7 +123,7 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                     // Insert a "Spin-offs" sub-header before the first spin-off table
                     if (! $printed_spinoff_heading && in_array($slug, $spinoff_slugs, true)) :
                         $printed_spinoff_heading = true; ?>
-                        <h2 class="subheading">Spin-offs</h2>
+                        <h2 class="subheading"><?php esc_html_e( 'Spin-offs', 'bigbluebox' ); ?></h2>
                     <?php endif; ?>
 
                     <section id="era-<?php echo esc_attr($slug); ?>" class="reviews-era" aria-labelledby="heading-<?php echo esc_attr($slug); ?>">
@@ -150,8 +150,8 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                                 </div>
                             </div>
                             <?php if ($era_index > 0) : ?>
-                                <a href="#primary" class="link-action" aria-label="<?php esc_attr_e('Back to the top of the page', 'bbb'); ?>">
-                                    <?php esc_html_e('Back to top', 'bbb'); ?>
+                                <a href="#primary" class="link-action" aria-label="<?php esc_attr_e('Back to the top of the page', 'bigbluebox'); ?>">
+                                    <?php esc_html_e('Back to top', 'bigbluebox'); ?>
                                 </a>
                             <?php endif; ?>
                         </div>
@@ -162,9 +162,9 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
 
                                 <thead>
                                     <tr>
-                                        <th scope="col"><?php esc_html_e('Story', 'bbb'); ?></th>
-                                        <th scope="col"><?php esc_html_e('Podcast Episode', 'bbb'); ?></th>
-                                        <th scope="colgroup" colspan="2"><?php esc_html_e('Scores', 'bbb'); ?></th>
+                                        <th scope="col"><?php esc_html_e('Story', 'bigbluebox'); ?></th>
+                                        <th scope="col"><?php esc_html_e('Podcast Episode', 'bigbluebox'); ?></th>
+                                        <th scope="colgroup" colspan="2"><?php esc_html_e('Scores', 'bigbluebox'); ?></th>
                                     </tr>
                                 </thead>
 
@@ -178,30 +178,30 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                                         return '';
                                     }
                                     if ($slug === 'fourth-doctor' && $season_number === 16) {
-                                        return 'Season 16: The Key to Time';
+                                        return __('Season 16: The Key to Time', 'bigbluebox');
                                     }
                                     if ($slug === 'sixth-doctor' && $season_number === 23) {
-                                        return 'Season 23: The Trial of a Timelord';
+                                        return __('Season 23: The Trial of a Timelord', 'bigbluebox');
                                     }
                                     if ($slug === 'torchwood' && $season_number === 3) {
-                                        return 'Season 3: Children of Earth';
+                                        return __('Season 3: Children of Earth', 'bigbluebox');
                                     }
                                     if ($slug === 'torchwood' && $season_number === 4) {
-                                        return 'Season 4: Miracle Day';
+                                        return __('Season 4: Miracle Day', 'bigbluebox');
                                     }
                                     // Second Doctor: Season 4 continues from First Doctor
                                     if ($slug === 'second-doctor' && $season_number === 4) {
-                                        return 'Season 4 (Cont.)';
+                                        return __('Season 4 (Cont.)', 'bigbluebox');
                                     }
                                     if ($slug === 'fourteenth-doctor' && $display_season === 14) {
-                                        return 'Doctor Who: 60th Anniversary Specials';
+                                        return __('Doctor Who: 60th Anniversary Specials', 'bigbluebox');
                                     }
                                     // SJA: Season 1 is the New Year's special; subsequent seasons offset by one
                                     if ($slug === 'sarah-jane-adventures') {
                                         if ($season_number === 1) {
-                                            return "New Year's Special 2007";
+                                            return __("New Year's Special 2007", 'bigbluebox');
                                         }
-                                        return sprintf(__('Season %d', 'bbb'), max(1, $season_number - 1));
+                                        return sprintf(__('Season %d', 'bigbluebox'), max(1, $season_number - 1));
                                     }
                                     // Class: keep the season row but omit the default label text
                                     if ($slug === 'class' && $season_number === 1) {
@@ -216,7 +216,7 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                                         return '';
                                     }
                                     // Default label
-                                    return sprintf(__('Season %d', 'bbb'), $display_season);
+                                    return sprintf(__('Season %d', 'bigbluebox'), $display_season);
                                 };
 
                                 $print_heading_row = function(?string $label) {
@@ -226,8 +226,8 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                                     ?>
                                     <tr class="season-row">
                                         <th scope="rowgroup" colspan="2"><?php echo esc_html($label); ?></th>
-                                        <th scope="col"><?php esc_html_e('Garry', 'bbb'); ?></th>
-                                        <th scope="col"><?php esc_html_e('Adam', 'bbb'); ?></th>
+                                        <th scope="col"><?php esc_html_e('Garry', 'bigbluebox'); ?></th>
+                                        <th scope="col"><?php esc_html_e('Adam', 'bigbluebox'); ?></th>
                                     </tr>
                                     <?php
                                 };
@@ -251,24 +251,24 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                                                // Inline specials breaks for specific seasons
                                                 // Tenth Doctor: Series 4 specials (insert before The Next Doctor)
                                                 if ($slug === 'tenth-doctor' && $season_number === 4 && stripos($title, 'The Next Doctor') === 0 && empty($injected_breaks['tenth_s4'])) {
-                                                    $print_heading_row(__('Season 4: The Specials', 'bbb'));
+                                                    $print_heading_row(__('Season 4: The Specials', 'bigbluebox'));
                                                     $injected_breaks['tenth_s4'] = true;
                                                 }
                                                 // Eleventh Doctor: Season 7 specials (insert before The Day of the Doctor)
                                                 if ($slug === 'eleventh-doctor' && $season_number === 7 && stripos($title, 'The Day of the Doctor') === 0 && empty($injected_breaks['eleventh_s7'])) {
-                                                    $print_heading_row(__('Season 7: The Specials', 'bbb'));
+                                                    $print_heading_row(__('Season 7: The Specials', 'bigbluebox'));
                                                     $injected_breaks['eleventh_s7'] = true;
                                                 }
                                                 // Thirteenth Doctor: 2022 specials (insert before Eve of the Daleks / Eye of the Daleks)
                                                 if ($slug === 'thirteenth-doctor' && $season_number === 13 && (stripos($title, 'Eve of the Daleks') === 0 || stripos($title, 'Eye of the Daleks') === 0) && empty($injected_breaks['thirteenth_s13'])) {
-                                                    $print_heading_row(__('Doctor Who: The Specials 2022', 'bbb'));
+                                                    $print_heading_row(__('Doctor Who: The Specials 2022', 'bigbluebox'));
                                                     $injected_breaks['thirteenth_s13'] = true;
                                                 }
 
                                                 // Per-story title tweaks
                                                 $render_title = $title;
                                                 if ($slug === 'eleventh-doctor' && $season_number === 7 && stripos($title, 'The Day of the Doctor') === 0) {
-                                                    $render_title = __('The Day of the Doctor: 50th Anniversary Special', 'bbb');
+                                                    $render_title = __('The Day of the Doctor: 50th Anniversary Special', 'bigbluebox');
                                                 }
                                                 ?>
                                                 <tr>
@@ -293,7 +293,7 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                     </section>
                 <?php $era_index++; endforeach; ?>
             <?php else : ?>
-                <p><?php esc_html_e('No compendium data found.', 'bbb'); ?></p>
+                <p><?php esc_html_e('No compendium data found.', 'bigbluebox'); ?></p>
             <?php endif; ?>
             </div>
     </div>

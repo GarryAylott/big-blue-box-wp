@@ -10,7 +10,7 @@
  */
 add_filter('avatar_defaults', function($avatar_defaults) {
     $theme_default = get_template_directory_uri() . '/images/authors/author-avatar-small-default.webp';
-    $avatar_defaults[$theme_default] = 'Big Blue Box Default';
+    $avatar_defaults[$theme_default] = __( 'Big Blue Box Default', 'bigbluebox' );
     return $avatar_defaults;
 });
 
@@ -181,9 +181,9 @@ function custom_comments_callback($comment, $args, $depth) {
                         <div class="comment-author">
                             <?php echo esc_html($author); ?>
                             <?php if ($is_post_author) : ?>
-                                <span class="team-badge">AUTHOR</span>
+                                <span class="team-badge"><?php echo esc_html__( 'AUTHOR', 'bigbluebox' ); ?></span>
                             <?php elseif ($is_team_member) : ?>
-                                <span class="team-badge">BIG BLUE BOX TEAM</span>
+                                <span class="team-badge"><?php echo esc_html__( 'BIG BLUE BOX TEAM', 'bigbluebox' ); ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="comment-date"><?php echo esc_html($date); ?></div>
@@ -196,7 +196,10 @@ function custom_comments_callback($comment, $args, $depth) {
                                 'respond_id'  => 'respond',
                                 'depth'       => $depth,
                                 'max_depth'   => $args['max_depth'],
-                                'reply_text'  => __('Reply') . ' <span class="reply-icon"><i data-lucide="reply" class="icon-step-0"></i></span>',
+                                'reply_text'  => sprintf(
+                                        '%s <span class="reply-icon"><i data-lucide="reply" class="icon-step-0"></i></span>',
+                                        esc_html__( 'Reply', 'bigbluebox' )
+                                ),
                                 'class_reply'     => 'link-action',
                                 'after'       => '',
                             ],
@@ -209,7 +212,7 @@ function custom_comments_callback($comment, $args, $depth) {
                 <div class="comment-content">
                     <?php comment_text(); ?>
                     <?php if ($comment->comment_approved === '0') : ?>
-                        <p class="comment-awaiting-moderation small"><?php _e('Comment received! The TARDIS is holding it in the temporal buffer for moderation. It will be approved shortly.'); ?></p>
+                        <p class="comment-awaiting-moderation small"><?php esc_html_e( 'Comment received! The TARDIS is holding it in the temporal buffer for moderation. It will be approved shortly.', 'bigbluebox' ); ?></p>
                     <?php endif; ?>
                 </div>
             </div>

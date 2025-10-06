@@ -25,11 +25,8 @@ get_header();
             <?php endwhile;
         endif; ?>
 
-        <section class="about-page-hosts flow-large">
-            <div class="text-block">
-                <h2>Podcast Hosts</h2>
-                <p>Garry launched The Big Blue Box in March 2014. In October that year Adam joined, and for more than a decade they’ve been creating Doctor Who content together, sharing opinions, theories and <a href="<?php echo esc_url( home_url( '/reviews-compendium' ) ); ?>" class="link-alt">putting a score on just about every Doctor Who story and it's spin-offs.</a></p>
-            </div>
+        <section class="about-page-hosts flow">
+            <h2>Podcast Hosts</h2>
 
             <div class="about-page-hosts__hosts">
                 <div class="host-card">
@@ -37,6 +34,9 @@ get_header();
                         alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
                     <h3>Garry Aylott</h3>
                     <p>Creator, Producer and Co-Host</p>
+                    <p class="small">
+                        Garry founded The Big Blue Box back in March of 2014. (In)famous for not liking McCoy at first but over time was completely won over with Remembrance of the Daleks now in his top 3. When he’s not recording, you’ll find him reading comic books, travelling, and enjoying a bloody good cup of tea.
+                    </p>
                     <ul class="social-icons" role="list">
                         <li>
                             <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
@@ -60,6 +60,9 @@ get_header();
                         alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
                     <h3>Adam Charlton</h3>
                     <p>Co-Host</p>
+                    <p class="small">
+                        Adam has been into Doctor Who for as long as he can remember. He’s the walking guidebook when it comes to facts and trivia and never shy of calling out a dodgy story. Don't forget to remember to check out <a href="https://www.youtube.com/@TheGeeksHandbag" class="link-alt" target="_blank" rel="noopener" aria-label="The Geeks Handbag on YouTube">The Geeks Handbag on YouTube</a>, packed with reviews, unboxings and convention videos.
+                    </p>
                     <ul class="social-icons" role="list">
                         <li>
                             <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
@@ -86,10 +89,10 @@ get_header();
             </div>
         </section>
 
-        <section class="about-page-writers flow-large">
+        <section class="about-page-writers">
              <div class="text-block">
-                <h2>Your Writers</h2>
-                <p>Behind The Big Blue Box’s engaging blog content lies a hugely talented team of writers, passionate about all things Doctor Who. With their collective expertise and love for the show, our writers publish fresh and exciting content regularly, ensuring there's always something new for fans to sink their teeth into. From Big Finish audio reviews, in-depth event recaps to thought-provoking editorials and everything in between, our team covers a wide range of Doctor Who content.</p>
+                <h2>Writing Team</h2>
+                <p>The blog is driven by writers who know the show inside out. Their articles range across Big Finish reviews, convention round-ups, editorials and more. Also active in our Discord, they're always on hand to chat anything Doctor Who.</p>
             </div>
         </section>
 

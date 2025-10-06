@@ -25,11 +25,11 @@
 						$phrases = [
 							"has been podcasting and blogging since March 2014.",
 							"has defeated approximately 2 Daleks. So far.",
-							"has published around 42,750 minutes of Doctor Who content and counting.",
+							"has published around 43,750 minutes of Doctor Who content and counting.",
 							"once tried to reverse the polarity. That didn't end well.",
 							"episode titles are 90% puns, 10% waffle.",
 							"has thoughts about the Timeless Child.",
-							"was created in the UK but also enjoyed around the world.",
+							"was created in the UK and enjoyed around the world.",
 							"quotes “City of Death” in normal conversation.",
 							"has podcasted through two big anniversary years of the show.",
 							"has argued about “Love & Monsters”.",

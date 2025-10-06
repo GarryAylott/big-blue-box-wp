@@ -9,7 +9,7 @@
 <aside id="secondary" class="main-sidebar flow-large">
 	<section class="social-channels flow">
 		<h5>
-			Find us on social media
+			Connect and Follow
 		</h5>
 		<ul role="list">
 			<li>

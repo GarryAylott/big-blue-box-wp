@@ -264,31 +264,47 @@ function bbb_get_icon( $name ) {
 }
 
 /**
- * Add category slugs to body class on single posts
+ * Add category slugs to body class on single posts plus tidy up page body classes
  */
-add_filter('body_class', function($classes) {
-	if (is_single()) {
+function bigbluebox_customize_body_classes( $classes ) {
+	if ( is_single() ) {
 		$categories = get_the_category();
-		if ($categories) {
-			foreach ($categories as $category) {
-				$classes[] = 'category-' . sanitize_html_class($category->slug);
+
+		if ( $categories ) {
+			foreach ( $categories as $category ) {
+				$classes[] = 'category-' . sanitize_html_class( $category->slug );
 			}
 		}
 	}
-	return $classes;
-});
 
-/**
- * Remove unwanted theme class from body_class
- */
-add_filter('body_class', function($classes) {
-	foreach ($classes as $key => $class) {
-		if (strpos($class, 'wp-theme-') === 0) {
-			unset($classes[$key]);
+	if ( is_page_template() ) {
+		$template = get_page_template_slug( get_queried_object_id() );
+
+		if ( $template ) {
+			$basename = sanitize_title( basename( $template, '.php' ) );
+
+			$classes = array_values(
+				array_filter(
+					$classes,
+					static fn ( $class ) => 'page-template' === $class || 0 !== strpos( $class, 'page-template-' )
+				)
+			);
+
+			$classes[] = 'page-template-' . $basename;
 		}
 	}
+
+	$classes = array_values(
+		array_filter(
+			$classes,
+			static fn ( $class ) => 0 !== strpos( $class, 'wp-theme-' )
+		)
+	);
+
 	return $classes;
-});
+}
+add_filter( 'body_class', 'bigbluebox_customize_body_classes' );
+
 
 /**
  * AJAX handler for category-based post filtering

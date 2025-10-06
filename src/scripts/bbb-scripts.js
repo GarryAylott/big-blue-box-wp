@@ -230,11 +230,21 @@ const initScrollContainers = () => {
 
 // Add external link icons
 const initExternalLinkIcons = () => {
-    if (!document.body.classList.contains("single-post")) {
+    const selectors = [];
+
+    if (document.body.classList.contains("single-post")) {
+        selectors.push(".post-content");
+    }
+
+    if (document.body.classList.contains("page")) {
+        selectors.push(".site-main");
+    }
+
+    if (!selectors.length) {
         return;
     }
 
-    const contentAreas = document.querySelectorAll(".post-content");
+    const contentAreas = document.querySelectorAll(selectors.join(","));
     if (!contentAreas.length) {
         return;
     }
@@ -251,11 +261,9 @@ const initExternalLinkIcons = () => {
                 return;
             }
 
-            // Create <span> element for the icon
             const icon = document.createElement("span");
             icon.innerHTML = `<i data-lucide="arrow-up-right" class="icon-step-1"></i>`;
 
-            // Append icon, render it via Lucide, and mark as processed
             link.appendChild(icon);
             createIcons({ icons, root: icon });
             link.classList.add("has-external-icon");

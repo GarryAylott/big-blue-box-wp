@@ -13,7 +13,7 @@ Font styling for headings, paragraphs etc.
     --fw-reg: 400;
     --fw-semibold: 600;
     --fw-bold: 700;
-    --measure-m: 56ch;
+    --measure-m: 62ch;
     --measure-s: 34ch;
 }
 
@@ -62,6 +62,7 @@ h6 {
 }
 
 p {
+    max-width: var(--measure-m);
     text-wrap: pretty;
 }
 
@@ -115,10 +116,6 @@ p {
     flex-direction: column;
     gap: var(--space-s);
     margin-block-end: var(--space-m);
-
-    p {
-        max-width: var(--measure-m);
-    }
 }
 
 // Remove margin if heading follows the first .lead paragraph
@@ -130,6 +127,7 @@ p.lead + :is(h2, h3, h4, h5, h6) {
 .page {
     p.lead,
     p.has-drop-cap {
+        max-width: calc(var(--measure-m) - 5ch);
         font-size: var(--step-1);
         font-weight: var(--fw-semibold);
         line-height: 1.5;
@@ -232,7 +230,6 @@ body:is(.single-post) :is(.entry-content) a {
 a[target="_blank"] {
     display: inline-flex;
     align-items: center;
-    gap: 0.1rem;
 
     &:not(.has-external-icon) {
         display: unset;

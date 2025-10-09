@@ -11,14 +11,10 @@ LATEST ARTICLES BLOCK
     gap: var(--space-m);
 
     header {
-        margin-block-start: var(--space-s);
+        margin-block-start: var(--space-2xs);
     }
 
     @media (max-width: 45rem) {
         gap: var(--space-xl);
-    }
-
-    .category-tag {
-        @include visually-hidden;
     }
 }

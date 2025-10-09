@@ -6,14 +6,15 @@ Styling for all form elements.
 form {
     // Basic input styling
     input {
-        line-height: normal;
+        line-height: 1;
         accent-color: var(--clr-brand-primary);
     }
 
     input,
     textarea {
+        padding: var(--space-xs);
+        padding-block-start: 0.75rem;
         color: var(--clr-text-400);
-        padding: var(--space-xs) var(--space-s);
         background: var(--clr-surface-400);
         border: 1px solid var(--clr-surface-200);
         border-radius: var(--radius-small);
@@ -25,29 +26,24 @@ form {
         }
 
         &::placeholder {
-            font-size: 1.2rem;
             color: var(--clr-surface-100);
-            opacity: 1;
+            opacity: 0.75;
         }
         &::-webkit-input-placeholder {
-            font-size: 1.2rem;
             color: var(--clr-surface-100);
-            opacity: 1;
+            opacity: 0.75;
         }
         &::-moz-placeholder {
-            font-size: 1.2rem;
             color: var(--clr-surface-100);
-            opacity: 1;
+            opacity: 0.75;
         }
         &:-ms-input-placeholder {
-            font-size: 1.2rem;
             color: var(--clr-surface-100);
-            opacity: 1;
+            opacity: 0.75;
         }
         &::-ms-input-placeholder {
-            font-size: 1.2rem;
             color: var(--clr-surface-100);
-            opacity: 1;
+            opacity: 0.75;
         }
     }
 
@@ -61,6 +57,8 @@ form {
         display: flex;
         flex-direction: column;
         gap: var(--space-2xs);
+        max-width: 100%;
+        font-size: var(--step--1);
     }
 
     button.button-ghost {
@@ -92,7 +90,7 @@ select,
 }
 
 select::picker-icon {
-    color: var(--clr-brand-accent);
+    color: var(--clr-border-link);
     margin-block-start: 2px;
     transition: 0.4s rotate;
 }

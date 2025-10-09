@@ -217,8 +217,11 @@ REVIEW COMPENDIUM TABLES
 
         // Season header row
         .season-row th {
-            color: var(--clr-brand-secondary);
-            background: hsl(42, 91%, 58%, 0.04);
+            font-size: var(--step--2);
+            font-weight: var(--fw-semibold);
+            text-transform: uppercase;
+            color: var(--clr-text-400);
+            background: hsl(var(--clr-border-link-hsl) / 0.08);
 
             @media (max-width: 768px) {
                 font-size: var(--step--1); // Keep season headers more prominent
@@ -254,7 +257,7 @@ REVIEW COMPENDIUM TABLES
             text-overflow: ellipsis;
 
             a {
-                color: var(--color-link, #007acc);
+                color: var(--clr-text-link);
                 text-decoration: none;
 
                 &:hover,

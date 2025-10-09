@@ -51,6 +51,25 @@ article {
     }
 }
 
+// Homepage hero post card
+.post-card-hero {
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-l);
+    }
+
+    .post-card-hero-details {
+        h6.section-title {
+            margin-block-end: var(--space-2xs);
+        }
+
+        a.button {
+            margin-block-start: var(--space-m);
+        }
+    }
+}
+
 // Specific tweak to suggested posts on single posts
 body:is(.single-post) {
     article.has-post-thumbnail .author-meta {

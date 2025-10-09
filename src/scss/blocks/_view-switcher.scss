@@ -11,6 +11,9 @@ Styling for minimal view switcher when a Button Group is overkill.
     margin-block-end: var(--space-s);
 
     button {
+        --view-switcher-color: var(--clr-brand-accent);
+        --view-switcher-bg-hsl: var(--clr-brand-accent-hsl);
+
         position: relative;
         display: flex;
         align-items: center;
@@ -23,17 +26,15 @@ Styling for minimal view switcher when a Button Group is overkill.
         border: none;
         border-radius: var(--radius-xs);
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
-
-        &:hover {
-            color: var(--clr-brand-accent);
-            background: var(--clr-surface-300);
-        }
+        transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
         &[data-category="all"] {
+            --view-switcher-color: var(--clr-border-link);
+            --view-switcher-bg-hsl: var(--clr-border-link-hsl);
+
             padding-inline-start: calc(var(--space-s) + 0.2rem);
 
-            &:before {
+            &::before {
                 content: "";
                 position: absolute;
                 left: var(--space-2xs);
@@ -41,21 +42,27 @@ Styling for minimal view switcher when a Button Group is overkill.
                 height: 8px;
                 border-radius: var(--radius-circle);
                 background: var(--clr-surface-200);
-                transition: all 0.2s ease-in-out;
+                transition: background-color 0.2s ease-in-out;
             }
         }
 
-        &:hover:before {
-            background: var(--clr-brand-accent);
+        &[data-category="articles"] {
+            --view-switcher-color: var(--clr-brand-secondary);
+            --view-switcher-bg-hsl: var(--clr-brand-secondary-hsl);
         }
 
-        &.is-active {
-            color: var(--clr-brand-accent);
-            background: var(--clr-surface-300);
+        &[data-category="podcasts"] {
+            --view-switcher-color: var(--clr-brand-accent);
+            --view-switcher-bg-hsl: var(--clr-brand-accent-hsl);
+        }
 
-            &:before {
-                background: var(--clr-brand-accent);
-            }
+        &:is(:hover, .is-active) {
+            color: var(--view-switcher-color);
+            background: hsl(var(--view-switcher-bg-hsl) / 0.15);
+        }
+
+        &:is(:hover, .is-active)::before {
+            background-color: var(--view-switcher-color);
         }
     }
 }

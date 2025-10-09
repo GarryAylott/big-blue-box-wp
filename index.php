@@ -11,7 +11,7 @@ get_header();
 </div>
 
 <main id="primary" class="site-main flow-page-regions">
-    <div class="wrapper">
+    <div class="wrapper homepage-top">
             <?php
             $displayed_posts = array();
 
@@ -24,18 +24,31 @@ get_header();
             if ($query1->have_posts()) :
                 while ($query1->have_posts()) : $query1->the_post(); ?>
 
-                    <?php $bg_img_url = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'singlepost-feat') : ''; ?>
+                <article id="post-<?php the_ID(); ?>" <?php post_class( 'post-card-hero' ); ?>>
+                    <div class="post-card-hero__content">
+                        <?php if ( has_post_thumbnail() ) : ?>
+                            <a href="<?php the_permalink(); ?>">
+                                <div class="img-container">
+                                    <img
+                                        class="post-thumb-img img-hover"
+                                        src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'homepage-thumb' ) ); ?>"
+                                        width="391"
+                                        height="220"
+                                        alt="<?php echo esc_attr( get_the_title() ); ?>"
+                                    >
+                                </div>
+                            </a>
+                        <?php endif; ?>
 
-                    <article id="post-<?php the_ID(); ?>" <?php post_class('latest-podcast-ep rounded'); ?> style="background-image: url('<?php echo esc_url($bg_img_url); ?>');">
-                        <div class="latest-podcast-ep__content">
-                            <div class="latest-podcast-ep__details">
+                        <div class="post-card-hero-details flow-small">
+                            <header class="entry-header">
                                 <h6 class="section-title">
-                                    <i data-lucide="mic" class="icon-bold"></i>
+                                    <i data-lucide="mic" class="icon-bold icon-step--1"></i>
                                     Latest podcast episode
                                 </h6>
-                                <div class="latest-podcast-ep__copy">
+                                <div class="post-card-hero__copy flow-small">
                                     <a href="<?php the_permalink(); ?>">
-                                        <h1>
+                                        <h2>
                                             <?php
                                             $thetitle   = $post->post_title;
                                             $getlength  = strlen( $thetitle );
@@ -43,7 +56,7 @@ get_header();
                                             echo substr( $thetitle, 0, $thelength );
                                             if ( $getlength > $thelength ) echo "...";
                                             ?>
-                                        </h1>
+                                        </h2>
                                     </a>
                                     <p class="icon-text-group small">
                                         <?php
@@ -60,30 +73,28 @@ get_header();
                                         <span>•</span> <?php echo get_the_date( 'j M, Y' ); ?>
                                     </p>
                                 </div>
-
-                            </div>
-
-                            <p class="latest-podcast-ep__excerpt">
+                            </header>
+                            <p class="latest-podcast-ep__excerpt small">
                                 <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
                             </p>
-
                             <a href="<?php the_permalink(); ?>" class="button flex">
                                 <i data-lucide="headphones" class="icon-bold"></i>
                                 Listen Now
                             </a>
                         </div>
-                    </article>
+                    </div>
+                </article>
                 <?php
                 $displayed_posts[] = get_the_ID();
                 endwhile;
                 wp_reset_postdata();
             endif; ?>
-    </div>
 
-    <?php
-        set_query_var('displayed_posts', $displayed_posts);
-        get_template_part('template-parts/content', 'latest-articles');
-    ?>
+            <?php
+                set_query_var('displayed_posts', $displayed_posts);
+                get_template_part('template-parts/content', 'latest-articles');
+            ?>
+    </div>
     
     <div class="wrapper">
         <?php get_template_part('template-parts/content', 'testimonial'); ?>

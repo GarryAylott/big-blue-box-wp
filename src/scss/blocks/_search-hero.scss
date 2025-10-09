@@ -7,14 +7,6 @@ Layout and styling for the content in the hero section on the search results pag
 
 // Search query successful
 .search-hero {
-    h2 {
-        margin-block-end: var(--space-m);
-
-        span {
-            color: var(--clr-brand-accent);
-        }
-    }
-
     .search-hero-form {
         display: flex;
         flex-direction: column;
@@ -57,10 +49,6 @@ Layout and styling for the content in the hero section on the search results pag
         h2 {
             max-width: 30ch;
             margin-block-end: var(--space-m);
-        }
-
-        p {
-            margin-block-end: var(--space-s);
         }
 
         form {

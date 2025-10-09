@@ -7,7 +7,15 @@ CATEGORY TAG BLOCK
     align-items: center;
     gap: var(--space-3xs);
     width: fit-content;
-    color: var(--clr-text-900);
+    color: inherit;
+
+    &:is(article.category-podcasts *) {
+        color: var(--clr-brand-accent);
+    }
+
+    &:is(article.category-articles *) {
+        color: var(--clr-brand-secondary);
+    }
 
     span {
         font-size: var(--step--2);
@@ -17,8 +25,4 @@ CATEGORY TAG BLOCK
         letter-spacing: 0.5px;
         padding-block-start: 1px;
     }
-}
-
-body:is(.single-post) .category-tag {
-    color: var(--clr-brand-accent);
 }

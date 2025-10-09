@@ -2,6 +2,13 @@
 LATEST PODCAST EPISODE BLOCK
 */
 
+// Homepage top section with latest podcast episode
+.homepage-top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+}
+
 .latest-podcast-ep {
     padding: calc(var(--space-3xl) + var(--space-m)) var(--space-l)
         var(--space-l);

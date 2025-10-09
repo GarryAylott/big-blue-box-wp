@@ -11,10 +11,9 @@ Layout and styling for archive pages.
     display: flex;
     flex-direction: column;
     gap: var(--space-3xs);
-    // padding-block-end: var(--space-l);
 
     .section-title {
-        margin-block-end: var(--space-2xs);
+        margin-block-end: 0;
     }
 
     &__group {
@@ -33,14 +32,36 @@ Layout and styling for archive pages.
     }
 }
 
-body.tag .archive-hero__group h1 {
-    font-size: var(--step-2);
+body:is(.tag) {
+    .section-title {
+        color: var(--clr-border-link);
+    }
 
-    span {
-        display: block;
-        font-size: var(--step-5);
-        color: var(--clr-brand-secondary);
-        margin-block-start: var(--space-2xs);
+    .archive-hero__group h1 {
+        font-size: var(--step-2);
+
+        span {
+            display: block;
+            font-size: var(--step-5);
+            color: var(--clr-border-link);
+            margin-block-start: var(--space-2xs);
+        }
+    }
+}
+
+body:is(.search-results),
+body:is(.search-no-results) {
+    .section-title {
+        font-weight: var(--fw-semibold);
+        color: var(--clr-text-900);
+    }
+
+    .archive-hero span {
+        color: var(--clr-text-100);
+    }
+
+    .archive-hero__group {
+        margin-block-end: var(--space-s);
     }
 }
 

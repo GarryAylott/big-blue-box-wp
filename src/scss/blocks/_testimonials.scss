@@ -19,7 +19,7 @@ Styles for full-width and column based testimonials.
         gap: var(--space-xs);
         padding-inline-start: var(--space-s);
         margin-inline: auto;
-        border-left: 4px solid var(--clr-brand-secondary);
+        border-left: 4px solid var(--clr-border-link);
 
         &::before {
             display: none;
@@ -29,7 +29,7 @@ Styles for full-width and column based testimonials.
             position: relative;
             font-weight: var(--fw-semibold);
             color: var(--clr-surface-700);
-            background: var(--clr-brand-secondary);
+            background: var(--clr-border-link);
             padding: 0 3px 3px 3px;
             margin-inline-start: -4px;
         }
@@ -63,7 +63,7 @@ Styles for full-width and column based testimonials.
         }
 
         p {
-            color: var(--clr-brand-secondary);
+            color: var(--clr-brand-tertiary);
         }
 
         cite {

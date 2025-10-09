@@ -33,7 +33,7 @@ Styles for post pagination section.
             color: var(--clr-surface-700);
             text-decoration: none;
             border: none;
-            background: var(--clr-brand-secondary);
+            background: var(--clr-border-link);
         }
 
         .pagination__num {
@@ -91,10 +91,3 @@ Styles for post pagination section.
         }
     }
 }
-
-// Add spacing for pages or sections not using flow
-// body:is(.search-results) {
-//     .pagination {
-//         margin-block-start: var(--space-s-m);
-//     }
-// }

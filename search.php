@@ -29,14 +29,14 @@ $bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_
 
         <?php if (have_posts()) : ?>
             <section class="archive-hero search-hero">
-                <h6 class="section-title">
-                    TARDIS Data-Core Query Complete&hellip; Data retrieved.
-                </h6>
                 <div class="archive-hero__group">
-                    <h2 class="archive-hero__heading">
+                    <h6 class="section-title">
+                        TARDIS Data-Core Query Complete&hellip; Data retrieved.
+                    </h6>
+                    <h4 class="archive-hero__heading">
                         Articles and podcast episodes about:<br>
-                        <span><?php echo esc_html(get_search_query()); ?></span>
-                    </h2>
+                    </h4>
+                    <h2><?php echo esc_html(get_search_query()); ?></h2>
                 </div>
                 <form role="search" method="get" class="search-form search-hero-form" action="<?php echo esc_url(home_url('/')); ?>">
                     <label>
@@ -63,11 +63,13 @@ $bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_
 
         <?php else : ?>
             <section class="archive-hero search-hero">
-                <div class="no-search-results">
+                <div class="no-search-results flow-small">
                     <h6 class="section-title">
                         TARDIS Data-Core Query Complete&hellip; Data not found.
                     </h6>
-                    <h2>The TARDIS could not locate anything with that search</h2>
+                    <h4 class="archive-hero__heading">
+                        The TARDIS could not locate anything
+                    </h4>
                     <p>Try another search&hellip;</p>
                     <form role="search" method="get" class="search-form search-hero-form" action="<?php echo esc_url(home_url('/')); ?>">
                         <label>

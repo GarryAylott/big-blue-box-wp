@@ -111,7 +111,7 @@ body:is(.search-no-results) {
             transition: all 0.1s ease-in-out;
 
             &:hover {
-                background: var(--clr-surface-200);
+                background: var(--clr-brand-primary);
             }
 
             .author-social-x,

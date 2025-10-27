@@ -1,0 +1,106 @@
+@use "utilities" as *;
+
+/* 
+ABOUT PAGE
+*/
+
+.about-page-hosts {
+    &__hosts {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+        gap: var(--space-l);
+
+        .host-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+
+            p:is(:first-of-type) {
+                color: var(--clr-brand-accent);
+            }
+
+            p:not(:first-of-type) {
+                max-width: 45ch;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.about-page-writers {
+    margin-block-start: var(--space-2xl);
+
+    .team-writers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+        gap: var(--space-m);
+
+        &__panel {
+            position: relative;
+            isolation: isolate;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            height: 25rem;
+            padding-inline: var(--space-s);
+            padding-block-end: var(--space-s);
+            border-radius: var(--radius-normal);
+            overflow: hidden;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    0deg,
+                    hsl(var(--clr-brand-primary-darker-hsl) / 1) 0%,
+                    transparent 70%
+                );
+                z-index: -1;
+            }
+
+            &:last-child {
+                .team-writers__content p {
+                    margin-block-end: var(--space-xs);
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(
+                        0deg,
+                        hsl(var(--clr-brand-primary-darker-hsl) / 1) 0%,
+                        hsl(var(--clr-brand-primary-darker-hsl) / 0.7) 100%
+                    );
+                    z-index: -1;
+                }
+            }
+
+            .author-hero__socials {
+                margin-block-start: var(--space-3xs);
+                margin-block-end: var(--space-2xs);
+
+                a:hover {
+                    background: var(--clr-brand-primary);
+                }
+            }
+        }
+
+        &__image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2xs);
+        }
+    }
+}

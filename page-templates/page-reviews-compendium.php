@@ -40,7 +40,7 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
     'sixth-doctor' => 'Change, my dear. And it seems not a moment too soon.',
     'seventh-doctor' => 'Somewhere there’s danger, somewhere there’s injustice, and somewhere else the tea’s getting cold.',
     'eighth-doctor' => 'I love humans. Always seeing patterns in things that aren’t there.',
-    'ninth-doctor' => 'Before I Go, I Just Want To Tell You: You Were Fantastic. Absolutely Fantastic. And Do You Know What? So Was I!',
+    'ninth-doctor' => 'Before I go, I just want to tell you: you were fantastic. Absolutely fantastic. And do you know what? So was I!',
     'tenth-doctor' => 'People assume that time is a strict progression… it’s more like a big ball of wibbly-wobbly, timey-wimey… stuff.',
     'eleventh-doctor' => 'We’re all stories, in the end. Just make it a good one, eh?',
     'twelfth-doctor' => 'I am not a good man… I am… an idiot! With a box and a screwdriver.',
@@ -58,7 +58,7 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
     <div class="wrapper">
         <?php if (have_posts()) :
             while (have_posts()) : the_post(); ?>
-                <header class="page-title text-block">
+                <header class="page-title">
                     <h1><?php the_title(); ?></h1>
                     <?php the_content(); ?>
                 </header>

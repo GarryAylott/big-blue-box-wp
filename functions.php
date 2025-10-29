@@ -411,6 +411,9 @@ require_once get_template_directory() . '/inc/captivate-external-audio.php';
 // Helper for suggested/related posts
 require get_template_directory() . '/inc/related-articles.php';
 
+// Author social helpers.
+require get_template_directory() . '/inc/author-social.php';
+
 // Logic for post promo banner insertion
 require get_template_directory() . '/inc/article-promo-banners.php';
 

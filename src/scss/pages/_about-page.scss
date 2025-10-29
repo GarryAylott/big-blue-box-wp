@@ -29,7 +29,7 @@ ABOUT PAGE
 }
 
 .about-page-writers {
-    margin-block-start: var(--space-2xl);
+    margin-block-start: var(--space-3xl);
 
     .team-writers {
         display: grid;
@@ -45,7 +45,7 @@ ABOUT PAGE
             height: 25rem;
             padding-inline: var(--space-s);
             padding-block-end: var(--space-s);
-            border-radius: var(--radius-normal);
+            border-radius: var(--radius-small);
             overflow: hidden;
 
             &::after {
@@ -81,6 +81,21 @@ ABOUT PAGE
             .author-hero__socials {
                 margin-block-start: var(--space-3xs);
                 margin-block-end: var(--space-2xs);
+
+                a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: var(--space-3xs);
+                    border-radius: var(--radius-xs);
+                    color: var(--clr-text-100);
+                    transition: all 0.1s ease-in-out;
+
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
 
                 a:hover {
                     background: var(--clr-brand-primary);

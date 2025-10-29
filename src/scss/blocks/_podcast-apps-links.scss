@@ -20,8 +20,6 @@ LINKS TO PODCAST APPS BLOCK
         align-items: center;
         gap: var(--space-m);
         padding-block: var(--space-s);
-        padding-inline: var(--space-m);
-        background: var(--clr-surface-400);
         border-radius: var(--radius-normal);
 
         li.app {
@@ -93,6 +91,5 @@ LINKS TO PODCAST APPS BLOCK
 
     &__links-block {
         padding: 0;
-        background: none;
     }
 }

@@ -78,7 +78,9 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
                 transition: all 0.1s ease-in-out;
 
                 &:hover {
-                    filter: drop-shadow(0 0 3px rgba(109, 153, 248, 1));
+                    filter: drop-shadow(
+                        0 0 10px hsl(var(--clr-text-link-hsl) / 1)
+                    );
                 }
             }
 

@@ -55,10 +55,6 @@ if (is_tag()) {
             <?php
             // ACF user fields
             $profile_img_id = get_field('profile_image', 'user_' . $author_id);
-            $twitter   = get_field('twitter', 'user_' . $author_id);
-            $instagram = get_field('instagram', 'user_' . $author_id);
-            $facebook  = get_field('facebook', 'user_' . $author_id);
-            $tiktok  = get_field('tiktok', 'user_' . $author_id);
             $fav_doctor = get_field('fav_doctor', 'user_' . $author_id);
             $fav_story  = get_field('fav_story', 'user_' . $author_id);
             $fav_doctor_image = get_field('fav_doctor_image', 'user_' . $author_id);
@@ -67,6 +63,21 @@ if (is_tag()) {
             $article_count = count_user_posts($author_id, 'post');
             $bio = get_the_author_meta('description', $author_id);
             $acf_bio = get_field('bio', 'user_' . $author_id);
+
+            $social_links_markup = bbb_render_author_social_links(
+                $author_id,
+                [
+                    'container'          => 'div',
+                    'container_class'    => 'author-hero__socials',
+                    'link_class'         => 'has-external-icon',
+                    'link_rel'           => 'noopener',
+                    'link_target'        => '_blank',
+                    'icon_class'         => 'img-hover',
+                    'lucide_class'       => 'icon-bold',
+                    'aria_label_pattern' => esc_html__('%1$s on %2$s', 'bigbluebox'),
+                    'author_name'        => sanitize_text_field($author->display_name),
+                ]
+            );
             ?>
             <section class="author-hero">
                 <div class="author-hero__container">
@@ -83,29 +94,8 @@ if (is_tag()) {
                     </div>
                     <div class="author-hero__content flow-small">
                         <h1 class="author-hero__name"><?php echo esc_html($author->display_name); ?></h1>
-                        <?php if ($twitter || $instagram || $facebook || $tiktok): ?>
-                            <div class="author-hero__socials">
-                                <?php if ($twitter): ?>
-                                    <a href="<?php echo esc_url($twitter); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="Twitter">
-                                        <img class="author-social-x img-hover" src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-x.svg" alt="Twitter" width="24" height="24">
-                                    </a>
-                                <?php endif; ?>
-                                <?php if ($instagram): ?>
-                                    <a href="<?php echo esc_url($instagram); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
-                                        <img class="author-social-insta img-hover" src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-insta.svg" alt="Instagram" width="24" height="24">   
-                                    </a>
-                                <?php endif; ?>
-                                <?php if ($facebook): ?>
-                                    <a href="<?php echo esc_url($facebook); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
-                                        <img class="author-social-fb img-hover" src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-fb.svg" alt="Facebook" width="24" height="24">
-                                    </a>
-                                <?php endif; ?>
-                                <?php if ($tiktok): ?>
-                                    <a href="<?php echo esc_url($tiktok); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="TikTok">
-                                        <img class="author-social-tiktok img-hover" src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-tiktok.svg" alt="Facebook" width="24" height="24">
-                                    </a>
-                                <?php endif; ?>
-                            </div>
+                        <?php if (!empty($social_links_markup)) : ?>
+                            <?php echo $social_links_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup escaped within helper. ?>
                         <?php endif; ?>
                         <span class="author-hero__badge">
                             <span><?php echo esc_html($article_count); ?> Articles</span>

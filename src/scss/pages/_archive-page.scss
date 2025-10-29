@@ -56,10 +56,6 @@ body:is(.search-no-results) {
         color: var(--clr-text-900);
     }
 
-    .archive-hero span {
-        color: var(--clr-text-100);
-    }
-
     .archive-hero__group {
         margin-block-end: var(--space-s);
     }
@@ -104,14 +100,22 @@ body:is(.search-no-results) {
         gap: var(--space-2xs);
 
         a {
-            display: block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: var(--space-3xs);
             background: transparent;
             border-radius: var(--radius-xs);
             transition: all 0.1s ease-in-out;
+            color: var(--clr-text-100);
 
             &:hover {
                 background: var(--clr-brand-primary);
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
             }
 
             .author-social-x,

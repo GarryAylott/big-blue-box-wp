@@ -61,26 +61,26 @@ get_header();
                     <h3>Adam Charlton</h3>
                     <p>Co-Host</p>
                     <p class="small">
-                        Adam has been into Doctor Who for as long as he can remember. He’s the walking guidebook when it comes to facts and trivia and never shy of calling out a dodgy story. Don't forget to remember to check out <a href="https://www.youtube.com/@TheGeeksHandbag" class="link-alt" target="_blank" rel="noopener" aria-label="The Geeks Handbag on YouTube">The Geeks Handbag on YouTube</a>, packed with reviews, unboxings and convention videos.
+                        Adam has been into Doctor Who for as long as he can remember. He’s the walking guidebook when it comes to facts and trivia and never shy of calling out a dodgy story. Don't forget to remember to check out <a href="https://www.youtube.com/@TheGeeksHandbag" class="link-alt" target="_blank" rel="noopener" aria-label="The Geeks Handbag on YouTube">The Geeks Handbag on YouTube</a>, packed with reviews, unboxings, convention videos and more.
                     </p>
                     <ul class="social-icons" role="list">
                         <li>
-                            <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                            <a href="https://www.youtube.com/@thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="YouTube">
                                 <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-yt.svg' ) ); ?>" alt="YouTube" width="29" height="28">
                             </a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                            <a href="https://x.com/TheGeeksHandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
                                 <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="X (Twitter)" width="24" height="24">
                             </a>
                         </li>
                         <li>
-                            <a href="https://instagram.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                            <a href="https://www.instagram.com/the_geeks_handbag/" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
                                 <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="Instagram" width="24" height="24">
                             </a>
                         </li>
                         <li>
-                            <a href="https://facebook.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
+                            <a href="https://www.facebook.com/thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
                                 <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="Facebook" width="24" height="24">
                             </a>
                         </li>
@@ -127,61 +127,37 @@ get_header();
                 ],
             ];
 
-            $social_icon_map = [
-                'twitter' => [
-                    'label' => esc_html__('Twitter', 'bigbluebox'),
-                    'icon'  => 'social-icon-x.svg',
-                    'class' => 'author-social-x',
-                ],
-                'instagram' => [
-                    'label' => esc_html__('Instagram', 'bigbluebox'),
-                    'icon'  => 'social-icon-insta.svg',
-                    'class' => 'author-social-insta',
-                ],
-                'facebook' => [
-                    'label' => esc_html__('Facebook', 'bigbluebox'),
-                    'icon'  => 'social-icon-fb.svg',
-                    'class' => 'author-social-fb',
-                ],
-                'tiktok' => [
-                    'label' => esc_html__('TikTok', 'bigbluebox'),
-                    'icon'  => 'social-icon-tiktok.svg',
-                    'class' => 'author-social-tiktok',
-                ],
-            ];
             ?>
             <div class="team-writers">
                 <?php foreach ($team_writers as $writer) : ?>
                     <?php
-                    $user_key = 'user_' . $writer['user_id'];
-                    $social_links = [];
-
-                    foreach ($social_icon_map as $field_key => $icon_meta) {
-                        $link_url = get_field($field_key, $user_key);
-                        if (!empty($link_url)) {
-                            $social_links[$field_key] = $link_url;
-                        }
-                    }
-
                     $first_name = get_user_meta($writer['user_id'], 'first_name', true);
                     if (empty($first_name)) {
                         $first_name = $writer['name'];
                     }
                     $first_name = sanitize_text_field($first_name);
+
+                    $social_links_markup = bbb_render_author_social_links(
+                        $writer['user_id'],
+                        [
+                            'container'          => 'div',
+                            'container_class'    => 'author-hero__socials',
+                            'link_class'         => 'has-external-icon',
+                            'link_rel'           => 'noopener',
+                            'link_target'        => '_blank',
+                            'icon_class'         => 'img-hover',
+                            'lucide_class'       => 'icon-bold',
+                            'aria_label_pattern' => esc_html__('%1$s on %2$s', 'bigbluebox'),
+                            'author_name'        => sanitize_text_field($writer['name']),
+                        ]
+                    );
                     ?>
                     <div class="team-writers__panel">
                         <div class="team-writers__content">
                             <h5><?php echo esc_html($writer['name']); ?></h5>
-                            <p class="small"><?php echo esc_html__($writer['role'], 'bigbluebox'); ?></p>
-                            <?php if (!empty($social_links)) : ?>
-                                <div class="author-hero__socials">
-                                    <?php foreach ($social_links as $network => $url) : ?>
-                                        <?php $icon_meta = $social_icon_map[$network]; ?>
-                                        <a href="<?php echo esc_url($url); ?>" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr($icon_meta['label']); ?>">
-                                            <img class="<?php echo esc_attr($icon_meta['class']); ?> img-hover" src="<?php echo esc_url(get_template_directory_uri() . '/images/icons/' . $icon_meta['icon']); ?>" alt="<?php echo esc_attr($icon_meta['label']); ?>" width="24" height="24">
-                                        </a>
-                                    <?php endforeach; ?>
-                                </div>
+                            <p class="small"><?php echo esc_html($writer['role']); ?></p>
+                            <?php if (!empty($social_links_markup)) : ?>
+                                <?php echo $social_links_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup escaped within helper. ?>
                             <?php endif; ?>
                             <a class="team-writers__link" href="<?php echo esc_url(get_author_posts_url($writer['user_id'])); ?>">
                                 <button class="button"><?php printf(esc_html__('More about %s', 'bigbluebox'), esc_html($first_name)); ?></button>

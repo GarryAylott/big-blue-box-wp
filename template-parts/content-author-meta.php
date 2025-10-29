@@ -28,24 +28,31 @@ if ( array_key_exists($author_name, $author_images) ) {
     $author_image_url = get_template_directory_uri() . '/images/authors/author-avatar-small-default.webp';
 }
 
-// Display the author name, image, and post date
-if ( array_key_exists($author_name, $author_images) ) {
-    $author_image_url = get_template_directory_uri() . '/images/authors/' . $author_images[$author_name];
-} else {
-    // Default author image if the author is not found in the array
-    $author_image_url = get_template_directory_uri() . '/images/authors/author-avatar-small-default.webp';
-}
-?>
-
-<?php
 // Use a generic argument for future-proofing: link_author_name (default: is_single())
 $link_author_name = $args['link_author_name'] ?? is_single();
+$is_podcast_post = has_category( 'podcasts' );
+$podcast_episode_display = '';
+
+if ( $is_podcast_post ) {
+    $ep_label = get_field( 'podcast_episode_number' );
+    $ep_type  = get_field( 'podcast_episode_type' );
+
+    if ( is_numeric( $ep_label ) ) {
+        $podcast_episode_display = 'Episode ' . esc_html( $ep_label );
+    } elseif ( 'N/A' === $ep_label && ! empty( $ep_type ) ) {
+        $podcast_episode_display = esc_html( $ep_type );
+    } elseif ( $ep_label ) {
+        $podcast_episode_display = esc_html( $ep_label );
+    }
+}
 ?>
 <div class="author-meta">
     <img class="author-image" src="<?php echo esc_url($author_image_url); ?>" width="48" height="70" alt="<?php echo esc_attr($author_name); ?>">
     <div class="author-meta__details">
         <p class="author-meta__author-name small">
-            <?php if ( $link_author_name ) : ?>
+            <?php if ( $is_podcast_post && $podcast_episode_display ) : ?>
+                <?php echo $podcast_episode_display; ?>
+            <?php elseif ( $link_author_name ) : ?>
                 <a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>">
                     <?php echo esc_html( $author_name ); ?>
                 </a>

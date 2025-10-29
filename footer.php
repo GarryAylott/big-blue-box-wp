@@ -88,13 +88,18 @@
 							<h6>Legals</h6>
 						</li>
 						<li>
-							<a href="#">
-								Privacy policy
+							<a href="/privacy-policy">
+								Privacy Policy
 							</a>
 						</li>
 						<li>
-							<a href="#">
-								Terms and conditions
+							<a href="/cookie-policy">
+								Cookie Policy
+							</a>
+						</li>
+						<li>
+							<a href="/terms-disclaimer">
+								Terms & Disclaimer
 							</a>
 						</li>
 					</ul>
@@ -106,23 +111,18 @@
 							<h6>The Big Blue Box</h6>
 						</li>
 						<li>
-							<a href="#">
-								About us
+							<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">
+								About Us
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="/code-of-conduct/">
 								Code of conduct
 							</a>
 						</li>
 						<li>
-							<a href="#">
-								Leave a review
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								FAQs
+							<a href="/advertising/">
+								Advertising
 							</a>
 						</li>
 					</ul>
@@ -132,7 +132,7 @@
 
 			<div class="footer-bottom">
 				<p class="small">
-					©<?php echo '2014 - ' . date('Y'); ?> The Big Blue Box Original Content. This website and audio podcast has no affiliation with the BBC and Doctor Who is ©BBC. Any copyright infringement is unintentional.
+					©<?php echo '2014 - ' . date('Y'); ?> The Big Blue Box original content. This website and audio podcast has no affiliation with the BBC and Doctor Who is ©BBC. Any copyright infringement is unintentional.
 				</p>
 			</div>
 		</div>

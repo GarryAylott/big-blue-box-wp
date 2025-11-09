@@ -10,7 +10,11 @@ get_header();
 ?>
 
 <div class="hero-bg-image">
-    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_about.webp" decoding="async" alt="" fetchpriority="high">
+    <picture>
+        <source srcset="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.avif" type="image/avif">
+        <source srcset="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.webp" type="image/webp">
+        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.webp" decoding="async" alt="" fetchpriority="high">
+    </picture>
 </div>
 
 <main id="primary" class="site-main">

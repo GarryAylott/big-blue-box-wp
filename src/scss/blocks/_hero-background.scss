@@ -8,6 +8,7 @@ Layout and styling for the large background image that appears at the top of mos
 .hero-bg-image {
     position: fixed;
     inset: 0;
+    transition: opacity 0.1s ease-out;
     overflow: hidden;
     z-index: -2;
 
@@ -19,8 +20,7 @@ Layout and styling for the large background image that appears at the top of mos
         height: 100%;
         object-fit: cover;
         will-change: opacity;
-        opacity: 0;
-        transition: opacity 0.1s ease-out;
+        opacity: inherit;
     }
 }
 
@@ -38,17 +38,52 @@ body:is(.author) {
     }
 }
 
+// Darken layers
+//All pages other than homepage or single post pages
 body:not(.home):not(.single) .hero-bg-image {
     &::after {
         content: "";
         position: fixed;
         inset: 0;
-        background: rgba(6, 12, 19, 0.5);
+        background: hsl(var(--clr-surface-600-hsl) / 0.7);
         z-index: 1;
         pointer-events: none;
 
         @media (max-width: 48rem) {
-            background: rgba(6, 12, 19, 0.6);
+            background: hsl(var(--clr-surface-600-hsl) / 0.8);
+        }
+    }
+}
+
+// Review Compendium page
+body:not(.home):is(.page-template-page-reviews-compendium) .hero-bg-image {
+    &::after {
+        background: hsl(var(--clr-surface-600-hsl) / 0.75);
+
+        @media (max-width: 48rem) {
+            background: hsl(var(--clr-surface-600-hsl) / 0.8);
+        }
+    }
+}
+
+// Category pages
+body:not(.home):is(.category) .hero-bg-image {
+    &::after {
+        background: hsl(var(--clr-surface-600-hsl) / 0.4);
+
+        @media (max-width: 48rem) {
+            background: hsl(var(--clr-surface-600-hsl) / 0.6);
+        }
+    }
+}
+
+// Legal pages
+body:not(.home):is(.page-template-page-legal-template) .hero-bg-image {
+    &::after {
+        background: hsl(var(--clr-surface-600-hsl) / 0.6);
+
+        @media (max-width: 48rem) {
+            background: hsl(var(--clr-surface-600-hsl) / 0.7);
         }
     }
 }

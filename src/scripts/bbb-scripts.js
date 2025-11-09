@@ -48,7 +48,7 @@ const CONFIG = {
     SELECTORS: {
         nav: ".nav",
         navToggle: ".menu-nav-toggle",
-        bgImage: ".hero-bg-image img",
+        bgImage: ".hero-bg-image",
         searchIcon: ".nav-search-icon",
         searchOverlay: "#searchOverlay",
         podcastMenu: ".pod-links-menu details",

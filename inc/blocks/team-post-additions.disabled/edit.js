@@ -25,12 +25,17 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <div {...useBlockProps()}>
             <InspectorControls>
-                <PanelBody title={__("Team Post Additions Settings", "bigbluebox")}>
+                <PanelBody
+                    title={__("Team Post Additions Settings", "bigbluebox")}
+                >
                     <SelectControl
                         label={__("Contributor", "bigbluebox")}
                         value={userId}
                         options={[
-                            { label: __("Select a user", "bigbluebox"), value: 0 },
+                            {
+                                label: __("Select a user", "bigbluebox"),
+                                value: 0,
+                            },
                             ...options,
                         ]}
                         onChange={(val) =>

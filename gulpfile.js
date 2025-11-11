@@ -46,11 +46,17 @@ const runtimeGlobs = [
 
 const distDir = "dist";
 
+// -----------------------------------------------------------------------------
 // File paths
+// -----------------------------------------------------------------------------
 const paths = {
     styles: {
-        src: "src/scss/**/*.scss",
+        src: "src/scss/style.scss",
         dest: "./",
+    },
+    editorStyles: {
+        src: "src/scss/editor.scss",
+        dest: "dist/css/",
     },
     scripts: {
         src: "src/scripts/**/*.js",
@@ -59,6 +65,9 @@ const paths = {
     php: "**/*.php",
 };
 
+// -----------------------------------------------------------------------------
+// Compile main theme styles (style.css)
+// -----------------------------------------------------------------------------
 function compileStyles({
     sourcemapsEnabled = true,
     streamToBrowser = false,
@@ -92,6 +101,28 @@ function compileStyles({
     return pipeline;
 }
 
+// -----------------------------------------------------------------------------
+// Compile block editor styles (editor.css)
+// -----------------------------------------------------------------------------
+function compileEditorStyles() {
+    return gulp
+        .src(paths.editorStyles.src)
+        .pipe(sourcemaps.init())
+        .pipe(
+            sass({ outputStyle: "compressed", charset: false }).on(
+                "error",
+                sass.logError
+            )
+        )
+        .pipe(postcss([autoprefixer(), cssnano()]))
+        .pipe(sourcemaps.write("."))
+        .pipe(gulp.dest(paths.editorStyles.dest))
+        .pipe(bs.stream({ match: "**/*.css" }));
+}
+
+// -----------------------------------------------------------------------------
+// Bundle scripts using Rollup
+// -----------------------------------------------------------------------------
 async function bundleScripts({
     production = false,
     reloadBrowser = false,
@@ -131,15 +162,24 @@ async function bundleScripts({
     }
 }
 
+// -----------------------------------------------------------------------------
+// Exports for different build contexts
+// -----------------------------------------------------------------------------
 export const stylesDev = () =>
     compileStyles({ sourcemapsEnabled: true, streamToBrowser: true });
 export const stylesBuild = () => compileStyles({ sourcemapsEnabled: false });
+
+export const editorStylesDev = compileEditorStyles;
+export const editorStylesBuild = compileEditorStyles;
 
 export const scriptsDev = () =>
     bundleScripts({ production: false, reloadBrowser: true });
 export const scriptsBuild = () =>
     bundleScripts({ production: true, reloadBrowser: false });
 
+// -----------------------------------------------------------------------------
+// Dist build helpers
+// -----------------------------------------------------------------------------
 export const cleanDist = () => deleteAsync([`${distDir}/**`, `!${distDir}`]);
 
 export const copyRuntime = () =>
@@ -147,7 +187,9 @@ export const copyRuntime = () =>
         .src(runtimeGlobs, { base: ".", nodir: true, allowEmpty: true })
         .pipe(gulp.dest(distDir));
 
+// -----------------------------------------------------------------------------
 // BrowserSync
+// -----------------------------------------------------------------------------
 export function serve(done) {
     bs.init({
         proxy: "https://big-blue-box.local",
@@ -163,20 +205,29 @@ export function serve(done) {
     done();
 }
 
+// -----------------------------------------------------------------------------
 // Watch files
+// -----------------------------------------------------------------------------
 export function watchFiles() {
-    gulp.watch(paths.styles.src, stylesDev);
+    gulp.watch("src/scss/**/*.scss", stylesDev);
+    gulp.watch("src/scss/wp-blocks/**/*.scss", editorStylesDev);
+    gulp.watch(paths.editorStyles.src, editorStylesDev);
     gulp.watch(paths.scripts.src, scriptsDev);
     gulp.watch(paths.php).on("change", bs.reload);
 }
 
-// Default task
+// -----------------------------------------------------------------------------
+// Combined tasks
+// -----------------------------------------------------------------------------
 export const dev = gulp.series(
-    gulp.parallel(stylesDev, scriptsDev),
+    gulp.parallel(stylesDev, scriptsDev, editorStylesDev),
     serve,
     watchFiles
 );
-export const build = gulp.series(gulp.parallel(stylesBuild, scriptsBuild));
+
+export const build = gulp.series(
+    gulp.parallel(stylesBuild, scriptsBuild, editorStylesBuild)
+);
 export const dist = gulp.series(build, cleanDist, copyRuntime);
 export const prod = dist;
 

@@ -68,31 +68,6 @@
         display: block;
     }
 
-    /* WP block images reset */
-    figure.wp-caption,
-    .wp-block-image img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    figure.aligncenter img {
-        margin-inline: auto;
-    }
-
-    figure.wp-embed-aspect-16-9 iframe {
-        width: 100%;
-        height: 100%;
-        aspect-ratio: 16 / 9;
-    }
-
-    .entry-content iframe {
-        min-width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        border-radius: var(--radius-small);
-    }
-
     /* Inherit fonts for inputs and buttons */
     input,
     button,

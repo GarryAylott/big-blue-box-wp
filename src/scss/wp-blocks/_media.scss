@@ -1,0 +1,125 @@
+@use "utilities" as *;
+
+/* 
+STANDARD IMAGES RESET
+Styles for general post images with captions
+*/
+.entry-content {
+    figure,
+    .wp-post-image figure {
+        max-width: 100%;
+        inline-size: fit-content;
+        margin-inline: auto;
+        padding-block-start: var(--space-m);
+        margin-block-end: var(--space-xl);
+
+        figcaption {
+            contain: inline-size;
+            font-size: var(--step--1);
+            font-style: italic;
+            color: var(--clr-text-900);
+            margin-block-start: var(--space-2xs);
+        }
+    }
+
+    figure,
+    figure img,
+    iframe,
+    img {
+        border-radius: var(--radius-normal);
+    }
+}
+
+/* 
+BLOCK IMAGES RESET
+Overrides for WP's default block images and videos/iframes
+*/
+.entry-content {
+    figure.wp-caption,
+    .wp-block-image img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    figure.aligncenter img {
+        margin-inline: auto;
+    }
+
+    .wp-block-embed {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+
+        iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+    }
+}
+
+/* 
+IMAGE GALLERY
+Custom gallery styles overriding WordPress defaults
+*/
+.wp-block-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m) !important;
+    padding: 0;
+    list-style: none;
+
+    > .wp-block-image {
+        flex: 1 1 260px; // min width remains but allows items to stretch to fill rows
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            /* Optional: enforce a consistent tile ratio.
+         Comment this out if you want images to keep their natural proportions. */
+            aspect-ratio: 4 / 3;
+        }
+
+        figcaption {
+            font-size: var(--step--1);
+            line-height: 1.4;
+            text-align: center;
+            color: var(--clr-text-900, #666);
+            margin-block-start: var(--space-2xs, 0.5rem);
+        }
+    }
+}
+
+/* 
+IMAGE COVER
+Custom image cover styles overriding WordPress defaults
+*/
+.wp-block-cover {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding-block-start: var(--space-m);
+
+    .wp-block-cover__inner-container {
+        position: absolute;
+        bottom: var(--space-l);
+        width: fit-content;
+        max-width: 90%;
+        line-height: 1.45;
+        text-align: center;
+        background: hsl(var(--clr-surface-300-hsl) / 0.8);
+        backdrop-filter: blur(5px) saturate(150%) brightness(180%) blur(10px);
+        -webkit-backdrop-filter: blur(10px) saturate(130%) brightness(150%);
+        margin-inline: auto;
+        padding-block: var(--space-2xs);
+        padding-inline: var(--space-xs);
+        border-radius: var(--radius-xs);
+    }
+}

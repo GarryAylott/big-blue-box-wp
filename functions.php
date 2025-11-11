@@ -92,7 +92,6 @@ function bigbluebox_setup() {
 }
 add_action( 'after_setup_theme', 'bigbluebox_setup' );
 
-
 /**
  * Add custom search icon to dynamic WP top nav
  */

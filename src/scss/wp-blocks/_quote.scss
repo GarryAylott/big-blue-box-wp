@@ -1,0 +1,28 @@
+@use "utilities" as *;
+
+/* 
+QUOTE BLOCK STYLES
+Styles for the Quote block in the WP block editor
+*/
+
+.editor-styles-wrapper .wp-block-quote {
+    border-left: 3px solid
+        var(
+            --wp--preset--color--primary,
+            hsl(var(--clr-brand-accent-darker-hsl))
+        );
+    padding-left: 1rem;
+    font-style: normal;
+
+    p {
+        margin-bottom: 0.5rem; // reduce spacing before citation
+    }
+
+    cite,
+    footer {
+        display: block;
+        opacity: 0.8;
+        margin-top: 0.25rem;
+        font-size: 0.875em;
+    }
+}

@@ -5,7 +5,7 @@ Layout and styling for in-post blockquotes.
 
 :is(.single-post) {
     blockquote {
-        margin-block: var(--space-2xl);
+        margin-block: var(--space-xl);
     }
 }
 
@@ -21,15 +21,16 @@ blockquote {
         margin-block-end: var(--space-2xs);
         background: linear-gradient(
             90deg,
-            hsl(334, 88%, 68%),
-            hsl(215, 95%, 55%)
+            hsl(var(--clr-brand-accent-hsl)),
+            hsl(var(--clr-brand-primary-hsl))
         );
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     p {
-        font-weight: var(--fw-semibold);
+        font-size: var(--step--1);
         font-style: italic;
+        color: var(--clr-text-400);
     }
 }

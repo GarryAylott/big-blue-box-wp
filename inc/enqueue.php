@@ -33,6 +33,18 @@ function bigbluebox_scripts() {
 }
 add_action('wp_enqueue_scripts', 'bigbluebox_scripts');
 
+// Stop WP core block/layout styles.
+add_action(
+    'wp_enqueue_scripts',
+    function () {
+        wp_dequeue_style( 'wp-block-library' );
+        wp_dequeue_style( 'wp-block-library-theme' );
+        wp_dequeue_style( 'global-styles' ); // theme.json / layout CSS
+        remove_action( 'wp_enqueue_scripts', 'wp_enqueue_block_support_styles', 1 );
+    },
+    20
+);
+
 // Prevent WP from loading mediaelement.js
 function bigbluebox_disable_mediaelement() {
 	wp_deregister_script('wp-mediaelement');
@@ -41,3 +53,16 @@ function bigbluebox_disable_mediaelement() {
 	wp_deregister_style('mediaelement');
 }
 add_action('wp_enqueue_scripts', 'bigbluebox_disable_mediaelement', 100);
+
+// Enqueue editor-only styles for the block editor.
+add_action( 'enqueue_block_editor_assets', function() {
+    $editor_style_path = get_template_directory() . '/dist/css/editor.css';
+    $editor_style_ver  = file_exists( $editor_style_path ) ? filemtime( $editor_style_path ) : _S_VERSION;
+
+    wp_enqueue_style(
+        'bigbluebox-editor-style',
+        get_template_directory_uri() . '/dist/css/editor.css',
+        [],
+        $editor_style_ver
+    );
+} );

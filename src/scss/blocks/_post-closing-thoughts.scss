@@ -24,8 +24,8 @@ Layout and styling for the closing paragraph and review score.
         height: 200px;
         background: radial-gradient(
             circle,
-            hsla(221, 91%, 70%, 0.15) 0,
-            hsla(221, 91%, 70%, 0) 60%
+            hsl(var(--clr-brand-accent-darker-hsl) / 0.4) 0,
+            hsl(var(--clr-brand-accent-darker-hsl) / 0) 60%
         );
         border-radius: var(--radius-circle);
         filter: blur(80px);

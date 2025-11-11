@@ -141,7 +141,7 @@ Layout and styling for single post pages.
 
         .entry-content {
             :is(h2, h3, h4, h5, h6):not(:first-child) {
-                margin-block-start: var(--space-2xl);
+                margin-block-start: var(--space-xl);
 
                 + figure,
                 + .wp-block-image {
@@ -155,7 +155,7 @@ Layout and styling for single post pages.
 
             ul,
             ol {
-                margin-inline-start: 1.1rem;
+                margin-inline-start: var(--space-l);
                 @extend .flow-tiny;
             }
         }

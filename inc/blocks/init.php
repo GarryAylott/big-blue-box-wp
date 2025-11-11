@@ -23,6 +23,13 @@ function bbb_register_blocks() {
     $directories = glob( $blocks_dir . '/*', GLOB_ONLYDIR );
 
     foreach ( $directories as $dir ) {
+        $block_name = basename( $dir );
+
+        // Skip the Team Post Additions block while it's parked.
+        if ( 'team-post-additions' === $block_name ) {
+            continue;
+        }
+
         if ( file_exists( $dir . '/block.json' ) ) {
             register_block_type( $dir );
         }

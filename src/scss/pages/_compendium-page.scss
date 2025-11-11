@@ -16,6 +16,7 @@ REVIEW COMPENDIUM TABLES
         select {
             width: 100%;
             max-width: 22rem;
+            height: calc(var(--space-l) + var(--space-3xs));
         }
 
         p {

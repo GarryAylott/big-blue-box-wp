@@ -74,8 +74,12 @@ form {
 
 // Out-of-form dropdown select
 select {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
     font-size: var(--step--1);
-    padding: 0.6rem 1rem;
+    padding-inline: var(--space-s);
     background: var(--clr-surface-600);
     color-scheme: dark;
     border: 1px solid var(--clr-border-darker);
@@ -107,7 +111,7 @@ option {
     display: flex;
     justify-content: flex-start;
     gap: 0.25rem;
-    padding-inline: 1.6rem 1rem;
+    padding-inline-start: var(--space-xs);
     padding-block: 0.5rem;
     color: var(--clr-text-400);
     background: var(--clr-surface-400);
@@ -141,8 +145,9 @@ option {
 
     &::checkmark {
         content: "↓";
+        position: absolute;
         font-size: 1.2rem;
         order: 1;
-        margin-left: auto;
+        right: var(--space-s);
     }
 }

@@ -25,8 +25,11 @@ function bbb_register_blocks() {
     foreach ( $directories as $dir ) {
         $block_name = basename( $dir );
 
-        // Skip the Team Post Additions block while it's parked.
-        if ( 'team-post-additions' === $block_name ) {
+        // Skip the Team Post Additions block while it's parked (including .disabled rename).
+        if (
+            'team-post-additions' === $block_name
+            || 'team-post-additions.disabled' === $block_name
+        ) {
             continue;
         }
 

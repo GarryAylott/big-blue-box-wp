@@ -122,6 +122,7 @@ Layout and styling for the site footer
             }
 
             &:not(:first-child) {
+                font-family: var(--font-family-headings);
                 font-size: var(--step--1);
             }
 

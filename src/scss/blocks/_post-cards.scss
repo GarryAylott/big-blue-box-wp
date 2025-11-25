@@ -5,18 +5,25 @@ POST PREVIEW CARDS
 Layout and styling for articles post cards.
 */
 
-// Layout
+// Responsive Grid layout for cards
 @mixin post-cards-grid {
+    --min-col-size: 20rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(var(--min-col-size), 100%), 1fr)
+    );
     gap: var(--space-m);
 }
 
-.post-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-    gap: var(--space-m);
-}
+// .post-cards-grid {
+//     display: grid;
+//     grid-template-columns: repeat(
+//         auto-fit,
+//         minmax(min(var(--min-col-size), 100%), 1fr)
+//     );
+//     gap: var(--space-m);
+// }
 
 // Card styles
 article {
@@ -75,9 +82,57 @@ article {
             margin-block-start: var(--space-m);
         }
     }
+
+    .post-card-hero-details {
+        &__content {
+            max-width: 50rem;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            margin-block-start: -6px;
+            z-index: 1;
+
+            &:not(h1) {
+                color: var(--clr-text-400);
+            }
+
+            p:not(.icon-text-group) {
+                margin-block-end: var(--space-2xs);
+            }
+        }
+
+        &__details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+
+            .icon-text-group {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+
+        &__copy {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+
+            h1 {
+                font-size: var(--step-5);
+            }
+        }
+
+        &__excerpt {
+            line-height: 1.4;
+
+            @media (max-width: 930px) {
+                display: none;
+            }
+        }
+    }
 }
 
-// Specific tweak to suggested posts on single posts
+// Specific tweak to suggested posts on single post pages
 body:is(.single-post) {
     article.has-post-thumbnail .author-meta {
         &__author-name {

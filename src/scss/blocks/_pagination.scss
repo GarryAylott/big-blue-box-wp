@@ -13,6 +13,7 @@ Styles for post pagination section.
         display: flex;
         gap: var(--space-s);
         flex-wrap: wrap;
+        font-family: var(--font-family-headings);
         list-style: none;
 
         .pagination-item:not(.pagination__dots) {

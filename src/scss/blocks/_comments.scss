@@ -85,8 +85,13 @@ Layout and styling for comments section at the end of articles.
                 border-radius: var(--radius-small);
             }
 
+            .gravatar-img {
+                border-radius: var(--radius-circle);
+            }
+
             .team-img,
-            .default-img {
+            .default-img,
+            .gravatar-img {
                 width: 64px;
                 height: auto;
             }
@@ -113,12 +118,13 @@ Layout and styling for comments section at the end of articles.
             .comment-meta {
                 display: flex;
                 flex-direction: column;
-                gap: calc(var(--space-2xs) - 4px);
 
                 .comment-author {
                     display: flex;
                     align-items: center;
                     gap: var(--space-2xs);
+                    font-family: var(--font-family-headings);
+                    font-size: var(--step-1);
                     font-weight: var(--fw-bold);
 
                     @media (max-width: 48rem) {
@@ -130,16 +136,18 @@ Layout and styling for comments section at the end of articles.
                     .team-badge {
                         font-size: var(--step--2);
                         color: var(--clr-text-400);
-                        padding-block: 0.35rem;
+                        padding-block-start: 0.45rem;
+                        padding-block-end: 0.35rem;
                         padding-inline: 0.75rem;
-                        background: hsl(var(--clr-brand-accent-hsl) / 0.15);
+                        background: hsl(var(--clr-brand-primary-hsl) / 0.15);
                         border-radius: var(--radius-small);
                     }
                 }
 
                 .comment-date {
-                    color: var(--clr-text-900);
+                    font-family: var(--font-family-headings);
                     font-size: var(--step--1);
+                    color: var(--clr-text-900);
                 }
             }
         }

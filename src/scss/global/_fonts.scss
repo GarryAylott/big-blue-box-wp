@@ -1,60 +1,81 @@
 /* 
 FONTS
-Self-hosted font details.
+Self-hosted fonts.
 */
 
+// Body font
 @font-face {
-    font-family: "Jakarta";
+    font-family: "Bitter";
     font-weight: 300;
     font-style: normal;
-    src: url("fonts/PlusJakartaSans-Light.woff2") format("woff2");
+    src: url("fonts/Bitter-Light.woff2") format("woff2");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Jakarta";
+    font-family: "Bitter";
     font-weight: 300;
     font-style: italic;
-    src: url("fonts/PlusJakartaSans-LightItalic.woff2") format("woff2");
+    src: url("fonts/Bitter-LightItalic.woff2") format("woff2");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Jakarta";
+    font-family: "Bitter";
     font-weight: 400;
     font-style: normal;
-    src: url("fonts/PlusJakartaSans-Regular.woff2") format("woff2");
+    src: url("fonts/Bitter-Regular.woff2") format("woff2");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Jakarta";
+    font-family: "Bitter";
     font-weight: 400;
     font-style: italic;
-    src: url("fonts/PlusJakartaSans-Italic.woff2") format("woff2");
+    src: url("fonts/Bitter-Italic.woff2") format("woff2");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Jakarta";
-    font-weight: 600;
-    font-style: normal;
-    src: url("fonts/PlusJakartaSans-SemiBold.woff2") format("woff2");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Jakarta";
-    font-weight: 600;
-    font-style: italic;
-    src: url("fonts/PlusJakartaSans-SemiBoldItalic.woff2") format("woff2");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Jakarta";
+    font-family: "Bitter";
     font-weight: 700;
     font-style: normal;
-    src: url("fonts/PlusJakartaSans-Bold.woff2") format("woff2");
+    src: url("fonts/Bitter-Bold.woff2") format("woff2");
     font-display: swap;
+}
+
+@font-face {
+    font-family: "Bitter";
+    font-weight: 700;
+    font-style: italic;
+    src: url("fonts/Bitter-BoldItalic.woff2") format("woff2");
+    font-display: swap;
+}
+
+// Headings
+@font-face {
+    font-family: "Big Blue Box Headings";
+    font-weight: 600;
+    font-style: normal;
+    src: url("fonts/Pmath-SemiBold.woff2") format("woff2");
+    font-display: swap;
+    font-feature-settings: "cv23" on, "cv25" on, "cv27" on, "cv28" on, "cv29" on;
+}
+
+@font-face {
+    font-family: "Big Blue Box Headings";
+    font-weight: 700;
+    font-style: normal;
+    src: url("fonts/Pmath-Bold.woff2") format("woff2");
+    font-display: swap;
+    font-feature-settings: "cv23" on, "cv25" on, "cv27" on, "cv28" on, "cv29" on;
+}
+
+@font-face {
+    font-family: "Big Blue Box Headings";
+    font-weight: 800;
+    font-style: normal;
+    src: url("fonts/Pmath-Black.woff2") format("woff2");
+    font-display: swap;
+    font-feature-settings: "cv23" on, "cv25" on, "cv27" on, "cv28" on, "cv29" on;
 }

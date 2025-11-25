@@ -69,10 +69,10 @@ body:not(.home):is(.page-template-page-reviews-compendium) .hero-bg-image {
 // Category pages
 body:not(.home):is(.category) .hero-bg-image {
     &::after {
-        background: hsl(var(--clr-surface-600-hsl) / 0.4);
+        background: hsl(var(--clr-surface-600-hsl) / 0.3);
 
         @media (max-width: 48rem) {
-            background: hsl(var(--clr-surface-600-hsl) / 0.6);
+            background: hsl(var(--clr-surface-600-hsl) / 0.4);
         }
     }
 }

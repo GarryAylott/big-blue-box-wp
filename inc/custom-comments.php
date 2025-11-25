@@ -40,7 +40,8 @@ function bbb_gravatar_exists($id_or_email) {
         return (bool) $cached;
     }
 
-    $gravatar_url = 'https://www.gravatar.com/avatar/' . $hash . '?d=404&s=64';
+    // Use a higher size so retina layouts keep the image sharp.
+    $gravatar_url = 'https://www.gravatar.com/avatar/' . $hash . '?d=404&s=256';
 
     $response = wp_remote_head($gravatar_url);
     $exists = !is_wp_error($response) && isset($response['response']['code']) && $response['response']['code'] == 200;
@@ -145,7 +146,7 @@ function custom_comments_callback($comment, $args, $depth) {
 
     if ($comment->user_id) {
         // Registered user: get their avatar (Gravatar or custom)
-        $avatar_url = get_avatar_url($comment->user_id, ['size' => 64]);
+        $avatar_url = get_avatar_url($comment->user_id, ['size' => 256]);
         if (strpos($avatar_url, 'gravatar.com/avatar/') !== false) {
             $avatar_type = 'gravatar-img';
         } else {
@@ -153,7 +154,7 @@ function custom_comments_callback($comment, $args, $depth) {
         }
     } else {
         // Guest: use email to get Gravatar, fallback to default
-        $avatar_url = get_avatar_url($comment, ['size' => 64]);
+        $avatar_url = get_avatar_url($comment, ['size' => 256]);
         if (bbb_gravatar_exists($comment)) {
             $avatar_type = 'gravatar-img';
         } else {
@@ -212,7 +213,7 @@ function custom_comments_callback($comment, $args, $depth) {
                 <div class="comment-content">
                     <?php comment_text(); ?>
                     <?php if ($comment->comment_approved === '0') : ?>
-                        <p class="comment-awaiting-moderation small"><?php esc_html_e( 'Comment received! The TARDIS is holding it in the temporal buffer for moderation. It will be approved shortly.', 'bigbluebox' ); ?></p>
+                        <p class="comment-awaiting-moderation small"><?php esc_html_e( 'Comment received! The TARDIS is holding it in the temporal buffer for moderation and will approve (or not) shortly.', 'bigbluebox' ); ?></p>
                     <?php endif; ?>
                 </div>
             </div>

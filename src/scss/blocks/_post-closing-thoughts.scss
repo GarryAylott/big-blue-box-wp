@@ -75,7 +75,7 @@ Layout and styling for the closing paragraph and review score.
             height: auto;
             background: transparent;
             transform: rotate(-90deg); /* Stroke starts from top */
-            filter: drop-shadow(0 0 4px var(--clr-brand-primary));
+            filter: drop-shadow(0 0 5px var(--clr-brand-accent));
             position: relative;
 
             @media (max-width: 39.938rem) {
@@ -103,7 +103,7 @@ Layout and styling for the closing paragraph and review score.
             font-weight: var(--fw-bold);
             letter-spacing: -8px;
             color: var(--clr-text-100);
-            filter: drop-shadow(0 0 4px var(--clr-brand-primary));
+            filter: drop-shadow(0 0 5px var(--clr-brand-accent));
             pointer-events: none;
 
             @media (max-width: 39.938rem) {

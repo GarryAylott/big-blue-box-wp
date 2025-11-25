@@ -32,6 +32,10 @@ Layout and styling for the list of social channels.
         display: flex;
         align-items: center;
         gap: var(--space-xs);
+
+        // p {
+        //     font-family: var(--font-family-headings);
+        // }
     }
 }
 

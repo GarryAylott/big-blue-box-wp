@@ -48,40 +48,32 @@ Layout and styling for single post pages.
 
             .post-meta {
                 display: flex;
-                gap: var(--space-xl);
+                flex-wrap: wrap;
+                column-gap: var(--space-2xl);
+                row-gap: var(--space-s);
+                font-family: var(--font-family-headings);
 
-                p.post-meta-title {
-                    font-size: var(--step--2);
-                    font-weight: var(--fw-semibold);
-                }
+                // @media (max-width: 700px) {
+                //     flex-direction: column;
+                //     gap: var(--space-s);
+                // }
 
                 .post-content-meta {
                     display: flex;
                     flex-direction: column;
-                    gap: var(--space-3xs);
+                    gap: calc(var(--space-3xs) - 0.15rem);
+
+                    .post-meta-title {
+                        font-size: var(--step--1);
+                        font-weight: var(--fw-bold);
+                        color: var(--clr-text-900);
+                    }
 
                     .post-meta-content {
                         display: flex;
+                        flex-wrap: wrap;
                         align-items: center;
                         gap: 4px;
-
-                        @media (max-width: 31.25rem) {
-                            flex-direction: column;
-                            align-items: flex-start;
-                            gap: var(--space-2xs);
-
-                            .separator {
-                                border: 0;
-                                clip: rect(0 0 0 0);
-                                height: 0;
-                                margin: 0;
-                                overflow: hidden;
-                                padding: 0;
-                                position: absolute;
-                                width: 1px;
-                                white-space: nowrap;
-                            }
-                        }
 
                         .reading-time {
                             display: inline-flex;
@@ -89,6 +81,10 @@ Layout and styling for single post pages.
                             gap: var(--space-2xs);
                         }
                     }
+                }
+
+                .post-tags {
+                    gap: calc(var(--space-3xs) - 0.25rem);
                 }
             }
         }
@@ -172,17 +168,8 @@ Layout and styling for single post pages.
             }
 
             .author-info {
-                // img.author-image {
-                //     width: calc(104px / 2);
-                //     height: auto;
-                // }
-
                 a {
                     display: block;
-                }
-
-                &__name {
-                    font-weight: var(--fw-semibold);
                 }
             }
 

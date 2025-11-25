@@ -126,7 +126,7 @@ if (is_tag()) {
                                                 height="<?php echo $doctor_height; ?>">
                                         <?php endif; ?>
                                     </div>
-                                    <p>Fav Doctor: <strong><?php echo esc_html($fav_doctor); ?></strong></p>
+                                    <h6>Fav Doctor: <strong><?php echo esc_html($fav_doctor); ?></strong></h6>
                                 </div>
                             <?php endif; ?>
 
@@ -142,7 +142,7 @@ if (is_tag()) {
                                                 height="<?php echo $story_height; ?>">
                                         <?php endif; ?>
                                     </div>
-                                    <p>Fav Story: <strong><?php echo esc_html($fav_story); ?></strong></p>
+                                    <h6>Fav Story: <strong><?php echo esc_html($fav_story); ?></strong></h6>
                                 </div>
                             <?php endif; ?>
                         </div>

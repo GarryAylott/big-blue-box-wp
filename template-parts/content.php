@@ -46,32 +46,32 @@
 
 							if ( $episode_text ) :
 								?>
-								<p class="small"><?php echo esc_html( $episode_text ); ?>,</p>
+								<p><?php echo esc_html( $episode_text ); ?>,</p>
 							<?php endif; ?>
 
-							<p class="small"><?php echo esc_html( get_the_date() ); ?></p>
+							<p><?php echo esc_html( get_the_date() ); ?></p>
 
 					<?php else : ?>
-						<p class="small">By <?php echo esc_html( get_the_author() ); ?> on</p>
-						<p class="small"><?php echo esc_html( get_the_date() ); ?></p>
+						<p>By <?php echo esc_html( get_the_author() ); ?> on</p>
+						<p><?php echo esc_html( get_the_date() ); ?></p>
 					<?php endif; ?>
 					</div>
 				</div>
 
 				<?php if ( ! has_category( 'podcasts' ) ) : ?>
-					<section class="post-content-meta">
+					<div class="post-content-meta">
 						<p class="post-meta-title"><?php esc_html_e( 'Reading Time', 'bigbluebox' ); ?></p>
 						<div class="post-meta-content">
-							<p class="reading-time small">
+							<p class="reading-time">
 								<?php echo bbb_get_icon( '<i data-lucide="clock"></i>' ); ?>
 								<?php echo esc_html( bbb_estimated_reading_time() ); ?>
 							</p>
 						</div>
-					</section>
+					</div>
 				<?php endif; ?>
 
 				<?php if ( has_tag() ) : ?>
-					<div class="post-tags">
+					<div class="post-content-meta post-tags">
 						<p class="post-meta-title">Tags</p>
 						<?php the_tags( '<ul role="list"><li>', '</li><li>', '</li></ul>' ); ?>
 					</div>

@@ -85,7 +85,7 @@
 				<div class="footer-top__col2">
 					<ul class="footer-list flow-tiny" role="list">
 						<li>
-							<h6>Legals</h6>
+							<h5>Legals</h5>
 						</li>
 						<li>
 							<a href="/privacy-policy">
@@ -108,7 +108,7 @@
 				<div class="footer-top__col3">
 					<ul class="footer-list flow-tiny" role="list">
 						<li>
-							<h6>The Big Blue Box</h6>
+							<h5>The Big Blue Box</h5>
 						</li>
 						<li>
 							<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">

@@ -40,13 +40,13 @@ get_header();
                             </a>
                         <?php endif; ?>
 
-                        <div class="post-card-hero-details flow-small">
+                        <div class="post-card-hero-details flow-tiny">
                             <header class="entry-header">
                                 <h6 class="section-title">
                                     <i data-lucide="mic" class="icon-bold icon-step--1"></i>
                                     Latest podcast episode
                                 </h6>
-                                <div class="post-card-hero__copy flow-small">
+                                <div class="post-card-hero__copy flow-tiny">
                                     <a href="<?php the_permalink(); ?>">
                                         <h2>
                                             <?php
@@ -58,7 +58,7 @@ get_header();
                                             ?>
                                         </h2>
                                     </a>
-                                    <p class="icon-text-group small">
+                                    <p class="icon-text-group">
                                         <?php
                                         $ep_label = get_field( 'podcast_episode_number' );
                                         $ep_type = get_field( 'podcast_episode_type' );
@@ -74,7 +74,7 @@ get_header();
                                     </p>
                                 </div>
                             </header>
-                            <p class="latest-podcast-ep__excerpt small">
+                            <p class="post-card-hero-details__excerpt">
                                 <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
                             </p>
                             <a href="<?php the_permalink(); ?>" class="button flex">
@@ -90,6 +90,11 @@ get_header();
                 wp_reset_postdata();
             endif; ?>
 
+             <h6 class="section-title">
+                <i data-lucide="newspaper" class="icon-bold icon-step--1"></i>
+                Latest articles
+            </h6>
+
             <?php
                 set_query_var('displayed_posts', $displayed_posts);
                 get_template_part('template-parts/content', 'latest-articles');
@@ -103,7 +108,7 @@ get_header();
     <div class="browse-all">
         <div class="wrapper">
             <div class="browse-all__header">
-                <h3 class="section-title-heading">Latest Podcast Episodes & Articles</h3>
+                <h2 class="section-title-heading">Latest Podcast Episodes & Articles</h2>
                 <div class="view-switcher" role="group" aria-label="Filter posts by type">
                     <button class="switch-btn is-active" data-category="all" aria-pressed="true">
                         All
@@ -154,7 +159,7 @@ get_header();
 
     <section>
         <div class="wrapper">
-            <h3 class="section-title-heading">Explore more articles</h3>
+            <h2 class="section-title-heading">More Doctor Who articles by subject</h2>
             <div class="more-articles">
                 <?php
                 $tags         = array( 'big-finish', 'events', 'reading' );
@@ -177,7 +182,7 @@ get_header();
                     if ($query->have_posts()) : ?>
                         <div class="more-articles__column">
                             <div class="more-articles__header">
-                                <h4><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h4>
+                                <h3><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h3>
                                 <a class="button-ghost" href="<?php echo get_tag_link($term->term_id); ?>" class="tag-archive-link">View all <?php echo ucwords(str_replace('-', ' ', $tag)); ?></a>
                             </div>
                             <ul role="list">
@@ -216,9 +221,9 @@ get_header();
             <img src="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.png" alt="Your space-time coordinates for everything Doctor Who...">
         </picture>
         <div class="podcast-app-links">
-            <h6>
+            <h5>
                 Want to listen on your favourite podcast app?
-            </h6>
+            </h5>
             <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
         </div>
     </div>

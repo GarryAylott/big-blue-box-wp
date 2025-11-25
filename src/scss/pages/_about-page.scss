@@ -1,4 +1,5 @@
 @use "utilities" as *;
+@use "blocks" as *;
 
 /* 
 ABOUT PAGE
@@ -6,23 +7,37 @@ ABOUT PAGE
 
 .about-page-hosts {
     &__hosts {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+        @include post-cards-grid;
         gap: var(--space-l);
 
         .host-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: var(--space-xs);
+            gap: var(--space-2xs);
 
-            p:is(:first-of-type) {
-                color: var(--clr-brand-accent);
-            }
+            &__content {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-2xs);
+                align-items: center;
 
-            p:not(:first-of-type) {
-                max-width: 45ch;
-                text-align: center;
+                h5 {
+                    color: var(--clr-brand-accent);
+                }
+
+                p {
+                    text-align: center;
+                    margin-block-end: var(--space-3xs);
+
+                    @media (min-width: 46.75rem) {
+                        max-width: 45ch;
+                    }
+                }
+
+                span {
+                    font-style: italic;
+                }
             }
         }
     }
@@ -32,9 +47,7 @@ ABOUT PAGE
     margin-block-start: var(--space-3xl);
 
     .team-writers {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-        gap: var(--space-m);
+        @include post-cards-grid;
 
         &__panel {
             position: relative;
@@ -79,7 +92,6 @@ ABOUT PAGE
             }
 
             .author-hero__socials {
-                margin-block-start: var(--space-3xs);
                 margin-block-end: var(--space-2xs);
 
                 a {
@@ -116,6 +128,10 @@ ABOUT PAGE
             display: flex;
             flex-direction: column;
             gap: var(--space-2xs);
+
+            p {
+                font-family: var(--font-family-headings);
+            }
         }
     }
 }

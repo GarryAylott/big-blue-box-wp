@@ -49,7 +49,7 @@ $testimonials = [
         'rating_img' => get_bloginfo('template_url') . '/images/icons/icon-five-stars.svg',
     ],
     [
-        'content' => 'Hey I LOVE Dr Who and I found your podcast a few days ago and <em>I love it it covers a lot keep doing what you do it’s great</em> 😃🪛🪐',
+        'content' => 'Hey I LOVE Dr Who and I found your podcast a few days ago and <em>I love it, it covers a lot, keep doing what you do, it’s great</em> 😃🪛🪐',
         'author' => 'AmberTB',
         'source' => 'Apple Podcasts Review',
         'rating_img' => get_bloginfo('template_url') . '/images/icons/icon-five-stars.svg',
@@ -61,7 +61,7 @@ $testimonials = [
         'rating_img' => get_bloginfo('template_url') . '/images/icons/icon-five-stars.svg',
     ],
     [
-        'content' => 'I absolutely love this podcast, one of my favourite things on a Friday is to listen to this. Adam and Garry have great chemistry, and the content covers all areas from Merch, news, reviews of episodes... <em>I cannot recommend it enough if your a Dr Who fan it’s perfect , brilliant and will always keep you entertained.</em>',
+        'content' => 'I absolutely love this podcast, one of my favourite things on a Friday is to listen to this. Adam and Garry have great chemistry, and the content covers all areas from Merch, news, reviews of episodes... <em>I cannot recommend it enough if you’re a Dr Who fan it’s perfect , brilliant and will always keep you entertained.</em>',
         'author' => 'JoeTurner',
         'source' => 'Podchaser Review',
         'rating_img' => get_bloginfo('template_url') . '/images/icons/icon-five-stars.svg',
@@ -115,9 +115,9 @@ $random_testimonial = $testimonials[array_rand($testimonials)];
 
 <div class="testimonial">
     <blockquote class="testimonial__content">
-        <h4 class="no-heading"><?php echo $random_testimonial['content']; ?></h4>
+        <h3 class="no-heading"><?php echo $random_testimonial['content']; ?></h3>
         <div class="testimonial__source">
-            <h6><?php echo $random_testimonial['author']; ?></h6>
+            <h5><?php echo $random_testimonial['author']; ?></h5>
             <cite>
                 <img src="<?php echo $random_testimonial['rating_img']; ?>" width="92" height="16" alt=""><?php echo $random_testimonial['source']; ?>
             </cite>

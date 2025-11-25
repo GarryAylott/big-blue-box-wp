@@ -1,0 +1,14 @@
+/* 
+HOMEPAGE LATEST POSTS BLOCK
+*/
+
+.homepage-top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+
+    .section-title:not(.post-card-hero-details .section-title) {
+        color: var(--clr-brand-secondary);
+        margin-block-end: 0;
+    }
+}

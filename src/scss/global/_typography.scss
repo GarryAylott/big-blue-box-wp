@@ -7,23 +7,19 @@ Font styling for headings, paragraphs etc.
 
 :root {
     // Main font settings
-    --font-family-headings: "Jakarta", sans-serif;
-    --font-family-body: "Jakarta", sans-serif;
+    --font-family-headings: "Big Blue Box Headings", sans-serif;
+    --font-family-body: "Bitter", sans-serif;
     --fw-light: 300;
     --fw-reg: 400;
     --fw-semibold: 600;
     --fw-bold: 700;
-    --measure-m: 62ch;
+    --fw-black: 800;
+    --measure-m: 72ch;
     --measure-s: 34ch;
 }
 
 // Heading styles
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:where(h1, h2, h3, h4, h5, h6) {
     font-family: var(--font-family-headings);
     font-weight: var(--fw-bold);
     text-wrap: balance;
@@ -33,11 +29,11 @@ h6 {
 h1 {
     font-size: var(--step-5);
     line-height: 1.15;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.02em;
 }
 h2 {
     font-size: var(--step-4);
-    line-height: 1.2;
+    line-height: 1.15;
     letter-spacing: -0.5px;
 }
 h3 {
@@ -47,7 +43,7 @@ h3 {
 }
 h4 {
     font-size: var(--step-2);
-    line-height: 1.3;
+    line-height: 1.2;
     letter-spacing: -0.3px;
 }
 h5 {
@@ -80,7 +76,6 @@ li {
     width: fit-content;
     color: var(--clr-brand-accent);
     font-weight: var(--fw-bold);
-    font-size: var(--step--2);
     text-transform: uppercase;
     margin-block-end: var(--space-s);
 
@@ -133,22 +128,17 @@ p.lead + :is(h2, h3, h4, h5, h6) {
 .single {
     p.lead,
     p.has-drop-cap {
-        max-width: calc(var(--measure-m) - 5ch);
+        font-family: var(--font-family-headings);
         font-size: var(--step-1);
-        font-weight: var(--fw-semibold);
-        line-height: 1.5;
-    }
-}
+        font-weight: var(--fw-bold);
+        line-height: 1.4;
 
-.single {
-    p.lead,
-    p.has-drop-cap {
         &:first-letter,
         &:not(:focus):first-letter {
             color: var(--clr-brand-accent);
             font-family: var(--font-family-headings);
             font-size: 4.5rem;
-            line-height: 0.3em;
+            line-height: 0.21em;
             margin-block-start: 1.6rem;
             margin-inline-end: 0.5rem;
             float: left;
@@ -180,6 +170,11 @@ p.lead + :is(h2, h3, h4, h5, h6) {
     font-weight: var(--fw-bold);
 }
 
+strong,
+.strong {
+    font-weight: var(--fw-black);
+}
+
 .body-small,
 .small {
     font-size: var(--step--1);
@@ -202,11 +197,6 @@ p.lead + :is(h2, h3, h4, h5, h6) {
     ul,
     ol {
         margin-inline-start: var(--space-s);
-    }
-
-    p,
-    li {
-        font-size: var(--step--1);
     }
 
     .text-block {
@@ -277,7 +267,8 @@ a.link-action {
     margin-block-end: var(--space-xs);
     padding-block: 0.75rem;
     padding-inline: 1rem;
-    font-size: var(--step--2);
+    font-family: var(--font-family-headings);
+    font-size: var(--step--1);
     line-height: 1.4;
     text-wrap: nowrap;
     text-decoration: none;

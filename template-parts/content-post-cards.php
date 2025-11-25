@@ -27,12 +27,12 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
 
             <header class="entry-header">
                 <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
-                <h5 class="balance">
+                <h4 class="balance">
                     <?php
                     $title_excerpt = wp_html_excerpt( get_the_title(), 55, '…' );
                     echo esc_html( $title_excerpt );
                     ?>
-                </h5>
+                </h4>
             </header>
         </div>
     </a>
@@ -57,22 +57,16 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
         <?php endif; ?>
 
         <header class="entry-header">
-            <?php get_template_part( 'template-parts/content', 'category-tag' ); ?>
-            <h5 class="balance">
+            <!-- <?php get_template_part( 'template-parts/content', 'category-tag' ); ?> -->
+            <h4 class="balance">
                 <?php
                 $title_excerpt = wp_html_excerpt( get_the_title(), 80, '…' );
                 echo esc_html( $title_excerpt );
                 ?>
-            </h5>
+            </h4>
         </header>
     </a>
     <div class="post-card-content">
-        <!-- <div class="entry-content">
-            <p class="small">
-                <?php echo esc_html( wp_trim_words( get_the_excerpt(), 15 ) ); ?>
-            </p>
-        </div> -->
-
         <footer class="entry-footer">
             <?php get_template_part( 'template-parts/content', 'author-meta', array( 'link_author_name' => true ) ); ?>
         </footer>

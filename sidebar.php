@@ -16,7 +16,7 @@
 				<a class="has-external-icon" href="https://bsky.app/profile/bigblueboxpodcast.bsky.social" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="X Bluesky link">
-						<p class="small">Bluesky</p>
+						<h6>Bluesky</h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -25,7 +25,7 @@
 				<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="X Twitter link">
-						<p class="small">X (Twitter)</p>
+						<h6>X (Twitter)</h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -34,7 +34,7 @@
 				<a class="has-external-icon" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="Instagram link">
-						<p class="small">Instagram</p>
+						<h6>Instagram</h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -43,7 +43,7 @@
 				<a class="has-external-icon" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="Facebook link">
-						<p class="small">Facebook</p>
+						<h6>Facebook</h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -52,7 +52,7 @@
 				<a class="has-external-icon" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="Threads link">
-						<p class="small">Threads</p>
+						<h6>Threads</h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -61,7 +61,7 @@
 				<a class="has-external-icon" href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS podcasts link">
-						<p class="small">RSS: Podcasts</p>
+						<h6>RSS: Podcasts</h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -70,7 +70,7 @@
 				<a class="has-external-icon" href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
-						<p class="small">RSS: Articles</p>
+						<h6>RSS: Articles</h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -79,7 +79,7 @@
 				<a class="has-external-icon" href="https://www.bigblueboxpodcast.co.uk/feed/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="RSS articles link">
-						<p class="small">RSS: Everything</p>
+						<h6>RSS: Everything</h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -176,13 +176,5 @@
 				</div>
 			</div>
 		</div>
-	</section>
-
-	<section>
-		<a class="has-external-icon" href="https://www.youtube.com/user/thegeekshandbag" target="_blank" rel="noreferrer noopener">
-			<div class="img-container">
-				<img class="sidebar-img img-hover" src="<?php echo get_bloginfo('template_url') ?>/images/sidebar-panel-geekshandbag.webp" width="329" height="205" alt="Adam's YouTube channel - The Geeks Handbag.">
-			</div>
-		</a>
 	</section>
 </aside><!-- #secondary -->

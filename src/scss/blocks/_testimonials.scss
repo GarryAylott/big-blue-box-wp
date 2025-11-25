@@ -25,25 +25,27 @@ Styles for full-width and column based testimonials.
             display: none;
         }
 
-        em {
-            position: relative;
-            font-weight: var(--fw-semibold);
-            color: var(--clr-surface-700);
-            background: var(--clr-border-link);
-            padding: 0 3px 3px 3px;
-            margin-inline-start: -4px;
-        }
-
-        h4,
+        h3,
         p {
             color: var(--clr-text-400);
         }
 
-        h4 {
+        h3 {
+            font-family: var(--font-family-headings);
+            font-weight: var(--fw-semibold);
             font-style: italic;
             font-weight: var(--fw-reg);
             line-height: 1.4;
             text-wrap: wrap;
+        }
+
+        em {
+            position: relative;
+            font-weight: var(--fw-bold);
+            color: var(--clr-surface-700);
+            background: var(--clr-border-link);
+            padding: 0 3px 3px 3px;
+            margin-inline-start: -4px;
         }
 
         @media (max-width: 53em) {
@@ -58,7 +60,7 @@ Styles for full-width and column based testimonials.
 
         h5,
         cite {
-            font-family: var(--font-family-body);
+            font-family: var(--font-family-headings);
             font-style: normal;
         }
 
@@ -70,7 +72,7 @@ Styles for full-width and column based testimonials.
             display: inline-flex;
             align-items: center;
             gap: var(--space-2xs);
-            font-size: var(--step--1);
+            font-size: var(--step-0);
 
             svg {
                 width: 100px;
@@ -109,18 +111,18 @@ Styles for full-width and column based testimonials.
             padding-inline-start: 0;
             border-left: none;
 
-            h4 {
-                font-size: var(--step-0);
+            h3 {
+                font-size: var(--step-1);
             }
         }
 
         &__source {
-            h5 {
-                font-size: var(--step-0);
+            h3 {
+                font-size: var(--step-1);
             }
 
             cite {
-                font-size: var(--step--1);
+                font-size: var(--step-0);
             }
         }
 

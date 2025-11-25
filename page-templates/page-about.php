@@ -32,59 +32,63 @@ get_header();
                 <div class="host-card">
                     <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-garry.webp' ) ); ?>"
                         alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
-                    <h3>Garry Aylott</h3>
-                    <p>Creator, Producer and Co-Host</p>
-                    <p class="small">
-                        Garry founded The Big Blue Box back in March of 2014. (In)famous for not liking McCoy at first but over time was completely won over with Remembrance of the Daleks now in his top 3. When he’s not recording, you’ll find him reading comic books, travelling, and enjoying a bloody good cup of tea.
-                    </p>
-                    <ul class="social-icons" role="list">
-                        <li>
-                            <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                                <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="X (Twitter)" width="24" height="24">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://instagram.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
-                                <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="Instagram" width="24" height="24">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://facebook.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
-                                <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="Facebook" width="24" height="24">
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="host-card__content">
+                        <h3>Garry Aylott</h3>
+                        <h5>Creator, Producer and Co-Host</h5>
+                        <p>
+                            Garry founded The Big Blue Box back in March of 2014. (In)famous for not liking McCoy at first but over time was completely won over with Remembrance of the Daleks now in his top 3. When he’s not recording, you’ll find him reading comic books, travelling, and enjoying a bloody good cup of tea.
+                        </p>
+                        <ul class="social-icons" role="list">
+                            <li>
+                                <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="X (Twitter)" width="24" height="24">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="Instagram" width="24" height="24">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://facebook.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="Facebook" width="24" height="24">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="host-card">
                     <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-adam.webp' ) ); ?>"
                         alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
-                    <h3>Adam Charlton</h3>
-                    <p>Co-Host</p>
-                    <p class="small">
-                        Adam has been into Doctor Who for as long as he can remember. He’s the walking guidebook when it comes to facts and trivia and never shy of calling out a dodgy story. Don't forget to remember to check out <a href="https://www.youtube.com/@TheGeeksHandbag" class="link-alt" target="_blank" rel="noopener" aria-label="The Geeks Handbag on YouTube">The Geeks Handbag on YouTube</a>, packed with reviews, unboxings, convention videos and more.
-                    </p>
-                    <ul class="social-icons" role="list">
-                        <li>
-                            <a href="https://www.youtube.com/@thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="YouTube">
-                                <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-yt.svg' ) ); ?>" alt="YouTube" width="29" height="28">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://x.com/TheGeeksHandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                                <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="X (Twitter)" width="24" height="24">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/the_geeks_handbag/" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
-                                <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="Instagram" width="24" height="24">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
-                                <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="Facebook" width="24" height="24">
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="host-card__content">
+                        <h3>Adam Charlton</h3>
+                        <h5>Co-Host</h5>
+                        <p>
+                            Adam is a life-long Doctor Who fan. Tom Baker is "his" Doctor and Adam loves classic Who along with <span>most</span> of modern Who, too. Check out Adam's YouTube channel <a href="https://www.youtube.com/@TheGeeksHandbag" class="link-alt" target="_blank" rel="noopener" aria-label="The Geeks Handbag on YouTube">The Geeks Handbag</a> for reviews, unboxings, convention videos and general geekery.
+                        </p>
+                        <ul class="social-icons" role="list">
+                            <li>
+                                <a href="https://www.youtube.com/@thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="YouTube">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-yt.svg' ) ); ?>" alt="YouTube" width="29" height="28">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://x.com/TheGeeksHandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="X (Twitter)" width="24" height="24">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/the_geeks_handbag/" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="Instagram" width="24" height="24">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="Facebook" width="24" height="24">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -154,8 +158,10 @@ get_header();
                     ?>
                     <div class="team-writers__panel">
                         <div class="team-writers__content">
-                            <h5><?php echo esc_html($writer['name']); ?></h5>
-                            <p class="small"><?php echo esc_html($writer['role']); ?></p>
+                            <header>
+                                <h4><?php echo esc_html($writer['name']); ?></h4>
+                                <p><?php echo esc_html($writer['role']); ?></p>
+                            </header>
                             <?php if (!empty($social_links_markup)) : ?>
                                 <?php echo $social_links_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup escaped within helper. ?>
                             <?php endif; ?>

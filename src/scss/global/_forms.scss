@@ -13,7 +13,6 @@ form {
     input,
     textarea {
         padding: var(--space-xs);
-        padding-block-start: 0.75rem;
         color: var(--clr-text-400);
         background: var(--clr-surface-400);
         border: 1px solid var(--clr-surface-200);
@@ -27,23 +26,23 @@ form {
 
         &::placeholder {
             color: var(--clr-surface-100);
-            opacity: 0.75;
+            opacity: 0.5;
         }
         &::-webkit-input-placeholder {
             color: var(--clr-surface-100);
-            opacity: 0.75;
+            opacity: 0.5;
         }
         &::-moz-placeholder {
             color: var(--clr-surface-100);
-            opacity: 0.75;
+            opacity: 0.5;
         }
         &:-ms-input-placeholder {
             color: var(--clr-surface-100);
-            opacity: 0.75;
+            opacity: 0.5;
         }
         &::-ms-input-placeholder {
             color: var(--clr-surface-100);
-            opacity: 0.75;
+            opacity: 0.5;
         }
     }
 

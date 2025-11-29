@@ -525,6 +525,86 @@ const initEraJumpDropdown = () => {
     });
 };
 
+// Review compendium rotating artwork
+const initCompendiumLinkImages = () => {
+    const container = document.querySelector(
+        "[data-compendium-rotation][data-image-dir]"
+    );
+    if (!container) return;
+
+    let images;
+    try {
+        images = JSON.parse(container.dataset.compendiumRotation || "[]");
+    } catch (err) {
+        console.error("Invalid compendium rotation data:", err);
+        return;
+    }
+    if (!Array.isArray(images) || images.length < 2) return;
+
+    const dir = (container.dataset.imageDir || "").replace(/\/$/, "");
+    if (!dir) return;
+    const imageAlt = container.dataset.imageAlt || "";
+
+    let active = container.querySelector(".review-compendium-link__image");
+    if (!active) return;
+
+    let clone = active.cloneNode(true);
+    clone.classList.remove("is-active");
+    container.appendChild(clone);
+
+    const updateSources = (picture, imageName) => {
+        const base = `${dir}/${imageName}`;
+        picture
+            .querySelector('source[type="image/avif"]')
+            ?.setAttribute("srcset", `${base}.avif`);
+        picture
+            .querySelector('source[type="image/webp"]')
+            ?.setAttribute("srcset", `${base}.webp`);
+        const img = picture.querySelector("img");
+        if (img) {
+            img.src = `${base}.webp`;
+            img.alt = imageAlt;
+        }
+        return img;
+    };
+
+    let index = Number.parseInt(container.dataset.initialIndex, 10);
+    if (Number.isNaN(index) || index < 0 || index >= images.length) {
+        index = 0;
+    }
+
+    const DISPLAY_DURATION = 6000;
+    let idleTimer = null;
+
+    const swapImages = () => {
+        const nextIndex = (index + 1) % images.length;
+        const nextImg = updateSources(clone, images[nextIndex]);
+        if (!nextImg) return;
+
+        const showNext = () => {
+            clone.classList.add("is-active");
+            active.classList.remove("is-active");
+            [active, clone] = [clone, active];
+            index = nextIndex;
+            idleTimer = setTimeout(swapImages, DISPLAY_DURATION);
+        };
+
+        if (nextImg.complete && nextImg.naturalWidth) {
+            showNext();
+        } else {
+            const once = () => {
+                nextImg.removeEventListener("load", once);
+                nextImg.removeEventListener("error", once);
+                showNext();
+            };
+            nextImg.addEventListener("load", once);
+            nextImg.addEventListener("error", once);
+        }
+    };
+
+    idleTimer = setTimeout(swapImages, DISPLAY_DURATION);
+};
+
 // Initialize all features
 const init = () => {
     initNavigation();
@@ -537,6 +617,7 @@ const init = () => {
     initCategorySwitcher();
     initRotatingSentence();
     initEraJumpDropdown();
+    initCompendiumLinkImages();
     window.addEventListener("DOMContentLoaded", initAudioPlayer);
 };
 

@@ -1,0 +1,103 @@
+@use "utilities" as *;
+
+/* 
+ERROR 404 PAGE
+*/
+
+.error-404 {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-s);
+    margin-block-start: var(--space-l);
+
+    @media (max-width: 43.75rem) {
+        flex-direction: column;
+        margin-block-start: var(--space-s);
+    }
+
+    .error-404-main {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-m);
+    }
+
+    &__header h6.section-title {
+        margin-block-end: var(--space-xs);
+    }
+
+    &__content {
+        h5 {
+            text-wrap: pretty;
+            margin-block-end: var(--space-xs);
+        }
+
+        form .inputs {
+            display: flex;
+            gap: var(--space-2xs);
+            width: 100%;
+
+            @media (max-width: 35rem) {
+                flex-direction: column;
+                align-items: end;
+            }
+        }
+
+        .search-form {
+            margin-block-start: var(--space-2xs);
+            margin-block-end: var(--space-xs);
+
+            input.search-field {
+                flex: 1;
+                max-width: 65%;
+                height: 3rem;
+
+                @media (max-width: 35rem) {
+                    min-width: 100%;
+                }
+            }
+
+            @media (max-width: 40rem) {
+                button {
+                    width: fit-content;
+                }
+            }
+
+            @media (max-width: 25rem) {
+                button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    picture {
+        width: 20rem;
+        transform: rotate(3deg);
+        animation: tardis-float 9s ease-in-out infinite;
+        will-change: transform;
+
+        @media (max-width: 43.75rem) {
+            margin-inline: auto;
+        }
+    }
+}
+
+body:not(.single-post) {
+    .suggested-posts {
+        margin-block-end: 0;
+    }
+}
+
+@keyframes tardis-float {
+    0% {
+        transform: rotate(3deg) translate3d(0, 1%, 0);
+    }
+
+    50% {
+        transform: rotate(3deg) translate3d(0, -6%, 0);
+    }
+
+    100% {
+        transform: rotate(3deg) translate3d(0, 1%, 0);
+    }
+}

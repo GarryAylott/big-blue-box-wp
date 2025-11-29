@@ -6,7 +6,7 @@
  */
 ?>
 
-<div class="wrapper">
+<section class="wrapper">
     <div class="round-table-link-panel rounded">
         <div class="round-table-link-panel__content flow-small">
             <h3>The Roundtable Podcast Episodes</h3>
@@ -14,4 +14,4 @@
             <a class="button" href="<?php echo esc_url(home_url('/round-table')); ?>">Listen to the Roundtable Episodes Now</a>
         </div>
     </div>
-</div>
+</section>

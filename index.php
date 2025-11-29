@@ -11,101 +11,101 @@ get_header();
 </div>
 
 <main id="primary" class="site-main flow-page-regions">
-    <div class="wrapper homepage-top">
-            <?php
-            $displayed_posts = array();
+    <section class="wrapper homepage-top">
+        <?php
+        $displayed_posts = array();
 
-            $args1 = array(
-                'category_name' => 'podcasts',
-                'posts_per_page' => 1
-            );
-            $query1 = new WP_Query($args1);
+        $args1 = array(
+            'category_name' => 'podcasts',
+            'posts_per_page' => 1
+        );
+        $query1 = new WP_Query($args1);
 
-            if ($query1->have_posts()) :
-                while ($query1->have_posts()) : $query1->the_post(); ?>
+        if ($query1->have_posts()) :
+            while ($query1->have_posts()) : $query1->the_post(); ?>
 
-                <article id="post-<?php the_ID(); ?>" <?php post_class( 'post-card-hero' ); ?>>
-                    <div class="post-card-hero__content">
-                        <?php if ( has_post_thumbnail() ) : ?>
-                            <a href="<?php the_permalink(); ?>">
-                                <div class="img-container">
-                                    <img
-                                        class="post-thumb-img img-hover"
-                                        src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'homepage-thumb' ) ); ?>"
-                                        width="391"
-                                        height="220"
-                                        alt="<?php echo esc_attr( get_the_title() ); ?>"
-                                    >
-                                </div>
-                            </a>
-                        <?php endif; ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class( 'post-card-hero' ); ?>>
+                <div class="post-card-hero__content">
+                    <?php if ( has_post_thumbnail() ) : ?>
+                        <a href="<?php the_permalink(); ?>">
+                            <div class="img-container">
+                                <img
+                                    class="post-thumb-img img-hover"
+                                    src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'homepage-thumb' ) ); ?>"
+                                    width="391"
+                                    height="220"
+                                    alt="<?php echo esc_attr( get_the_title() ); ?>"
+                                >
+                            </div>
+                        </a>
+                    <?php endif; ?>
 
-                        <div class="post-card-hero-details flow-tiny">
-                            <header class="entry-header">
-                                <h6 class="section-title">
-                                    <i data-lucide="mic" class="icon-bold icon-step--1"></i>
-                                    Latest podcast episode
-                                </h6>
-                                <div class="post-card-hero__copy flow-tiny">
-                                    <a href="<?php the_permalink(); ?>">
-                                        <h2>
-                                            <?php
-                                            $thetitle   = $post->post_title;
-                                            $getlength  = strlen( $thetitle );
-                                            $thelength  = 80;
-                                            echo substr( $thetitle, 0, $thelength );
-                                            if ( $getlength > $thelength ) echo "...";
-                                            ?>
-                                        </h2>
-                                    </a>
-                                    <p class="icon-text-group">
+                    <div class="post-card-hero-details flow-tiny">
+                        <header class="entry-header">
+                            <h6 class="section-title">
+                                <i data-lucide="mic" class="icon-bold icon-step--1"></i>
+                                Latest podcast episode
+                            </h6>
+                            <div class="post-card-hero__copy flow-tiny">
+                                <a href="<?php the_permalink(); ?>">
+                                    <h2>
                                         <?php
-                                        $ep_label = get_field( 'podcast_episode_number' );
-                                        $ep_type = get_field( 'podcast_episode_type' );
-                                        if ( is_numeric( $ep_label ) ) {
-                                            echo 'Episode ' . esc_html( $ep_label );
-                                        } elseif ( $ep_label === 'N/A' && ! empty( $ep_type ) ) {
-                                            echo esc_html( $ep_type );
-                                        } elseif ( $ep_label ) {
-                                            echo esc_html( $ep_label );
-                                        }
+                                        $thetitle   = $post->post_title;
+                                        $getlength  = strlen( $thetitle );
+                                        $thelength  = 80;
+                                        echo substr( $thetitle, 0, $thelength );
+                                        if ( $getlength > $thelength ) echo "...";
                                         ?>
-                                        <span>•</span> <?php echo get_the_date( 'j M, Y' ); ?>
-                                    </p>
-                                </div>
-                            </header>
-                            <p class="post-card-hero-details__excerpt">
-                                <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
-                            </p>
-                            <a href="<?php the_permalink(); ?>" class="button flex">
-                                <i data-lucide="headphones" class="icon-bold"></i>
-                                Listen Now
-                            </a>
-                        </div>
+                                    </h2>
+                                </a>
+                                <p class="icon-text-group">
+                                    <?php
+                                    $ep_label = get_field( 'podcast_episode_number' );
+                                    $ep_type = get_field( 'podcast_episode_type' );
+                                    if ( is_numeric( $ep_label ) ) {
+                                        echo 'Episode ' . esc_html( $ep_label );
+                                    } elseif ( $ep_label === 'N/A' && ! empty( $ep_type ) ) {
+                                        echo esc_html( $ep_type );
+                                    } elseif ( $ep_label ) {
+                                        echo esc_html( $ep_label );
+                                    }
+                                    ?>
+                                    <span>•</span> <?php echo get_the_date( 'j M, Y' ); ?>
+                                </p>
+                            </div>
+                        </header>
+                        <p class="post-card-hero-details__excerpt">
+                            <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
+                        </p>
+                        <a href="<?php the_permalink(); ?>" class="button flex">
+                            <i data-lucide="headphones" class="icon-bold"></i>
+                            Listen Now
+                        </a>
                     </div>
-                </article>
-                <?php
-                $displayed_posts[] = get_the_ID();
-                endwhile;
-                wp_reset_postdata();
-            endif; ?>
-
-             <h6 class="section-title">
-                <i data-lucide="newspaper" class="icon-bold icon-step--1"></i>
-                Latest articles
-            </h6>
-
+                </div>
+            </article>
             <?php
-                set_query_var('displayed_posts', $displayed_posts);
-                get_template_part('template-parts/content', 'latest-articles');
-            ?>
-    </div>
-    
-    <div class="wrapper">
-        <?php get_template_part('template-parts/content', 'testimonial'); ?>
-    </div>
+            $displayed_posts[] = get_the_ID();
+            endwhile;
+            wp_reset_postdata();
+        endif; ?>
 
-    <div class="browse-all">
+            <h6 class="section-title">
+            <i data-lucide="newspaper" class="icon-bold icon-step--1"></i>
+            Latest articles
+        </h6>
+
+        <?php
+            set_query_var('displayed_posts', $displayed_posts);
+            get_template_part('template-parts/content', 'latest-articles');
+        ?>
+    </section>
+    
+    <section class="wrapper">
+        <?php get_template_part('template-parts/content', 'testimonial'); ?>
+    </section>
+
+    <section class="browse-all">
         <div class="wrapper">
             <div class="browse-all__header">
                 <h2 class="section-title-heading">Latest Podcast Episodes & Articles</h2>
@@ -149,11 +149,11 @@ get_header();
 
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="wrapper">
+    <section class="wrapper">
         <?php get_template_part('template-parts/content', 'testimonial'); ?>
-    </div>
+    </section>
 
     <?php get_template_part('template-parts/content', 'review-comp-link'); ?>
 
@@ -206,15 +206,15 @@ get_header();
 
     <?php get_template_part('template-parts/content', 'rt-link-panel'); ?>
 
-    <div class="wrapper">
+    <section class="wrapper">
         <div class="testimonials-multi-col">
             <?php get_template_part('template-parts/content', 'testimonial'); ?>
             <?php get_template_part('template-parts/content', 'testimonial'); ?>
             <?php get_template_part('template-parts/content', 'testimonial'); ?>
         </div>
-    </div>
+    </section>
 
-    <div class="wrapper doctors-bbb">
+    <section class="wrapper doctors-bbb">
         <picture>
             <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.avif" type="image/avif">
             <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.webp" type="image/webp">
@@ -226,7 +226,7 @@ get_header();
             </h5>
             <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
         </div>
-    </div>
+    </section>
 </main>
 <?php
 

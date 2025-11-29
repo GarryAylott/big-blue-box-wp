@@ -52,7 +52,7 @@
 							<p><?php echo esc_html( get_the_date() ); ?></p>
 
 					<?php else : ?>
-						<p>By <?php echo esc_html( get_the_author() ); ?> on</p>
+						<p>Words by <?php echo esc_html( get_the_author() ); ?> on</p>
 						<p><?php echo esc_html( get_the_date() ); ?></p>
 					<?php endif; ?>
 					</div>

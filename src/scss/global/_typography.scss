@@ -22,7 +22,7 @@ Font styling for headings, paragraphs etc.
 :where(h1, h2, h3, h4, h5, h6) {
     font-family: var(--font-family-headings);
     font-weight: var(--fw-bold);
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 // Heading sizes and styles
@@ -193,7 +193,8 @@ strong,
     text-transform: uppercase;
 }
 
-.page-template-page-legal-template .entry-content {
+.page-template .entry-content,
+.error404 {
     ul,
     ol {
         margin-inline-start: var(--space-s);

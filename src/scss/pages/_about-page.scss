@@ -134,4 +134,97 @@ ABOUT PAGE
             }
         }
     }
+
+    .dalektat {
+        position: relative;
+        padding-block-start: 10rem;
+        overflow: hidden;
+
+        @media (max-width: 46.063rem) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-block-start: 0;
+        }
+
+        picture {
+            position: absolute;
+            top: -1rem;
+            left: -4rem;
+            width: 33rem;
+            z-index: 1;
+
+            @media (max-width: 66.25rem) {
+                top: 3rem;
+                left: -6rem;
+                width: 33rem;
+            }
+
+            @media (max-width: 61.25rem) {
+                top: 3rem;
+                left: -9rem;
+                width: 33rem;
+            }
+
+            @media (max-width: 55.625rem) {
+                top: 3rem;
+                left: -12rem;
+                width: 33rem;
+            }
+
+            @media (max-width: 46rem) {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 30rem;
+                z-index: -1;
+            }
+        }
+
+        &__content {
+            position: relative;
+            padding-block-start: var(--space-l);
+            padding-block-end: var(--space-xl);
+            padding-inline-start: clamp(0rem, -6.25rem + 50vw, 31.25rem);
+            padding-inline-end: var(--space-xl);
+            background: var(--clr-surface-600);
+            border-radius: var(--radius-normal);
+            isolation: isolate;
+            overflow: hidden;
+
+            @media (max-width: 46.063rem) {
+                padding-inline: var(--space-l);
+                margin-block-start: -20rem;
+            }
+
+            &::after {
+                @include img-border-highlight(var(--clr-surface-200));
+                border-radius: var(--radius-normal);
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -4.5rem;
+                width: 600px;
+                height: 800px;
+                background: radial-gradient(
+                    circle,
+                    hsl(var(--clr-border-link-hsl) / 0.3) 0,
+                    hsl(var(--clr-border-link-hsl) / 0) 60%
+                );
+                border-radius: var(--radius-circle);
+                filter: blur(20px);
+
+                @media (max-width: 67rem) {
+                    left: -7rem;
+                }
+
+                @media (max-width: 46.063rem) {
+                    @include visually-hidden;
+                }
+            }
+        }
+    }
 }

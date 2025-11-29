@@ -10,10 +10,12 @@
     <div class="suggested-posts-header">
         <h4>
             <?php
-            $header_type = isset($args['header_type']) ? $args['header_type'] : '';
+            $current_post_id = get_the_ID();
+            $header_type     = isset( $args['header_type'] ) ? $args['header_type'] : '';
+
             if ( 'latest' === $header_type ) {
                 esc_html_e( 'Latest articles & podcast episodes', 'bigbluebox' );
-            } elseif ( has_category( 'podcasts', get_the_ID() ) ) {
+            } elseif ( $current_post_id && has_category( 'podcasts', $current_post_id ) ) {
                 esc_html_e( 'Continue listening', 'bigbluebox' );
             } else {
                 esc_html_e( 'Continue reading', 'bigbluebox' );
@@ -31,13 +33,15 @@
     </div>
     <div class="posts-hori-scroll">
         <?php
-            // Keep the special "latest" carousel for search results exactly as-is
-            $is_latest_header = ( is_search() && isset($args['header_type']) && $args['header_type'] === 'latest' );
+            // Keep the special "latest" carousel available for search and other contexts.
+            $force_latest     = ! empty( $args['force_latest'] );
+            $latest_limit     = ! empty( $args['latest_limit'] ) ? absint( $args['latest_limit'] ) : 10;
+            $is_latest_header = ( 'latest' === $header_type ) && ( is_search() || is_404() || $force_latest || ! $current_post_id );
 
             if ( $is_latest_header ) {
                 $latest_args = array(
                     'post_type'           => 'post',
-                    'posts_per_page'      => 10,
+                    'posts_per_page'      => $latest_limit,
                     'category_name'       => 'podcasts,articles',
                     'orderby'             => 'date',
                     'order'               => 'DESC',
@@ -53,8 +57,8 @@
             } else {
                 // 🔁 Reuse the single source of truth for related content
                 // Requires: inc/related-articles.php (bbb_get_related_articles)
-                $context = has_category( 'podcasts', get_the_ID() ) ? 'podcasts' : 'articles';
-                $related_posts = function_exists('bbb_get_related_articles') ? bbb_get_related_articles( 10, $context ) : array();
+                $context = ( $current_post_id && has_category( 'podcasts', $current_post_id ) ) ? 'podcasts' : 'articles';
+                $related_posts = function_exists( 'bbb_get_related_articles' ) ? bbb_get_related_articles( 10, $context ) : array();
 
                 if ( ! empty( $related_posts ) ) :
                     foreach ( $related_posts as $post ) :

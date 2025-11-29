@@ -188,6 +188,19 @@ get_header();
                     <img class="team-writers__image" src="<?php echo esc_url(get_theme_file_uri('images/authors/about-writers-panel-maybeyou.webp')); ?>" alt="Future Big Blue Box writer"/>
                 </div>
             </div>
+
+            <div class="dalektat">
+                <picture>
+                    <source srcset="<?php echo get_bloginfo('template_url') ?>/images/DalekTat.avif" type="image/avif">
+                    <source srcset="<?php echo get_bloginfo('template_url') ?>/images/DalekTat.webp" type="image/webp">
+                    <img src="<?php echo get_bloginfo('template_url') ?>/images/DalekTat.webp" alt="">
+                </picture>
+                <div class="dalektat__content flow-small">
+                    <h3>Dalek Tat</h3>
+                    <p>One of our oldest team members, and certainly the one with the most attitude to boot! Dalek Tat served as our merchandise researcher and assistant when we ran a dedicated “Merch Corner” section on the podcast.</p>
+                    <p>No one knows where Dalek Tat is these days. Wandering the cosmos? Still on the hunt for Doctor Who merchandise? Searching for a decent cup of tea? Who knows. One day, we shall meet again. Yes, one day&hellip;</p>
+                </div>
+            </div>
         </section>
 
     </div>

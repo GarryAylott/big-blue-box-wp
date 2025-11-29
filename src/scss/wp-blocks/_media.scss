@@ -103,23 +103,21 @@ Custom image cover styles overriding WordPress defaults
 */
 .wp-block-cover {
     position: relative;
-    display: grid;
-    place-items: center;
     padding-block-start: var(--space-m);
 
     .wp-block-cover__inner-container {
         position: absolute;
-        bottom: var(--space-l);
         width: fit-content;
-        max-width: 90%;
+        right: var(--space-xs);
+        bottom: var(--space-xs);
+        left: var(--space-xs);
         line-height: 1.45;
-        text-align: center;
-        background: hsl(var(--clr-surface-300-hsl) / 0.8);
+        background: hsl(var(--clr-brand-primary-darker-hsl) / 0.7);
         backdrop-filter: blur(5px) saturate(150%) brightness(180%) blur(10px);
         -webkit-backdrop-filter: blur(10px) saturate(130%) brightness(150%);
-        margin-inline: auto;
+        margin-inline-end: var(--space-xs);
         padding-block: var(--space-2xs);
         padding-inline: var(--space-xs);
-        border-radius: var(--radius-xs);
+        border-radius: var(--radius-small);
     }
 }

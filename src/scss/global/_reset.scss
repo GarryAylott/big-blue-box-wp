@@ -98,11 +98,12 @@
 
     /* Nicer looking HRs */
     hr {
+        border-color: var(--clr-border-darker);
         border-style: solid;
         border-width: 1px 0 0;
         color: inherit;
         height: 0;
         overflow: visible;
-        margin-block: 2.5rem;
+        margin-block: var(--space-l) !important;
     }
 }

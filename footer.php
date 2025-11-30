@@ -125,6 +125,11 @@
 								Advertising
 							</a>
 						</li>
+						<li>
+							<a href="/credits/">
+								Credits & Thanks
+							</a>
+						</li>
 					</ul>
 				</div>
 				

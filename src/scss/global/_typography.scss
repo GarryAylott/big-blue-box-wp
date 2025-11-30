@@ -229,6 +229,7 @@ a {
 
 // Standard text links within body text
 a.link-alt,
+body:is(.page-template-page-legal-template) :is(.entry-content) a,
 body:is(.single-post) :is(.entry-content) a {
     color: var(--clr-text-link);
     text-decoration: underline;

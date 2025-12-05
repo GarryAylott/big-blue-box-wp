@@ -185,6 +185,8 @@
 					$author_image_url = get_template_directory_uri() . '/images/authors/author-avatar-small-default.webp';
 				}
 				echo '<img class="author-image" src="' . esc_url($author_image_url) . '" width="80" height="80" alt="' . esc_attr($author_name) . '" />';
+				// Author name
+				echo '<h5 class="author-name">' . esc_html( $author_name ) . '</h5>';
 
 				// Output the custom bio_short if available; otherwise, fall back to the default description.
 				if ( $bio_short ) {

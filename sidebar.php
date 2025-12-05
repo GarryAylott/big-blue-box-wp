@@ -163,7 +163,7 @@
 				</div>
 			</div>
 			<div class="author-section-small__author-block">
-				<span class="author-avatar">
+				<span class="author-avatar no-link">
 					<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-small-default.webp" width="56" height="81" alt="Maybe you could join the team?">
 				</span>
 				<div class="author-block-content">

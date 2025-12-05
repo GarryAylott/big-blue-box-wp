@@ -52,7 +52,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
             <a class="has-external-icon" href="<?php echo esc_url( $bluesky_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on Bluesky', 'bigbluebox' ); ?>">
                 <div class="social-channels__item">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="">
-                    <p class="small"><?php esc_html_e( 'Bluesky', 'bigbluebox' ); ?></p>
+                    <h6><?php esc_html_e( 'Bluesky', 'bigbluebox' ); ?></h6>
                 </div>
                 <i data-lucide="arrow-up-right"></i>
             </a>
@@ -61,7 +61,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
             <a class="has-external-icon" href="<?php echo esc_url( $twitter_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on X (Twitter)', 'bigbluebox' ); ?>">
                 <div class="social-channels__item">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="">
-                    <p class="small"><?php esc_html_e( 'X (Twitter)', 'bigbluebox' ); ?></p>
+                    <h6><?php esc_html_e( 'X (Twitter)', 'bigbluebox' ); ?></h6>
                 </div>
                 <i data-lucide="arrow-up-right"></i>
             </a>
@@ -70,7 +70,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
             <a class="has-external-icon" href="<?php echo esc_url( $facebook_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on Facebook', 'bigbluebox' ); ?>">
                 <div class="social-channels__item">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="">
-                    <p class="small"><?php esc_html_e( 'Facebook', 'bigbluebox' ); ?></p>
+                    <h6><?php esc_html_e( 'Facebook', 'bigbluebox' ); ?></h6>
                 </div>
                 <i data-lucide="arrow-up-right"></i>
             </a>
@@ -79,7 +79,7 @@ $threads_url = 'https://www.threads.net/intent/post?text=' . rawurlencode( $shar
             <a class="has-external-icon" href="<?php echo esc_url( $threads_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr__( 'Share this post on Threads', 'bigbluebox' ); ?>">
                 <div class="social-channels__item">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="">
-                    <p class="small"><?php esc_html_e( 'Threads', 'bigbluebox' ); ?></p>
+                    <h6><?php esc_html_e( 'Threads', 'bigbluebox' ); ?></h6>
                 </div>
                 <i data-lucide="arrow-up-right"></i>
             </a>

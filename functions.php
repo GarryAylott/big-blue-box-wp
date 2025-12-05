@@ -392,43 +392,11 @@ function bbb_remove_jquery_migrate( $scripts ) {
 }
 add_action( 'wp_default_scripts', 'bbb_remove_jquery_migrate' );
 
-// Pagination
-require get_template_directory() . '/inc/pagination.php';
-
-// ACF Fields
-require get_template_directory() . '/inc/acf-fields.php';
-
-// Captivate API Tools
-require get_template_directory() . '/inc/api-shutdown.php';
-
-// Custom comments section.
-require get_template_directory() . '/inc/custom-comments.php';
-
-// Captivate external audio
-require_once get_template_directory() . '/inc/captivate-external-audio.php';
-
-// Helper for suggested/related posts
-require get_template_directory() . '/inc/related-articles.php';
-
-// Author social helpers.
-require get_template_directory() . '/inc/author-social.php';
-
-// Logic for post promo banner insertion
-require get_template_directory() . '/inc/article-promo-banners.php';
-
-// Compendium data helper
-require_once get_stylesheet_directory() . '/inc/reviews-compendium.php';
-
-// Gutenberg blocks initialisation
-require get_template_directory() . '/inc/blocks/init.php';
-
-// Enqueue scripts and styles.
-require get_template_directory() . '/inc/enqueue.php';
-
-// Includes from starter theme */
-// Functions which enhance the theme by hooking into WordPress.
-require get_template_directory() . '/inc/template-functions.php';
-
+// Automatically load function partials
+$inc_path = get_template_directory() . '/inc/';
+foreach ( glob( $inc_path . '*.php' ) as $file ) {
+    require $file;
+}
 
 if (isset($_GET['auto_assign_captivate_episodes'])) {
 	include __DIR__ . '/auto-assign-captivate-episodes.php';

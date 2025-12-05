@@ -2049,7 +2049,27 @@
                 {
                     "stories": [
                         {
-                            "title": "The War Between the Land and the Sea",
+                            "title": "Homo Aqua",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "Plastic Apocalypse",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Deep",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The Witch of the Waterfall",
+                            "podcast": "Coming soon...",
+                            "scores": { "garry": null, "adam": null }
+                        },
+                        {
+                            "title": "The End of the War",
                             "podcast": "Coming soon...",
                             "scores": { "garry": null, "adam": null }
                         }

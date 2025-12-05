@@ -9,7 +9,7 @@ Layout and styling for the browse all and side section.
     position: static;
     background-image: url("images/homepage-browse-all-bg.webp");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: clamp(25rem, 37vw, 45rem) auto;
 
     @media (max-width: 61.813rem) {
         background: none;

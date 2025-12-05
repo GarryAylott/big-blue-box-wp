@@ -85,6 +85,10 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
                 }
             }
 
+            .author-avatar:is(.no-link):hover {
+                filter: none;
+            }
+
             .author-block-content {
                 display: flex;
                 flex-direction: column;

@@ -30,10 +30,9 @@ Styles for post pagination section.
                 .pagination-item:not(.pagination__dots):hover,
                 span.pagination-item.is-current
             ) {
-            font-weight: var(--fw-bold);
             color: var(--clr-surface-700);
             text-decoration: none;
-            border: none;
+            border: 1px solid transparent;
             background: var(--clr-border-link);
         }
 
@@ -51,6 +50,7 @@ Styles for post pagination section.
         .pagination__prev {
             min-height: 2.5rem;
             padding-inline: 1rem;
+            border: 1px solid transparent;
             white-space: nowrap;
         }
     }

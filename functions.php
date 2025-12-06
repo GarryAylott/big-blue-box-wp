@@ -37,7 +37,8 @@ function bigbluebox_setup() {
 	*/
 	add_theme_support( 'post-thumbnails' );
 
-	add_image_size( 'homepage-thumb', 690, 999 );
+	add_image_size( 'latest-podcast-ep-thumb', 640, 999 );
+	add_image_size( 'post-card-thumb', 690, 999 );
 	add_image_size( 'singlepost-feat', 1200, 600 );
 	add_image_size( 'singlepost-wide', 1200, 675, true );
 	add_image_size( 'singlepost-square', 1200, 9999, true );

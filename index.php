@@ -31,9 +31,9 @@ get_header();
                             <div class="img-container">
                                 <img
                                     class="post-thumb-img img-hover"
-                                    src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'homepage-thumb' ) ); ?>"
-                                    width="391"
-                                    height="220"
+                                    src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'latest-podcast-ep-thumb' ) ); ?>"
+                                    width="640"
+                                    height="360"
                                     alt="<?php echo esc_attr( get_the_title() ); ?>"
                                 >
                             </div>

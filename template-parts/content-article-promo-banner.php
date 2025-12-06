@@ -32,7 +32,7 @@ $random_heading = $promo_headings[ array_rand( $promo_headings ) ];
     <article class="article-promo-banner__post">
         <?php if ( has_post_thumbnail( $post_id ) ) : ?>
             <div class="article-promo-banner__img img-container">
-                <img class="post-thumb-img img-hover rounded-small" src="<?php echo get_the_post_thumbnail_url( $post_id, 'homepage-thumb' ); ?>" width="387" height="217" alt="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
+                <img class="post-thumb-img img-hover rounded-small" src="<?php echo get_the_post_thumbnail_url( $post_id, 'post-card-thumb' ); ?>" width="387" height="217" alt="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
             </div>
         <?php endif; ?>
         

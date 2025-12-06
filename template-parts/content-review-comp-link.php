@@ -23,8 +23,8 @@ $compendium_images = array(
     'CompSection-BG-13',
     'CompSection-BG-14',
     'CompSection-BG-15',
-    'CompSection-BG-Fugitive',
-    'CompSection-BG-War',
+    'CompSection-BG-16',
+    'CompSection-BG-17',
 );
 
 $initial_index      = array_rand($compendium_images);

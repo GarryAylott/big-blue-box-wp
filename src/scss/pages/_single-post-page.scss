@@ -41,6 +41,7 @@ Layout and styling for single post pages.
                 gap: var(--space-2xs);
 
                 h1 {
+                    max-width: var(--measure-s);
                     font-size: var(--step-5);
                     color: var(--clr-text-100);
                 }

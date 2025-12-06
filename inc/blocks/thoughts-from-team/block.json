@@ -1,0 +1,21 @@
+{
+    "apiVersion": 2,
+    "name": "bbb/thoughts-from-team",
+    "title": "Thoughts from the Team",
+    "category": "bbb-blocks",
+    "icon": "admin-users",
+    "description": "Allow authors to embed short contributions from multiple team members in a post.",
+    "attributes": {
+        "entries": {
+            "type": "array",
+            "default": []
+        }
+    },
+    "supports": {
+        "html": false
+    },
+    "editorScript": "file:./thoughts-from-team.js",
+    "render": "file:./render.php",
+    "style": "bigbluebox-style",
+    "editorStyle": "file:./editor.css"
+}

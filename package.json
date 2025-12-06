@@ -10,7 +10,9 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "gulp",
         "build": "NODE_ENV=production gulp prod",
-        "build:compendium": "node scripts/build-reviews-compendium.mjs"
+        "build:compendium": "node scripts/build-reviews-compendium.mjs",
+        "blocks:build": "wp-scripts build --config webpack.config.cjs",
+        "blocks:dev": "wp-scripts start --config webpack.config.cjs"
     },
     "author": "Garry Aylott",
     "license": "ISC",
@@ -32,7 +34,8 @@
         "lucide": "^0.544.0",
         "postcss": "^8.4.31",
         "rollup": "^4.50.0",
-        "sass": "^1.92.0"
+        "sass": "^1.92.0",
+        "@wordpress/scripts": "^27.0.0"
     },
     "dependencies": {
         "vlitejs": "^7.4.0"

@@ -1,0 +1,60 @@
+.team-thoughts-editor {
+    border: 1px solid hsl(221, 91%, 70%);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: #fff;
+}
+
+.team-thoughts-editor__title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.team-thoughts-editor__entries {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.team-thought-entry {
+    padding-block-end: 1.5rem;
+    border-block-end: 1px solid hsla(0, 0%, 0%, 0.15);
+}
+
+.team-thought-entry__user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.team-thought-entry__avatar {
+    width: 56px;
+    height: 56px;
+}
+
+.team-thought-entry__label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.team-thought-entry__contributor,
+.team-thought-entry__content {
+    margin-bottom: 1rem;
+}
+
+.team-thought-entry__actions {
+    margin-top: 0.5rem;
+}
+
+.team-thought-entry__remove {
+    margin-top: 0.25rem;
+}
+
+.team-thoughts-editor__add {
+    margin-top: 1rem;
+}

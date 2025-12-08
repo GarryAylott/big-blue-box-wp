@@ -38,7 +38,6 @@ const icons = {
     X,
     Tag,
 };
-
 createIcons({ icons });
 
 // Configuration object

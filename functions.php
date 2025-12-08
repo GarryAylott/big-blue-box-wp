@@ -393,6 +393,25 @@ function bbb_remove_jquery_migrate( $scripts ) {
 }
 add_action( 'wp_default_scripts', 'bbb_remove_jquery_migrate' );
 
+// Load custom log in page assets
+add_action( 'login_enqueue_scripts', 'bbb_login_scripts' );
+function bbb_login_scripts() {
+
+    wp_enqueue_script(
+        'bbb-scripts',
+        get_stylesheet_directory_uri() . '/scripts/bbb-scripts.min.js',
+        [],
+        wp_get_theme()->get( 'Version' ),
+        true
+    );
+
+    wp_localize_script(
+        'bbb-scripts',
+        'themeSettings',
+        ['themeUrl' => get_stylesheet_directory_uri()]
+    );
+}
+
 // Automatically load function partials
 $inc_path = get_template_directory() . '/inc/';
 foreach ( glob( $inc_path . '*.php' ) as $file ) {

@@ -11,7 +11,7 @@
         <div class="round-table-link-panel__content flow-small">
             <h3>The Roundtable Podcast Episodes</h3>
             <p>Once a month we gather our writing team around a virtual round table to chat about anything and everything Doctor Who. Topics range from recent news, the latest merch, conventions and much more.</p>
-            <a class="button" href="<?php echo esc_url(home_url('/round-table')); ?>">Listen to the Roundtable Episodes Now</a>
+            <a class="button" href="<?php echo esc_url('https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/round-table-episodes/'); ?>" target="_blank" rel="noopener noreferrer">Listen to the Roundtable Episodes Now</a>
         </div>
     </div>
 </section>

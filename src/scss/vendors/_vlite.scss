@@ -13,10 +13,25 @@ Importing vLite styles from NPM package
     --vlite-controlsOpacity: 0.9;
     --vlite-progressBarHeight: 5px;
     --vlite-progressBarBackground: rgba(0, 0, 0, 0.25);
-    font-family: -apple-system, blinkmacsystemfont, segoe UI, Helvetica, Arial,
-        sans-serif, Apple Color Emoji, Segoe UI Emoji;
+    font-family:
+        -apple-system,
+        blinkmacsystemfont,
+        segoe UI,
+        Helvetica,
+        Arial,
+        sans-serif,
+        Apple Color Emoji,
+        Segoe UI Emoji;
     overflow: hidden;
     position: relative;
+}
+.v-vlite.v-audio {
+    display: flex;
+    flex-direction: column;
+}
+.v-vlite.v-audio .v-container {
+    flex: 1;
+    width: 100%;
 }
 .v-vlite,
 .v-vlite * {
@@ -172,7 +187,8 @@ Importing vLite styles from NPM package
     opacity: 0;
     position: absolute;
     top: 0;
-    transition: opacity var(--vlite-transition),
+    transition:
+        opacity var(--vlite-transition),
         visibility var(--vlite-transition);
     visibility: hidden;
     width: 100%;
@@ -263,7 +279,9 @@ Importing vLite styles from NPM package
     margin: 0;
     outline: none;
     touch-action: manipulation;
-    transition: height var(--vlite-transition), top var(--vlite-transition);
+    transition:
+        height var(--vlite-transition),
+        top var(--vlite-transition);
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
@@ -323,7 +341,8 @@ Importing vLite styles from NPM package
 }
 .v-volumeButton {
     flex-shrink: 0;
-    transition: transform var(--vlite-transition),
+    transition:
+        transform var(--vlite-transition),
         opacity var(--vlite-transition);
 }
 .v-controlBar {
@@ -337,6 +356,7 @@ Importing vLite styles from NPM package
     position: relative;
     text-align: right;
     transition: opacity var(--vlite-transition);
+    margin-top: 0.5rem;
     width: 100%;
 }
 .v-controlBar.v-hidden {

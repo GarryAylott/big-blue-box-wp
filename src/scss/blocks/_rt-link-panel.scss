@@ -39,7 +39,7 @@ Styles for the Roundtable link panel
         position: relative;
         width: 100%;
         height: 100%;
-        padding: var(--space-l) var(--space-l) var(--space-xl) var(--space-l);
+        padding: var(--space-l) var(--space-l) var(--space-l) var(--space-l);
         isolation: isolate;
 
         h4,
@@ -49,6 +49,11 @@ Styles for the Roundtable link panel
 
         p {
             margin-block-end: var(--space-s);
+        }
+
+        a.button {
+            display: block;
+            margin-block-start: var(--space-m);
         }
 
         // Colour gradient behind text

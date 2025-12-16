@@ -33,46 +33,59 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
         --vlite-controlsOpacity: 1;
         --vlite-progressBarHeight: 5px;
         --vlite-progressBarBackground: rgba(255, 255, 255, 0.15);
-
-        border-radius: var(--radius-normal);
-
-        // &::before {
-        //     content: "";
-        //     position: absolute;
-        //     inset: 0;
-        //     width: 100%;
-        //     height: 100%;
-        //     background: linear-gradient(140deg, #141924 0%, #141924 0%)
-        //             padding-box,
-        //         linear-gradient(
-        //                 167deg,
-        //                 var(--clr-brand-secondary) -20%,
-        //                 transparent 50%
-        //             )
-        //             border-box;
-        //     border: 1px solid transparent;
-        //     border-radius: inherit;
-        // }
     }
 
     // Specificity wrapper from vLite
     .v-vlite.v-audio {
+        background-image: linear-gradient(
+            90deg,
+            hsl(334deg 86% 47%) 0%,
+            hsl(330deg 81% 48%) 6%,
+            hsl(325deg 73% 50%) 13%,
+            hsl(319deg 65% 51%) 20%,
+            hsl(311deg 57% 51%) 28%,
+            hsl(298deg 49% 52%) 36%,
+            hsl(283deg 57% 57%) 45%,
+            hsl(267deg 65% 62%) 54%,
+            hsl(250deg 74% 66%) 64%,
+            hsl(232deg 85% 66%) 77%,
+            hsl(215deg 95% 55%) 100%
+        );
+        border-radius: var(--radius-normal);
         box-shadow: none;
 
-        /* vLite main container */
         .v-container {
-            font-family: var(--font-family-body);
-            color: var(--clr-text-400);
+            display: flex;
+            flex-direction: column;
+            padding-block-start: var(--space-s);
         }
 
-        /* Controls bar */
+        // Episode number and title
+        .v-player-meta {
+            display: flex;
+            gap: var(--space-xs);
+            font-family: var(--font-family-headings);
+            font-weight: var(--fw-bold);
+            font-size: var(--step-0);
+            padding-inline: calc(var(--space-s) + 1px);
+
+            &__number {
+                height: fit-content;
+                padding-inline: var(--space-2xs);
+                background: hsl(var(--clr-surface-50-hsl) / 0.15);
+                border-radius: var(--radius-small);
+            }
+        }
+
+        /* Main audio player and controls container */
         .v-controlBar {
             display: flex;
             align-items: center;
             gap: var(--space-s);
-            padding-inline-start: calc(var(--space-s) + 0.35rem);
-            padding-inline-end: calc(var(--space-s) + 0.15rem);
-            background: var(--clr-surface-300);
+            margin: 0;
+            padding-inline: var(--space-m);
+            font-family: var(--font-family-headings);
+            color: var(--clr-text-400);
         }
 
         /* Play/Pause button */
@@ -96,6 +109,8 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
 
         /* Time display */
         .v-time {
+            justify-content: flex-end;
+            min-width: 5.6rem;
             font-size: var(--step--2);
             color: currentColor;
             padding: 0;
@@ -104,17 +119,25 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
         /* Progress bar */
         .v-progressBar {
             flex: 1;
-            margin-inline: auto;
             height: 6px;
+            margin-inline: auto;
+            background: hsl(42, 89%, 71%, 0.2);
             border-radius: var(--radius-circle);
-            &::-webkit-slider-thumb {
-                background: var(--clr-surface-50);
-                border-radius: var(--radius-circle);
-            }
-        }
 
-        .v-progressBarStyle {
-            scrollbar-color: var(--clr-brand-accent);
+            &::-webkit-slider-thumb {
+                width: 16px;
+                height: 16px;
+                transform: translateY(-3px);
+                background: hsl(var(--clr-brand-secondary-hsl));
+                box-shadow: 0 4px 8px hsl(var(--clr-surface-300-hsl) / 0.5);
+            }
+
+            &::-moz-range-thumb {
+                width: 16px;
+                height: 16px;
+                background: hsl(var(--clr-brand-secondary-hsl));
+                box-shadow: 0 4px 8px hsl(var(--clr-surface-300-hsl) / 0.5);
+            }
         }
 
         /* Volume button */

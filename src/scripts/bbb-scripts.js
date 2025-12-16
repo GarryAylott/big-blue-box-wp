@@ -40,6 +40,52 @@ const icons = {
 };
 createIcons({ icons });
 
+class EpisodeMetaPlugin {
+    constructor({ player }) {
+        this.player = player;
+        this.providers = ["html5"];
+        this.types = ["audio"];
+        this.metaElement = null;
+    }
+
+    init() {
+        const { media, elements } = this.player;
+        if (!media || !elements?.controlBar) return;
+
+        const number = media.dataset?.episodeNumber?.trim();
+        const title = media.dataset?.episodeTitle?.trim();
+
+        if (!number && !title) return;
+
+        this.metaElement = document.createElement("div");
+        this.metaElement.className = "v-player-meta";
+
+        if (number) {
+            const numberEl = document.createElement("span");
+            numberEl.className = "v-player-meta__number";
+            numberEl.textContent = number;
+            this.metaElement.appendChild(numberEl);
+        }
+
+        if (title) {
+            const titleEl = document.createElement("span");
+            titleEl.className = "v-player-meta__title";
+            titleEl.textContent = title;
+            this.metaElement.appendChild(titleEl);
+        }
+
+        elements.controlBar
+            .closest(".v-container")
+            ?.insertBefore(this.metaElement, elements.controlBar);
+    }
+
+    destroy() {
+        this.metaElement?.remove();
+    }
+}
+
+Vlitejs.registerPlugin("episodeMeta", EpisodeMetaPlugin);
+
 // Configuration object
 const CONFIG = {
     FADE_DISTANCE: 900,
@@ -163,6 +209,49 @@ const initPodcastMenu = () => {
     document.addEventListener("click", closeHandler, { passive: true });
 };
 
+// Add external link icons
+const initExternalLinkIcons = () => {
+    const selectors = [];
+
+    if (document.body.classList.contains("single-post")) {
+        selectors.push(".post-content");
+    }
+
+    if (document.body.classList.contains("page")) {
+        selectors.push(".site-main");
+    }
+
+    if (!selectors.length) {
+        return;
+    }
+
+    const contentAreas = document.querySelectorAll(selectors.join(","));
+    if (!contentAreas.length) {
+        return;
+    }
+
+    const themeUrl = themeSettings.themeUrl || "";
+
+    contentAreas.forEach((contentArea) => {
+        const links = contentArea.querySelectorAll(
+            'a[target="_blank"]:not(.has-external-icon)'
+        );
+
+        links.forEach((link) => {
+            if (themeUrl && link.href.startsWith(themeUrl)) {
+                return;
+            }
+
+            const icon = document.createElement("span");
+            icon.innerHTML = `<i data-lucide="arrow-up-right" class="icon-step-1"></i>`;
+
+            link.appendChild(icon);
+            createIcons({ icons, root: icon });
+            link.classList.add("has-external-icon");
+        });
+    });
+};
+
 // TARDIS progress image on scroll
 const initScrollContainers = () => {
     const scrollContainers = document.querySelectorAll(
@@ -224,49 +313,6 @@ const initScrollContainers = () => {
     // Observe all containers
     scrollContainers.forEach((container) => {
         resizeObserver.observe(container);
-    });
-};
-
-// Add external link icons
-const initExternalLinkIcons = () => {
-    const selectors = [];
-
-    if (document.body.classList.contains("single-post")) {
-        selectors.push(".post-content");
-    }
-
-    if (document.body.classList.contains("page")) {
-        selectors.push(".site-main");
-    }
-
-    if (!selectors.length) {
-        return;
-    }
-
-    const contentAreas = document.querySelectorAll(selectors.join(","));
-    if (!contentAreas.length) {
-        return;
-    }
-
-    const themeUrl = themeSettings.themeUrl || "";
-
-    contentAreas.forEach((contentArea) => {
-        const links = contentArea.querySelectorAll(
-            'a[target="_blank"]:not(.has-external-icon)'
-        );
-
-        links.forEach((link) => {
-            if (themeUrl && link.href.startsWith(themeUrl)) {
-                return;
-            }
-
-            const icon = document.createElement("span");
-            icon.innerHTML = `<i data-lucide="arrow-up-right" class="icon-step-1"></i>`;
-
-            link.appendChild(icon);
-            createIcons({ icons, root: icon });
-            link.classList.add("has-external-icon");
-        });
     });
 };
 
@@ -490,6 +536,7 @@ const initAudioPlayer = () => {
                 ],
                 volume: true,
                 autoplay: false,
+                plugins: ["episodeMeta"],
             });
 
             clearInterval(waitForPlayer);

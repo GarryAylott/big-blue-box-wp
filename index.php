@@ -222,7 +222,7 @@ get_header();
         </picture>
         <div class="podcast-app-links">
             <h5>
-                Want to listen on your favourite podcast app?
+                Listen now on your favourite podcast app.
             </h5>
             <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
         </div>

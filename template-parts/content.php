@@ -120,32 +120,61 @@
 			<!-- Podcast player -->
 				<?php
 					if ( in_category( 'podcasts' ) ) :
-					$guid = get_field( 'captivate_episode_guid' );
-					error_log( '🎯 GUID from ACF: ' . print_r( $guid, true ) );
+						$guid           = get_field( 'captivate_episode_guid' );
+						$episode_number = get_field( 'podcast_episode_number' );
+						$episode_type   = get_field( 'podcast_episode_type' );
+						$episode_title  = get_field( 'episode' );
 
-					$audio_url = bbb_get_captivate_audio_url( $guid );
+						$episode_number_display = $episode_number;
+						$normalized_episode_type = $episode_type ? strtolower( trim( $episode_type ) ) : '';
+						if ( in_array( $normalized_episode_type, array( 'bonus', 'bonus episode' ), true ) ) {
+							$episode_number_display = __( 'Bonus', 'bigbluebox' );
+						}
 
-					// Fallback for local dev
-					if ( ! $audio_url && wp_get_environment_type() === 'local' ) {
-						$audio_url = 'https://traffic.libsyn.com/secure/examplepodcast/example-episode.mp3';
-						error_log( '🔊 Using fallback audio URL for local dev.' );
-					}
+						if ( ! $episode_title ) {
+							$episode_title = get_the_title();
+						}
 
-					echo '<!-- GUID: ' . esc_html( $guid ) . ' -->';
-					echo '<!-- Audio URL: ' . esc_url( $audio_url ) . ' -->';
+						error_log( '🎯 GUID from ACF: ' . print_r( $guid, true ) );
 
-					if ( $audio_url ) :
-						?>
-						<div class="podcast-player flow">
-							<audio id="player" class="vlite-js" preload="none">
-								<source src="<?php echo esc_url( $audio_url ); ?>" type="audio/mpeg" />
-								Your browser does not support the audio element.
-							</audio>
-						</div>
-						<?php
+						// Prefer the audio URL stored during acf/save_post; avoid front-end API calls.
+						$audio_url = get_field( 'captivate_audio_url' );
+						if ( ! $audio_url ) {
+							$audio_url = get_post_meta( get_the_ID(), 'captivate_audio_url', true );
+						}
+
+						if ( ! $audio_url && $guid ) {
+							$audio_url = bbb_get_captivate_audio_url( $guid );
+						}
+
+						// Fallback for local dev
+						if ( ! $audio_url && wp_get_environment_type() === 'local' ) {
+							$audio_url = 'https://traffic.libsyn.com/secure/examplepodcast/example-episode.mp3';
+							error_log( '🔊 Using fallback audio URL for local dev.' );
+						}
+
+						echo '<!-- GUID: ' . esc_html( $guid ) . ' -->';
+						echo '<!-- Audio URL: ' . esc_url( $audio_url ) . ' -->';
+
+						if ( $audio_url ) :
+							?>
+							<div class="podcast-player flow">
+								<audio
+									id="player"
+									class="vlite-js"
+									preload="none"
+									data-episode-number="<?php echo esc_attr( (string) $episode_number_display ); ?>"
+									data-episode-title="<?php echo esc_attr( (string) $episode_title ); ?>"
+									aria-label="<?php echo esc_attr( sprintf( esc_html__( 'Podcast audio player for %s', 'bigbluebox' ), $episode_title ) ); ?>"
+								>
+									<source src="<?php echo esc_url( $audio_url ); ?>" type="audio/mpeg" />
+									<?php esc_html_e( 'Your browser does not support the audio element.', 'bigbluebox' ); ?>
+								</audio>
+							</div>
+							<?php
+						endif;
 					endif;
-				endif;
-			?>
+				?>
 
 			<section class="entry-content flow">
 				<?php the_content(); ?>

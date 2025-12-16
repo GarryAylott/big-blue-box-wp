@@ -6,8 +6,6 @@ Custom Log In Screen Styles
 
 // Default log in page
 body.login {
-    display: grid;
-    justify-content: center;
     width: 100vw;
     min-height: 100vh;
     background-image: url("images/login-bg.avif"), url("images/login-bg.webp");
@@ -25,8 +23,8 @@ body.login {
 
 /* Replace WP logo */
 #login {
-    width: fit-content;
-    margin: 0;
+    width: min(30rem, 90%);
+    margin: 0 auto;
     padding-block-start: var(--space-3xl);
 
     form {
@@ -72,10 +70,9 @@ body.login {
 #loginform,
 #lostpasswordform,
 .admin-email-confirm-form {
-    width: 30rem;
-    max-width: 90vw;
+    width: 100%;
     font-family: var(--font-family-headings);
-    margin: 0;
+    margin: 0 auto;
     padding: var(--space-l);
     backdrop-filter: blur(12px);
     border: 1px solid hsl(var(--clr-border-default-hsl) / 0.2);
@@ -195,8 +192,6 @@ body.login {
 // Forgot password page
 .login {
     .message {
-        width: 30rem;
-        max-width: 90vw;
         padding-inline: var(--space-s);
         background-color: hsl(var(--clr-surface-600-hsl) / 0.4);
         box-shadow: none;

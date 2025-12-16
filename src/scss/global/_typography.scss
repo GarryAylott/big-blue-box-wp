@@ -146,6 +146,21 @@ p.lead + :is(h2, h3, h4, h5, h6) {
     }
 }
 
+body.category-podcasts {
+    p.lead,
+    p.has-drop-cap {
+        &:first-letter,
+        &:not(:focus):first-letter {
+            color: inherit;
+            float: none;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            margin: 0;
+        }
+    }
+}
+
 .text-normal {
     font-size: var(--step-0);
     font-weight: var(--fw-reg);

@@ -150,12 +150,19 @@ const initBackgroundFade = () => {
     observer.observe(backgroundImage);
 };
 
+// Search shortcut platform detection
+(() => {
+    const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
+    document.documentElement.dataset.os = isMac ? "mac" : "other";
+})();
+
 // Search functionality
 const initSearch = () => {
     const searchIcon = document.querySelector(CONFIG.SELECTORS.searchIcon);
     const searchOverlay = document.querySelector(
         CONFIG.SELECTORS.searchOverlay
     );
+
     if (!searchIcon || !searchOverlay) return;
 
     const getOverlaySearchField = () =>
@@ -163,33 +170,74 @@ const initSearch = () => {
 
     const closeOverlay = () => {
         const searchField = getOverlaySearchField();
+
         if (searchField && document.activeElement === searchField) {
-            searchField.blur(); // ✅ Blur before hiding to prevent aria-hidden focus warning
+            searchField.blur(); // Prevent aria-hidden focus warning
         }
 
         searchOverlay.setAttribute("aria-hidden", "true");
         document.body.classList.remove("overlay-active");
     };
 
-    searchIcon.addEventListener("click", (e) => {
-        e.preventDefault();
+    const openOverlay = () => {
+        if (searchOverlay.getAttribute("aria-hidden") === "false") return;
+
         searchOverlay.setAttribute("aria-hidden", "false");
         document.body.classList.add("overlay-active");
+
         const searchField = getOverlaySearchField();
-        if (searchField) searchField.focus(); // ✅ Only after aria-hidden is false
+        if (searchField) {
+            requestAnimationFrame(() => {
+                searchField.focus();
+            });
+        }
+    };
+
+    // Click trigger (existing behaviour)
+    searchIcon.addEventListener("click", (e) => {
+        e.preventDefault();
+        openOverlay();
     });
 
+    // Click outside to close
     searchOverlay.addEventListener("click", ({ target }) => {
-        if (target === searchOverlay) closeOverlay();
+        if (target === searchOverlay) {
+            closeOverlay();
+        }
     });
 
-    document.addEventListener("keydown", ({ key }) => {
+    // Global keyboard handling
+    document.addEventListener("keydown", (event) => {
+        const { key, metaKey, ctrlKey } = event;
+
+        // ESC closes when open
         if (
             key === "Escape" &&
             searchOverlay.getAttribute("aria-hidden") === "false"
         ) {
             closeOverlay();
+            return;
         }
+
+        // Cmd+K (macOS) or Ctrl+K (Windows/Linux)
+        const isK = key.toLowerCase() === "k";
+        const hasModifier = metaKey || ctrlKey;
+
+        if (!isK || !hasModifier) return;
+
+        // Don’t hijack typing contexts
+        const activeEl = document.activeElement;
+        if (
+            activeEl &&
+            (activeEl.tagName === "INPUT" ||
+                activeEl.tagName === "TEXTAREA" ||
+                activeEl.isContentEditable)
+        ) {
+            return;
+        }
+
+        event.preventDefault(); // Prevent browser find
+        openOverlay();
     });
 };
 

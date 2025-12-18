@@ -101,6 +101,7 @@ function add_search_icon_to_menu($items, $args) {
 		$search_icon = '<li class="menu-item search-menu-item">
 			<a href="#" class="nav-search-icon">
 				<i data-lucide="search" class="icon-bold"></i>
+				<span class="search-shortcut" aria-hidden="true"></span>
 			</a>
 		</li>';
 		$items .= $search_icon;

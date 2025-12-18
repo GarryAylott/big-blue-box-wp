@@ -1,7 +1,11 @@
 /* 
-HOMEPAGE HERO
-Header styling for the hero section on the homepage.
+ALL THE DOCTORS + BIG BLUE BOX TEXT GRAPHIC
+Styling and animated background colours.
 */
+
+/* -------------------------------------------------
+   Modern path (default)
+-------------------------------------------------- */
 
 .doctors-bbb {
     display: flex;
@@ -10,6 +14,14 @@ Header styling for the hero section on the homepage.
     gap: var(--space-l);
 
     picture {
-        filter: drop-shadow(0 0 2rem hsl(var(--clr-brand-primary-hsl) / 0.3));
+        filter: drop-shadow(0 0 2rem hsl(var(--clr-brand-accent-hsl) / 0.3));
+    }
+}
+
+// Safari invisible bounding-box fix
+@supports (-webkit-backdrop-filter: blur(0)) {
+    .doctors-bbb picture {
+        transform: translateZ(0);
+        filter: drop-shadow(0 0 2rem hsl(var(--clr-brand-accent-hsl) / 0.3));
     }
 }

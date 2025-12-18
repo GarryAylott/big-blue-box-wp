@@ -66,17 +66,44 @@ Header styling for logo, nav etc.
             }
 
             .nav-search-icon {
-                display: grid;
-                place-items: center;
-                width: 2rem;
-                height: 2rem;
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: var(--space-3xs);
                 margin-inline-start: -0.5rem;
+                padding-inline-end: var(--space-2xs);
                 background: transparent;
                 border-radius: var(--radius-circle);
-                transform: translateY(1px);
+                text-decoration: none;
 
-                &:hover {
-                    background: var(--clr-border-link);
+                &:after {
+                    content: "";
+                    position: absolute;
+                    inset: auto 0 -3px;
+                    height: 3px;
+                    background: var(--clr-text-link);
+                    opacity: 0;
+                }
+
+                &:is(:hover, :active):after {
+                    opacity: 1;
+                }
+
+                .search-shortcut {
+                    display: inline-flex;
+                    align-items: center;
+                    font-size: var(--step--1);
+                    line-height: 1.2;
+                    color: hsl(var(--clr-text-900-hsl));
+                    padding-inline-start: var(--space-3xs);
+                    border-inline-start: 1px solid var(--clr-border-default);
+                    white-space: nowrap;
+                }
+
+                @media (hover: none) {
+                    .search-shortcut {
+                        display: none;
+                    }
                 }
             }
 
@@ -120,23 +147,16 @@ Header styling for logo, nav etc.
 
             a {
                 display: block;
-                font-size: var(--step-1);
+                font-size: var(--step-5);
             }
 
-            // Mobile-only logo at the end of the list
-            .nav-mobile-logo {
-                display: block;
-                margin-top: var(--space-xl);
-                width: 100%;
-            }
+            .nav-search-icon {
+                margin-block-start: var(--space-3xs);
+                margin-inline-start: 0px;
 
-            .nav-mobile-logo__link {
-                display: inline-block;
-            }
-
-            .nav-mobile-logo img {
-                width: 180px;
-                height: auto;
+                .search-shortcut {
+                    @include visually-hidden;
+                }
             }
         }
 
@@ -214,6 +234,35 @@ Header styling for logo, nav etc.
     }
 }
 
+// Content for search shortcut
+html[data-os="mac"] .search-shortcut {
+    &::before {
+        content: "⌘";
+        font-size: 1em;
+        margin-inline-end: 0.05rem;
+        transform: translateY(0.5px);
+    }
+
+    &::after {
+        content: "K";
+        font-size: 1em;
+        text-transform: uppercase;
+    }
+}
+
+html[data-os="other"] .search-shortcut {
+    &::before {
+        content: "Ctrl";
+        font-size: 0.85em;
+        margin-inline-end: 0.1rem;
+    }
+
+    &::after {
+        content: "+K";
+        font-size: 0.85em;
+    }
+}
+
 // Header items fade in animation
 $drop-distance: 1.5rem;
 $drop-duration: 700ms; // movement
@@ -228,13 +277,15 @@ $easing-fade: ease-out;
 }
 
 @mixin header-fade-animate($count: 10, $delay-start: 0.5s, $delay-step: 0.2s) {
-    animation: headerDrop $drop-duration $easing-drop forwards,
+    animation:
+        headerDrop $drop-duration $easing-drop forwards,
         headerFade $fade-duration $easing-fade forwards;
 
     @for $i from 1 through $count {
         &:nth-child(#{$i}) {
             // same delay applied to both animations
-            animation-delay: #{$delay-start + ($i - 1) * $delay-step},
+            animation-delay:
+                #{$delay-start + ($i - 1) * $delay-step},
                 #{$delay-start + ($i - 1) * $delay-step};
         }
     }
@@ -243,7 +294,8 @@ $easing-fade: ease-out;
 // Logo
 .site-head__logo {
     @include header-fade-start;
-    animation: headerDrop $drop-duration $easing-drop forwards,
+    animation:
+        headerDrop $drop-duration $easing-drop forwards,
         headerFade $fade-duration $easing-fade forwards;
     animation-delay: 0.3s, 0.3s; // same delay for both
 }

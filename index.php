@@ -90,6 +90,8 @@ get_header();
             wp_reset_postdata();
         endif; ?>
 
+            <?php get_template_part('template-parts/content', 'logos-marquee'); ?>
+
             <h6 class="section-title">
             <i data-lucide="newspaper" class="icon-bold icon-step--1"></i>
             Latest articles
@@ -100,7 +102,7 @@ get_header();
             get_template_part('template-parts/content', 'latest-articles');
         ?>
     </section>
-    
+
     <section class="wrapper">
         <?php get_template_part('template-parts/content', 'testimonial'); ?>
     </section>

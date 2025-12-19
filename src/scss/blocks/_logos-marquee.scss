@@ -1,0 +1,78 @@
+@use "utilities" as *;
+
+/* 
+BRAND LOGOS MARQUEE
+Horizontal scrolling brand logos styling.
+*/
+
+.brand-logos-marquee {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 98%;
+    margin-block-start: var(--space-l);
+    margin-block-end: var(--space-xl);
+    margin-inline: auto;
+    overflow-x: auto;
+    mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 30%,
+        black 70%,
+        transparent
+    );
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &__group {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        animation: logos-slide 80s linear infinite;
+        will-change: transform;
+
+        @media (max-width: 43.75rem) {
+            animation: logos-slide 40s linear infinite;
+        }
+
+        picture {
+            min-width: clamp(12.5rem, 26.316vw + 7.237rem, 18.75rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 3.188rem;
+            opacity: 0.75;
+        }
+
+        .brand-logo-2 {
+            min-width: 400px;
+
+            img {
+                max-width: 280px;
+            }
+
+            @media (max-width: 43.75rem) {
+                min-width: 280px;
+
+                img {
+                    max-width: 200px;
+                }
+            }
+        }
+
+        .brand-logo-6 img {
+            transform: translateY(4px);
+        }
+    }
+}
+
+@keyframes logos-slide {
+    from {
+        translate: 0 0 0;
+    }
+    to {
+        translate: -100% 0 0;
+    }
+}

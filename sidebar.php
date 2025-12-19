@@ -177,4 +177,14 @@
 			</div>
 		</div>
 	</section>
+
+	<section>
+		<a class="has-external-icon" href="https://www.bigfinish.com/" target="_blank" rel="noreferrer noopener">
+			<picture class="img-container-square">
+				<source srcset="<?php echo get_bloginfo('template_url') ?>/images/ads/big-finish-banner-square.avif" type="image/avif">
+				<source srcset="<?php echo get_bloginfo('template_url') ?>/images/ads/big-finish-banner-square.webp" type="image/webp">
+				<img class="sidebar-img img-hover" src="<?php echo get_bloginfo('template_url') ?>/images/ads/big-finish-banner-square.webp" width="342" height="342" alt="Check out the full range of Doctor Who audio dramas from Big Finish, now.">
+			</picture>
+		</a>
+	</section>
 </aside><!-- #secondary -->

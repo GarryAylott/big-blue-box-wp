@@ -15,6 +15,7 @@ Layout and styling for panels that are styled differently to regular sections.
     &::after {
         @include panel-border-highlight;
         border-radius: var(--radius-small);
+        opacity: 0.4;
     }
 }
 

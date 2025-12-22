@@ -25,19 +25,24 @@
 						$phrases = [
 							"has been podcasting and blogging since March 2014.",
 							"has defeated approximately 2 Daleks. So far.",
-							"has published around 43,750 minutes of Doctor Who content and counting.",
+							"has podcasted around 48,750 minutes of content and counting.",
 							"once tried to reverse the polarity. That didn't end well.",
 							"episode titles are 90% puns, 10% waffle.",
 							"has thoughts about the Timeless Child.",
-							"was created in the UK and enjoyed around the world.",
-							"quotes “City of Death” in normal conversation.",
+							"remembers where they were when Gallifrey fell. Again.",
 							"has podcasted through two big anniversary years of the show.",
-							"has argued about “Love & Monsters”.",
+							"quotes “City of Death” in normal conversation.",
+							"remembers when regeneration rules were simpler.",
 							"has 4 people on the writing team.",
-							"never calls it “NuWho”. Ever...",
-							"...nor uses the term “Whovian” for that matter.",
+							"never calls it “NuWho” or uses the term “Whovian”.",
 							"has active listeners since the very first episode.",
-							"wishes there was unlimited Rice Pudding."
+							"wishes there was unlimited Rice Pudding.",
+							"has argued about “Love & Monsters”.",
+							"has spent far too long ranking Doctors and companions.",
+							"still isn’t over certain finales.",
+							"has thoughts on Sleep No M... no, just don't.",
+							"treats Time Lord logic with caution.",
+							"has collectively listened to an unhealthy amount of Big Finish."
 						];
 
 						$default_phrase = $phrases[0];

@@ -318,9 +318,14 @@ function filter_posts_by_category() {
 	$context     = isset( $_POST['context'] ) ? sanitize_key( wp_unslash( $_POST['context'] ) ) : '';
 	$paged       = isset( $_POST['paged'] ) ? max( 1, (int) $_POST['paged'] ) : 1;
 
+	$posts_per_page = get_option( 'posts_per_page' );
+	if ( 'home' === $context ) {
+		$posts_per_page = 14;
+	}
+
 	$args = array(
 		'post_status'    => 'publish',
-		'posts_per_page' => get_option( 'posts_per_page' ),
+		'posts_per_page' => $posts_per_page,
 		'post_type'      => 'post',
 		'paged'          => $paged,
 	);

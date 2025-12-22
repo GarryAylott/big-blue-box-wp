@@ -565,7 +565,7 @@ const initRotatingSentence = () => {
         }, 250);
     };
 
-    setInterval(rotateText, 5000);
+    setInterval(rotateText, 6000);
 };
 
 // Audio player

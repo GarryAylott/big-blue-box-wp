@@ -96,18 +96,13 @@ Layout and styling for the site footer
                     word-break: normal;
                 }
 
-                .rotating-sentence__prefix,
-                .rotating-sentence__dynamic {
-                    display: inline;
-                }
-
                 &__dynamic {
                     display: inline-block;
                     font-weight: var(--fw-bold);
                     color: var(--clr-text-100);
                     margin-inline-start: 1px;
                     opacity: 0;
-                    transition: opacity 0.2s ease;
+                    transition: opacity 0.6s ease;
 
                     &.visible {
                         opacity: 1;

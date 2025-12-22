@@ -1,6 +1,6 @@
 <?php
 /**
- * Insert "Article Promo Banner" into long posts in the "articles" category.
+ * Insert "Article Promo Banner" into long non-podcast posts.
  *
  * @package bigbluebox
  */
@@ -13,8 +13,8 @@ function bbb_insert_article_promo_banners( string $content ): string {
 
     $post_id = get_the_ID();
 
-    // Gate: only “articles” category posts.
-    if ( ! has_category( 'articles', $post_id ) ) {
+    // Gate: only non-podcast posts.
+    if ( has_category( 'podcasts', $post_id ) ) {
         return $content;
     }
 
@@ -27,8 +27,8 @@ function bbb_insert_article_promo_banners( string $content ): string {
         return $content;
     }
 
-    // Get a single related candidate (random for Articles; older-first for Podcasts).
-    $context    = has_category( 'Podcasts', $post_id ) ? 'podcasts' : 'articles';
+    // Get a single related candidate (random for non-podcasts; older-first for Podcasts).
+    $context    = has_category( 'podcasts', $post_id ) ? 'podcasts' : 'non-podcasts';
     $candidates = function_exists( 'bbb_get_related_articles' ) ? bbb_get_related_articles( 1, $context ) : [];
 
     // Optional: ensure we can test placement even if nothing matched.

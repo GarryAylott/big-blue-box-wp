@@ -15,10 +15,6 @@ switch ($slug) {
         $hero_heading = 'Podcasts';
         $hero_sub = 'Listen to our entire podcast library plus our bonus Round Table episodes with the writing team. Looking for all of our review scores? Check out our Review Compendium.';
         break;
-    case 'articles':
-        $hero_heading = 'Articles';
-        $hero_sub = 'All our Doctor Who writing in one place: Reviews for Big Finish, books, and merch, editorials, plus event coverage—updated regularly by the Big Blue Box team.';
-        break;
     default:
         $hero_heading = 'Category: ' . single_cat_title('', false);
         $hero_sub = category_description(); // outputs the category description if set

@@ -434,6 +434,7 @@ const initCategorySwitcher = () => {
         CONFIG.SELECTORS.categorySwitcher
     );
     const postContainer = document.getElementById("ajax-posts-container");
+    const statusRegion = document.getElementById("ajax-posts-status");
     if (!switchButtons.length || !postContainer) return;
 
     let requestCounter = 0;
@@ -446,10 +447,16 @@ const initCategorySwitcher = () => {
 
     const beginLoading = () => {
         postContainer.setAttribute("aria-busy", "true");
+        if (statusRegion) {
+            statusRegion.textContent = "Loading posts";
+        }
     };
 
     const endLoading = () => {
         postContainer.removeAttribute("aria-busy");
+        if (statusRegion) {
+            statusRegion.textContent = "Posts updated";
+        }
     };
 
     const fetchCategoryPosts = (category) => {
@@ -507,6 +514,10 @@ const initCategorySwitcher = () => {
                     '<p class="ajax-error">' +
                     (err?.message || "Unable to load posts.") +
                     "</p>";
+                if (statusRegion) {
+                    statusRegion.textContent =
+                        err?.message || "Unable to load posts.";
+                }
                 endLoading();
                 setButtonsDisabled(false);
             });

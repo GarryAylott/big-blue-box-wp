@@ -81,7 +81,7 @@
 	</div>
 
 	<div class="post-content__container">
-		<?php if ( is_single() && in_category( 'articles' ) ) : ?>
+		<?php if ( is_single() && ! has_category( 'podcasts' ) ) : ?>
 			<?php get_template_part('template-parts/content', 'read-progress'); ?>
 		<?php endif; ?>
 		<div class="article-body flow-large">

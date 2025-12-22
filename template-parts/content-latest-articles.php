@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying the latest three articles.
+ * Template part for displaying the latest three non-podcast posts.
  *
  * @package Big_Blue_Box
  */
@@ -10,12 +10,18 @@
     <?php
         $displayed_posts = get_query_var('displayed_posts', array());
 
+        $podcasts_cat = get_category_by_slug( 'podcasts' );
+        $podcasts_cat_id = $podcasts_cat ? (int) $podcasts_cat->term_id : 0;
+
         $args2 = array(
-            'category_name' => 'articles',
             'posts_per_page' => 3,
             'post_status' => 'publish',
             'post__not_in' => $displayed_posts
         );
+
+        if ( $podcasts_cat_id ) {
+            $args2['category__not_in'] = array( $podcasts_cat_id );
+        }
         $query2 = new WP_Query($args2);
     ?>
     <?php if ( $query2->have_posts() ) :

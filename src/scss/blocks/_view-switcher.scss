@@ -46,7 +46,7 @@ Styling for minimal view switcher when a Button Group is overkill.
             }
         }
 
-        &[data-category="articles"] {
+        &[data-category="non-podcasts"] {
             --view-switcher-color: var(--clr-brand-secondary);
             --view-switcher-bg-hsl: var(--clr-brand-secondary-hsl);
         }

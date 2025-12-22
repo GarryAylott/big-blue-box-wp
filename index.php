@@ -115,7 +115,7 @@ get_header();
                     <button class="switch-btn is-active" data-category="all" aria-pressed="true">
                         All
                     </button>
-                    <button class="switch-btn" data-category="articles" aria-pressed="true">
+                    <button class="switch-btn" data-category="non-podcasts" aria-pressed="false">
                         <i data-lucide="newspaper"></i>
                         Articles
                     </button>
@@ -126,7 +126,8 @@ get_header();
                 </div>
             </div>
             <div class="browse-all__container">
-                <div id="ajax-posts-container" class="browse-all__posts">
+                <p id="ajax-posts-status" class="screen-reader-text" role="status" aria-live="polite" aria-atomic="true"></p>
+                <div id="ajax-posts-container" class="browse-all__posts" aria-describedby="ajax-posts-status">
                     <?php
                     $displayed_posts = get_query_var('displayed_posts');
 

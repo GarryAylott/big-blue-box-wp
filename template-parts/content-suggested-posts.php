@@ -42,7 +42,6 @@
                 $latest_args = array(
                     'post_type'           => 'post',
                     'posts_per_page'      => $latest_limit,
-                    'category_name'       => 'podcasts,articles',
                     'orderby'             => 'date',
                     'order'               => 'DESC',
                     'ignore_sticky_posts' => 1,
@@ -57,7 +56,7 @@
             } else {
                 // 🔁 Reuse the single source of truth for related content
                 // Requires: inc/related-articles.php (bbb_get_related_articles)
-                $context = ( $current_post_id && has_category( 'podcasts', $current_post_id ) ) ? 'podcasts' : 'articles';
+                $context = ( $current_post_id && has_category( 'podcasts', $current_post_id ) ) ? 'podcasts' : 'non-podcasts';
                 $related_posts = function_exists( 'bbb_get_related_articles' ) ? bbb_get_related_articles( 10, $context ) : array();
 
                 if ( ! empty( $related_posts ) ) :

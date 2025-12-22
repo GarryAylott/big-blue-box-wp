@@ -8,11 +8,11 @@
 /**
  * Get related content for the current post using a waterfall strategy.
  *
- * WATERFALL (Articles context):
- *  1) Same category = Articles AND share 2 key tags (if we have ≥2)
- *  2) Same category = Articles AND share any tag(s)
- *  3) Share a "specific" category with the post (excludes generic categories like articles/podcasts)
- *  4) Fallback: random Articles
+ * WATERFALL (Non-podcasts context):
+ *  1) Share 2 key tags (if we have ≥2)
+ *  2) Share any tag(s)
+ *  3) Share a "specific" category with the post (excludes generic categories like podcasts/articles)
+ *  4) Fallback: random non-podcast posts
  *
  * WATERFALL (Podcasts context):
  *  1) Podcasts older than current (same category = Podcasts)
@@ -24,19 +24,19 @@
  * - Uses no_found_rows + exclusions for performance.
  *
  * @param int    $limit   Number of posts.
- * @param string $context 'articles' | 'podcasts'
+ * @param string $context 'non-podcasts' | 'podcasts'
  * @return WP_Post[] Array of posts.
  */
-function bbb_get_related_articles( int $limit = 2, string $context = 'articles' ): array {
+function bbb_get_related_articles( int $limit = 2, string $context = 'non-podcasts' ): array {
     $post_id = get_the_ID();
     if ( ! $post_id ) {
         return [];
     }
 
+    $context = ( 'podcasts' === $context ) ? 'podcasts' : 'non-podcasts';
+
     // Gather categories + tags for the current post.
     $terms_cats = get_the_category( $post_id ); // array of WP_Term
-    $cat_ids    = array_map( fn( $t ) => (int) $t->term_id, $terms_cats );
-    $cat_slugs  = array_map( fn( $t ) => $t->slug, $terms_cats );
 
     $tags       = wp_get_post_tags( $post_id ); // array of WP_Term
     $tag_ids    = array_map( fn( $t ) => (int) $t->term_id, $tags );
@@ -48,8 +48,7 @@ function bbb_get_related_articles( int $limit = 2, string $context = 'articles' 
         array_values( array_filter( $terms_cats, fn( $t ) => ! in_array( $t->slug, $generic_cat_slugs, true ) ) )
     );
 
-    // Resolve the ID for the Articles/Podcasts categories if they exist.
-    $articles_cat_id = ( $cat = get_category_by_slug( 'articles' ) ) ? (int) $cat->term_id : 0;
+    // Resolve the ID for the Podcasts category if it exists.
     $podcasts_cat_id = ( $cat = get_category_by_slug( 'podcasts' ) ) ? (int) $cat->term_id : 0;
 
     // Common base for all queries.
@@ -115,29 +114,32 @@ function bbb_get_related_articles( int $limit = 2, string $context = 'articles' 
             ] );
         }
     } else {
-        // --- ARTICLES WATERFALL ---
+        // --- NON-PODCASTS WATERFALL ---
 
-        // We prefer queries constrained to the Articles category.
-        $articles_constraint = $articles_cat_id ? [ $articles_cat_id ] : $cat_ids;
+        $exclude_podcasts = $podcasts_cat_id ? [ 'category__not_in' => [ $podcasts_cat_id ] ] : [];
 
-        // 1) Same category (Articles) + share 2 tags (if we have ≥2 tags)
+        // 1) Share 2 tags (if we have ≥2 tags)
         if ( count( $tag_ids ) >= 2 ) {
             // Use the first two tags as a proxy for "pair match".
             $pair = array_slice( $tag_ids, 0, 2 );
-            $run_query( [
-                'category__in' => $articles_constraint,
-                'tag__and'     => $pair,
-                'orderby'      => 'rand',
-            ] );
+            $run_query( array_merge(
+                $exclude_podcasts,
+                [
+                    'tag__and' => $pair,
+                    'orderby'  => 'rand',
+                ]
+            ) );
         }
 
-        // 2) Same category (Articles) + share any tags
+        // 2) Share any tags
         if ( count( $collected ) < $limit && $tag_ids ) {
-            $run_query( [
-                'category__in' => $articles_constraint,
-                'tag__in'      => $tag_ids,
-                'orderby'      => 'rand',
-            ] );
+            $run_query( array_merge(
+                $exclude_podcasts,
+                [
+                    'tag__in' => $tag_ids,
+                    'orderby' => 'rand',
+                ]
+            ) );
         }
 
         // 3) Share a specific (non-generic) category
@@ -148,12 +150,14 @@ function bbb_get_related_articles( int $limit = 2, string $context = 'articles' 
             ] );
         }
 
-        // 4) Fallback: random Articles
+        // 4) Fallback: random non-podcast posts
         if ( count( $collected ) < $limit ) {
-            $run_query( [
-                'category__in' => $articles_constraint,
-                'orderby'      => 'rand',
-            ] );
+            $run_query( array_merge(
+                $exclude_podcasts,
+                [
+                    'orderby' => 'rand',
+                ]
+            ) );
         }
     }
 

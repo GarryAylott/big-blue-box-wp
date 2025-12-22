@@ -330,17 +330,32 @@ function filter_posts_by_category() {
 		'paged'          => $paged,
 	);
 
+	$podcasts_cat = get_category_by_slug( 'podcasts' );
+	$podcasts_cat_id = $podcasts_cat ? (int) $podcasts_cat->term_id : 0;
+
 	if ( 'search' === $context ) {
 		if ( $search_term ) {
 			$args['s'] = $search_term;
 		}
 		if ( $category && 'all' !== $category ) {
-			$args['category_name'] = $category;
+			if ( 'non-podcasts' === $category && $podcasts_cat_id ) {
+				$args['category__not_in'] = array( $podcasts_cat_id );
+			} else {
+				$args['category_name'] = $category;
+			}
 		}
 	} else {
 		if ( $category && 'all' !== $category ) {
-			$args['category_name'] = $category;
+			if ( 'non-podcasts' === $category && $podcasts_cat_id ) {
+				$args['category__not_in'] = array( $podcasts_cat_id );
+			} else {
+				$args['category_name'] = $category;
+			}
 		}
+	}
+
+	if ( 'home' === $context ) {
+		$args['no_found_rows'] = true;
 	}
 
 	$query = new WP_Query( $args );

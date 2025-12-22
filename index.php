@@ -110,7 +110,7 @@ get_header();
     <section class="browse-all">
         <div class="wrapper">
             <div class="browse-all__header">
-                <h2 class="section-title-heading">Latest Podcast Episodes & Articles</h2>
+                <h2 class="section-title-heading">Latest from The Big Blue Box</h2>
                 <div class="view-switcher" role="group" aria-label="Filter posts by type">
                     <button class="switch-btn is-active" data-category="all" aria-pressed="true">
                         All
@@ -161,7 +161,7 @@ get_header();
 
     <section>
         <div class="wrapper">
-            <h2 class="section-title-heading">More Doctor Who articles by subject</h2>
+            <h2 class="section-title-heading">More articles by subject</h2>
             <div class="more-articles">
                 <?php
                 $tags         = array( 'big-finish', 'events', 'reading' );

@@ -4,8 +4,11 @@
 BRAND LOGOS MARQUEE
 Horizontal scrolling brand logos styling.
 */
+.brand-logos-marquee:not([data-animated]) {
+    @include visually-hidden;
+}
 
-.brand-logos-marquee {
+.brand-logos-marquee[data-animated="true"] {
     display: flex;
     flex-wrap: nowrap;
     width: 98%;
@@ -20,17 +23,18 @@ Horizontal scrolling brand logos styling.
         black 70%,
         transparent
     );
+
     scrollbar-width: none;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
         display: none;
     }
 
-    &__group {
+    .brand-logos-marquee__group {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        animation: logos-slide 80s linear infinite;
+        animation: logos-slide 110s linear infinite;
         will-change: transform;
 
         @media (max-width: 43.75rem) {

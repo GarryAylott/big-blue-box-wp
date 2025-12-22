@@ -699,6 +699,30 @@ const initCompendiumLinkImages = () => {
     idleTimer = setTimeout(swapImages, DISPLAY_DURATION);
 };
 
+// Logos scrolling marquee without duped markup
+const initLogosMarquee = () => {
+    const scrollers = document.querySelectorAll(".brand-logos-marquee");
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        addAnimation();
+    }
+
+    function addAnimation() {
+        scrollers.forEach((scroller) => {
+            scroller.setAttribute("data-animated", true);
+
+            const scrollerGroup = scroller.querySelector(
+                ".brand-logos-marquee__group"
+            );
+            if (!scrollerGroup) return;
+
+            const duplicatedGroup = scrollerGroup.cloneNode(true);
+            duplicatedGroup.setAttribute("aria-hidden", true);
+            scroller.appendChild(duplicatedGroup);
+        });
+    }
+};
+
 // Initialize all features
 const init = () => {
     initNavigation();
@@ -712,6 +736,7 @@ const init = () => {
     initRotatingSentence();
     initEraJumpDropdown();
     initCompendiumLinkImages();
+    initLogosMarquee();
     window.addEventListener("DOMContentLoaded", initAudioPlayer);
 };
 

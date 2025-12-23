@@ -38,14 +38,22 @@
 						<span></span>
 					</button>
 
-					<?php wp_nav_menu(
-						array(
-							'theme_location' => 'main-nav',
-							'container' => 'nav',
-							'container_class' => 'nav-container',	
-							'items_wrap' => '<ul id="primary-navigation" data-visible="false" class="nav" role="list" aria-label="primary" >%3$s</ul>'
-						)
-					); ?>
+					<nav class="nav-container" aria-label="<?php esc_attr_e( 'primary', 'bigbluebox' ); ?>">
+						<div id="primary-navigation" class="nav-drawer" data-visible="false">
+							<?php
+							wp_nav_menu(
+								array(
+									'theme_location' => 'main-nav',
+									'container' => false,
+									'items_wrap' => '<ul class="nav" role="list">%3$s</ul>',
+								)
+							);
+							?>
+							<div class="nav-logo">
+								<img src="<?php echo esc_url( get_template_directory_uri() . '/images/logos/logo-horizontal.svg' ); ?>" width="251" height="53" alt="<?php echo esc_attr__( 'The Big Blue Box Podcast', 'bigbluebox' ); ?>">
+							</div>
+						</div>
+					</nav>
 				</div>
 			</div>
 		</div>

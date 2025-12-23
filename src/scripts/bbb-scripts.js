@@ -91,7 +91,7 @@ const CONFIG = {
     FADE_DISTANCE: 900,
     SCROLL_ANIMATION_DELAY: 100,
     SELECTORS: {
-        nav: ".nav",
+        nav: ".nav-drawer",
         navToggle: ".menu-nav-toggle",
         bgImage: ".hero-bg-image",
         searchIcon: ".nav-search-icon",

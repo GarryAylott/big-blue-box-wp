@@ -94,6 +94,7 @@ const CONFIG = {
         nav: ".nav-drawer",
         navToggle: ".menu-nav-toggle",
         bgImage: ".hero-bg-image",
+        featuredImage: ".post-thumb-img",
         searchIcon: ".nav-search-icon",
         searchOverlay: "#searchOverlay",
         podcastMenu: ".pod-links-menu details",
@@ -123,6 +124,13 @@ const initBackgroundFade = () => {
     const backgroundImage = document.querySelector(CONFIG.SELECTORS.bgImage);
     if (!backgroundImage) return;
 
+    const getOverlayBase = () => {
+        const base = Number.parseFloat(
+            backgroundImage.dataset.heroOverlayBase || ""
+        );
+        return Number.isFinite(base) ? base : null;
+    };
+
     let ticking = false;
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -135,6 +143,13 @@ const initBackgroundFade = () => {
                                 0
                             );
                             backgroundImage.style.opacity = opacity;
+                            const overlayBase = getOverlayBase();
+                            if (overlayBase !== null) {
+                                backgroundImage.style.setProperty(
+                                    "--hero-overlay-opacity",
+                                    `${overlayBase * opacity}`
+                                );
+                            }
                             ticking = false;
                         });
                         ticking = true;
@@ -148,6 +163,154 @@ const initBackgroundFade = () => {
         });
     });
     observer.observe(backgroundImage);
+};
+
+// Dynamic hero background image colour overlay
+const initHeroOverlayFromFeaturedImage = () => {
+    if (!document.body.classList.contains("single-post")) return;
+
+    const backgroundImage = document.querySelector(CONFIG.SELECTORS.bgImage);
+    const featuredImage = document.querySelector(
+        CONFIG.SELECTORS.featuredImage
+    );
+
+    if (!backgroundImage || !featuredImage) return;
+
+    const sampleWidth = 12;
+    const sampleHeight = 4;
+    const overlayOpacity = 0.6;
+    const monochromeThreshold = 16;
+
+    const applyOverlay = () => {
+        try {
+            if (!featuredImage.naturalWidth || !featuredImage.naturalHeight) {
+                return;
+            }
+
+            const canvas = document.createElement("canvas");
+            canvas.width = sampleWidth;
+            canvas.height = sampleHeight;
+
+            const ctx = canvas.getContext("2d", { willReadFrequently: true });
+            if (!ctx) return;
+
+            ctx.drawImage(featuredImage, 0, 0, sampleWidth, sampleHeight);
+            const { data } = ctx.getImageData(0, 0, sampleWidth, sampleHeight);
+
+            const cols = new Array(sampleWidth)
+                .fill(null)
+                .map(() => ({ r: 0, g: 0, b: 0, count: 0 }));
+            let chromaTotal = 0;
+            let chromaCount = 0;
+
+            for (let y = 0; y < sampleHeight; y += 1) {
+                for (let x = 0; x < sampleWidth; x += 1) {
+                    const idx = (y * sampleWidth + x) * 4;
+                    const alpha = data[idx + 3];
+                    if (alpha < 16) continue;
+                    const bucket = cols[x];
+                    bucket.r += data[idx];
+                    bucket.g += data[idx + 1];
+                    bucket.b += data[idx + 2];
+                    bucket.count += 1;
+                    const r = data[idx];
+                    const g = data[idx + 1];
+                    const b = data[idx + 2];
+                    const max = Math.max(r, g, b);
+                    const min = Math.min(r, g, b);
+                    chromaTotal += max - min;
+                    chromaCount += 1;
+                }
+            }
+
+            if (
+                chromaCount &&
+                chromaTotal / chromaCount < monochromeThreshold
+            ) {
+                backgroundImage.style.setProperty(
+                    "--hero-overlay-opacity",
+                    "0"
+                );
+                backgroundImage.style.setProperty(
+                    "--hero-overlay-gradient",
+                    "none"
+                );
+                return;
+            }
+
+            const stops = [];
+            cols.forEach((col, index) => {
+                if (!col.count) return;
+                const avgR = Math.round(col.r / col.count);
+                const avgG = Math.round(col.g / col.count);
+                const avgB = Math.round(col.b / col.count);
+                const pct =
+                    sampleWidth === 1
+                        ? 0
+                        : Math.round((index / (sampleWidth - 1)) * 100);
+                stops.push(`rgb(${avgR}, ${avgG}, ${avgB}) ${pct}%`);
+            });
+
+            if (!stops.length) return;
+
+            const mid = cols[Math.floor(sampleWidth / 2)];
+            const fallbackR = Math.round(mid.r / Math.max(mid.count, 1));
+            const fallbackG = Math.round(mid.g / Math.max(mid.count, 1));
+            const fallbackB = Math.round(mid.b / Math.max(mid.count, 1));
+
+            backgroundImage.style.setProperty(
+                "--hero-overlay-color",
+                `${fallbackR}, ${fallbackG}, ${fallbackB}`
+            );
+            backgroundImage.style.setProperty(
+                "--hero-overlay-gradient",
+                `linear-gradient(90deg, ${stops.join(", ")})`
+            );
+            backgroundImage.style.setProperty(
+                "--hero-overlay-opacity",
+                `${overlayOpacity}`
+            );
+            backgroundImage.dataset.heroOverlayBase = `${overlayOpacity}`;
+            const currentOpacity = Number.parseFloat(
+                window.getComputedStyle(backgroundImage).opacity
+            );
+            if (Number.isFinite(currentOpacity)) {
+                backgroundImage.style.setProperty(
+                    "--hero-overlay-opacity",
+                    `${overlayOpacity * currentOpacity}`
+                );
+            }
+        } catch (err) {
+            // Fail silently: no overlay if canvas access fails.
+        }
+    };
+
+    const schedule = () => {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(applyOverlay, { timeout: 800 });
+        } else {
+            window.setTimeout(applyOverlay, 0);
+        }
+    };
+
+    if (featuredImage.complete && featuredImage.naturalWidth) {
+        schedule();
+        return;
+    }
+
+    if (typeof featuredImage.decode === "function") {
+        featuredImage
+            .decode()
+            .then(schedule)
+            .catch(() => {
+                featuredImage.addEventListener("load", schedule, {
+                    once: true,
+                });
+            });
+        return;
+    }
+
+    featuredImage.addEventListener("load", schedule, { once: true });
 };
 
 // Search shortcut platform detection
@@ -738,6 +901,7 @@ const initLogosMarquee = () => {
 const init = () => {
     initNavigation();
     initBackgroundFade();
+    initHeroOverlayFromFeaturedImage();
     initSearch();
     initPodcastMenu();
     initScrollContainers();

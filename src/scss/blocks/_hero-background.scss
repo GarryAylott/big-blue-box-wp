@@ -24,6 +24,30 @@ Layout and styling for the large background image that appears at the top of mos
     }
 }
 
+body.single-post .hero-bg-image {
+    --hero-overlay-color: 0, 0, 0;
+    --hero-overlay-gradient: none;
+    --hero-overlay-opacity: 0;
+    isolation: isolate;
+
+    &::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-color: rgb(var(--hero-overlay-color));
+        background-image: var(--hero-overlay-gradient);
+        mix-blend-mode: color;
+        opacity: var(--hero-overlay-opacity);
+        pointer-events: none;
+        transition: opacity 0.2s ease-out;
+        z-index: 1;
+    }
+
+    > img {
+        z-index: 0;
+    }
+}
+
 body:is(.author) {
     .hero-bg-image > img {
         @media (max-width: 68.75rem) {

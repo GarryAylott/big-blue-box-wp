@@ -1,0 +1,46 @@
+/* 
+JOB OPENINGS PAGE
+Layout and styling for the job openings page panels.
+*/
+
+body.page-template-page-job-openings {
+    .job-openings {
+        margin-block-end: var(--space-3xl);
+
+        .page-title {
+            margin-block-end: var(--space-m);
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-xs);
+        width: 100%;
+        max-width: 60rem;
+    }
+
+    .job-openings__panel {
+        padding: var(--space-m);
+        border-radius: var(--radius-normal);
+
+        h2.job-openings__title {
+            font-size: var(--step-2);
+        }
+
+        &::after {
+            border-radius: var(--radius-normal);
+        }
+    }
+
+    .job-openings__link {
+        font-family: var(--font-family-headings);
+        font-weight: var(--fw-semibold);
+    }
+
+    @media (min-width: 48rem) {
+        .job-openings__list {
+            width: 65%;
+        }
+    }
+}

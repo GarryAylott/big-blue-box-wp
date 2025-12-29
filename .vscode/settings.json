@@ -7,5 +7,9 @@
         {
             "text": "Follow the conventional commit message format. Use the following emojis to indicate the type of changes: '✨' for new features, '🐛' for bug fixes '🧹' for cleanup, '📝' for documentation updates and '🎨' for any changes or additions to SCSS/CSS files. Use multiple emojis for changes to different things. Ensure the message is concise and descriptive and always include a list of key changes. Each key change should be on its own line or section and should end with a period."
         }
-    ]
+    ],
+    "cSpell.words": ["bigbluebox", "pagebg"],
+    "cSpell.enabledFileTypes": {
+        "javascript": false
+    }
 }

@@ -1,0 +1,11 @@
+@use "utilities" as *;
+
+/* 
+LEGAL TEMPLATE PAGE
+*/
+
+body:is(.page-template-legal-template) {
+    .entry-content {
+        max-width: var(--measure-m);
+    }
+}

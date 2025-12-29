@@ -1,10 +1,10 @@
 /* 
-JOB OPENINGS PAGE
-Layout and styling for the job openings page panels.
+TEAM OPENINGS PAGE
+Layout and styling for the team openings page panels.
 */
 
-body.page-template-page-job-openings {
-    .job-openings {
+body.page-template-team-openings {
+    .team-openings {
         margin-block-end: var(--space-3xl);
 
         .page-title {
@@ -20,11 +20,11 @@ body.page-template-page-job-openings {
         max-width: 60rem;
     }
 
-    .job-openings__panel {
+    .team-openings__panel {
         padding: var(--space-m);
         border-radius: var(--radius-normal);
 
-        h2.job-openings__title {
+        h2.team-openings__title {
             font-size: var(--step-2);
         }
 
@@ -33,13 +33,13 @@ body.page-template-page-job-openings {
         }
     }
 
-    .job-openings__link {
+    .team-openings__link {
         font-family: var(--font-family-headings);
         font-weight: var(--fw-semibold);
     }
 
     @media (min-width: 48rem) {
-        .job-openings__list {
+        .team-openings__list {
             width: 65%;
         }
     }

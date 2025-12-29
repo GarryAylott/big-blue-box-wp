@@ -111,22 +111,20 @@ Layout and styling for the site footer
             }
         }
 
-        ul.footer-list li {
-            &:first-child {
-                margin-block-end: var(--space-xs);
-            }
+        h5 {
+            margin-block-end: var(--space-s);
+        }
 
-            &:not(:first-child) {
-                font-family: var(--font-family-headings);
-                font-size: var(--step--1);
-            }
+        ul.footer-list {
+            font-family: var(--font-family-headings);
+            font-size: var(--step--1);
 
-            a {
+            li a {
                 color: var(--clr-text-900);
-            }
 
-            @media (max-width: 55rem) {
-                margin-block-start: var(--flow-small, 1em);
+                @media (max-width: 55rem) {
+                    margin-block-start: var(--flow-small, 1em);
+                }
             }
         }
     }

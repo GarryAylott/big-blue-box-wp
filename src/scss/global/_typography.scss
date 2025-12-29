@@ -244,7 +244,7 @@ a {
 
 // Standard text links within body text
 a.link-alt,
-body:is(.page-template-page-legal-template) :is(.entry-content) a,
+body:is(.page-template-legal-template) :is(.entry-content) a,
 body:is(.single-post) :is(.entry-content) a {
     color: var(--clr-text-link);
     text-decoration: underline;
@@ -302,7 +302,7 @@ a.link-action {
     }
 }
 
-body:is(.page-template-page-reviews-compendium) a.link-action {
+body:is(.page-template-reviews-compendium) a.link-action {
     @media (max-width: 44rem) {
         @include visually-hidden;
     }

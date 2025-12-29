@@ -12,29 +12,16 @@ if ( ! defined( '_S_VERSION' ) ) {
  * Theme defaults and registers support for various WordPress features.
  */
 function bigbluebox_setup() {
-	/*
-	* Make theme available for translation.
-	*/
+	// Make theme available for translation.
 	load_theme_textdomain( 'bigbluebox', get_template_directory() . '/languages' );
 
-	/*
-	* Add default posts and comments RSS feed links to head.
-	*/
+	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
 
-	/*
-	* Let WordPress manage the document title.
-	* By adding theme support, we declare that this theme does not use a
-	* hard-coded <title> tag in the document head, and expect WordPress to
-	* provide it for us.
-	*/
+	// Let WordPress manage the document title.
 	add_theme_support( 'title-tag' );
 
-	/*
-	* Enable support for Post Thumbnails on posts and pages.
-	*
-	* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-	*/
+	// Enable support for Post Thumbnails on posts and pages.
 	add_theme_support( 'post-thumbnails' );
 
 	add_image_size( 'latest-podcast-ep-thumb', 640, 999 );
@@ -44,10 +31,7 @@ function bigbluebox_setup() {
 	add_image_size( 'singlepost-square', 1200, 9999, true );
 	add_image_size( 'post-list-thumb', 400, 225, true );
 
-	/*
-	* Switch default core markup for search form, comment form, and comments
-	* to output valid HTML5.
-	*/
+	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
 	add_theme_support(
 		'html5',
 		array(
@@ -61,37 +45,39 @@ function bigbluebox_setup() {
 		)
 	);
 
-	// Set up the WordPress core custom background feature.
-	add_theme_support(
-		'custom-background',
-		apply_filters(
-			'bigbluebox_custom_background_args',
+	// Register menu locations
+	function register_my_menus() {
+		register_nav_menus(
 			array(
-				'default-color' => 'ffffff',
-				'default-image' => '',
+				'main-nav'            => esc_html__( 'Main Nav', 'bigbluebox' ),
+				'footer-menu-col-1' => esc_html__( 'Footer Menu Col 1', 'bigbluebox' ),
+				'footer-menu-col-2'    => esc_html__( 'Footer Menu Col 2', 'bigbluebox' ),
 			)
+		);
+	}
+	add_action( 'init', 'register_my_menus' );
+
+	// Register widget areas
+	function bigbluebox_widgets_init() {
+		register_sidebar(
+		array(
+			'name'          => esc_html__( 'Sidebar', 'bigbluebox' ),
+			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'bigbluebox' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
 		)
-	);
+		);
+	}
+	add_action( 'widgets_init', 'bigbluebox_widgets_init' );
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
-
-	/**
-	 * Add support for core custom logo.
-	 *
-	 * @link https://codex.wordpress.org/Theme_Logo
-	 */
-	add_theme_support(
-		'custom-logo',
-		array(
-			'height'      => 250,
-			'width'       => 250,
-			'flex-width'  => true,
-			'flex-height' => true,
-		)
-	);
 }
 add_action( 'after_setup_theme', 'bigbluebox_setup' );
+
 
 /**
  * Add custom search icon to dynamic WP top nav
@@ -110,7 +96,6 @@ function add_search_icon_to_menu($items, $args) {
 }
 add_filter('wp_nav_menu_items', 'add_search_icon_to_menu', 10, 2);
 
-
 /**
  * Custom admin footer
  */
@@ -118,7 +103,6 @@ function modify_footer() {
         echo esc_html__( 'Created by Garry Aylott for The Big Blue Box Podcast.', 'bigbluebox' ) . ' ';
 }
 add_filter( 'admin_footer_text', 'modify_footer' );
-
 
 /**
  * Always show second edit bar in TinyMCE
@@ -136,37 +120,6 @@ function first_paragraph( $content ) {
 	return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1 );
 }
 add_filter( 'the_content', 'first_paragraph' );
-
-function register_my_menus() {
-        register_nav_menus(
-                array(
-                        'main-nav'            => esc_html__( 'Main Nav', 'bigbluebox' ),
-                        'footer-menu-legals' => esc_html__( 'Footer Menu Legals', 'bigbluebox' ),
-                        'footer-menu-bbb'    => esc_html__( 'Footer Menu BBB', 'bigbluebox' ),
-                )
-        );
-}
-add_action( 'init', 'register_my_menus' );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function bigbluebox_widgets_init() {
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'bigbluebox' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'bigbluebox' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', 'bigbluebox_widgets_init' );
 
 /**
  * Modify excerpt length
@@ -217,7 +170,7 @@ function bbbx_clean_gutenberg_images($content) {
 }
 
 /**
- * Stop WP interferring with front-end image manipulation when images are set to "auto" (this will likely be fixed in an upcoming WP update).
+ * Stop WP interfering with front-end image manipulation when images are set to "auto" (this will likely be fixed in an upcoming WP update).
  */
 add_filter( 'wp_img_tag_add_auto_sizes', '__return_false' );
 
@@ -305,7 +258,6 @@ function bigbluebox_customize_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'bigbluebox_customize_body_classes' );
-
 
 /**
  * AJAX handler for category-based post filtering
@@ -403,7 +355,9 @@ add_action('pre_get_posts', function($query) {
 	}
 });
 
-// No need to load jQuery
+/**
+ * No need to load jQuery
+ */
 function bbb_remove_jquery_migrate( $scripts ) {
 	if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
 		$script = $scripts->registered['jquery'];
@@ -414,7 +368,9 @@ function bbb_remove_jquery_migrate( $scripts ) {
 }
 add_action( 'wp_default_scripts', 'bbb_remove_jquery_migrate' );
 
-// Load custom log in page assets
+/**
+ * Load custom log in page assets
+ */
 add_action( 'login_enqueue_scripts', 'bbb_login_scripts' );
 function bbb_login_scripts() {
 
@@ -433,7 +389,9 @@ function bbb_login_scripts() {
     );
 }
 
-// Automatically load function partials
+/**
+ * Automatically load function partials
+ */
 $inc_path = get_template_directory() . '/inc/';
 foreach ( glob( $inc_path . '*.php' ) as $file ) {
     require $file;

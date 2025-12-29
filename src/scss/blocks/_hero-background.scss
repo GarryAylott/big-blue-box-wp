@@ -12,7 +12,8 @@ Layout and styling for the large background image that appears at the top of mos
     overflow: hidden;
     z-index: -2;
 
-    > img {
+    > img,
+    picture > img {
         position: fixed;
         top: 0;
         left: 0;
@@ -80,7 +81,7 @@ body:not(.home):not(.single) .hero-bg-image {
 }
 
 // Review Compendium page
-body:not(.home):is(.page-template-page-reviews-compendium) .hero-bg-image {
+body:not(.home):is(.page-template-reviews-compendium) .hero-bg-image {
     &::after {
         background: hsl(var(--clr-surface-600-hsl) / 0.75);
 
@@ -102,7 +103,7 @@ body:not(.home):is(.category) .hero-bg-image {
 }
 
 // Legal pages
-body:not(.home):is(.page-template-page-legal-template) .hero-bg-image {
+body:not(.home):is(.page-template-legal-template) .hero-bg-image {
     &::after {
         background: hsl(var(--clr-surface-600-hsl) / 0.6);
 

@@ -88,54 +88,29 @@
 				</div>
 
 				<div class="footer-top__col2">
-					<ul class="footer-list flow-tiny" role="list">
-						<li>
-							<h5>Legals</h5>
-						</li>
-						<li>
-							<a href="/privacy-policy">
-								Privacy Policy
-							</a>
-						</li>
-						<li>
-							<a href="/cookie-policy">
-								Cookie Policy
-							</a>
-						</li>
-						<li>
-							<a href="/terms-disclaimer">
-								Terms & Disclaimer
-							</a>
-						</li>
-					</ul>
+					<h5>Legals</h5>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'footer-menu-col-1',
+							'container' => false,
+							'items_wrap' => '<ul class="footer-list flow-tiny" role="list">%3$s</ul>',
+						)
+					);
+					?>
 				</div>
 
 				<div class="footer-top__col3">
-					<ul class="footer-list flow-tiny" role="list">
-						<li>
-							<h5>The Big Blue Box</h5>
-						</li>
-						<li>
-							<a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">
-								About Us
-							</a>
-						</li>
-						<li>
-							<a href="/code-of-conduct/">
-								Code of conduct
-							</a>
-						</li>
-						<li>
-							<a href="/advertising/">
-								Advertising
-							</a>
-						</li>
-						<li>
-							<a href="/credits/">
-								Credits & Thanks
-							</a>
-						</li>
-					</ul>
+					<h5>The Big Blue Box</h5>
+					<?php
+					wp_nav_menu(
+						array(
+							'theme_location' => 'footer-menu-col-2',
+							'container' => false,
+							'items_wrap' => '<ul class="footer-list flow-tiny" role="list">%3$s</ul>',
+						)
+					);
+					?>
 				</div>
 				
 			</div>

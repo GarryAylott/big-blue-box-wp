@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: Job Openings
- * Description: The template for displaying job openings.
+ * Template Name: Team Openings
+ * Description: The template for displaying team openings.
  *
  * @package BigBlueBox
  */
@@ -17,10 +17,10 @@ get_header();
     </picture>
 </div>
 
-<main id="primary" class="site-main job-openings-page">
+<main id="primary" class="site-main team-openings-page">
     <div class="wrapper">
         <?php
-        $job_openings = [
+        $team_openings = [
             [
                 'title'       => __( 'General Staff Writer', 'bigbluebox' ),
                 'description' => __( 'We’re after a general writer to join the team who is interested in writing a general mix of Doctor Who content. Episode reviews, opinion pieces, book reviews, merch reviews, Top 10s, etc. Basically, anything you’re passionate about within Doctor Who that you feel our audience would enjoy reading.', 'bigbluebox' ),
@@ -34,7 +34,7 @@ get_header();
         ];
         ?>
 
-        <section class="job-openings flow-small">
+        <section class="team-openings flow-small">
             <header class="page-title">
                 <h1><?php esc_html_e( 'Join the Team', 'bigbluebox' ); ?></h1>
                 <p>
@@ -46,12 +46,12 @@ get_header();
                 Current openings:
             </p>
 
-            <div class="job-openings__list">
-                <?php foreach ( $job_openings as $opening ) : ?>
-                    <article class="job-openings__panel call-out-panel flow-tiny">
-                        <h2 class="job-openings__title"><?php echo esc_html( $opening['title'] ); ?></h2>
+            <div class="team-openings__list">
+                <?php foreach ( $team_openings as $opening ) : ?>
+                    <article class="team-openings__panel call-out-panel flow-tiny">
+                        <h2 class="team-openings__title"><?php echo esc_html( $opening['title'] ); ?></h2>
                         <p class="small"><?php echo esc_html( $opening['description'] ); ?></p>
-                        <a class="link-alt job-openings__link" href="<?php echo esc_url( $opening['mailto'] ); ?>">
+                        <a class="link-alt team-openings__link" href="<?php echo esc_url( $opening['mailto'] ); ?>">
                             <?php esc_html_e( 'Get in touch', 'bigbluebox' ); ?>
                         </a>
                     </article>
@@ -59,7 +59,7 @@ get_header();
             </div>
 
             <p class="small">
-                An important note - The Big Blue Box is a hobby project and everyone on the team is a volunteer. Anyone looking to join the team should be aware of this to avoid disappointment.
+                An important note - The Big Blue Box is a hobby project and everyone on the team is a volunteer. Anyone looking to join the team should be aware of this to avoidjhsdjhsdjhsdjhsd
             </p>
         </section>
     </div>

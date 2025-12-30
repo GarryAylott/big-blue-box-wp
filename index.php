@@ -6,9 +6,20 @@
 get_header();
 ?>
 
-<div class="hero-bg-image">
-    <img src="<?php echo get_bloginfo('template_url') ?>/images/pagebg_home.webp" decoding="async" alt="" fetchpriority="high">
-</div>
+<?php get_template_part('template-parts/content', 'hero-bg-image', [
+    'image'       => get_template_directory_uri() . '/images/pagebg_legal.webp',
+    'sources'     => [
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_legal.avif',
+            'type'   => 'image/avif'
+        ],
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_legal.webp',
+            'type'   => 'image/webp'
+        ]
+    ],
+    'extra_image' => get_template_directory_uri() . '/images/pagebg_home.webp'
+]); ?>
 
 <main id="primary" class="site-main flow-page-regions">
     <section class="wrapper homepage-top">

@@ -171,7 +171,7 @@
 						Maybe you?
 					</h6>
 					<p class="small">
-						We're always looking for writers to volunteer for the blog. Do you know your Doctor Who and have decent writing skills? <a class="link-alt" href="mailto:hello@bigblueboxpodcast.co.uk?subject=From the website:I'm interested in writing for The Big Blue Box!">Get in touch!</a>
+						We're always looking for writers to volunteer for the blog. Do you know your Doctor Who and have decent writing skills? <a class="link-alt" href="<?php echo esc_url( home_url( '/team-openings/' ) ); ?>">See team openings.</a>
 					</p>
 				</div>
 			</div>

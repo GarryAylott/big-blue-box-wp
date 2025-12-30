@@ -10,14 +10,15 @@ body.page-template-team-openings {
         .page-title {
             margin-block-end: var(--space-m);
         }
-    }
 
-    &__list {
-        display: flex;
-        flex-direction: column;
-        gap: var(--space-xs);
-        width: 100%;
-        max-width: 60rem;
+        &__list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            width: 100%;
+            max-width: 60rem;
+            // margin-block-end: var(--space-m);
+        }
     }
 
     .team-openings__panel {

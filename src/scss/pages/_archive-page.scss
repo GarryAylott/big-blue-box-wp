@@ -31,6 +31,34 @@ Layout and styling for archive pages.
     }
 }
 
+body:is(.category-articles) {
+    @media (max-width: 38rem) {
+        .archive-hero {
+            gap: var(--space-s);
+        }
+    }
+
+    .archive-hero__group {
+        flex-direction: row;
+        align-items: end;
+        justify-content: space-between;
+
+        @media (max-width: 38rem) {
+            flex-direction: column;
+            gap: var(--space-xs);
+            align-items: start;
+        }
+
+        .view-switcher {
+            margin: 0;
+
+            @media (max-width: 38rem) {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}
+
 body:is(.tag) {
     .section-title {
         color: var(--clr-border-link);

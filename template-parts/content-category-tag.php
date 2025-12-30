@@ -19,8 +19,16 @@
 
     $context = has_category( 'podcasts' ) ? 'podcasts' : 'non-podcasts';
 
+    $tag_class = 'category-tag';
+    if ( 'podcasts' === $context ) {
+        $tag_class .= ' category-tag--podcasts';
+    } else {
+        $tag_class .= ' category-tag--non-podcasts';
+    }
+
     printf(
-        '<div class="category-tag rounded-xs">%1$s<span>%2$s</span></div>',
+        '<div class="%1$s rounded-xs">%2$s<span>%3$s</span></div>',
+        esc_attr( $tag_class ),
         $icon_svgs[ $context ],
         $icon_labels[ $context ]
     );

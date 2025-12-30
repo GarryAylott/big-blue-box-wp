@@ -9,13 +9,19 @@
 get_header();
 ?>
 
-<div class="hero-bg-image">
-    <picture>
-        <source srcset="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.avif" type="image/avif">
-        <source srcset="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.webp" type="image/webp">
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.webp" decoding="async" alt="" fetchpriority="high">
-    </picture>
-</div>
+<?php get_template_part('template-parts/content', 'hero-bg-image', [
+    'image'   => get_template_directory_uri() . '/images/pagebg_legal.webp',
+    'sources' => [
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_legal.avif',
+            'type'   => 'image/avif'
+        ],
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_legal.webp',
+            'type'   => 'image/webp'
+        ]
+    ]
+]); ?>
 
 <main id="primary" class="site-main team-openings-page">
     <div class="wrapper">
@@ -40,6 +46,9 @@ get_header();
                 <p>
                     Love Doctor Who and enjoy writing? Have a solid grasp of grammar, structure and writing for SEO? Can you commit to at least one article per month? Want to be part of a relaxed, fan-run hobby site? We’d love to hear from you.
                 </p>
+                <p>
+                    When getting in touch, please provide links to articles you've published in the last year.
+                </p>
             </header>
 
             <p>
@@ -59,7 +68,7 @@ get_header();
             </div>
 
             <p class="small">
-                An important note - The Big Blue Box is a hobby project and everyone on the team is a volunteer. Anyone looking to join the team should be aware of this to avoidjhsdjhsdjhsdjhsd
+                A heads up, The Big Blue Box is a hobby project and everyone on the team is a volunteer.
             </p>
         </section>
     </div>

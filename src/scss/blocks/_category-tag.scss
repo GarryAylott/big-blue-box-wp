@@ -9,10 +9,12 @@ CATEGORY TAG BLOCK
     width: fit-content;
     color: inherit;
 
+    &--podcasts,
     &:is(article.category-podcasts *) {
         color: var(--clr-brand-accent);
     }
 
+    &--non-podcasts,
     &:is(article.category-articles *) {
         color: var(--clr-brand-secondary);
     }

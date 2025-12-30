@@ -64,30 +64,33 @@ body:is(.author) {
 }
 
 // Darken layers
-//All pages other than homepage or single post pages
+body:is(.home) .hero-bg-image {
+    &::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: hsl(var(--clr-surface-700-hsl) / 0.75);
+        z-index: 1;
+        pointer-events: none;
+    }
+}
+
+//All pages other than single post pages
 body:not(.home):not(.single) .hero-bg-image {
     &::after {
         content: "";
         position: fixed;
         inset: 0;
-        background: hsl(var(--clr-surface-600-hsl) / 0.7);
+        background: hsl(var(--clr-surface-600-hsl) / 0.6);
         z-index: 1;
         pointer-events: none;
-
-        @media (max-width: 48rem) {
-            background: hsl(var(--clr-surface-600-hsl) / 0.8);
-        }
     }
 }
 
 // Review Compendium page
 body:not(.home):is(.page-template-reviews-compendium) .hero-bg-image {
     &::after {
-        background: hsl(var(--clr-surface-600-hsl) / 0.75);
-
-        @media (max-width: 48rem) {
-            background: hsl(var(--clr-surface-600-hsl) / 0.8);
-        }
+        background: hsl(var(--clr-surface-600-hsl) / 0.5);
     }
 }
 
@@ -95,10 +98,6 @@ body:not(.home):is(.page-template-reviews-compendium) .hero-bg-image {
 body:not(.home):is(.category) .hero-bg-image {
     &::after {
         background: hsl(var(--clr-surface-600-hsl) / 0.3);
-
-        @media (max-width: 48rem) {
-            background: hsl(var(--clr-surface-600-hsl) / 0.4);
-        }
     }
 }
 
@@ -106,9 +105,5 @@ body:not(.home):is(.category) .hero-bg-image {
 body:not(.home):is(.page-template-legal-template) .hero-bg-image {
     &::after {
         background: hsl(var(--clr-surface-600-hsl) / 0.6);
-
-        @media (max-width: 48rem) {
-            background: hsl(var(--clr-surface-600-hsl) / 0.7);
-        }
     }
 }

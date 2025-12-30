@@ -132,14 +132,43 @@ const initBackgroundFade = () => {
     };
 
     let ticking = false;
+    let fadeDistance = CONFIG.FADE_DISTANCE;
+
+    const getFadeDistance = () => {
+        const maxScroll = Math.max(
+            document.documentElement.scrollHeight - window.innerHeight,
+            0
+        );
+        return maxScroll > 0
+            ? Math.min(CONFIG.FADE_DISTANCE, maxScroll)
+            : 1;
+    };
+
+    const updateFadeDistance = () => {
+        fadeDistance = getFadeDistance();
+        if (fadeDistance <= 1) {
+            backgroundImage.style.opacity = "0";
+            const overlayBase = getOverlayBase();
+            if (overlayBase !== null) {
+                backgroundImage.style.setProperty(
+                    "--hero-overlay-opacity",
+                    "0"
+                );
+            }
+        }
+    };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
+                updateFadeDistance();
+                window.addEventListener("resize", updateFadeDistance, {
+                    passive: true,
+                });
                 const scrollHandler = () => {
                     if (!ticking) {
                         requestAnimationFrame(() => {
                             const opacity = Math.max(
-                                1 - window.scrollY / CONFIG.FADE_DISTANCE,
+                                1 - window.scrollY / fadeDistance,
                                 0
                             );
                             backgroundImage.style.opacity = opacity;
@@ -598,9 +627,20 @@ const initCategorySwitcher = () => {
     );
     const postContainer = document.getElementById("ajax-posts-container");
     const statusRegion = document.getElementById("ajax-posts-status");
+    const paginationContainer = document.getElementById(
+        "ajax-posts-pagination"
+    );
+    const switcher = switchButtons.length
+        ? switchButtons[0].closest(".view-switcher")
+        : null;
     if (!switchButtons.length || !postContainer) return;
 
     let requestCounter = 0;
+    let activeCategory =
+        switcher?.querySelector(".switch-btn.is-active")?.dataset.category ||
+        switchButtons[0]?.dataset.category ||
+        "all";
+    const context = switcher?.dataset?.context || "home";
 
     const setButtonsDisabled = (disabled) => {
         switchButtons.forEach((btn) => {
@@ -622,7 +662,21 @@ const initCategorySwitcher = () => {
         }
     };
 
-    const fetchCategoryPosts = (category) => {
+    const getPagedFromUrl = (url) => {
+        try {
+            const parsedUrl = new URL(url, window.location.origin);
+            const pagedParam = parsedUrl.searchParams.get("paged");
+            if (pagedParam) {
+                return Number.parseInt(pagedParam, 10);
+            }
+            const match = parsedUrl.pathname.match(/\/page\/(\d+)\//);
+            return match ? Number.parseInt(match[1], 10) : 1;
+        } catch (err) {
+            return 1;
+        }
+    };
+
+    const fetchCategoryPosts = (category, paged = 1) => {
         const reqId = ++requestCounter;
 
         // Disable controls and mark busy (no pre-fade-out)
@@ -633,8 +687,9 @@ const initCategorySwitcher = () => {
         const params = new URLSearchParams({
             action: "filter_posts_by_category",
             category,
-            context: "home",
+            context,
             nonce: themeSettings.filterNonce ?? "",
+            paged,
         });
 
         fetch(themeSettings.ajaxUrl, {
@@ -652,9 +707,13 @@ const initCategorySwitcher = () => {
                 }
 
                 const html = payload.data?.content ?? "";
+                const pagination = payload.data?.pagination ?? "";
 
                 // Swap content, then run entry-only animation
                 postContainer.innerHTML = html;
+                if (paginationContainer) {
+                    paginationContainer.innerHTML = pagination;
+                }
 
                 // Setup initial hidden state for children, then activate transition
                 postContainer.classList.add("enter-setup");
@@ -699,9 +758,21 @@ const initCategorySwitcher = () => {
             button.setAttribute("aria-pressed", "true");
             button.classList.add("is-active");
 
-            fetchCategoryPosts(category);
+            activeCategory = category;
+            fetchCategoryPosts(category, 1);
         });
     });
+
+    if (paginationContainer) {
+        paginationContainer.addEventListener("click", (event) => {
+            const link = event.target.closest("a");
+            if (!link) return;
+
+            event.preventDefault();
+            const paged = getPagedFromUrl(link.href);
+            fetchCategoryPosts(activeCategory, paged);
+        });
+    }
 };
 
 // Rotating sentences in footer

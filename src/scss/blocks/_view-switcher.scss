@@ -10,6 +10,13 @@ Styling for minimal view switcher when a Button Group is overkill.
     gap: var(--space-2xs);
     margin-block-end: var(--space-s);
 
+    &[data-context="category"] {
+        button {
+            --view-switcher-color: var(--clr-brand-secondary);
+            --view-switcher-bg-hsl: var(--clr-brand-secondary-hsl);
+        }
+    }
+
     button {
         --view-switcher-color: var(--clr-brand-accent);
         --view-switcher-bg-hsl: var(--clr-brand-accent-hsl);
@@ -27,7 +34,9 @@ Styling for minimal view switcher when a Button Group is overkill.
         border: none;
         border-radius: var(--radius-xs);
         cursor: pointer;
-        transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        transition:
+            color 0.2s ease-in-out,
+            background-color 0.2s ease-in-out;
 
         &[data-category="all"] {
             --view-switcher-color: var(--clr-border-link);

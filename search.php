@@ -20,9 +20,9 @@ $bg_pool = [
 $bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_pool)];
 ?>
 
-<div class="hero-bg-image">
-    <img src="<?php echo esc_url($bg_image); ?>" decoding="async" alt="" fetchpriority="high">
-</div>
+<?php get_template_part('template-parts/content', 'hero-bg-image', [
+    'image' => $bg_image
+]); ?>
 
 <main id="primary" class="site-main">
     <div class="wrapper flow-large" data-search-term="<?php echo esc_attr(get_search_query()); ?>">

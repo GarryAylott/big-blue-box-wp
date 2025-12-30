@@ -9,13 +9,19 @@
 get_header();
 ?>
 
-<div class="hero-bg-image">
-    <picture>
-        <source srcset="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.avif" type="image/avif">
-        <source srcset="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.webp" type="image/webp">
-        <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pagebg_legal.webp" decoding="async" alt="" fetchpriority="high">
-    </picture>
-</div>
+<?php get_template_part('template-parts/content', 'hero-bg-image', [
+    'image'   => get_template_directory_uri() . '/images/pagebg_legal.webp',
+    'sources' => [
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_legal.avif',
+            'type'   => 'image/avif'
+        ],
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_legal.webp',
+            'type'   => 'image/webp'
+        ]
+    ]
+]); ?>
 
 <main id="primary" class="site-main">
     <div class="wrapper">

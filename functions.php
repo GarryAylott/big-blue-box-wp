@@ -311,7 +311,8 @@ function filter_posts_by_category() {
 	}
 
 	$query = new WP_Query( $args );
-	$html  = '';
+	$html       = '';
+	$pagination = '';
 
 	if ( $query->have_posts() ) {
 		ob_start();
@@ -321,11 +322,13 @@ function filter_posts_by_category() {
 			get_template_part( 'template-parts/content', 'post-cards', array( 'card_type' => 'browse' ) );
 		}
 
-		if ( 'home' !== $context ) {
-			bbb_custom_pagination( $query );
-		}
-
 		$html = ob_get_clean();
+
+		if ( 'home' !== $context ) {
+			ob_start();
+			bbb_custom_pagination( $query );
+			$pagination = ob_get_clean();
+		}
 		wp_reset_postdata();
 	} else {
 		$html = '<p>' . esc_html__( 'No posts found.', 'bigbluebox' ) . '</p>';
@@ -333,7 +336,8 @@ function filter_posts_by_category() {
 
 	wp_send_json_success(
 		array(
-			'content' => $html,
+			'content'    => $html,
+			'pagination' => $pagination,
 		)
 	);
 }

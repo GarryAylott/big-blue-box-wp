@@ -44,9 +44,9 @@ if (is_tag()) {
 }
 ?>
 
-<div class="hero-bg-image">
-    <img src="<?php echo esc_url($bg_image); ?>" decoding="async" alt="" fetchpriority="high">
-</div>
+<?php get_template_part('template-parts/content', 'hero-bg-image', [
+    'image' => $bg_image
+]); ?>
 
 <main id="primary" class="site-main">
     <div class="wrapper flow-large">

@@ -38,7 +38,10 @@ if ( $is_podcast_post ) {
     $ep_type  = get_field( 'podcast_episode_type' );
 
     if ( is_numeric( $ep_label ) ) {
-        $podcast_episode_display = 'Episode ' . esc_html( $ep_label );
+        $podcast_episode_display = sprintf(
+            esc_html__( 'Episode %s', 'bigbluebox' ),
+            esc_html( $ep_label )
+        );
     } elseif ( 'N/A' === $ep_label && ! empty( $ep_type ) ) {
         $podcast_episode_display = esc_html( $ep_type );
     } elseif ( $ep_label ) {
@@ -61,7 +64,7 @@ if ( $is_podcast_post ) {
             <?php endif; ?>
         </p>
         <p class="small">
-            <?php echo get_the_date('j F, Y'); ?>
+            <?php echo esc_html( get_the_date( 'j F, Y' ) ); ?>
         </p>
     </div>
 </div>

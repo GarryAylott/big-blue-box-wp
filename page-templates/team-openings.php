@@ -44,15 +44,15 @@ get_header();
             <header class="page-title">
                 <h1><?php esc_html_e( 'Join the Team', 'bigbluebox' ); ?></h1>
                 <p>
-                    Love Doctor Who and enjoy writing? Have a solid grasp of grammar, structure and writing for SEO? Can you commit to at least one article per month? Want to be part of a relaxed, fan-run hobby site? We’d love to hear from you.
+                    <?php esc_html_e( 'Love Doctor Who and enjoy writing? Have a solid grasp of grammar, structure and writing for SEO? Can you commit to at least one article per month? Want to be part of a relaxed, fan-run hobby site? We’d love to hear from you.', 'bigbluebox' ); ?>
                 </p>
                 <p>
-                    When getting in touch, please provide links to articles you've published in the last year.
+                    <?php esc_html_e( 'When getting in touch, please provide links to articles you\'ve published in the last year.', 'bigbluebox' ); ?>
                 </p>
             </header>
 
             <p>
-                Current openings:
+                <?php esc_html_e( 'Current openings:', 'bigbluebox' ); ?>
             </p>
 
             <div class="team-openings__list">
@@ -68,7 +68,7 @@ get_header();
             </div>
 
             <p class="small">
-                A heads up, The Big Blue Box is a hobby project and everyone on the team is a volunteer.
+                <?php esc_html_e( 'A heads up, The Big Blue Box is a hobby project and everyone on the team is a volunteer.', 'bigbluebox' ); ?>
             </p>
         </section>
     </div>

@@ -56,19 +56,19 @@ $images_base_url    = trailingslashit(get_template_directory_uri()) . 'images/co
 
     <div class="wrapper">
         <div class="review-compendium-text flow-small">
-            <h3>Our Reviews for Every Doctor Who Story</h3>
+            <h3><?php esc_html_e( 'Our Reviews for Every Doctor Who Story', 'bigbluebox' ); ?></h3>
             <p>
-                We’ve reviewed A LOT of Doctor Who, almost all of it in fact (including the spin-offs), so it can be difficult, especially in some of the podcast apps, to find what podcast episode we reviewed a particular story.
+                <?php esc_html_e( 'We’ve reviewed A LOT of Doctor Who, almost all of it in fact (including the spin-offs), so it can be difficult, especially in some of the podcast apps, to find what podcast episode we reviewed a particular story.', 'bigbluebox' ); ?>
             </p>
             <p>
-                Here’s our Reviews Compendium, a handy reference of all of our episodes and review scores. Happy listening.
+                <?php esc_html_e( 'Here’s our Reviews Compendium, a handy reference of all of our episodes and review scores. Happy listening.', 'bigbluebox' ); ?>
             </p>
                 <?php
                 $compendium_page = get_page_by_path('reviews-compendium');
                 $compendium_url  = $compendium_page ? get_permalink($compendium_page) : '#';
                 ?>
                 <a class="button" href="<?php echo esc_url($compendium_url); ?>">
-                    View Reviews Compendium
+                    <?php esc_html_e( 'View Reviews Compendium', 'bigbluebox' ); ?>
                 </a>
         </div>
     </div>

@@ -8,15 +8,12 @@
 	<div class="post-hero entry-header">
 		<?php
 		if ( has_post_thumbnail() ) :
-			?>
-				<img
-					class="post-thumb-img rounded"
-					src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'full' ) ); ?>"
-					width="595"
-					height="335"
-					alt="<?php echo esc_attr( get_the_title() ); ?>"
-				>
-			<?php
+			echo wp_get_attachment_image(
+				get_post_thumbnail_id(),
+				'full',
+				false,
+				[ 'class' => 'post-thumb-img rounded' ]
+			);
 		endif;
 		?>
 		<div class="post-hero__details">
@@ -26,7 +23,7 @@
 
 			<div class="post-meta">
 				<div class="post-content-meta">
-					<p class="post-meta-title">Publish Info</p>
+					<p class="post-meta-title"><?php esc_html_e( 'Publish Info', 'bigbluebox' ); ?></p>
 					<div class="post-meta-content">
 						<?php if ( has_category( 'podcasts' ) ) : ?>
 							<?php
@@ -52,7 +49,14 @@
 							<p><?php echo esc_html( get_the_date() ); ?></p>
 
 					<?php else : ?>
-						<p>Words by <?php echo esc_html( get_the_author() ); ?> on</p>
+						<p>
+							<?php
+							printf(
+								esc_html__( 'Words by %s on', 'bigbluebox' ),
+								esc_html( get_the_author() )
+							);
+							?>
+						</p>
 						<p><?php echo esc_html( get_the_date() ); ?></p>
 					<?php endif; ?>
 					</div>
@@ -72,7 +76,7 @@
 
 				<?php if ( has_tag() ) : ?>
 					<div class="post-content-meta post-tags">
-						<p class="post-meta-title">Tags</p>
+						<p class="post-meta-title"><?php esc_html_e( 'Tags', 'bigbluebox' ); ?></p>
 						<?php the_tags( '<ul role="list"><li>', '</li><li>', '</li></ul>' ); ?>
 					</div>
 				<?php endif; ?>

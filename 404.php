@@ -16,18 +16,22 @@ get_header();
 			<div class="error-404-main">
 				<header class="error-404__header">
 					<h6 class="section-title">
-						Error 404 - Page Not Found
+						<?php esc_html_e( 'Error 404 - Page Not Found', 'bigbluebox' ); ?>
 					</h6>
 					<h1><?php esc_html_e( 'What?! The TARDIS has exploded!', 'bigbluebox' ); ?></h1>
 				</header>
 
 				<section class="error-404__content flow-tiny">
-					<h5>It looks like the TARDIS has burst into flames and taken this page with it.</h5>
-					<p>While we repair the time circuits&hellip;</p>
+					<h5><?php esc_html_e( 'It looks like the TARDIS has burst into flames and taken this page with it.', 'bigbluebox' ); ?></h5>
+					<p><?php echo wp_kses_post( __( 'While we repair the time circuits&hellip;', 'bigbluebox' ) ); ?></p>
 					<ul class="flow-tiny">
-						<li><strong>Use the navigation:</strong> Try the menu at the top to find your way.</li>
 						<li>
-							<strong>Search The Big Blue Box:</strong> Give the search bar below a whirl&hellip;
+							<strong><?php esc_html_e( 'Use the navigation:', 'bigbluebox' ); ?></strong>
+							<?php esc_html_e( 'Try the menu at the top to find your way.', 'bigbluebox' ); ?>
+						</li>
+						<li>
+							<strong><?php esc_html_e( 'Search The Big Blue Box:', 'bigbluebox' ); ?></strong>
+							<?php echo wp_kses_post( __( 'Give the search bar below a whirl&hellip;', 'bigbluebox' ) ); ?>
 							<?php
 							global $bbb_hide_search_form_title;
 							$bbb_hide_search_form_title = true;
@@ -40,9 +44,12 @@ get_header();
 							<a class="link-alt" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 								<?php esc_html_e( 'Click here', 'bigbluebox' ); ?>
 							</a>
-							to head back home.
+							<?php esc_html_e( 'to head back home.', 'bigbluebox' ); ?>
 						</li>
-						<li><strong>Check out the recent posts:</strong> Why not have a gander at our latest posts below.</li>
+						<li>
+							<strong><?php esc_html_e( 'Check out the recent posts:', 'bigbluebox' ); ?></strong>
+							<?php esc_html_e( 'Why not have a gander at our latest posts below.', 'bigbluebox' ); ?>
+						</li>
 						</ul>
 				</section>
 			</div>

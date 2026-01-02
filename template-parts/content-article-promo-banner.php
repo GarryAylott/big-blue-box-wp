@@ -12,14 +12,14 @@
 $post_id = isset( $post->ID ) ? $post->ID : get_the_ID();
 
 $promo_headings = array(
-	'Enjoying this article? Here’s your next stop in time and space…',
-	'Enjoying this article? The TARDIS has another destination ready…',
-	'Into this topic? Let’s open another TARDIS door…',
-	'Liking this take? There’s another timey-wimey read queued up…',
-	'Finding this read useful? Here’s your next temporal waypoint…',
-	'Enjoying this post? The next one’s right here…',
-    'Enjoying this article? Another one is materialising for you…',
-    'Interested in this subject? The time rotor’s spinning for another one…',
+	__( 'Enjoying this article? Here’s your next stop in time and space…', 'bigbluebox' ),
+	__( 'Enjoying this article? The TARDIS has another destination ready…', 'bigbluebox' ),
+	__( 'Into this topic? Let’s open another TARDIS door…', 'bigbluebox' ),
+	__( 'Liking this take? There’s another timey-wimey read queued up…', 'bigbluebox' ),
+	__( 'Finding this read useful? Here’s your next temporal waypoint…', 'bigbluebox' ),
+	__( 'Enjoying this post? The next one’s right here…', 'bigbluebox' ),
+    __( 'Enjoying this article? Another one is materialising for you…', 'bigbluebox' ),
+    __( 'Interested in this subject? The time rotor’s spinning for another one…', 'bigbluebox' ),
 );
 
 $random_heading = $promo_headings[ array_rand( $promo_headings ) ];
@@ -32,7 +32,14 @@ $random_heading = $promo_headings[ array_rand( $promo_headings ) ];
     <article class="article-promo-banner__post">
         <?php if ( has_post_thumbnail( $post_id ) ) : ?>
             <div class="article-promo-banner__img img-container">
-                <img class="post-thumb-img img-hover rounded-small" src="<?php echo get_the_post_thumbnail_url( $post_id, 'post-card-thumb' ); ?>" width="387" height="217" alt="<?php echo esc_attr( get_the_title( $post_id ) ); ?>">
+                <?php
+                echo wp_get_attachment_image(
+                    get_post_thumbnail_id( $post_id ),
+                    'post-card-thumb',
+                    false,
+                    [ 'class' => 'post-thumb-img img-hover rounded-small' ]
+                );
+                ?>
             </div>
         <?php endif; ?>
         

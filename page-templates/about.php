@@ -26,32 +26,32 @@ get_header();
         endif; ?>
 
         <section class="about-page-hosts flow">
-            <h2>Podcast Hosts</h2>
+            <h2><?php esc_html_e( 'Podcast Hosts', 'bigbluebox' ); ?></h2>
 
             <div class="about-page-hosts__hosts">
                 <div class="host-card">
                     <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-garry.webp' ) ); ?>"
                         alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
                     <div class="host-card__content">
-                        <h3>Garry Aylott</h3>
-                        <h5>Creator, Producer and Co-Host</h5>
+                        <h3><?php esc_html_e( 'Garry Aylott', 'bigbluebox' ); ?></h3>
+                        <h5><?php esc_html_e( 'Creator, Producer and Co-Host', 'bigbluebox' ); ?></h5>
                         <p>
-                            Garry founded The Big Blue Box back in March of 2014. (In)famous for not liking McCoy at first but over time was completely won over with Remembrance of the Daleks now in his top 3. When he’s not recording, you’ll find him reading comic books, travelling, and enjoying a bloody good cup of tea.
+                            <?php esc_html_e( 'Garry founded The Big Blue Box back in March of 2014. (In)famous for not liking McCoy at first but over time was completely won over with Remembrance of the Daleks now in his top 3. When he’s not recording, you’ll find him reading comic books, travelling, and enjoying a bloody good cup of tea.', 'bigbluebox' ); ?>
                         </p>
                         <ul class="social-icons" role="list">
                             <li>
-                                <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="X (Twitter)" width="24" height="24">
+                                <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'X (Twitter)', 'bigbluebox' ); ?>">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="<?php echo esc_attr__( 'X (Twitter)', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>
                             <li>
-                                <a href="https://instagram.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
-                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="Instagram" width="24" height="24">
+                                <a href="https://instagram.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'Instagram', 'bigbluebox' ); ?>">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Instagram', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>
                             <li>
-                                <a href="https://facebook.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
-                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="Facebook" width="24" height="24">
+                                <a href="https://facebook.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'Facebook', 'bigbluebox' ); ?>">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Facebook', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>
                         </ul>
@@ -61,30 +61,41 @@ get_header();
                     <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-adam.webp' ) ); ?>"
                         alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
                     <div class="host-card__content">
-                        <h3>Adam Charlton</h3>
-                        <h5>Co-Host</h5>
+                        <h3><?php esc_html_e( 'Adam Charlton', 'bigbluebox' ); ?></h3>
+                        <h5><?php esc_html_e( 'Co-Host', 'bigbluebox' ); ?></h5>
                         <p>
-                            Adam is a life-long Doctor Who fan. Tom Baker is "his" Doctor and Adam loves classic Who along with <span>most</span> of modern Who, too. Check out Adam's YouTube channel <a href="https://www.youtube.com/@TheGeeksHandbag" class="link-alt" target="_blank" rel="noopener" aria-label="The Geeks Handbag on YouTube">The Geeks Handbag</a> for reviews, unboxings, convention videos and general geekery.
+                            <?php
+                            $geeks_link = sprintf(
+                                '<a href="%s" class="link-alt" target="_blank" rel="noopener" aria-label="%s">%s</a>',
+                                esc_url( 'https://www.youtube.com/@TheGeeksHandbag' ),
+                                esc_attr__( 'The Geeks Handbag on YouTube', 'bigbluebox' ),
+                                esc_html__( 'The Geeks Handbag', 'bigbluebox' )
+                            );
+                            printf(
+                                wp_kses_post( __( 'Adam is a life-long Doctor Who fan. Tom Baker is "his" Doctor and Adam loves classic Who along with <span>most</span> of modern Who, too. Check out Adam\'s YouTube channel %s for reviews, unboxings, convention videos and general geekery.', 'bigbluebox' ) ),
+                                $geeks_link
+                            );
+                            ?>
                         </p>
                         <ul class="social-icons" role="list">
                             <li>
-                                <a href="https://www.youtube.com/@thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="YouTube">
-                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-yt.svg' ) ); ?>" alt="YouTube" width="29" height="28">
+                                <a href="https://www.youtube.com/@thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'YouTube', 'bigbluebox' ); ?>">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-yt.svg' ) ); ?>" alt="<?php echo esc_attr__( 'YouTube', 'bigbluebox' ); ?>" width="29" height="28">
                                 </a>
                             </li>
                             <li>
-                                <a href="https://x.com/TheGeeksHandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="X (Twitter)" width="24" height="24">
+                                <a href="https://x.com/TheGeeksHandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'X (Twitter)', 'bigbluebox' ); ?>">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="<?php echo esc_attr__( 'X (Twitter)', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/the_geeks_handbag/" class="has-external-icon" target="_blank" rel="noopener" aria-label="Instagram">
-                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="Instagram" width="24" height="24">
+                                <a href="https://www.instagram.com/the_geeks_handbag/" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'Instagram', 'bigbluebox' ); ?>">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Instagram', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.facebook.com/thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="Facebook">
-                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="Facebook" width="24" height="24">
+                                <a href="https://www.facebook.com/thegeekshandbag" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'Facebook', 'bigbluebox' ); ?>">
+                                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Facebook', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>
                         </ul>
@@ -95,8 +106,8 @@ get_header();
 
         <section class="about-page-writers flow-large">
              <div class="text-block">
-                <h2>Writing Team</h2>
-                <p>The blog is driven by writers who know the show inside out. Their articles range across Big Finish reviews, convention round-ups, editorials and more. Also active in our Discord, they're always on hand to chat anything Doctor Who.</p>
+                <h2><?php esc_html_e( 'Writing Team', 'bigbluebox' ); ?></h2>
+                <p><?php esc_html_e( 'The blog is driven by writers who know the show inside out. Their articles range across Big Finish reviews, convention round-ups, editorials and more. Also active in our Discord, they\'re always on hand to chat anything Doctor Who.', 'bigbluebox' ); ?></p>
             </div>
 
             <?php
@@ -104,30 +115,30 @@ get_header();
                 [
                     'user_id'   => 4,
                     'name'      => 'Maria Kalatichou',
-                    'role'      => 'Writer',
+                    'role'      => __( 'Writer', 'bigbluebox' ),
                     'image'     => 'images/authors/about-writers-panel-maria.webp',
-                    'image_alt' => 'Maria Kalatichou - Staff writer',
+                    'image_alt' => __( 'Maria Kalatichou - Staff writer', 'bigbluebox' ),
                 ],
                 [
                     'user_id'   => 8,
                     'name'      => 'Matt Steele',
-                    'role'      => 'Writer & Merch Reporter',
+                    'role'      => __( 'Writer & Merch Reporter', 'bigbluebox' ),
                     'image'     => 'images/authors/about-writers-panel-matt.webp',
-                    'image_alt' => 'Matt Steele - Staff writer and Merch Reporter',
+                    'image_alt' => __( 'Matt Steele - Staff writer and Merch Reporter', 'bigbluebox' ),
                 ],
                 [
                     'user_id'   => 3,
                     'name'      => 'Jordan Shortman',
-                    'role'      => 'Writer',
+                    'role'      => __( 'Writer', 'bigbluebox' ),
                     'image'     => 'images/authors/about-writers-panel-jordan.webp',
-                    'image_alt' => 'Jordan Shortman - Staff writer',
+                    'image_alt' => __( 'Jordan Shortman - Staff writer', 'bigbluebox' ),
                 ],
                 [
                     'user_id'   => 7,
                     'name'      => 'Harry Walker',
-                    'role'      => 'Writer',
+                    'role'      => __( 'Writer', 'bigbluebox' ),
                     'image'     => 'images/authors/about-writers-panel-harry.webp',
-                    'image_alt' => 'Harry Walker - Staff writer',
+                    'image_alt' => __( 'Harry Walker - Staff writer', 'bigbluebox' ),
                 ],
             ];
 
@@ -176,16 +187,16 @@ get_header();
                 <div class="team-writers__panel">
                     <div class="team-writers__content">
                         <h5>
-                            Maybe You?
+                            <?php esc_html_e( 'Maybe You?', 'bigbluebox' ); ?>
                         </h5>
                         <p class="small" id="panel5-title">
-                            Writers with a love for Doctor Who — we want you! We’re always on the lookout for writers who can craft great articles. If that's you and want to be part of a welcoming, creative crew, drop us a message.
+                            <?php esc_html_e( 'Writers with a love for Doctor Who — we want you! We’re always on the lookout for writers who can craft great articles. If that\'s you and want to be part of a welcoming, creative crew, drop us a message.', 'bigbluebox' ); ?>
                         </p>
                         <a class="button" href="mailto:hello@bigblueboxpodcast.co.uk?subject=I%27m%20interested%20in%20writing%20for%20The%20Big%20Blue%20Box!">
-                            Get in Touch
+                            <?php esc_html_e( 'Get in Touch', 'bigbluebox' ); ?>
                         </a>
                     </div>
-                    <img class="team-writers__image" src="<?php echo esc_url(get_theme_file_uri('images/authors/about-writers-panel-maybeyou.webp')); ?>" alt="Future Big Blue Box writer"/>
+                    <img class="team-writers__image" src="<?php echo esc_url(get_theme_file_uri('images/authors/about-writers-panel-maybeyou.webp')); ?>" alt="<?php echo esc_attr__( 'Future Big Blue Box writer', 'bigbluebox' ); ?>"/>
                 </div>
             </div>
 
@@ -196,9 +207,9 @@ get_header();
                     <img src="<?php echo get_bloginfo('template_url') ?>/images/DalekTat.webp" alt="">
                 </picture>
                 <div class="dalektat__content flow-small">
-                    <h3>Dalek Tat</h3>
-                    <p>One of our oldest team members, and certainly the one with the most attitude to boot! Dalek Tat served as our merchandise researcher and assistant when we ran a dedicated “Merch Corner” section on the podcast.</p>
-                    <p>No one knows where Dalek Tat is these days. Wandering the cosmos? Still on the hunt for Doctor Who merchandise? Searching for a decent cup of tea? Who knows. One day, we shall meet again. Yes, one day&hellip;</p>
+                    <h3><?php esc_html_e( 'Dalek Tat', 'bigbluebox' ); ?></h3>
+                    <p><?php esc_html_e( 'One of our oldest team members, and certainly the one with the most attitude to boot! Dalek Tat served as our merchandise researcher and assistant when we ran a dedicated “Merch Corner” section on the podcast.', 'bigbluebox' ); ?></p>
+                    <p><?php echo wp_kses_post( __( 'No one knows where Dalek Tat is these days. Wandering the cosmos? Still on the hunt for Doctor Who merchandise? Searching for a decent cup of tea? Who knows. One day, we shall meet again. Yes, one day&hellip;', 'bigbluebox' ) ); ?></p>
                 </div>
             </div>
         </section>

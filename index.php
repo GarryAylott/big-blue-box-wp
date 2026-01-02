@@ -40,13 +40,19 @@ get_header();
                     <?php if ( has_post_thumbnail() ) : ?>
                         <a href="<?php the_permalink(); ?>">
                             <div class="img-container">
-                                <img
-                                    class="post-thumb-img img-hover"
-                                    src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'latest-podcast-ep-thumb' ) ); ?>"
-                                    width="640"
-                                    height="360"
-                                    alt="<?php echo esc_attr( get_the_title() ); ?>"
-                                >
+                                <?php
+                                echo wp_get_attachment_image(
+                                    get_post_thumbnail_id(),
+                                    'latest-podcast-ep-thumb',
+                                    false,
+                                    [
+                                        'class'  => 'post-thumb-img img-hover',
+                                        'width'  => 640,
+                                        'height' => 360,
+                                        'sizes'  => '(max-width: 900px) 600px, 900px',
+                                    ]
+                                );
+                                ?>
                             </div>
                         </a>
                     <?php endif; ?>
@@ -55,7 +61,7 @@ get_header();
                         <header class="entry-header">
                             <h6 class="section-title">
                                 <i data-lucide="mic" class="icon-bold icon-step--1"></i>
-                                Latest podcast episode
+                                <?php esc_html_e( 'Latest podcast episode', 'bigbluebox' ); ?>
                             </h6>
                             <div class="post-card-hero__copy flow-tiny">
                                 <a href="<?php the_permalink(); ?>">
@@ -90,7 +96,7 @@ get_header();
                         </p>
                         <a href="<?php the_permalink(); ?>" class="button flex">
                             <i data-lucide="headphones" class="icon-bold"></i>
-                            Listen Now
+                            <?php esc_html_e( 'Listen Now', 'bigbluebox' ); ?>
                         </a>
                     </div>
                 </div>
@@ -105,7 +111,7 @@ get_header();
 
             <h6 class="section-title">
             <i data-lucide="newspaper" class="icon-bold icon-step--1"></i>
-            Latest articles
+            <?php esc_html_e( 'Latest articles', 'bigbluebox' ); ?>
         </h6>
 
         <?php
@@ -121,18 +127,18 @@ get_header();
     <section class="browse-all">
         <div class="wrapper">
             <div class="browse-all__header">
-                <h2 class="section-title-heading">Latest from The Big Blue Box</h2>
+                <h2 class="section-title-heading"><?php esc_html_e( 'Latest from The Big Blue Box', 'bigbluebox' ); ?></h2>
                 <div class="view-switcher" role="group" aria-label="Filter posts by type">
                     <button class="switch-btn is-active" data-category="all" aria-pressed="true">
-                        All
+                        <?php esc_html_e( 'All', 'bigbluebox' ); ?>
                     </button>
                     <button class="switch-btn" data-category="non-podcasts" aria-pressed="false">
                         <i data-lucide="newspaper"></i>
-                        Articles
+                        <?php esc_html_e( 'Articles', 'bigbluebox' ); ?>
                     </button>
                     <button class="switch-btn" data-category="podcasts" aria-pressed="false">
                         <i data-lucide="mic"></i>
-                        Podcasts
+                        <?php esc_html_e( 'Podcasts', 'bigbluebox' ); ?>
                     </button>
                 </div>
             </div>
@@ -173,7 +179,7 @@ get_header();
 
     <section>
         <div class="wrapper">
-            <h2 class="section-title-heading">More articles by subject</h2>
+            <h2 class="section-title-heading"><?php esc_html_e( 'More articles by subject', 'bigbluebox' ); ?></h2>
             <div class="more-articles">
                 <?php
                 $tags         = array( 'big-finish', 'events', 'reading' );
@@ -196,8 +202,16 @@ get_header();
                     if ($query->have_posts()) : ?>
                         <div class="more-articles__column">
                             <div class="more-articles__header">
-                                <h3><?php echo ucwords(str_replace('-', ' ', $tag)); ?></h3>
-                                <a class="button-ghost" href="<?php echo get_tag_link($term->term_id); ?>" class="tag-archive-link">View all <?php echo ucwords(str_replace('-', ' ', $tag)); ?></a>
+                                <?php $tag_label = ucwords(str_replace('-', ' ', $tag)); ?>
+                                <h3><?php echo esc_html( $tag_label ); ?></h3>
+                                <a class="button-ghost" href="<?php echo esc_url( get_tag_link( $term->term_id ) ); ?>" class="tag-archive-link">
+                                    <?php
+                                    printf(
+                                        esc_html__( 'View all %s', 'bigbluebox' ),
+                                        esc_html( $tag_label )
+                                    );
+                                    ?>
+                                </a>
                             </div>
                             <ul role="list">
                             <?php while ($query->have_posts()) : $query->the_post(); ?>
@@ -232,11 +246,11 @@ get_header();
         <picture>
             <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.avif" type="image/avif">
             <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.webp" type="image/webp">
-            <img src="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.png" alt="Your space-time coordinates for everything Doctor Who...">
+            <img src="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.png" alt="<?php echo esc_attr__( 'Your space-time coordinates for everything Doctor Who...', 'bigbluebox' ); ?>">
         </picture>
         <div class="podcast-app-links">
             <h5>
-                Listen now on your favourite podcast app.
+                <?php esc_html_e( 'Listen now on your favourite podcast app.', 'bigbluebox' ); ?>
             </h5>
             <?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
         </div>

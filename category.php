@@ -65,17 +65,7 @@ switch ($slug) {
         break;
 }
 
-$bg_pool = [
-    'pagebg_tardis-int-1.webp',
-    'pagebg_tardis-int-2.webp',
-    'pagebg_tardis-int-3.webp',
-    'pagebg_tardis-int-4.webp',
-    'pagebg_tardis-int-5.webp',
-    'pagebg_tardis-int-6.webp',
-    'pagebg_tardis-int-7.webp',
-    'pagebg_tardis-int-8.webp'
-];
-$bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_pool)];
+$bg_image = bbb_get_random_hero_bg();
 ?>
 
 <?php get_template_part('template-parts/content', 'hero-bg-image', [
@@ -99,7 +89,7 @@ $bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_
                 get_template_part('template-parts/content', 'post-cards', ['card_type' => 'browse']);
             endwhile;
             else :
-                echo '<p>No posts found.</p>';
+                echo '<p>' . esc_html__( 'No posts found.', 'bigbluebox' ) . '</p>';
             endif;
             ?>
         </div>

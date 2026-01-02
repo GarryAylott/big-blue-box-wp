@@ -24,15 +24,15 @@
 		<div class="wrapper">
 			<div class="site-head__inner">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-head__home">
-					<span class="visually-hidden">The Big Blue Box Podcast</span>
+					<span class="visually-hidden"><?php esc_html_e( 'The Big Blue Box Podcast', 'bigbluebox' ); ?></span>
 					<div class="site-head__logo">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-horizontal.svg" width="251" height="53" alt="The Big Blue Box Podcast">
+						<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-horizontal.svg" width="251" height="53" alt="<?php echo esc_attr__( 'The Big Blue Box Podcast', 'bigbluebox' ); ?>">
 					</div>
 				</a>
 
 				<div class="site-head__navigation">
 					<button class="menu-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-						<p class="visually-hidden">Menu</p>
+						<p class="visually-hidden"><?php esc_html_e( 'Menu', 'bigbluebox' ); ?></p>
 						<span></span>
 						<span></span>
 						<span></span>

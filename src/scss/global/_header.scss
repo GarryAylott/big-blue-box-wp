@@ -315,31 +315,32 @@ $easing-fade: ease-out;
 }
 
 // Disable header animations when pagination is used
-body.nav-no-fade .site-head__logo,
-body.nav-no-fade .site-head__navigation .nav li,
-body.nav-no-fade .site-head__navigation .nav-logo,
-body.paged .site-head__logo,
-body.paged .site-head__navigation .nav li,
-body.paged .site-head__navigation .nav-logo {
-    animation: none !important;
+body:is(.nav-no-fade, .paged) :is(
+    .site-head__logo,
+    .site-head__navigation .nav li,
+    .site-head__navigation .nav-logo
+) {
+    animation: none;
     opacity: 1;
     transform: none;
 }
 
-// Logo
-.site-head__logo {
-    @include header-fade-start;
-    animation:
-        headerDrop $drop-duration $easing-drop forwards,
-        headerFade $fade-duration $easing-fade forwards;
-    animation-delay: 0.3s, 0.3s; // same delay for both
-}
-
-// Desktop: animate nav items on load
-@media (min-width: 55rem) {
-    .site-head__navigation .nav li {
+// Logo + navigation animations only when enabled
+body:not(.nav-no-fade):not(.paged) {
+    .site-head__logo {
         @include header-fade-start;
-        @include header-fade-animate(10, 0.4s, 0.1s);
+        animation:
+            headerDrop $drop-duration $easing-drop forwards,
+            headerFade $fade-duration $easing-fade forwards;
+        animation-delay: 0.3s, 0.3s; // same delay for both
+    }
+
+    // Desktop: animate nav items on load
+    @media (min-width: 55rem) {
+        .site-head__navigation .nav li {
+            @include header-fade-start;
+            @include header-fade-animate(10, 0.4s, 0.1s);
+        }
     }
 }
 
@@ -347,16 +348,11 @@ body.paged .site-head__navigation .nav-logo {
 @media (max-width: 55rem) {
     .site-head__navigation .nav li {
         width: 100%;
-        @include header-fade-start;
         animation: none; // don’t run on page load while closed
 
         &:last-child {
             width: auto;
         }
-    }
-
-    .site-head__navigation .nav-drawer[data-visible="true"] .nav li {
-        @include header-fade-animate(10, 0.4s, 0.1s);
     }
 
     $mobile-nav-items: 6;
@@ -366,15 +362,28 @@ body.paged .site-head__navigation .nav-logo {
         $mobile-nav-delay-step + 0.2s;
 
     .site-head__navigation .nav-logo {
-        @include header-fade-start;
         animation: none;
     }
 
-    .site-head__navigation .nav-drawer[data-visible="true"] .nav-logo {
-        animation:
-            headerDrop $drop-duration $easing-drop forwards,
-            headerFade $fade-duration $easing-fade forwards;
-        animation-delay: $mobile-logo-delay, $mobile-logo-delay;
+    body:not(.nav-no-fade):not(.paged) {
+        .site-head__navigation .nav li {
+            @include header-fade-start;
+        }
+
+        .site-head__navigation .nav-drawer[data-visible="true"] .nav li {
+            @include header-fade-animate(10, 0.4s, 0.1s);
+        }
+
+        .site-head__navigation .nav-logo {
+            @include header-fade-start;
+        }
+
+        .site-head__navigation .nav-drawer[data-visible="true"] .nav-logo {
+            animation:
+                headerDrop $drop-duration $easing-drop forwards,
+                headerFade $fade-duration $easing-fade forwards;
+            animation-delay: $mobile-logo-delay, $mobile-logo-delay;
+        }
     }
 }
 

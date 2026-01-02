@@ -20,7 +20,7 @@
     role="img" 
     aria-labelledby="tardisDesc"
   >
-    <desc id="tardisDesc">Reading progress represented by a filling TARDIS icon</desc>
+    <desc id="tardisDesc"><?php esc_html_e( 'Reading progress represented by a filling TARDIS icon', 'bigbluebox' ); ?></desc>
     
     <defs>
       <!-- Define the TARDIS shape as a mask -->
@@ -56,6 +56,6 @@
   </svg>
 
   <div class="sr-only" role="status" aria-live="polite" id="tardisProgressStatus">
-    Reading progress: 0%
+    <?php esc_html_e( 'Reading progress: 0%', 'bigbluebox' ); ?>
   </div>
 </div>

@@ -7,17 +7,7 @@
 
 get_header();
 
-$bg_pool = [
-    'pagebg_tardis-int-1.webp',
-    'pagebg_tardis-int-2.webp',
-    'pagebg_tardis-int-3.webp',
-    'pagebg_tardis-int-4.webp',
-    'pagebg_tardis-int-5.webp',
-    'pagebg_tardis-int-6.webp',
-    'pagebg_tardis-int-7.webp',
-    'pagebg_tardis-int-8.webp'
-];
-$bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_pool)];
+$bg_image = bbb_get_random_hero_bg();
 ?>
 
 <?php get_template_part('template-parts/content', 'hero-bg-image', [
@@ -31,19 +21,19 @@ $bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_
             <section class="archive-hero search-hero">
                 <div class="archive-hero__group">
                     <h6 class="section-title">
-                        TARDIS Data-Core Query Complete&hellip; Data retrieved.
+                        <?php echo wp_kses_post( __( 'TARDIS Data-Core Query Complete&hellip; Data retrieved.', 'bigbluebox' ) ); ?>
                     </h6>
                     <h4 class="archive-hero__heading">
-                        Articles and podcast episodes about:<br>
+                        <?php echo wp_kses_post( __( 'Articles and podcast episodes about:<br>', 'bigbluebox' ) ); ?>
                     </h4>
                     <h2><?php echo esc_html(get_search_query()); ?></h2>
                 </div>
                 <form role="search" method="get" class="search-form search-hero-form" action="<?php echo esc_url(home_url('/')); ?>">
                     <label>
-                        <span class="screen-reader-text">Search for:</span>
-                        <input type="search" class="search-field" placeholder="Enter your search..." value="<?php echo esc_attr(get_search_query()); ?>" name="s" />
+                        <span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'bigbluebox' ); ?></span>
+                        <input type="search" class="search-field" placeholder="<?php echo esc_attr__( 'Enter your search...', 'bigbluebox' ); ?>" value="<?php echo esc_attr(get_search_query()); ?>" name="s" />
                     </label>
-                    <button type="submit" class="button search-submit">Search</button>
+                    <button type="submit" class="button search-submit"><?php esc_html_e( 'Search', 'bigbluebox' ); ?></button>
                 </form>
             </section>
 
@@ -65,20 +55,27 @@ $bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_
             <section class="archive-hero search-hero">
                 <div class="no-search-results flow-small">
                     <h6 class="section-title">
-                        TARDIS Data-Core Query Complete&hellip; Data not found.
+                        <?php echo wp_kses_post( __( 'TARDIS Data-Core Query Complete&hellip; Data not found.', 'bigbluebox' ) ); ?>
                     </h6>
                     <h4 class="archive-hero__heading">
-                        The TARDIS could not locate anything
+                        <?php esc_html_e( 'The TARDIS could not locate anything', 'bigbluebox' ); ?>
                     </h4>
-                    <p>Try another search&hellip;</p>
+                    <p><?php echo wp_kses_post( __( 'Try another search&hellip;', 'bigbluebox' ) ); ?></p>
                     <form role="search" method="get" class="search-form search-hero-form" action="<?php echo esc_url(home_url('/')); ?>">
                         <label>
-                            <span class="screen-reader-text">Search for:</span>
-                            <input type="search" class="search-field" placeholder="Enter your search..." value="<?php echo esc_attr(get_search_query()); ?>" name="s" />
+                            <span class="screen-reader-text"><?php esc_html_e( 'Search for:', 'bigbluebox' ); ?></span>
+                            <input type="search" class="search-field" placeholder="<?php echo esc_attr__( 'Enter your search...', 'bigbluebox' ); ?>" value="<?php echo esc_attr(get_search_query()); ?>" name="s" />
                         </label>
-                        <button type="submit" class="button search-submit">Search</button>
+                        <button type="submit" class="button search-submit"><?php esc_html_e( 'Search', 'bigbluebox' ); ?></button>
                     </form>
-                    <p>Still no results? Catch up with the latest posts below or <a class="link-alt" href="<?php echo esc_url(home_url('/')); ?>">return to the homepage</a>.</p>
+                    <p>
+                        <?php
+                        printf(
+                            wp_kses_post( __( 'Still no results? Catch up with the latest posts below or <a class="link-alt" href="%s">return to the homepage</a>.', 'bigbluebox' ) ),
+                            esc_url( home_url( '/' ) )
+                        );
+                        ?>
+                    </p>
                 </div>
                 <?php get_template_part('template-parts/content', 'suggested-posts', array('header_type' => 'latest')); ?>
             </section>

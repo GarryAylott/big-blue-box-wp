@@ -32,21 +32,21 @@ foreach ($eras as $era) {
 
 // Optional per-era subtexts (keyed by era slug). Empty by default; editable here or via filter.
 $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
-    'first-doctor' => 'Have you ever thought what it’s like to be wanderers in the Fourth Dimension?',
-    'second-doctor' => 'Our lives are different to anybody else’s… There’s nobody in the universe can do what we’re doing.',
-    'third-doctor' => 'Well, I’ve reversed the polarity of the neutron flow so the TARDIS should be free of the forcefield now.',
-    'fourth-doctor' => 'You may be a doctor; but I’m <strong>the</strong> Doctor. The definite article, you might say.',
-    'fifth-doctor' => 'That’s the trouble with regeneration. You never quite know what you’re going to get.',
-    'sixth-doctor' => 'Change, my dear. And it seems not a moment too soon.',
-    'seventh-doctor' => 'Somewhere there’s danger, somewhere there’s injustice, and somewhere else the tea’s getting cold.',
-    'eighth-doctor' => 'I love humans. Always seeing patterns in things that aren’t there.',
-    'ninth-doctor' => 'Before I go, I just want to tell you: you were fantastic. Absolutely fantastic. And do you know what? So was I!',
-    'tenth-doctor' => 'People assume that time is a strict progression… it’s more like a big ball of wibbly-wobbly, timey-wimey… stuff.',
-    'eleventh-doctor' => 'We’re all stories, in the end. Just make it a good one, eh?',
-    'twelfth-doctor' => 'I am not a good man… I am… an idiot! With a box and a screwdriver.',
-    'thirteenth-doctor' => 'I know exactly who I am. I’m the Doctor. Sorting out fair play throughout the universe.',
-    'fourteenth-doctor' => 'Grandmaster of the Knowledge! … And let’s… Allons-y!',
-    'fifteenth-doctor' => 'Okay. Name: ‘The Doctor’… Address: ‘That blue box over there’.'
+    'first-doctor' => __( 'Have you ever thought what it’s like to be wanderers in the Fourth Dimension?', 'bigbluebox' ),
+    'second-doctor' => __( 'Our lives are different to anybody else’s… There’s nobody in the universe can do what we’re doing.', 'bigbluebox' ),
+    'third-doctor' => __( 'Well, I’ve reversed the polarity of the neutron flow so the TARDIS should be free of the forcefield now.', 'bigbluebox' ),
+    'fourth-doctor' => __( 'You may be a doctor; but I’m <strong>the</strong> Doctor. The definite article, you might say.', 'bigbluebox' ),
+    'fifth-doctor' => __( 'That’s the trouble with regeneration. You never quite know what you’re going to get.', 'bigbluebox' ),
+    'sixth-doctor' => __( 'Change, my dear. And it seems not a moment too soon.', 'bigbluebox' ),
+    'seventh-doctor' => __( 'Somewhere there’s danger, somewhere there’s injustice, and somewhere else the tea’s getting cold.', 'bigbluebox' ),
+    'eighth-doctor' => __( 'I love humans. Always seeing patterns in things that aren’t there.', 'bigbluebox' ),
+    'ninth-doctor' => __( 'Before I go, I just want to tell you: you were fantastic. Absolutely fantastic. And do you know what? So was I!', 'bigbluebox' ),
+    'tenth-doctor' => __( 'People assume that time is a strict progression… it’s more like a big ball of wibbly-wobbly, timey-wimey… stuff.', 'bigbluebox' ),
+    'eleventh-doctor' => __( 'We’re all stories, in the end. Just make it a good one, eh?', 'bigbluebox' ),
+    'twelfth-doctor' => __( 'I am not a good man… I am… an idiot! With a box and a screwdriver.', 'bigbluebox' ),
+    'thirteenth-doctor' => __( 'I know exactly who I am. I’m the Doctor. Sorting out fair play throughout the universe.', 'bigbluebox' ),
+    'fourteenth-doctor' => __( 'Grandmaster of the Knowledge! … And let’s… Allons-y!', 'bigbluebox' ),
+    'fifteenth-doctor' => __( 'Okay. Name: ‘The Doctor’… Address: ‘That blue box over there’.', 'bigbluebox' )
 ]);
 ?>
 
@@ -150,6 +150,8 @@ $era_subtexts = apply_filters('bbb_reviews_era_subtexts', [
                                         src="<?php echo esc_url($image_url); ?>" 
                                         alt="" 
                                         class="era-image"
+                                        loading="lazy"
+                                        decoding="async"
                                     />
                                 <?php endif; ?>
                                 <div class="era-title__text">

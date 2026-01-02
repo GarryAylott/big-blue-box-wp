@@ -39,7 +39,7 @@ A Doctor-approved WordPress theme for the Big Blue Box Podcast – built to keep
 ## Troubleshooting & Maintenance
 
 -   Use the API shutdown toggle (`Settings → Captivate API Tools`) during local work to avoid hitting production APIs.
--   Cached Captivate responses live in transients (`captivate_episodes_cache`); append `?clear_captivate_cache=1` while logged in as an admin to refresh.
+-   Cached Captivate responses live in transients (`captivate_episodes_cache`); append `?clear_captivate_cache=1&_wpnonce=...` (action: `bbb_clear_captivate_cache`) while logged in as an admin to refresh. In local dev you can omit the nonce.
 -   If asset compilation misbehaves, delete generated files (`style.css*`, `scripts/bbb-scripts.min.js*`) and rerun `npm run build`.
 
 ## Contributing & Deployment

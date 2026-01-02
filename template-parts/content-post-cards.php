@@ -15,13 +15,14 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
         <div class="article-top">
             <?php if ( has_post_thumbnail() ) : ?>
                 <div class="img-container">
-                    <img
-                        class="post-thumb-img img-hover"
-                        src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'post-card-thumb' ) ); ?>"
-                        width="391"
-                        height="220"
-                        alt="<?php echo esc_attr( get_the_title() ); ?>"
-                    >
+                    <?php
+                    echo wp_get_attachment_image(
+                        get_post_thumbnail_id(),
+                        'post-card-thumb',
+                        false,
+                        [ 'class' => 'post-thumb-img img-hover' ]
+                    );
+                    ?>
                 </div>
             <?php endif; ?>
 
@@ -46,13 +47,14 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
     <a href="<?php the_permalink(); ?>">
         <?php if ( has_post_thumbnail() ) : ?>
             <div class="img-container">
-                <img
-                    class="post-thumb-img img-hover rounded-small"
-                    src="<?php echo esc_url( get_the_post_thumbnail_url( null, 'post-card-thumb' ) ); ?>"
-                    width="387"
-                    height="217"
-                    alt="<?php echo esc_attr( get_the_title() ); ?>"
-                >
+                <?php
+                echo wp_get_attachment_image(
+                    get_post_thumbnail_id(),
+                    'post-card-thumb',
+                    false,
+                    [ 'class' => 'post-thumb-img img-hover rounded-small' ]
+                );
+                ?>
             </div>
         <?php endif; ?>
 

@@ -64,6 +64,17 @@ Overrides for WP's default block images and videos/iframes
             margin-block-start: var(--space-xs);
         }
     }
+
+    p:has(> iframe) {
+        min-width: 100%;
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+    }
 }
 
 /* 

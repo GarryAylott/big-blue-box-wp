@@ -7,7 +7,7 @@
 ?>
 
 <?php
-$hero_heading  = $args['hero_heading'] ?? 'Archive';
+$hero_heading  = $args['hero_heading'] ?? esc_html__( 'Archive', 'bigbluebox' );
 $hero_sub      = $args['hero_sub'] ?? '';
 $hero_sub_html = $args['hero_sub_html'] ?? '';
 $hero_sub_allowed_html = array(
@@ -33,12 +33,12 @@ $hero_sub_allowed_html = array(
     <h6 class="section-title">
         <?php if (is_category()): ?>
             <i data-lucide="layout-list"></i>
-            Category
+            <?php esc_html_e( 'Category', 'bigbluebox' ); ?>
         <?php elseif (is_tag()): ?>
             <i data-lucide="tag"></i>
-            Tag
+            <?php esc_html_e( 'Tag', 'bigbluebox' ); ?>
         <?php else: ?>
-            Archive
+            <?php esc_html_e( 'Archive', 'bigbluebox' ); ?>
         <?php endif; ?>
     </h6>
     <div class="archive-hero__group">

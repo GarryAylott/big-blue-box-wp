@@ -8,16 +8,6 @@
 get_header();
 
 // 1. Image pools
-$bg_pool = [
-    'pagebg_tardis-int-1.webp',
-    'pagebg_tardis-int-2.webp',
-    'pagebg_tardis-int-3.webp',
-    'pagebg_tardis-int-4.webp',
-    'pagebg_tardis-int-5.webp',
-    'pagebg_tardis-int-6.webp',
-    'pagebg_tardis-int-7.webp',
-    'pagebg_tardis-int-8.webp'
-];
 $author_bg_map = [
     '7' => get_template_directory_uri() . '/images/authors/pagebg_author-harry.webp',
     '3' => get_template_directory_uri() . '/images/authors/pagebg_author-jordan.webp',
@@ -28,9 +18,12 @@ $author_bg_map = [
 
 // 2. Content logic
 if (is_tag()) {
-    $hero_heading = 'Articles and podcasts tagged:<br /><span>' . single_tag_title('', false) . '</span>';
+    $hero_heading = sprintf(
+        wp_kses_post( __( 'Articles and podcasts tagged:<br /><span>%s</span>', 'bigbluebox' ) ),
+        esc_html( single_tag_title( '', false ) )
+    );
     $hero_sub = tag_description();
-    $bg_image = get_template_directory_uri() . '/images/' . $bg_pool[array_rand($bg_pool)];
+    $bg_image = bbb_get_random_hero_bg();
 } elseif (is_author()) {
     $author_id = get_query_var('author');
     $author = get_userdata($author_id);
@@ -63,6 +56,10 @@ if (is_tag()) {
             $article_count = count_user_posts($author_id, 'post');
             $bio = get_the_author_meta('description', $author_id);
             $acf_bio = get_field('bio', 'user_' . $author_id);
+            $doctor_width = 0;
+            $doctor_height = 0;
+            $story_width = 0;
+            $story_height = 0;
 
             $social_links_markup = bbb_render_author_social_links(
                 $author_id,
@@ -98,9 +95,16 @@ if (is_tag()) {
                             <?php echo $social_links_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup escaped within helper. ?>
                         <?php endif; ?>
                         <span class="author-hero__badge">
-                            <span><?php echo esc_html($article_count); ?> Articles</span>
+                            <span>
+                                <?php
+                                printf(
+                                    esc_html__( '%s Articles', 'bigbluebox' ),
+                                    esc_html( $article_count )
+                                );
+                                ?>
+                            </span>
                         </span>
-                        <div class="author-hero__bio"><?php echo wpautop($acf_bio); ?></div>
+                        <div class="author-hero__bio"><?php echo wpautop( wp_kses_post( $acf_bio ) ); ?></div>
                         <div class="author-hero__favs">
                             <?php
                             if ($fav_doctor_image) {
@@ -115,34 +119,48 @@ if (is_tag()) {
                             ?>
 
                             <?php if ($fav_doctor): ?>
-                                <div class="fav-doctor" style="--image-width: <?php echo $doctor_width; ?>px;">
+                                <div class="fav-doctor" style="--image-width: <?php echo esc_attr( absint( $doctor_width ) ); ?>px;">
                                     <div class="fav-image">
                                         <?php if (!empty($fav_doctor_image['url'])): ?>
                                             <img
                                                 src="<?php echo esc_url($fav_doctor_image['url']); ?>"
                                                 alt="<?php echo esc_attr($fav_doctor_image['alt']); ?>"
                                                 class="fav-doctor-image"
-                                                width="<?php echo $doctor_width; ?>"
-                                                height="<?php echo $doctor_height; ?>">
+                                                width="<?php echo esc_attr( absint( $doctor_width ) ); ?>"
+                                                height="<?php echo esc_attr( absint( $doctor_height ) ); ?>">
                                         <?php endif; ?>
                                     </div>
-                                    <h6>Fav Doctor: <strong><?php echo esc_html($fav_doctor); ?></strong></h6>
+                                    <h6>
+                                        <?php
+                                        printf(
+                                            wp_kses_post( __( 'Fav Doctor: <strong>%s</strong>', 'bigbluebox' ) ),
+                                            esc_html( $fav_doctor )
+                                        );
+                                        ?>
+                                    </h6>
                                 </div>
                             <?php endif; ?>
 
                             <?php if ($fav_story): ?>
-                                <div class="fav-story" style="--image-width: <?php echo $story_width; ?>px;">
+                                <div class="fav-story" style="--image-width: <?php echo esc_attr( absint( $story_width ) ); ?>px;">
                                     <div class="fav-image">
                                         <?php if (!empty($fav_story_image['url'])): ?>
                                             <img
                                                 src="<?php echo esc_url($fav_story_image['url']); ?>"
                                                 alt="<?php echo esc_attr($fav_story_image['alt']); ?>"
                                                 class="fav-story-image"
-                                                width="<?php echo $story_width; ?>"
-                                                height="<?php echo $story_height; ?>">
+                                                width="<?php echo esc_attr( absint( $story_width ) ); ?>"
+                                                height="<?php echo esc_attr( absint( $story_height ) ); ?>">
                                         <?php endif; ?>
                                     </div>
-                                    <h6>Fav Story: <strong><?php echo esc_html($fav_story); ?></strong></h6>
+                                    <h6>
+                                        <?php
+                                        printf(
+                                            wp_kses_post( __( 'Fav Story: <strong>%s</strong>', 'bigbluebox' ) ),
+                                            esc_html( $fav_story )
+                                        );
+                                        ?>
+                                    </h6>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -167,9 +185,15 @@ if (is_tag()) {
             }
             $is_garry = strtolower($author_first_name) === 'garry' || strtolower($author->display_name) === 'garry';
             if ($is_garry) {
-                $articles_heading = "Garry's Podcast Episodes and Articles";
+                $articles_heading = sprintf(
+                    esc_html__( "%s's Podcast Episodes and Articles", 'bigbluebox' ),
+                    esc_html( $author_first_name )
+                );
             } else {
-                $articles_heading = esc_html($author_first_name) . "'s Articles";
+                $articles_heading = sprintf(
+                    esc_html__( "%s's Articles", 'bigbluebox' ),
+                    esc_html( $author_first_name )
+                );
             }
         } else {
             $articles_heading = "";
@@ -184,7 +208,7 @@ if (is_tag()) {
                     get_template_part('template-parts/content', 'post-cards', ['card_type' => 'browse']);
                 endwhile;
             else :
-                echo '<p>No posts found.</p>';
+                echo '<p>' . esc_html__( 'No posts found.', 'bigbluebox' ) . '</p>';
             endif;
             ?>
         </div>

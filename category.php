@@ -12,6 +12,10 @@ $slug = $term->slug;
 
 $article_tabs = [
     [
+        'label' => __( 'All', 'bigbluebox' ),
+        'slug'  => 'non-podcasts',
+    ],
+    [
         'label' => __( 'Reviews', 'bigbluebox' ),
         'slug'  => 'reviews',
     ],

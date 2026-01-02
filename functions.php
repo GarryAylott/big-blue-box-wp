@@ -274,12 +274,16 @@ function filter_posts_by_category() {
 	if ( 'home' === $context ) {
 		$posts_per_page = 14;
 	}
+	if ( 'category' === $context ) {
+		$posts_per_page = 15;
+	}
 
 	$args = array(
 		'post_status'    => 'publish',
 		'posts_per_page' => $posts_per_page,
 		'post_type'      => 'post',
 		'paged'          => $paged,
+		'ignore_sticky_posts' => true,
 	);
 
 	$podcasts_cat = get_category_by_slug( 'podcasts' );
@@ -325,8 +329,18 @@ function filter_posts_by_category() {
 		$html = ob_get_clean();
 
 		if ( 'home' !== $context ) {
+			$pagination_base = '';
+			if ( 'category' === $context ) {
+				if ( 'non-podcasts' === $category ) {
+					$articles_cat = get_category_by_slug( 'articles' );
+					$pagination_base = $articles_cat ? get_category_link( $articles_cat->term_id ) : '';
+				} elseif ( $category ) {
+					$active_cat = get_category_by_slug( $category );
+					$pagination_base = $active_cat ? get_category_link( $active_cat->term_id ) : '';
+				}
+			}
 			ob_start();
-			bbb_custom_pagination( $query );
+			bbb_custom_pagination( $query, $pagination_base );
 			$pagination = ob_get_clean();
 		}
 		wp_reset_postdata();
@@ -355,6 +369,22 @@ add_filter('query_vars', function($vars) {
 add_action('pre_get_posts', function($query) {
 	// Only target main queries on frontend, and for archives
 	if (!is_admin() && $query->is_main_query() && (is_category() || is_tag() || is_post_type_archive())) {
+		if ( $query->is_category( 'articles' ) ) {
+			$podcasts_cat = get_category_by_slug( 'podcasts' );
+			if ( $podcasts_cat ) {
+				// Override the category archive constraint and exclude podcasts instead.
+				$query->set( 'cat', '' );
+				$query->set( 'category_name', '' );
+				$tax_query = (array) $query->get( 'tax_query' );
+				$tax_query[] = array(
+					'taxonomy' => 'category',
+					'field'    => 'term_id',
+					'terms'    => array( (int) $podcasts_cat->term_id ),
+					'operator' => 'NOT IN',
+				);
+				$query->set( 'tax_query', $tax_query );
+			}
+		}
 		$query->set('posts_per_page', 15);
 	}
 });

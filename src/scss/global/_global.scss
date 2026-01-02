@@ -8,6 +8,10 @@ html {
     scroll-behavior: smooth;
 }
 
+body:is(.category-articles) {
+    scroll-behavior: auto;
+}
+
 body {
     width: 100%;
     max-width: 100%;

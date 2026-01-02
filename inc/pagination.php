@@ -5,21 +5,33 @@
  * @package Big_Blue_Box
  */
 
-function bbb_custom_pagination($query = null) {
+function bbb_custom_pagination( $query = null, string $base_url = '' ) {
     global $wp_query;
     $query = $query ?? $wp_query;
 
     $total = intval($query->max_num_pages);
     if ($total <= 1) return;
 
-    $current = max(1, get_query_var('paged'));
+    $current = max(1, (int) $query->get('paged', 1));
     $range = 1; // Only 1 number each side
+    $get_page_link = static function ( int $page, string $base_url ): string {
+        if ( '' === $base_url ) {
+            return get_pagenum_link( $page );
+        }
+
+        $clean_base = remove_query_arg( 'paged', $base_url );
+        if ( 1 === $page ) {
+            return $clean_base;
+        }
+
+        return add_query_arg( 'paged', $page, $clean_base );
+    };
 
     echo '<nav class="pagination" role="navigation" aria-label="Pagination"><ul class="pagination__list">';
 
     // Previous
     if ($current > 1) {
-        echo '<li><a class="pagination-item pagination__prev" href="' . esc_url(get_pagenum_link($current - 1)) . '" aria-label="Previous Page">
+        echo '<li><a class="pagination-item pagination__prev" href="' . esc_url( $get_page_link( $current - 1, $base_url ) ) . '" aria-label="Previous Page">
             <span class="pagination__text">Previous Page</span>
             <span class="pagination__icon" aria-hidden="true">&lt;</span>
         </a></li>';
@@ -29,7 +41,7 @@ function bbb_custom_pagination($query = null) {
     if ($current == 1) {
         echo '<li><span class="pagination-item pagination__num is-current">1</span></li>';
     } else {
-        echo '<li><a class="pagination-item pagination__num" href="' . esc_url(get_pagenum_link(1)) . '">1</a></li>';
+        echo '<li><a class="pagination-item pagination__num" href="' . esc_url( $get_page_link( 1, $base_url ) ) . '">1</a></li>';
     }
 
     // Dots before
@@ -44,7 +56,7 @@ function bbb_custom_pagination($query = null) {
         if ($i == $current) {
             echo '<li><span class="pagination-item pagination__num is-current' . $mobile_hide . '">' . $i . '</span></li>';
         } else {
-            echo '<li><a class="pagination-item pagination__num' . $mobile_hide . '" href="' . esc_url(get_pagenum_link($i)) . '">' . $i . '</a></li>';
+            echo '<li><a class="pagination-item pagination__num' . $mobile_hide . '" href="' . esc_url( $get_page_link( $i, $base_url ) ) . '">' . $i . '</a></li>';
         }
     }
 
@@ -58,13 +70,13 @@ function bbb_custom_pagination($query = null) {
         if ($current == $total) {
             echo '<li><span class="pagination-item pagination__num is-current">' . $total . '</span></li>';
         } else {
-            echo '<li><a class="pagination-item pagination__num" href="' . esc_url(get_pagenum_link($total)) . '">' . $total . '</a></li>';
+            echo '<li><a class="pagination-item pagination__num" href="' . esc_url( $get_page_link( $total, $base_url ) ) . '">' . $total . '</a></li>';
         }
     }
 
     // Next
     if ($current < $total) {
-        echo '<li><a class="pagination-item pagination__next" href="' . esc_url(get_pagenum_link($current + 1)) . '" aria-label="Next Page">
+        echo '<li><a class="pagination-item pagination__next" href="' . esc_url( $get_page_link( $current + 1, $base_url ) ) . '" aria-label="Next Page">
             <span class="pagination__text">Next Page</span>
             <span class="pagination__icon" aria-hidden="true">&gt;</span>
         </a></li>';

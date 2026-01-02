@@ -9,6 +9,7 @@ Layout and styling for the large background image that appears at the top of mos
     position: fixed;
     inset: 0;
     transition: opacity 0.1s ease-out;
+    will-change: opacity;
     overflow: hidden;
     z-index: -2;
 
@@ -41,6 +42,7 @@ body.single-post .hero-bg-image {
         opacity: var(--hero-overlay-opacity);
         pointer-events: none;
         transition: opacity 0.2s ease-out;
+        // will-change: opacity;
         z-index: 1;
     }
 

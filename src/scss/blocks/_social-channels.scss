@@ -32,10 +32,6 @@ Layout and styling for the list of social channels.
         display: flex;
         align-items: center;
         gap: var(--space-xs);
-
-        // p {
-        //     font-family: var(--font-family-headings);
-        // }
     }
 }
 
@@ -52,7 +48,7 @@ Layout and styling for the list of social channels.
         display: grid;
         place-items: center;
         border-radius: var(--radius-small);
-        transition: all 0.2s ease-out;
+        transition: all var(--button-timing-duration) var(--button-timing-curve);
 
         &:hover {
             background: var(--clr-brand-primary);

@@ -636,6 +636,7 @@ const initCategorySwitcher = () => {
     if (!switchButtons.length || !postContainer) return;
 
     let requestCounter = 0;
+    let skipAnimationNext = false;
     let activeCategory =
         switcher?.querySelector(".switch-btn.is-active")?.dataset.category ||
         switchButtons[0]?.dataset.category ||
@@ -715,17 +716,25 @@ const initCategorySwitcher = () => {
                     paginationContainer.innerHTML = pagination;
                 }
 
-                // Setup initial hidden state for children, then activate transition
-                postContainer.classList.add("enter-setup");
-                // Force reflow to commit styles
-                void postContainer.offsetHeight;
-                postContainer.classList.remove("enter-setup");
-                postContainer.classList.add("enter-active");
 
-                // Clean up after animation window
-                setTimeout(() => {
-                    postContainer.classList.remove("enter-active");
-                }, 260);
+                // Setup initial hidden state for children, then activate transition
+                postContainer.classList.remove(
+                    "enter-setup",
+                    "enter-active"
+                );
+                if (!skipAnimationNext) {
+                    postContainer.classList.add("enter-setup");
+                    // Force reflow to commit styles
+                    void postContainer.offsetHeight;
+                    postContainer.classList.remove("enter-setup");
+                    postContainer.classList.add("enter-active");
+
+                    // Clean up after animation window
+                    setTimeout(() => {
+                        postContainer.classList.remove("enter-active");
+                    }, 260);
+                }
+                skipAnimationNext = false;
 
                 endLoading();
                 setButtonsDisabled(false);
@@ -763,13 +772,24 @@ const initCategorySwitcher = () => {
         });
     });
 
-    if (paginationContainer) {
+    if (paginationContainer && context !== "category") {
         paginationContainer.addEventListener("click", (event) => {
             const link = event.target.closest("a");
             if (!link) return;
 
             event.preventDefault();
             const paged = getPagedFromUrl(link.href);
+            document.documentElement.style.scrollBehavior = "auto";
+            document.body.style.scrollBehavior = "auto";
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+            window.scrollTo(0, 0);
+            requestAnimationFrame(() => {
+                document.documentElement.style.scrollBehavior = "";
+                document.body.style.scrollBehavior = "";
+            });
+            skipAnimationNext = true;
+            document.body.classList.add("nav-no-fade");
             fetchCategoryPosts(activeCategory, paged);
         });
     }

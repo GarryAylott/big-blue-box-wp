@@ -135,13 +135,22 @@ p.lead + :is(h2, h3, h4, h5, h6) {
 
         &:first-letter,
         &:not(:focus):first-letter {
+            -webkit-initial-letter: 2;
+            initial-letter: 2;
             color: var(--clr-brand-accent);
-            font-family: var(--font-family-headings);
-            font-size: 4.5rem;
-            line-height: 0.21em;
-            margin-block-start: 1.6rem;
-            margin-inline-end: 0.5rem;
-            float: left;
+            margin-inline-end: 0.5ch;
+        }
+
+        @supports not (initial-letter: 2) {
+            &:first-letter,
+            &:not(:focus):first-letter {
+                color: var(--clr-brand-accent);
+                font-size: 73px;
+                line-height: 1em;
+                margin-block-start: 0.5rem;
+                margin-inline-end: 0.2ch;
+                float: left;
+            }
         }
     }
 }
@@ -157,6 +166,10 @@ body.category-podcasts {
             font-size: inherit;
             line-height: inherit;
             margin: 0;
+
+            @media (max-width: 400px) {
+                @include visually-hidden;
+            }
         }
     }
 }
@@ -290,7 +303,7 @@ a.link-action {
     text-wrap: nowrap;
     text-decoration: none;
     border-radius: var(--radius-small);
-    transition: all 0.2s ease-out;
+    transition: all var(--button-timing-duration) var(--button-timing-curve);
 
     :where(span.reply-icon) svg {
         transform: translateY(-1.5px);

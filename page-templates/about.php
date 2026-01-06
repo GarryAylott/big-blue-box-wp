@@ -209,10 +209,11 @@ get_header();
             </div>
 
             <div class="dalektat">
+                <?php $theme_dir = esc_url( get_template_directory_uri() ); ?>
                 <picture>
-                    <source srcset="<?php echo get_bloginfo('template_url') ?>/images/DalekTat.avif" type="image/avif">
-                    <source srcset="<?php echo get_bloginfo('template_url') ?>/images/DalekTat.webp" type="image/webp">
-                    <img src="<?php echo get_bloginfo('template_url') ?>/images/DalekTat.webp" alt="">
+                    <source srcset="<?php echo $theme_dir; ?>/images/DalekTat.avif" type="image/avif">
+                    <source srcset="<?php echo $theme_dir; ?>/images/DalekTat.webp" type="image/webp">
+                    <img src="<?php echo $theme_dir; ?>/images/DalekTat.webp" alt="<?php echo esc_attr__( 'Dalek Tat illustration', 'bigbluebox' ); ?>">
                 </picture>
                 <div class="dalektat__content flow-small">
                     <h3><?php esc_html_e( 'Dalek Tat', 'bigbluebox' ); ?></h3>

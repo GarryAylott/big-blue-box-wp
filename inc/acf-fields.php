@@ -16,14 +16,14 @@ add_filter( 'acf/load_field/name=captivate_episode_selector', function( $field )
 		}
 		if ( $allow ) {
 			delete_transient( 'captivate_episodes_cache' );
-			error_log( '♻️ Captivate episode cache cleared manually.' );
-		} elseif ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( '⚠️ Captivate cache clear blocked (missing or invalid nonce).' );
+			bbb_log( '♻️ Captivate episode cache cleared manually.' );
+		} else {
+			bbb_log( '⚠️ Captivate cache clear blocked (missing or invalid nonce).' );
 		}
 	}
 
 	if ( ! defined( 'CAPTIVATE_API_TOKEN' ) || ! defined( 'CAPTIVATE_USER_ID' ) || ! defined( 'CAPTIVATE_SHOW_ID' ) ) {
-		error_log( '❌ Missing Captivate credentials.' );
+		bbb_log( '❌ Missing Captivate credentials.' );
 		return $field;
 	}
 
@@ -40,25 +40,25 @@ add_filter( 'acf/load_field/name=captivate_episode_selector', function( $field )
 		] );
 
 		if ( is_wp_error( $auth_response ) ) {
-			error_log( '❌ Auth request failed: ' . $auth_response->get_error_message() );
+			bbb_log( '❌ Auth request failed: ' . $auth_response->get_error_message() );
 			return $field;
 		}
 
 		$auth_code = wp_remote_retrieve_response_code( $auth_response );
 		if ( $auth_code < 200 || $auth_code >= 300 ) {
-			error_log( '❌ Auth failed. HTTP status: ' . $auth_code );
+			bbb_log( '❌ Auth failed. HTTP status: ' . $auth_code );
 			return $field;
 		}
 
 		$auth_data    = json_decode( wp_remote_retrieve_body( $auth_response ), true );
 		if ( ! is_array( $auth_data ) ) {
-			error_log( '❌ Auth failed. Invalid JSON response.' );
+			bbb_log( '❌ Auth failed. Invalid JSON response.' );
 			return $field;
 		}
 		$bearer_token = $auth_data['user']['token'] ?? null;
 
 		if ( ! $bearer_token ) {
-			error_log( '❌ Auth failed.' );
+			bbb_log( '❌ Auth failed.' );
 			return $field;
 		}
 
@@ -72,13 +72,13 @@ add_filter( 'acf/load_field/name=captivate_episode_selector', function( $field )
 		] );
 
 		if ( is_wp_error( $episodes_response ) ) {
-			error_log( '❌ Error fetching episodes: ' . $episodes_response->get_error_message() );
+			bbb_log( '❌ Error fetching episodes: ' . $episodes_response->get_error_message() );
 			return $field;
 		}
 
 		$episodes_code = wp_remote_retrieve_response_code( $episodes_response );
 		if ( $episodes_code < 200 || $episodes_code >= 300 ) {
-			error_log( '❌ Error fetching episodes. HTTP status: ' . $episodes_code );
+			bbb_log( '❌ Error fetching episodes. HTTP status: ' . $episodes_code );
 			return $field;
 		}
 
@@ -113,15 +113,13 @@ add_action( 'acf/save_post', function( $post_id ) {
 	}
 
 	if ( get_option( 'disable_captivate_api' ) ) {
-		error_log( '🛑 API disabled — skipping acf/save_post processing.' );
+		bbb_log( '🛑 API disabled — skipping acf/save_post processing.' );
 		return;
 	}
 
 	$guid = get_field( 'captivate_episode_selector', $post_id );
 	if ( ! $guid ) {
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( '❌ No GUID selected in captivate_episode_selector.' );
-		}
+		bbb_log( '❌ No GUID selected in captivate_episode_selector.' );
 		return;
 	}
 
@@ -131,13 +129,13 @@ add_action( 'acf/save_post', function( $post_id ) {
 	if ( $audio_url ) {
 		update_field( 'captivate_audio_url', $audio_url, $post_id );
 		update_post_meta( $post_id, 'captivate_episode_guid', $guid );
-	} elseif ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-		error_log( '❌ Failed to fetch audio URL.' );
+	} else {
+		bbb_log( '❌ Failed to fetch audio URL.' );
 	}
 
 	// Auth to fetch episode data
 	if ( ! defined( 'CAPTIVATE_API_TOKEN' ) || ! defined( 'CAPTIVATE_USER_ID' ) ) {
-		error_log( '❌ Missing Captivate credentials.' );
+		bbb_log( '❌ Missing Captivate credentials.' );
 		return;
 	}
 
@@ -150,25 +148,25 @@ add_action( 'acf/save_post', function( $post_id ) {
 	] );
 
 	if ( is_wp_error( $auth_response ) ) {
-		error_log( '❌ Auth request failed on save_post: ' . $auth_response->get_error_message() );
+		bbb_log( '❌ Auth request failed on save_post: ' . $auth_response->get_error_message() );
 		return;
 	}
 
 	$auth_code = wp_remote_retrieve_response_code( $auth_response );
 	if ( $auth_code < 200 || $auth_code >= 300 ) {
-		error_log( '❌ Auth failed on save_post. HTTP status: ' . $auth_code );
+		bbb_log( '❌ Auth failed on save_post. HTTP status: ' . $auth_code );
 		return;
 	}
 
 	$auth_data    = json_decode( wp_remote_retrieve_body( $auth_response ), true );
 	if ( ! is_array( $auth_data ) ) {
-		error_log( '❌ Auth failed on save_post. Invalid JSON response.' );
+		bbb_log( '❌ Auth failed on save_post. Invalid JSON response.' );
 		return;
 	}
 	$bearer_token = $auth_data['user']['token'] ?? null;
 
 	if ( ! $bearer_token ) {
-		error_log( '❌ Auth failed on save_post.' );
+		bbb_log( '❌ Auth failed on save_post.' );
 		return;
 	}
 
@@ -181,20 +179,20 @@ add_action( 'acf/save_post', function( $post_id ) {
 	] );
 
 	if ( is_wp_error( $episode_response ) ) {
-		error_log( '❌ Episode request failed on save_post: ' . $episode_response->get_error_message() );
+		bbb_log( '❌ Episode request failed on save_post: ' . $episode_response->get_error_message() );
 		return;
 	}
 
 	$episode_code = wp_remote_retrieve_response_code( $episode_response );
 	if ( $episode_code < 200 || $episode_code >= 300 ) {
-		error_log( '❌ Episode request failed on save_post. HTTP status: ' . $episode_code );
+		bbb_log( '❌ Episode request failed on save_post. HTTP status: ' . $episode_code );
 		return;
 	}
 
 	$response_body = wp_remote_retrieve_body( $episode_response );
 	$data          = json_decode( $response_body, true );
 	if ( ! is_array( $data ) ) {
-		error_log( '❌ Episode response invalid JSON on save_post.' );
+		bbb_log( '❌ Episode response invalid JSON on save_post.' );
 		return;
 	}
 
@@ -222,28 +220,20 @@ add_action( 'acf/save_post', function( $post_id ) {
 			$friendly_type = ucfirst( strtolower( $episode_type ) );
 		}
 		update_field( 'podcast_episode_type', $friendly_type, $post_id );
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( "📦 Saved episode type: $friendly_type" );
-		}
+		bbb_log( "📦 Saved episode type: $friendly_type" );
 	}
 
 	if ( $episode_number !== null && $episode_number !== '' ) {
 		update_field( 'podcast_episode_number', $episode_number, $post_id );
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			error_log( "✅ Episode number set to: $episode_number" );
-		}
+		bbb_log( "✅ Episode number set to: $episode_number" );
 	} else {
 		$normalized_type = $episode_type ? ucfirst( strtolower( $episode_type ) ) : '';
 		if ( in_array( $normalized_type, [ 'Bonus', 'Trailer' ], true ) ) {
 			update_field( 'podcast_episode_number', 'N/A', $post_id );
-			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				error_log( "⚠️ $episode_type episode – set episode number to N/A (fallback, episode data missing or malformed)." );
-			}
+			bbb_log( "⚠️ $episode_type episode – set episode number to N/A (fallback, episode data missing or malformed)." );
 		} else {
-			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				error_log( '❌ Failed to set episode number. Episode data missing or malformed.' );
-				error_log( print_r( $data, true ) );
-			}
+			bbb_log( '❌ Failed to set episode number. Episode data missing or malformed.' );
+			bbb_log( print_r( $data, true ) );
 		}
 	}
 

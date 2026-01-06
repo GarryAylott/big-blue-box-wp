@@ -26,7 +26,7 @@
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="site-head__home">
 					<span class="visually-hidden"><?php esc_html_e( 'The Big Blue Box Podcast', 'bigbluebox' ); ?></span>
 					<div class="site-head__logo">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-horizontal.svg" width="251" height="53" alt="<?php echo esc_attr__( 'The Big Blue Box Podcast', 'bigbluebox' ); ?>">
+						<img src="<?php echo esc_url( get_template_directory_uri() . '/images/logos/logo-horizontal.svg' ); ?>" width="251" height="53" alt="<?php echo esc_attr__( 'The Big Blue Box Podcast', 'bigbluebox' ); ?>">
 					</div>
 				</a>
 

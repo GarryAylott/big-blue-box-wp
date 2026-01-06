@@ -9,6 +9,18 @@ if ( ! defined( '_S_VERSION' ) ) {
 }
 
 /**
+ * Internal debug logger — no-op unless WP_DEBUG is enabled.
+ *
+ * @param string $message Log message.
+ */
+function bbb_log( $message ) {
+	if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+		error_log( $message );
+	}
+}
+
+/**
  * Theme defaults and registers support for various WordPress features.
  */
 function bigbluebox_setup() {
@@ -104,6 +116,7 @@ add_filter(
  */
 function add_search_icon_to_menu($items, $args) {
 	if ($args->theme_location === 'main-nav') {
+		$search_label = esc_html__( 'Open search', 'bigbluebox' );
 		$search_icon = '<li class="menu-item search-menu-item">
 			<a href="#" class="nav-search-icon">
 				<i data-lucide="search" class="icon-bold"></i>
@@ -137,6 +150,10 @@ add_filter( 'tiny_mce_before_init', 'show_tinymce_toolbar' );
  * Add lead class to first paragraph
  */
 function first_paragraph( $content ) {
+	if ( is_admin() || is_feed() || ! is_singular() || ! in_the_loop() ) {
+		return $content;
+	}
+
 	return preg_replace( '/<p([^>]+)?>/', '<p$1 class="lead">', $content, 1 );
 }
 add_filter( 'the_content', 'first_paragraph' );
@@ -163,30 +180,50 @@ add_filter( 'excerpt_more', 'custom_more_excerpt' );
 add_filter('the_content', 'bbbx_clean_gutenberg_images', 20);
 
 function bbbx_clean_gutenberg_images($content) {
-	libxml_use_internal_errors(true);
-	$doc = new DOMDocument();
-	$doc->loadHTML('<?xml encoding="utf-8" ?>' . $content);
-
-	// Loop through all <img> and remove width/height
-	foreach ($doc->getElementsByTagName('img') as $img) {
-		$img->removeAttribute('width');
-		$img->removeAttribute('height');
+	if ( is_admin() || is_feed() || ! in_the_loop() || ! is_string( $content ) || '' === $content ) {
+		return $content;
 	}
 
-	// Loop through all <figure> and remove style="width: ..."
-	foreach ($doc->getElementsByTagName('figure') as $figure) {
-		if ($figure->hasAttribute('style')) {
-			$figure->removeAttribute('style');
+	$internal_errors = libxml_use_internal_errors( true );
+	$doc             = new DOMDocument();
+
+	try {
+		$loaded = $doc->loadHTML( '<?xml encoding="utf-8" ?>' . $content );
+		if ( ! $loaded ) {
+			return $content;
 		}
-	}
 
-	$body = $doc->getElementsByTagName('body')->item(0);
-	$new_content = '';
-	foreach ($body->childNodes as $child) {
-		$new_content .= $doc->saveHTML($child);
-	}
+		// Loop through all <img> and remove width/height
+		foreach ( $doc->getElementsByTagName( 'img' ) as $img ) {
+			$img->removeAttribute( 'width' );
+			$img->removeAttribute( 'height' );
+		}
 
-	return $new_content;
+		// Loop through all <figure> and remove style="width: ..."
+		foreach ( $doc->getElementsByTagName( 'figure' ) as $figure ) {
+			if ( $figure->hasAttribute( 'style' ) ) {
+				$figure->removeAttribute( 'style' );
+			}
+		}
+
+		$body = $doc->getElementsByTagName( 'body' )->item( 0 );
+		if ( ! $body ) {
+			return $content;
+		}
+
+		$new_content = '';
+		foreach ( $body->childNodes as $child ) {
+			$new_content .= $doc->saveHTML( $child );
+		}
+
+		return wp_kses_post( $new_content );
+	} catch ( Throwable $e ) {
+		bbb_log( '❌ Failed to clean Gutenberg images: ' . $e->getMessage() );
+		return $content;
+	} finally {
+		libxml_clear_errors();
+		libxml_use_internal_errors( $internal_errors );
+	}
 }
 
 /**

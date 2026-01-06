@@ -6,6 +6,8 @@
  */
 ?>
 
+<?php $theme_dir = esc_url( get_template_directory_uri() ); ?>
+
 <aside id="secondary" class="main-sidebar flow-large">
 	<section class="social-channels flow">
 		<h5>
@@ -15,7 +17,7 @@
 			<li>
 				<a class="has-external-icon" href="https://bsky.app/profile/bigblueboxpodcast.bsky.social" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Bluesky link', 'bigbluebox' ); ?>">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Bluesky link', 'bigbluebox' ); ?>">
 						<h6><?php esc_html_e( 'Bluesky', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
@@ -24,7 +26,7 @@
 			<li>
 				<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="<?php echo esc_attr__( 'X (Twitter) link', 'bigbluebox' ); ?>">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="<?php echo esc_attr__( 'X (Twitter) link', 'bigbluebox' ); ?>">
 						<h6><?php esc_html_e( 'X (Twitter)', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
@@ -33,7 +35,7 @@
 			<li>
 				<a class="has-external-icon" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Instagram link', 'bigbluebox' ); ?>">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-insta.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Instagram link', 'bigbluebox' ); ?>">
 						<h6><?php esc_html_e( 'Instagram', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
@@ -42,7 +44,7 @@
 			<li>
 				<a class="has-external-icon" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Facebook link', 'bigbluebox' ); ?>">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Facebook link', 'bigbluebox' ); ?>">
 						<h6><?php esc_html_e( 'Facebook', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
@@ -51,7 +53,7 @@
 			<li>
 				<a class="has-external-icon" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Threads link', 'bigbluebox' ); ?>">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Threads link', 'bigbluebox' ); ?>">
 						<h6><?php esc_html_e( 'Threads', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
@@ -60,7 +62,7 @@
 			<li>
 				<a class="has-external-icon" href="https://feeds.captivate.fm/doctor-who-big-blue-box-podcast/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="<?php echo esc_attr__( 'RSS podcasts link', 'bigbluebox' ); ?>">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="<?php echo esc_attr__( 'RSS podcasts link', 'bigbluebox' ); ?>">
 						<h6><?php esc_html_e( 'RSS: Podcasts', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
@@ -69,7 +71,7 @@
 			<li>
 				<a class="has-external-icon" href="https://www.bigblueboxpodcast.co.uk/category/articles/feed/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="<?php echo esc_attr__( 'RSS articles link', 'bigbluebox' ); ?>">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="<?php echo esc_attr__( 'RSS articles link', 'bigbluebox' ); ?>">
 						<h6><?php esc_html_e( 'RSS: Articles', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
@@ -78,7 +80,7 @@
 			<li>
 				<a class="has-external-icon" href="https://www.bigblueboxpodcast.co.uk/feed/" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo get_bloginfo('template_url') ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="<?php echo esc_attr__( 'RSS everything link', 'bigbluebox' ); ?>">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-rss.svg" width="21" height="21" alt="<?php echo esc_attr__( 'RSS everything link', 'bigbluebox' ); ?>">
 						<h6><?php esc_html_e( 'RSS: Everything', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
@@ -89,7 +91,7 @@
 
 	<section class="call-out-panel discord-link">
 		<div class="intro">
-			<img src="<?php echo get_bloginfo('template_url') ?>/images/logos/logo-discord.svg" width="121" height="23" alt="<?php echo esc_attr__( 'Our free Discord server', 'bigbluebox' ); ?>">
+			<img src="<?php echo $theme_dir; ?>/images/logos/logo-discord.svg" width="121" height="23" alt="<?php echo esc_attr__( 'Our free Discord server', 'bigbluebox' ); ?>">
 			<p class="small">
 				<?php esc_html_e( 'Join the Big Blue Box Discord server - it\'s free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!', 'bigbluebox' ); ?>
 			</p>
@@ -164,7 +166,7 @@
 			</div>
 			<div class="author-section-small__author-block">
 				<span class="author-avatar no-link">
-					<img src="<?php echo get_bloginfo('template_url') ?>/images/authors/author-avatar-small-default.webp" width="56" height="81" alt="<?php echo esc_attr__( 'Maybe you could join the team?', 'bigbluebox' ); ?>">
+					<img src="<?php echo $theme_dir; ?>/images/authors/author-avatar-small-default.webp" width="56" height="81" alt="<?php echo esc_attr__( 'Maybe you could join the team?', 'bigbluebox' ); ?>">
 				</span>
 				<div class="author-block-content">
 					<h6>
@@ -186,9 +188,9 @@
 	<section>
 		<a class="has-external-icon" href="https://www.bigfinish.com/" target="_blank" rel="noreferrer noopener">
 			<picture class="img-container-square">
-				<source srcset="<?php echo get_bloginfo('template_url') ?>/images/ads/big-finish-banner-square.avif" type="image/avif">
-				<source srcset="<?php echo get_bloginfo('template_url') ?>/images/ads/big-finish-banner-square.webp" type="image/webp">
-				<img class="sidebar-img img-hover" src="<?php echo get_bloginfo('template_url') ?>/images/ads/big-finish-banner-square.webp" width="342" height="342" alt="<?php echo esc_attr__( 'Check out the full range of Doctor Who audio dramas from Big Finish, now.', 'bigbluebox' ); ?>">
+				<source srcset="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.avif" type="image/avif">
+				<source srcset="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.webp" type="image/webp">
+				<img class="sidebar-img img-hover" src="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.webp" width="342" height="342" alt="<?php echo esc_attr__( 'Check out the full range of Doctor Who audio dramas from Big Finish, now.', 'bigbluebox' ); ?>">
 			</picture>
 		</a>
 	</section>

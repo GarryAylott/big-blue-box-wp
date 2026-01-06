@@ -94,7 +94,7 @@
 				<?php esc_html_e( 'Join the Big Blue Box Discord server - it\'s free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!', 'bigbluebox' ); ?>
 			</p>
 		</div>
-		<a class="button-ghost has-external-icon" href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noreferrer noopener">
+		<a class="button-ghost has-external-icon" href="https://discord.gg/skZXdxUNkB" target="_blank" rel="noreferrer noopener">
 			<?php esc_html_e( 'Join us on Discord now', 'bigbluebox' ); ?>
 		</a>
 	</section>

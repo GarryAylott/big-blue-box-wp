@@ -30,8 +30,12 @@ get_header();
 
             <div class="about-page-hosts__hosts">
                 <div class="host-card">
-                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-garry.webp' ) ); ?>"
-                        alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
+                    <picture>
+                        <source srcset="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-garry.avif' ) ); ?>" type="image/avif">
+                        <source srcset="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-garry.webp' ) ); ?>" type="image/webp">
+                        <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-garry.png' ) ); ?>"
+                            alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, co-host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
+                    </picture>
                     <div class="host-card__content">
                         <h3><?php esc_html_e( 'Garry Aylott', 'bigbluebox' ); ?></h3>
                         <h5><?php esc_html_e( 'Creator, Producer and Co-Host', 'bigbluebox' ); ?></h5>
@@ -58,8 +62,12 @@ get_header();
                     </div>
                 </div>
                 <div class="host-card">
-                    <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-adam.webp' ) ); ?>"
-                        alt="<?php echo esc_attr__( 'Portrait of Garry Aylott, host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
+                    <picture>
+                        <source srcset="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-adam.avif' ) ); ?>" type="image/avif">
+                        <source srcset="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-adam.webp' ) ); ?>" type="image/webp">
+                        <img src="<?php echo esc_url( get_theme_file_uri( 'images/authors/host-img-adam.png' ) ); ?>"
+                            alt="<?php echo esc_attr__( 'Portrait of Adam Charlton, co-host of The Big Blue Box Podcast', 'bigbluebox' ); ?>" width="588" height="508" loading="lazy" decoding="async">
+                    </picture>
                     <div class="host-card__content">
                         <h3><?php esc_html_e( 'Adam Charlton', 'bigbluebox' ); ?></h3>
                         <h5><?php esc_html_e( 'Co-Host', 'bigbluebox' ); ?></h5>

@@ -221,16 +221,9 @@ strong,
     text-transform: uppercase;
 }
 
-.page-template .entry-content,
-.error404 {
-    ul,
-    ol {
-        margin-inline-start: var(--space-s);
-    }
-
-    .text-block {
-        gap: var(--space-xs);
-    }
+ul,
+ol {
+    margin-inline-start: var(--space-m);
 }
 
 // Links

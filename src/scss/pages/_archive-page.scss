@@ -124,7 +124,7 @@ body:is(.search-no-results) {
 
     &__socials {
         display: flex;
-        gap: var(--space-2xs);
+        gap: var(--space-s);
 
         a {
             display: inline-flex;

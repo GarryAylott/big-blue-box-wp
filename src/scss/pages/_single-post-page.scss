@@ -152,7 +152,6 @@ Layout and styling for single post pages.
 
             ul,
             ol {
-                margin-inline-start: var(--space-l);
                 @extend .flow-tiny;
             }
         }

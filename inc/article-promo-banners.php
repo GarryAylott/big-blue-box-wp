@@ -41,7 +41,7 @@ function bbb_insert_article_promo_banners( string $content ): string {
             'no_found_rows'  => true,
         ] );
         if ( empty( $candidates ) ) {
-            error_log('bbb_insert_article_promo_banners: No candidates found.');
+            bbb_log('bbb_insert_article_promo_banners: No candidates found.');
             return $content;
         }
     }
@@ -49,7 +49,7 @@ function bbb_insert_article_promo_banners( string $content ): string {
     // Defensive: ensure $candidates is an array of post objects
     $candidate = $candidates[0];
     if (!is_object($candidate) || !isset($candidate->ID)) {
-        error_log('bbb_insert_article_promo_banners: Invalid candidate detected.');
+        bbb_log('bbb_insert_article_promo_banners: Invalid candidate detected.');
         return $content;
     }
 
@@ -57,7 +57,7 @@ function bbb_insert_article_promo_banners( string $content ): string {
     $html   = wpautop( $content );
     $tokens = preg_split( '/(<\/p>)/i', $html, -1, PREG_SPLIT_DELIM_CAPTURE );
     if ( ! is_array( $tokens ) || ! $tokens ) {
-        error_log('bbb_insert_article_promo_banners: Tokenization failed.');
+        bbb_log('bbb_insert_article_promo_banners: Tokenization failed.');
         return $content;
     }
 
@@ -68,7 +68,7 @@ function bbb_insert_article_promo_banners( string $content ): string {
     $render_banner = function( $post_obj ): string {
         $post_obj = get_post( $post_obj );
         if ( ! $post_obj ) {
-            error_log('bbb_insert_article_promo_banners: render_banner: invalid post object.');
+            bbb_log('bbb_insert_article_promo_banners: render_banner: invalid post object.');
             return '';
         }
         global $post;
@@ -140,7 +140,7 @@ function bbb_insert_article_promo_banners( string $content ): string {
             if ( $banner_html !== '' ) {
                 $out[] = $banner_html;
             } else {
-                error_log('bbb_insert_article_promo_banners: render_banner returned empty.');
+                bbb_log('bbb_insert_article_promo_banners: render_banner returned empty.');
             }
         }
     }

@@ -23,10 +23,10 @@
             ?>
         </h4>
         <div class="scroll-nav">
-            <button class="scroll-nav-btn scroll-left" aria-label="Scroll left">
+            <button class="scroll-nav-btn scroll-left" aria-label="<?php echo esc_attr__( 'Scroll left', 'bigbluebox' ); ?>">
                 <i data-lucide="arrow-left" class="icon-step-2"></i>
             </button>
-            <button class="scroll-nav-btn scroll-right" aria-label="Scroll right">
+            <button class="scroll-nav-btn scroll-right" aria-label="<?php echo esc_attr__( 'Scroll right', 'bigbluebox' ); ?>">
                 <i data-lucide="arrow-right" class="icon-step-2"></i>
             </button>
         </div>

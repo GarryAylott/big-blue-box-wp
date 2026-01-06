@@ -233,7 +233,7 @@ get_header();
                 }
 
                 if ( ! empty( $skipped_tags ) ) {
-                    error_log( 'Missing post_tag terms for slugs: ' . implode( ', ', $skipped_tags ) );
+                    bbb_log( 'Missing post_tag terms for slugs: ' . implode( ', ', $skipped_tags ) );
                 }
                 ?>
             </div>
@@ -251,10 +251,11 @@ get_header();
     </section>
 
     <section class="wrapper doctors-bbb">
+        <?php $theme_dir = esc_url( get_template_directory_uri() ); ?>
         <picture>
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.avif" type="image/avif">
-            <source srcset="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.webp" type="image/webp">
-            <img src="<?php echo get_bloginfo('template_url') ?>/images/hero-doctors.png" alt="<?php echo esc_attr__( 'Your space-time coordinates for everything Doctor Who...', 'bigbluebox' ); ?>">
+            <source srcset="<?php echo $theme_dir; ?>/images/hero-doctors.avif" type="image/avif">
+            <source srcset="<?php echo $theme_dir; ?>/images/hero-doctors.webp" type="image/webp">
+            <img src="<?php echo $theme_dir; ?>/images/hero-doctors.png" alt="<?php echo esc_attr__( 'Your space-time coordinates for everything Doctor Who...', 'bigbluebox' ); ?>">
         </picture>
         <div class="podcast-app-links">
             <h5>

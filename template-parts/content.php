@@ -142,7 +142,7 @@
 							$episode_title = get_the_title();
 						}
 
-						error_log( '🎯 GUID from ACF: ' . print_r( $guid, true ) );
+						bbb_log( '🎯 GUID from ACF: ' . print_r( $guid, true ) );
 
 						// Prefer the audio URL stored during acf/save_post; avoid front-end API calls.
 						$audio_url = get_field( 'captivate_audio_url' );
@@ -157,11 +157,8 @@
 						// Fallback for local dev
 						if ( ! $audio_url && wp_get_environment_type() === 'local' ) {
 							$audio_url = 'https://traffic.libsyn.com/secure/examplepodcast/example-episode.mp3';
-							error_log( '🔊 Using fallback audio URL for local dev.' );
+							bbb_log( '🔊 Using fallback audio URL for local dev.' );
 						}
-
-						echo '<!-- GUID: ' . esc_html( $guid ) . ' -->';
-						echo '<!-- Audio URL: ' . esc_url( $audio_url ) . ' -->';
 
 						if ( $audio_url ) :
 							?>

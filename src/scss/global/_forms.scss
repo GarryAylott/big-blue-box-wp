@@ -20,8 +20,8 @@ form {
         outline: none;
 
         &:focus-visible {
-            background: hsla(334, 88%, 87%, 0.1);
-            outline: 1px solid var(--clr-brand-accent);
+            background: hsla(215, 95%, 35%, 0.01);
+            outline: 1px solid var(--clr-brand-primary);
         }
 
         &::placeholder {

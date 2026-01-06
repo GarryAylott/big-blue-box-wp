@@ -71,7 +71,7 @@ main {
 
 // Global text selection
 *::selection {
-    background: var(--clr-brand-accent);
+    background: var(--clr-brand-primary);
     color: var(--clr-surface-700);
     -webkit-text-stroke-width: 0;
 }

@@ -24,9 +24,10 @@ function bigbluebox_setup() {
 	// Enable support for Post Thumbnails on posts and pages.
 	add_theme_support( 'post-thumbnails' );
 
+	// custom image sizes
+	add_image_size( 'post-featured-card', 1200, 675, true );
+	add_image_size( 'post-featured-large', 2400, 1350, true );
 	add_image_size( 'latest-podcast-ep-thumb', 640, 360 );
-	add_image_size( 'post-card-thumb', 690, 999 );
-	add_image_size( 'singlepost-feat', 1200, 600 );
 	add_image_size( 'singlepost-wide', 1200, 675, true );
 	add_image_size( 'singlepost-square', 1200, 9999, true );
 	add_image_size( 'post-list-thumb', 400, 225, true );
@@ -78,6 +79,25 @@ function bigbluebox_setup() {
 }
 add_action( 'after_setup_theme', 'bigbluebox_setup' );
 
+// Trim unneeded core image sizes
+add_filter(
+	'intermediate_image_sizes_advanced',
+	function ( $sizes ) {
+		unset( $sizes['medium_large'] );
+		// Leave 1536/2048 enabled so hero srcsets have larger steps.
+		return $sizes;
+	}
+);
+
+// Expose custom sizes in the media modal with friendly labels.
+add_filter(
+	'image_size_names_choose',
+	function ( $sizes ) {
+		$sizes['singlepost-wide']   = esc_html__( 'Post Image Wide', 'bigbluebox' );
+		$sizes['singlepost-square'] = esc_html__( 'Post Image Square', 'bigbluebox' );
+		return $sizes;
+	}
+);
 
 /**
  * Add custom search icon to dynamic WP top nav

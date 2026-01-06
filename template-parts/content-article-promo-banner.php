@@ -35,9 +35,12 @@ $random_heading = $promo_headings[ array_rand( $promo_headings ) ];
                 <?php
                 echo wp_get_attachment_image(
                     get_post_thumbnail_id( $post_id ),
-                    'post-card-thumb',
+                    'post-featured-card',
                     false,
-                    [ 'class' => 'post-thumb-img img-hover rounded-small' ]
+                    [
+						'class' => 'post-thumb-img img-hover rounded-small',
+						'sizes' => '(min-width: 1200px) 25vw, (min-width: 900px) 33vw, 90vw',
+					]
                 );
                 ?>
             </div>

@@ -18,9 +18,12 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
                     <?php
                     echo wp_get_attachment_image(
                         get_post_thumbnail_id(),
-                        'post-card-thumb',
+                        'post-featured-card',
                         false,
-                        [ 'class' => 'post-thumb-img img-hover' ]
+                        [
+                            'class'  => 'post-thumb-img img-hover',
+                            'sizes'  => '(min-width: 1400px) 33vw, (min-width: 900px) 50vw, 100vw',
+                        ]
                     );
                     ?>
                 </div>
@@ -45,18 +48,21 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
 <!-- Latest Articles Card Layout -->
 <article id="post-<?php the_ID(); ?>" <?php post_class('post-card-author'); ?>>
     <a href="<?php the_permalink(); ?>">
-        <?php if ( has_post_thumbnail() ) : ?>
-            <div class="img-container">
-                <?php
-                echo wp_get_attachment_image(
-                    get_post_thumbnail_id(),
-                    'post-card-thumb',
-                    false,
-                    [ 'class' => 'post-thumb-img img-hover rounded-small' ]
-                );
-                ?>
-            </div>
-        <?php endif; ?>
+            <?php if ( has_post_thumbnail() ) : ?>
+                <div class="img-container">
+                    <?php
+                    echo wp_get_attachment_image(
+                        get_post_thumbnail_id(),
+                        'post-featured-card',
+                        false,
+                        [
+                            'class'  => 'post-thumb-img img-hover',
+                            'sizes'  => '(min-width: 1400px) 33vw, (min-width: 900px) 50vw, 100vw',
+                        ]
+                    );
+                    ?>
+                </div>
+            <?php endif; ?>
 
         <header class="entry-header">
             <!-- <?php get_template_part( 'template-parts/content', 'category-tag' ); ?> -->

@@ -10,9 +10,12 @@
 		if ( has_post_thumbnail() ) :
 			echo wp_get_attachment_image(
 				get_post_thumbnail_id(),
-				'full',
+				'post-featured-large',
 				false,
-				[ 'class' => 'post-thumb-img rounded' ]
+				[
+					'class' => 'post-thumb-img rounded',
+					'sizes' => '(min-width: 1400px) 1600px, 100vw',
+				]
 			);
 		endif;
 		?>
@@ -184,16 +187,16 @@
 				<?php the_content(); ?>
 			</section>
 
-				<?php get_template_part('template-parts/content', 'review-score'); ?> 
+			<?php get_template_part('template-parts/content', 'review-score'); ?> 
 
-				<?php if ( in_category( 'podcasts' ) ) : ?>
-					<div class="podcast-app-links">
-						<h6>
-							<?php esc_html_e( 'Want to listen on your favourite podcast app?', 'bigbluebox' ); ?>
-						</h6>
-						<?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
-					</div>
-				<?php endif; ?>
+			<?php if ( in_category( 'podcasts' ) ) : ?>
+				<div class="podcast-app-links">
+					<h6>
+						<?php esc_html_e( 'Want to listen on your favourite podcast app?', 'bigbluebox' ); ?>
+					</h6>
+					<?php get_template_part('template-parts/content', 'podcast-apps-links'); ?>
+				</div>
+			<?php endif; ?>
 			
 		</div>
 

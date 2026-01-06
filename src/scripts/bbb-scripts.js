@@ -139,9 +139,7 @@ const initBackgroundFade = () => {
             document.documentElement.scrollHeight - window.innerHeight,
             0
         );
-        return maxScroll > 0
-            ? Math.min(CONFIG.FADE_DISTANCE, maxScroll)
-            : 1;
+        return maxScroll > 0 ? Math.min(CONFIG.FADE_DISTANCE, maxScroll) : 1;
     };
 
     const updateFadeDistance = () => {
@@ -588,7 +586,7 @@ const initTardisScrollProgress = () => {
         // Show/hide logic
         if (
             scrollY > showAfter &&
-            scrollY < scrollDistance + viewportHeight + -700
+            scrollY < scrollDistance + viewportHeight + -650
         ) {
             container.classList.add("visible");
         } else {
@@ -716,12 +714,8 @@ const initCategorySwitcher = () => {
                     paginationContainer.innerHTML = pagination;
                 }
 
-
                 // Setup initial hidden state for children, then activate transition
-                postContainer.classList.remove(
-                    "enter-setup",
-                    "enter-active"
-                );
+                postContainer.classList.remove("enter-setup", "enter-active");
                 if (!skipAnimationNext) {
                     postContainer.classList.add("enter-setup");
                     // Force reflow to commit styles

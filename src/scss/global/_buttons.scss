@@ -14,6 +14,7 @@ button.button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--space-2xs);
     width: fit-content;
     min-width: 10ch;
     padding: 0.5rem 1.25rem;
@@ -22,12 +23,12 @@ button.button {
     font-size: var(--step-0);
     font-weight: var(--fw-semibold);
     color: var(--clr-text-100);
-    background-color: hsl(221, 91%, 60%);
+    background-color: hsl(221, 91%, 55%);
     box-shadow:
         inset 0 1px hsl(var(--clr-surface-50-hsl) / 0.35),
-        0 4px 6px -1px hsl(var(--clr-surface-700-hsl) / 0.2),
-        0 2px 4px -2px hsl(var(--clr-surface-700-hsl) / 0.2);
-    border: 1px solid hsl(var(--clr-brand-primary-darker-hsl));
+        0 4px 6px -1px hsl(var(--clr-text-link-hover-hsl) / 0.2),
+        0 2px 4px -2px hsl(var(--clr-text-link-hsl) / 0.1);
+    border: 1px solid hsl(var(--clr-brand-primary-hsl) / 0.4);
     border-radius: var(--radius-xs);
     transition: all var(--button-timing-duration) var(--button-timing-curve);
     overflow: hidden;
@@ -49,7 +50,7 @@ button.button {
     }
 
     &:hover {
-        background-color: hsl(221, 91%, 55%);
+        background-color: hsl(221, 91%, 58%);
     }
 
     &:active {
@@ -77,13 +78,14 @@ a.button-ghost {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--space-2xs);
     min-width: 6ch;
     font-family: var(--font-family-headings);
     font-size: var(--step-0);
     font-weight: var(--fw-semibold);
     color: var(--clr-text-100);
     text-align: center;
-    padding: var(--space-2xs) var(--space-s);
+    padding: 0.5rem 1.25rem;
     background-color: transparent;
     border: 1px solid var(--clr-border-link);
     border-radius: var(--radius-small);
@@ -96,6 +98,7 @@ a.button-ghost {
     }
 
     @media (max-width: 40rem) {
+        width: 100%;
         min-height: 3.125rem;
     }
 }

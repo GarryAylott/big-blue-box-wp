@@ -30,6 +30,8 @@ if ( array_key_exists($author_name, $author_images) ) {
 
 // Use a generic argument for future-proofing: link_author_name (default: is_single())
 $link_author_name = $args['link_author_name'] ?? is_single();
+// Hide the author name on author archives unless explicitly enabled.
+$show_author_name = $args['show_author_name'] ?? ! is_author();
 $is_podcast_post = has_category( 'podcasts' );
 $podcast_episode_display = '';
 
@@ -52,17 +54,19 @@ if ( $is_podcast_post ) {
 <div class="author-meta">
     <img class="author-image" src="<?php echo esc_url($author_image_url); ?>" width="48" height="70" alt="<?php echo esc_attr($author_name); ?>">
     <div class="author-meta__details">
-        <p class="author-meta__author-name small">
-            <?php if ( $is_podcast_post && $podcast_episode_display ) : ?>
-                <?php echo $podcast_episode_display; ?>
-            <?php elseif ( $link_author_name ) : ?>
-                <a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>">
+        <?php if ( $show_author_name ) : ?>
+            <p class="author-meta__author-name small">
+                <?php if ( $is_podcast_post && $podcast_episode_display ) : ?>
+                    <?php echo $podcast_episode_display; ?>
+                <?php elseif ( $link_author_name ) : ?>
+                    <a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>">
+                        <?php echo esc_html( $author_name ); ?>
+                    </a>
+                <?php else : ?>
                     <?php echo esc_html( $author_name ); ?>
-                </a>
-            <?php else : ?>
-                <?php echo esc_html( $author_name ); ?>
-            <?php endif; ?>
-        </p>
+                <?php endif; ?>
+            </p>
+        <?php endif; ?>
         <p class="small">
             <?php echo esc_html( get_the_date( 'j F, Y' ) ); ?>
         </p>

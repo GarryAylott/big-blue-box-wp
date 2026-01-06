@@ -28,8 +28,8 @@ Styling for minimal view switcher when a Button Group is overkill.
         font-family: var(--font-family-headings);
         font-size: var(--step-0);
         color: var(--clr-text-900);
-        padding-block: calc(var(--space-2xs) - 0.25rem);
-        padding-inline: calc(var(--space-2xs) + 0.25rem);
+        padding-block: 0.5rem;
+        padding-inline: 1rem;
         background: none;
         border: none;
         border-radius: var(--radius-xs);

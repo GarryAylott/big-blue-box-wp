@@ -69,6 +69,21 @@ Header styling for logo, nav etc.
                 font-size: var(--step-0);
             }
 
+            @media (min-width: 55rem) {
+                > li:is(
+                        .current-menu-item,
+                        .current-menu-ancestor,
+                        .current_page_item,
+                        .current_page_ancestor
+                    )
+                    > a {
+                    text-decoration: underline;
+                    text-decoration-color: var(--clr-text-link);
+                    -webkit-text-decoration-color: var(--clr-text-link);
+                    text-decoration-thickness: 3px;
+                }
+            }
+
             .nav-search-icon {
                 position: relative;
                 display: flex;
@@ -176,7 +191,7 @@ Header styling for logo, nav etc.
         .nav-logo {
             display: block;
             position: static;
-            width: auto;
+            width: 10rem;
             height: auto;
             overflow: visible;
             clip: auto;
@@ -257,6 +272,24 @@ Header styling for logo, nav etc.
     }
 }
 
+@media (min-width: 55rem) {
+    body:is(
+            .category-reviews,
+            .category-news,
+            .category-opinions,
+            .category-features
+        ):not(.single-post)
+        .site-head__navigation
+        .nav
+        > li
+        > a[href*="/category/articles/"] {
+        text-decoration: underline;
+        text-decoration-color: var(--clr-text-link);
+        -webkit-text-decoration-color: var(--clr-text-link);
+        text-decoration-thickness: 3px;
+    }
+}
+
 // Content for search shortcut
 html[data-os="mac"] .search-shortcut {
     &::before {
@@ -315,11 +348,12 @@ $easing-fade: ease-out;
 }
 
 // Disable header animations when pagination is used
-body:is(.nav-no-fade, .paged) :is(
-    .site-head__logo,
-    .site-head__navigation .nav li,
-    .site-head__navigation .nav-logo
-) {
+body:is(.nav-no-fade, .paged)
+    :is(
+        .site-head__logo,
+        .site-head__navigation .nav li,
+        .site-head__navigation .nav-logo
+    ) {
     animation: none;
     opacity: 1;
     transform: none;

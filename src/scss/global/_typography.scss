@@ -283,11 +283,6 @@ a[target="_blank"] {
     }
 }
 
-// External links with icon within body text
-.article-body a.has-external-icon {
-    padding-inline-end: var(--space-3xs);
-}
-
 a.no-external-icon {
     @include visually-hidden;
 }

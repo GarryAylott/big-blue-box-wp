@@ -47,9 +47,6 @@ get_header();
                                     false,
                                     [
                                         'class'  => 'post-thumb-img img-hover',
-                                        'width'  => 640,
-                                        'height' => 360,
-                                        'sizes'  => '(max-width: 900px) 600px, 900px',
                                     ]
                                 );
                                 ?>
@@ -94,7 +91,7 @@ get_header();
                         <p class="post-card-hero-details__excerpt">
                             <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
                         </p>
-                        <a href="<?php the_permalink(); ?>" class="button flex">
+                        <a href="<?php the_permalink(); ?>" class="button">
                             <i data-lucide="headphones" class="icon-bold"></i>
                             <?php esc_html_e( 'Listen Now', 'bigbluebox' ); ?>
                         </a>
@@ -163,6 +160,17 @@ get_header();
                         <?php endwhile;
                         wp_reset_postdata();
                     endif; ?>
+
+                    <div class="more-buttons flex-splitter">
+                        <a class="button-ghost" href="<?php echo esc_url( home_url( '/category/articles/' ) ); ?>">
+                            <i data-lucide="newspaper"></i>
+                            <?php esc_html_e( 'All Articles', 'bigbluebox' ); ?>
+                        </a>
+                        <a class="button-ghost" href="<?php echo esc_url( home_url( '/category/podcasts/' ) ); ?>">
+                            <i data-lucide="mic"></i>
+                            <?php esc_html_e( 'All Podcasts', 'bigbluebox' ); ?>
+                        </a>
+                    </div>
                 </div>
 
                 <?php get_sidebar(); ?>

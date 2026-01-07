@@ -56,12 +56,12 @@ add_action('wp_enqueue_scripts', 'bigbluebox_disable_mediaelement', 100);
 
 // Enqueue editor-only styles for the block editor.
 add_action( 'enqueue_block_editor_assets', function() {
-    $editor_style_path = get_template_directory() . '/dist/css/editor.css';
+    $editor_style_path = get_template_directory() . '/bigbluebox/css/editor.css';
     $editor_style_ver  = file_exists( $editor_style_path ) ? filemtime( $editor_style_path ) : _S_VERSION;
 
     wp_enqueue_style(
         'bigbluebox-editor-style',
-        get_template_directory_uri() . '/dist/css/editor.css',
+        get_template_directory_uri() . '/bigbluebox/css/editor.css',
         [],
         $editor_style_ver
     );

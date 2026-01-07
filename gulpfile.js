@@ -7,11 +7,11 @@ import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import browserSync from "browser-sync";
 import header from "gulp-header";
-import terser from "@rollup/plugin-terser";
 import { rollup } from "rollup";
 import resolve from "@rollup/plugin-node-resolve";
 import fs from "fs";
 import path from "path";
+import { minify } from "terser";
 import { deleteAsync } from "del";
 
 const sass = gulpSass(dartSass);
@@ -25,6 +25,7 @@ const runtimeGlobs = [
     "template-parts/**/*",
     "page-templates/**/*",
     "data/**/*",
+    "favicons/**/*",
     "fonts/**/*",
     "images/**/*",
     "scripts/bbb-scripts.min.js",
@@ -34,7 +35,7 @@ const runtimeGlobs = [
     "screenshot.png",
     "!node_modules{,/**}",
     "!src{,/**}",
-    "!dist{,/**}",
+    "!bigbluebox{,/**}",
     "!.git{,/**}",
     "!.vscode{,/**}",
     "!gulpfile.js",
@@ -44,7 +45,7 @@ const runtimeGlobs = [
     "!AGENTS.md",
 ];
 
-const distDir = "dist";
+const distDir = "bigbluebox";
 
 // -----------------------------------------------------------------------------
 // File paths
@@ -56,7 +57,7 @@ const paths = {
     },
     editorStyles: {
         src: "src/scss/editor.scss",
-        dest: "dist/css/",
+        dest: `${distDir}/css/`,
     },
     scripts: {
         src: "src/scripts/**/*.js",
@@ -127,33 +128,46 @@ async function bundleScripts({
     production = false,
     reloadBrowser = false,
 } = {}) {
-    const bundle = await rollup({
-        input: "src/scripts/bbb-scripts.js",
-        plugins: [
-            resolve(),
-            terser({
-                compress: {
-                    drop_console: production,
-                },
-                format: {
-                    comments: false,
-                },
-            }),
-        ],
-    });
-
     const jsFile = path.resolve("scripts/bbb-scripts.min.js");
     const mapFile = `${jsFile}.map`;
 
-    await bundle.write({
+    const bundle = await rollup({
+        input: "src/scripts/bbb-scripts.js",
+        plugins: [resolve()],
+    });
+
+    const { output } = await bundle.generate({
         file: jsFile,
         format: "esm",
         sourcemap: production ? false : true,
     });
 
+    const chunk = output.find((item) => item.type === "chunk") || output[0];
+    const originalCode = chunk?.code || "";
+    const originalMap = chunk?.map || null;
+
+    const minified = await minify(originalCode, {
+        module: true,
+        compress: { drop_console: production },
+        mangle: true,
+        format: { comments: false },
+        sourceMap: production
+            ? false
+            : {
+                  content: originalMap || undefined,
+                  filename: path.basename(jsFile),
+                  url: path.basename(mapFile),
+              },
+    });
+
+    await fs.promises.mkdir(path.dirname(jsFile), { recursive: true });
+    await fs.promises.writeFile(jsFile, minified.code || originalCode, "utf8");
+
     await bundle.close();
 
-    if (production && fs.existsSync(mapFile)) {
+    if (!production && minified.map) {
+        await fs.promises.writeFile(mapFile, minified.map, "utf8");
+    } else if (production && fs.existsSync(mapFile)) {
         fs.rmSync(mapFile, { force: true });
     }
 
@@ -184,7 +198,7 @@ export const cleanDist = () => deleteAsync([`${distDir}/**`, `!${distDir}`]);
 
 export const copyRuntime = () =>
     gulp
-        .src(runtimeGlobs, { base: ".", nodir: true, allowEmpty: true })
+        .src(runtimeGlobs, { base: ".", nodir: true, allowEmpty: true, encoding: false })
         .pipe(gulp.dest(distDir));
 
 // -----------------------------------------------------------------------------
@@ -228,7 +242,7 @@ export const dev = gulp.series(
 export const build = gulp.series(
     gulp.parallel(stylesBuild, scriptsBuild, editorStylesBuild)
 );
-export const dist = gulp.series(build, cleanDist, copyRuntime);
+export const dist = gulp.series(cleanDist, build, copyRuntime);
 export const prod = dist;
 
 export default dev;

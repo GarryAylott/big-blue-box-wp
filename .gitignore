@@ -13,4 +13,4 @@ wp-config-local.php
 
 # Node modules and output
 node_modules
-dist/
+bigbluebox/

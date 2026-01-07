@@ -97,10 +97,9 @@ Layout and styling for the site footer
                 }
 
                 &__dynamic {
-                    display: inline-block;
-                    font-weight: var(--fw-bold);
+                    display: inline;
+                    // font-weight: var(--fw-semibold);
                     color: var(--clr-text-100);
-                    margin-inline-start: 1px;
                     opacity: 0;
                     transition: opacity 0.6s ease;
 

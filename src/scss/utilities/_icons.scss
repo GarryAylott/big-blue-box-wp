@@ -18,8 +18,11 @@ Styling for Lucide Icons
     stroke-width: 2;
     shape-rendering: geometricPrecision;
 
-    &[aria-hidden="true"] {
-        display: none;
+    // Ensure stroke properties inherit to SVG child elements (iOS WebKit fix)
+    * {
+        stroke: inherit;
+        fill: inherit;
+        stroke-width: inherit;
     }
 }
 

@@ -50,7 +50,7 @@
 					?>
 					<p class="rotating-sentence small" data-phrases='<?php echo esc_attr(json_encode($phrases)); ?>'>
 						<span class="rotating-sentence__wrapper">
-							<span class="rotating-sentence__prefix">The Big Blue Box</span>
+							<span class="rotating-sentence__prefix">The Big Blue Box </span>
 							<span class="rotating-sentence__dynamic" aria-live="polite"><?php echo esc_html($default_phrase); ?></span>
 						</span>
 					</p>

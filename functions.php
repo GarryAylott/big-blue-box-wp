@@ -425,6 +425,10 @@ add_filter('query_vars', function($vars) {
  */
 add_action('pre_get_posts', function($query) {
 	// Only target main queries on frontend, and for archives
+	if ( $query->is_feed() ) {
+		return;
+	}
+
 	if (!is_admin() && $query->is_main_query() && (is_category() || is_tag() || is_post_type_archive())) {
 		if ( $query->is_category( 'articles' ) ) {
 			$podcasts_cat = get_category_by_slug( 'podcasts' );

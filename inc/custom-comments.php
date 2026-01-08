@@ -32,6 +32,10 @@ function bbb_gravatar_exists($id_or_email) {
         return false;
     }
 
+    if (is_feed()) {
+        return false;
+    }
+
     $hash = md5(strtolower(trim($email)));
     $cache_key = 'bbb_gravatar_exists_' . $hash;
 

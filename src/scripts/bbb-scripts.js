@@ -641,6 +641,32 @@ const initCategorySwitcher = () => {
         "all";
     const context = switcher?.dataset?.context || "home";
 
+    // Response cache: Map of "category-paged" -> { content, pagination, timestamp }
+    const responseCache = new Map();
+    const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+    const ANIMATION_DURATION = 150; // Reduced from 260ms
+
+    const getCacheKey = (category, paged) => `${category}-${paged}`;
+
+    const getCachedResponse = (category, paged) => {
+        const key = getCacheKey(category, paged);
+        const cached = responseCache.get(key);
+        if (!cached) return null;
+        if (Date.now() - cached.timestamp > CACHE_TTL) {
+            responseCache.delete(key);
+            return null;
+        }
+        return cached;
+    };
+
+    const setCachedResponse = (category, paged, content, pagination) => {
+        const key = getCacheKey(category, paged);
+        responseCache.set(key, { content, pagination, timestamp: Date.now() });
+    };
+
+    // Prefetch in-flight tracker to avoid duplicate requests
+    const prefetchInFlight = new Set();
+
     const setButtonsDisabled = (disabled) => {
         switchButtons.forEach((btn) => {
             btn.disabled = disabled;
@@ -675,14 +701,8 @@ const initCategorySwitcher = () => {
         }
     };
 
-    const fetchCategoryPosts = (category, paged = 1) => {
-        const reqId = ++requestCounter;
-
-        // Disable controls and mark busy (no pre-fade-out)
-        setButtonsDisabled(true);
-        beginLoading();
-
-        // Only for homepage/archive, so no search stuff
+    // Core fetch logic extracted for reuse
+    const doFetch = (category, paged) => {
         const params = new URLSearchParams({
             action: "filter_posts_by_category",
             category,
@@ -691,12 +711,81 @@ const initCategorySwitcher = () => {
             paged,
         });
 
-        fetch(themeSettings.ajaxUrl, {
+        return fetch(themeSettings.ajaxUrl, {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: params,
-        })
-            .then((res) => res.json())
+        }).then((res) => res.json());
+    };
+
+    // Prefetch a category (called on hover)
+    const prefetchCategory = (category, paged = 1) => {
+        // Skip if already cached or in-flight
+        if (getCachedResponse(category, paged)) return;
+        const key = getCacheKey(category, paged);
+        if (prefetchInFlight.has(key)) return;
+
+        prefetchInFlight.add(key);
+
+        doFetch(category, paged)
+            .then((payload) => {
+                if (payload?.success) {
+                    setCachedResponse(
+                        category,
+                        paged,
+                        payload.data?.content ?? "",
+                        payload.data?.pagination ?? ""
+                    );
+                }
+            })
+            .catch(() => {
+                // Silently fail prefetch
+            })
+            .finally(() => {
+                prefetchInFlight.delete(key);
+            });
+    };
+
+    const renderContent = (html, pagination) => {
+        postContainer.innerHTML = html;
+        if (paginationContainer) {
+            paginationContainer.innerHTML = pagination;
+        }
+
+        // Setup initial hidden state for children, then activate transition
+        postContainer.classList.remove("enter-setup", "enter-active");
+        if (!skipAnimationNext) {
+            postContainer.classList.add("enter-setup");
+            // Force reflow to commit styles
+            void postContainer.offsetHeight;
+            postContainer.classList.remove("enter-setup");
+            postContainer.classList.add("enter-active");
+
+            // Clean up after animation window
+            setTimeout(() => {
+                postContainer.classList.remove("enter-active");
+            }, ANIMATION_DURATION);
+        }
+        skipAnimationNext = false;
+    };
+
+    const fetchCategoryPosts = (category, paged = 1) => {
+        const reqId = ++requestCounter;
+
+        // Check cache first for instant response
+        const cached = getCachedResponse(category, paged);
+        if (cached) {
+            renderContent(cached.content, cached.pagination);
+            endLoading();
+            setButtonsDisabled(false);
+            return;
+        }
+
+        // Disable controls and mark busy (no pre-fade-out)
+        setButtonsDisabled(true);
+        beginLoading();
+
+        doFetch(category, paged)
             .then((payload) => {
                 // Ignore stale responses from earlier clicks
                 if (reqId !== requestCounter) return;
@@ -708,28 +797,10 @@ const initCategorySwitcher = () => {
                 const html = payload.data?.content ?? "";
                 const pagination = payload.data?.pagination ?? "";
 
-                // Swap content, then run entry-only animation
-                postContainer.innerHTML = html;
-                if (paginationContainer) {
-                    paginationContainer.innerHTML = pagination;
-                }
+                // Cache the response
+                setCachedResponse(category, paged, html, pagination);
 
-                // Setup initial hidden state for children, then activate transition
-                postContainer.classList.remove("enter-setup", "enter-active");
-                if (!skipAnimationNext) {
-                    postContainer.classList.add("enter-setup");
-                    // Force reflow to commit styles
-                    void postContainer.offsetHeight;
-                    postContainer.classList.remove("enter-setup");
-                    postContainer.classList.add("enter-active");
-
-                    // Clean up after animation window
-                    setTimeout(() => {
-                        postContainer.classList.remove("enter-active");
-                    }, 260);
-                }
-                skipAnimationNext = false;
-
+                renderContent(html, pagination);
                 endLoading();
                 setButtonsDisabled(false);
             })
@@ -749,9 +820,22 @@ const initCategorySwitcher = () => {
     };
 
     switchButtons.forEach((button) => {
+        const category = button.dataset.category;
+
+        // Prefetch on hover (mouseenter) or focus
+        button.addEventListener("mouseenter", () => {
+            if (category !== activeCategory) {
+                prefetchCategory(category, 1);
+            }
+        });
+        button.addEventListener("focus", () => {
+            if (category !== activeCategory) {
+                prefetchCategory(category, 1);
+            }
+        });
+
         button.addEventListener("click", (e) => {
             e.preventDefault();
-            const category = button.dataset.category;
 
             switchButtons.forEach((btn) => {
                 btn.setAttribute("aria-pressed", "false");

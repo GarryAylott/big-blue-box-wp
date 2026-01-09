@@ -13,4 +13,9 @@ wp-config-local.php
 
 # Node modules and output
 node_modules
-bigbluebox/
+
+# Styles ignore as run on GitHub via Action
+style.css
+style.css.map
+editor.css
+editor.css.map

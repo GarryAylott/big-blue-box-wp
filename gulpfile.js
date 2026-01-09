@@ -18,8 +18,6 @@ const bs = browserSync.create();
 
 const themeHeader = `/*\nTheme Name: Big Blue Box Theme\nTheme URI: https://www.bigblueboxpodcast.co.uk\nAuthor: Garry Aylott\nDescription: A custom theme for The Big Blue Box Podcast website.\nVersion: 2\nText Domain: bigbluebox\n*/\n`;
 
-const distDir = "bigbluebox";
-
 // -----------------------------------------------------------------------------
 // File paths
 // -----------------------------------------------------------------------------
@@ -30,7 +28,7 @@ const paths = {
     },
     editorStyles: {
         src: "src/scss/editor.scss",
-        dest: `${distDir}/css/`,
+        dest: "./",
     },
     scripts: {
         src: "src/scripts/**/*.js",
@@ -164,9 +162,6 @@ export const scriptsDev = () =>
 export const scriptsBuild = () =>
     bundleScripts({ production: true, reloadBrowser: false });
 
-// -----------------------------------------------------------------------------
-// Dist build helpers
-// -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 // BrowserSync
 // -----------------------------------------------------------------------------

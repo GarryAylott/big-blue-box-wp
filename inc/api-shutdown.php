@@ -10,6 +10,12 @@ if ( file_exists( $sync_file ) ) {
 	require_once $sync_file;
 }
 
+// Pull in the Transcript Sync tool
+$transcript_file = get_template_directory() . '/inc/sync-captivate-transcripts.php';
+if ( file_exists( $transcript_file ) ) {
+	require_once $transcript_file;
+}
+
 /**
  * Register the option used by the Shutdown tool.
  */
@@ -65,11 +71,20 @@ if ( ! function_exists( 'bbb_render_api_tools_page' ) ) {
 				<a href="<?php echo esc_url( admin_url( 'admin.php?page=captivate-api-tools&tab=sync' ) ); ?>" class="nav-tab <?php echo ( $tab === 'sync' ? 'nav-tab-active' : '' ); ?>">
 					Sync Episodes
 				</a>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=captivate-api-tools&tab=transcripts' ) ); ?>" class="nav-tab <?php echo ( $tab === 'transcripts' ? 'nav-tab-active' : '' ); ?>">
+					Sync Transcripts
+				</a>
 			</h2>
 
 			<div style="margin-top:20px;">
 				<?php
-				if ( $tab === 'sync' ) {
+				if ( $tab === 'transcripts' ) {
+					if ( function_exists( 'bbb_sync_captivate_transcripts' ) ) {
+						bbb_sync_captivate_transcripts();
+					} else {
+						echo '<div class="notice notice-error"><p><strong>Transcript sync tool not found.</strong> Missing <code>/inc/sync-captivate-transcripts.php</code>.</p></div>';
+					}
+				} elseif ( $tab === 'sync' ) {
 					if ( function_exists( 'bbb_sync_captivate_episodes' ) ) {
 						bbb_sync_captivate_episodes();
 					} else {

@@ -187,6 +187,8 @@
 			<?php get_template_part('template-parts/content', 'review-score'); ?> 
 
 			<?php if ( in_category( 'podcasts' ) ) : ?>
+				<?php get_template_part( 'template-parts/content', 'podcast-transcript' ); ?>
+
 				<div class="podcast-app-links">
 					<h6>
 						<?php esc_html_e( 'Want to listen on your favourite podcast app?', 'bigbluebox' ); ?>

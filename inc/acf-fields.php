@@ -246,6 +246,8 @@ add_filter( 'acf/load_field', function( $field ) {
 		'captivate_audio_url',
 		'podcast_episode_number',
 		'podcast_episode_type',
+		'captivate_media_id',
+		'podcast_transcript',
 	];
 
 	if ( in_array( $field['name'], $read_only_fields, true ) ) {

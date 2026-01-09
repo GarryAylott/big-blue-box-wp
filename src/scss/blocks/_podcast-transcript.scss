@@ -1,0 +1,119 @@
+@use "utilities" as *;
+
+/*
+PODCAST TRANSCRIPT ACCORDION
+CSS-only accordion using native <details>/<summary>
+*/
+
+.podcast-transcript {
+    margin-block: var(--space-l);
+
+    &__accordion {
+        position: relative;
+        background: var(--clr-surface-300);
+        border-radius: var(--radius-small);
+        overflow: hidden;
+
+        &::after {
+            @include panel-border-highlight;
+            border-radius: var(--radius-small);
+            opacity: 0.3;
+        }
+    }
+
+    &__summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--space-m) var(--space-l);
+        cursor: pointer;
+        list-style: none;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--clr-brand-primary);
+            outline-offset: -2px;
+        }
+    }
+
+    &__title {
+        font-family: var(--font-family-headings);
+        font-size: var(--step-0);
+        font-weight: var(--fw-bold);
+    }
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.5em;
+        height: 1.5em;
+        transition: transform 0.3s ease;
+
+        svg {
+            width: 1em;
+            height: 1em;
+        }
+    }
+
+    &__accordion[open] &__icon {
+        transform: rotate(180deg);
+    }
+
+    &__content {
+        padding: var(--space-m) var(--space-l);
+        padding-block-start: 0;
+        max-height: 60vh;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: var(--clr-surface-400);
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--clr-surface-200);
+            border-radius: 4px;
+
+            &:hover {
+                background: var(--clr-surface-100);
+            }
+        }
+
+        p {
+            font-size: var(--step--1);
+            line-height: 1.7;
+            color: var(--clr-text-400);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .podcast-transcript__accordion[open] .podcast-transcript__content {
+        animation: transcript-reveal 0.3s ease;
+    }
+
+    @keyframes transcript-reveal {
+        from {
+            opacity: 0;
+            transform: translateY(-0.5rem);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

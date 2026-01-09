@@ -1949,6 +1949,11 @@
                 {
                     "stories": [
                         {
+                            "title": "The Church on Ruby Road",
+                            "podcast": 387,
+                            "scores": { "garry": 6.5, "adam": 7.5 }
+                        },
+                        {
                             "title": "Space Babies",
                             "podcast": 398,
                             "scores": { "garry": 4, "adam": 4 }

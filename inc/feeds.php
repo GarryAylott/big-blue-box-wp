@@ -13,7 +13,50 @@ defined( 'ABSPATH' ) || exit;
 add_filter( 'rss_use_excerpt', '__return_true' );
 
 /**
- * Feed query handling.
+ * Disable heavy content filters during feed generation.
+ * Runs early to catch all feed requests.
+ */
+add_action(
+	'template_redirect',
+	function () {
+		if ( ! is_feed() ) {
+			return;
+		}
+
+		// Remove DOM-parsing filter
+		remove_filter( 'the_content', 'bbbx_clean_gutenberg_images', 20 );
+
+		// Remove article promo banners
+		remove_filter( 'the_content', 'bbb_insert_article_promo_banners', 15 );
+
+		// Remove the lead paragraph filter
+		remove_filter( 'the_content', 'first_paragraph' );
+	},
+	1
+);
+
+/**
+ * Prevent ACF from making unnecessary queries during feed generation.
+ * Returns cached/stored values only, skip ACF processing.
+ */
+add_filter(
+	'acf/pre_load_value',
+	function ( $value, $post_id, $field ) {
+		if ( is_feed() ) {
+			// Return whatever is in post meta directly, skip ACF processing
+			$meta_key = $field['name'] ?? '';
+			if ( $meta_key && is_numeric( $post_id ) ) {
+				return get_post_meta( $post_id, $meta_key, true );
+			}
+		}
+		return $value;
+	},
+	10,
+	3
+);
+
+/**
+ * Feed query handling with performance optimisations.
  */
 add_action(
 	'pre_get_posts',
@@ -22,8 +65,15 @@ add_action(
 			return;
 		}
 
-		// Performance only.
+		// Performance optimisations
 		$query->set( 'no_found_rows', true );
+		$query->set( 'update_post_meta_cache', true ); // We need meta for featured images
+		$query->set( 'update_post_term_cache', false );
+
+		// Limit feed items if not already limited
+		if ( ! $query->get( 'posts_per_rss' ) ) {
+			$query->set( 'posts_per_page', 10 );
+		}
 
 		/**
 		 * Articles feed:
@@ -49,6 +99,28 @@ add_action(
 			);
 		}
 	}
+);
+
+/**
+ * Strip any shortcodes from feed content to prevent execution.
+ */
+add_filter(
+	'the_content_feed',
+	function ( $content ) {
+		return strip_shortcodes( $content );
+	},
+	1
+);
+
+/**
+ * Strip any shortcodes from feed excerpts.
+ */
+add_filter(
+	'the_excerpt_rss',
+	function ( $excerpt ) {
+		return strip_shortcodes( $excerpt );
+	},
+	1
 );
 
 /**

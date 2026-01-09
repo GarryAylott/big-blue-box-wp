@@ -12,38 +12,11 @@ import resolve from "@rollup/plugin-node-resolve";
 import fs from "fs";
 import path from "path";
 import { minify } from "terser";
-import { deleteAsync } from "del";
 
 const sass = gulpSass(dartSass);
 const bs = browserSync.create();
 
 const themeHeader = `/*\nTheme Name: Big Blue Box Theme\nTheme URI: https://www.bigblueboxpodcast.co.uk\nAuthor: Garry Aylott\nDescription: A custom theme for The Big Blue Box Podcast website.\nVersion: 2\nText Domain: bigbluebox\n*/\n`;
-
-const runtimeGlobs = [
-    "**/*.php",
-    "inc/**/*",
-    "template-parts/**/*",
-    "page-templates/**/*",
-    "data/**/*",
-    "favicons/**/*",
-    "fonts/**/*",
-    "images/**/*",
-    "scripts/bbb-scripts.min.js",
-    "scripts/bbb-scripts.min.js.map",
-    "style.css",
-    "style.css.map",
-    "screenshot.png",
-    "!node_modules{,/**}",
-    "!src{,/**}",
-    "!bigbluebox{,/**}",
-    "!.git{,/**}",
-    "!.vscode{,/**}",
-    "!gulpfile.js",
-    "!package.json",
-    "!package-lock.json",
-    "!README.md",
-    "!AGENTS.md",
-];
 
 const distDir = "bigbluebox";
 
@@ -194,13 +167,6 @@ export const scriptsBuild = () =>
 // -----------------------------------------------------------------------------
 // Dist build helpers
 // -----------------------------------------------------------------------------
-export const cleanDist = () => deleteAsync([`${distDir}/**`, `!${distDir}`]);
-
-export const copyRuntime = () =>
-    gulp
-        .src(runtimeGlobs, { base: ".", nodir: true, allowEmpty: true, encoding: false })
-        .pipe(gulp.dest(distDir));
-
 // -----------------------------------------------------------------------------
 // BrowserSync
 // -----------------------------------------------------------------------------
@@ -242,7 +208,7 @@ export const dev = gulp.series(
 export const build = gulp.series(
     gulp.parallel(stylesBuild, scriptsBuild, editorStylesBuild)
 );
-export const dist = gulp.series(cleanDist, build, copyRuntime);
-export const prod = dist;
+
+export const prod = build;
 
 export default dev;

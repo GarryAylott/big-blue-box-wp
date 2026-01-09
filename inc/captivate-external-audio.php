@@ -6,6 +6,11 @@
  */
 if ( ! function_exists( 'bbb_get_captivate_audio_url' ) ) {
 	function bbb_get_captivate_audio_url( $guid ) {
+		// Never make API calls during feed generation
+		if ( is_feed() ) {
+			return false;
+		}
+
 		$guid = trim( (string) $guid );
 		if ( ! $guid ) {
 			bbb_log( '❌ GUID missing in bbb_get_captivate_audio_url.' );

@@ -3,6 +3,10 @@
  * @package Big_Blue_Box
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 ?>
 

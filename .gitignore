@@ -10,6 +10,7 @@ Thumbs.db
 .env
 .cache
 wp-config-local.php
+gulpfile.js
 
 # Node modules and output
 node_modules

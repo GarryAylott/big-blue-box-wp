@@ -21,6 +21,10 @@ Spacing value between content blocks.
     margin-block-start: var(--flow-space-large, 2em);
 }
 
+:where(.flow-x-large) > :where(* + *) {
+    margin-block-start: var(--flow-space-xl, 6em);
+}
+
 :where(.flow-page-regions) > :where(* + *) {
     margin-block-start: var(--flow-space-xl, 8em);
 }

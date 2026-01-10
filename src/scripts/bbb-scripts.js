@@ -17,6 +17,7 @@ import {
     Search,
     X,
     Tag,
+    FileText,
 } from "lucide";
 
 // Only register icons we use so the bundle stays lean.
@@ -37,6 +38,7 @@ const icons = {
     Search,
     X,
     Tag,
+    FileText,
 };
 createIcons({ icons });
 
@@ -1042,6 +1044,26 @@ const initCompendiumLinkImages = () => {
     idleTimer = setTimeout(swapImages, DISPLAY_DURATION);
 };
 
+// Podcast transcript animation fix for Chrome
+const initTranscriptAnimation = () => {
+    document
+        .querySelectorAll(".podcast-transcript__accordion")
+        .forEach((details) => {
+            details.addEventListener("toggle", () => {
+                if (details.open) {
+                    const content = details.querySelector(
+                        ".podcast-transcript__content"
+                    );
+                    if (content) {
+                        content.style.animation = "none";
+                        content.offsetHeight; // Force reflow
+                        content.style.animation = "";
+                    }
+                }
+            });
+        });
+};
+
 // Logos scrolling marquee without duped markup
 const initLogosMarquee = () => {
     const scrollers = document.querySelectorAll(".brand-logos-marquee");
@@ -1081,6 +1103,7 @@ const init = () => {
     initEraJumpDropdown();
     initCompendiumLinkImages();
     initLogosMarquee();
+    initTranscriptAnimation();
     window.addEventListener("DOMContentLoaded", initAudioPlayer);
 };
 

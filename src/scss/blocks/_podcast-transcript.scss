@@ -10,24 +10,21 @@ CSS-only accordion using native <details>/<summary>
 
     &__accordion {
         position: relative;
-        background: var(--clr-surface-300);
-        border-radius: var(--radius-small);
+        border: 1px solid var(--clr-border-darker);
+        border-radius: var(--radius-normal);
         overflow: hidden;
-
-        &::after {
-            @include panel-border-highlight;
-            border-radius: var(--radius-small);
-            opacity: 0.3;
-        }
     }
 
     &__summary {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: var(--space-m) var(--space-l);
+        padding-block: var(--space-xs);
+        padding-inline: var(--space-m);
         cursor: pointer;
         list-style: none;
+        transition: background var(--button-timing-duration)
+            var(--button-timing-curve);
 
         &::-webkit-details-marker {
             display: none;
@@ -35,7 +32,7 @@ CSS-only accordion using native <details>/<summary>
 
         &:hover,
         &:focus-visible {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--clr-surface-300);
         }
 
         &:focus-visible {
@@ -45,8 +42,11 @@ CSS-only accordion using native <details>/<summary>
     }
 
     &__title {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2xs);
         font-family: var(--font-family-headings);
-        font-size: var(--step-0);
+        font-size: var(--step-1);
         font-weight: var(--fw-bold);
     }
 
@@ -54,13 +54,10 @@ CSS-only accordion using native <details>/<summary>
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 1.5em;
-        height: 1.5em;
-        transition: transform 0.3s ease;
+        transition: transform 0.2s var(--button-timing-curve);
 
-        svg {
-            width: 1em;
-            height: 1em;
+        @media (width < 400px) {
+            @include visually-hidden;
         }
     }
 
@@ -69,11 +66,12 @@ CSS-only accordion using native <details>/<summary>
     }
 
     &__content {
-        padding: var(--space-m) var(--space-l);
-        padding-block-start: 0;
         max-height: 60vh;
+        padding-block: var(--space-s);
+        padding-inline: var(--space-m);
         overflow-y: auto;
         scroll-behavior: smooth;
+        will-change: opacity, transform;
 
         &::-webkit-scrollbar {
             width: 8px;
@@ -94,8 +92,7 @@ CSS-only accordion using native <details>/<summary>
         }
 
         p {
-            font-size: var(--step--1);
-            line-height: 1.7;
+            font-size: var(--step-0);
             color: var(--clr-text-400);
         }
     }
@@ -103,17 +100,17 @@ CSS-only accordion using native <details>/<summary>
 
 @media (prefers-reduced-motion: no-preference) {
     .podcast-transcript__accordion[open] .podcast-transcript__content {
-        animation: transcript-reveal 0.3s ease;
+        animation: transcript-reveal 0.5s ease;
     }
+}
 
-    @keyframes transcript-reveal {
-        from {
-            opacity: 0;
-            transform: translateY(-0.5rem);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+@keyframes transcript-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

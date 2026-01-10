@@ -230,8 +230,6 @@ if ( ! function_exists( 'bbb_normalize_transcript' ) ) {
  */
 if ( ! function_exists( 'bbb_convert_json_transcript_to_html' ) ) {
 	function bbb_convert_json_transcript_to_html( $json ) {
-		$html = '';
-
 		// Structure: { "transcript": { "transcript_json": [...] } } (Captivate/Assembly AI format)
 		if ( isset( $json['transcript']['transcript_json'] ) && is_array( $json['transcript']['transcript_json'] ) ) {
 			$paragraphs = [];
@@ -533,11 +531,12 @@ if ( ! function_exists( 'bbb_sync_captivate_transcripts' ) ) {
 		$apply         = ! empty( $_POST['apply_changes'] );
 		$force         = ! empty( $_POST['force_refresh'] );
 		$dry_run       = empty( $_POST['apply_changes'] );
-		$only_missing  = isset( $_POST['only_missing'] ) ? ! empty( $_POST['only_missing'] ) : true;
+		// For checkboxes: if form was submitted, use the checkbox value; otherwise default to true
+		$form_submitted = ! empty( $_POST['bbb_sync_transcripts_nonce'] );
+		$only_missing   = $form_submitted ? ! empty( $_POST['only_missing'] ) : true;
 		$limit_output  = isset( $_POST['limit_output'] ) ? max( 10, min( 500, (int) $_POST['limit_output'] ) ) : 100;
 		$max_posts     = isset( $_POST['max_posts'] ) ? max( 1, min( 50, (int) $_POST['max_posts'] ) ) : 10;
 		$debug_mode    = ! empty( $_POST['debug_mode'] );
-		$batch_size    = 5;
 
 		// Warn if API is globally disabled
 		if ( ! bbb_transcript_can_use_api() ) {
@@ -622,21 +621,6 @@ if ( ! function_exists( 'bbb_sync_captivate_transcripts' ) ) {
 		}
 
 		// Query all published podcast posts
-		$meta_query = [];
-
-		// Must have a GUID
-		$meta_query[] = [
-			'relation' => 'OR',
-			[
-				'key'     => 'captivate_episode_guid',
-				'compare' => 'EXISTS',
-			],
-			[
-				'key'     => 'captivate_episode_selector',
-				'compare' => 'EXISTS',
-			],
-		];
-
 		$q = new WP_Query( [
 			'post_type'      => 'post',
 			'post_status'    => 'publish',
@@ -660,10 +644,21 @@ if ( ! function_exists( 'bbb_sync_captivate_transcripts' ) ) {
 		$skipped_guid  = 0;
 		$errors        = 0;
 		$shown         = 0;
-		$processed     = 0;
-		$api_calls     = 0; // Track posts that actually hit the API
+		$api_calls     = 0;
 
 		echo '<p><strong>Found ' . (int) $total_posts . ' podcast posts.</strong> Processing up to ' . (int) $max_posts . ' posts this run.</p>';
+
+		// Debug: Show current settings
+		if ( $debug_mode ) {
+			echo '<div class="notice notice-info" style="padding: 10px; margin: 10px 0;">';
+			echo '<strong>Debug - Current Settings:</strong><br>';
+			echo 'Force refresh (re-fetch media_id): <code>' . ( $force ? 'YES' : 'NO' ) . '</code><br>';
+			echo 'Apply changes (not dry run): <code>' . ( $apply ? 'YES' : 'NO' ) . '</code><br>';
+			echo 'Only missing (skip existing transcripts): <code>' . ( $only_missing ? 'YES' : 'NO' ) . '</code><br>';
+			echo 'Raw POST values: force_refresh=' . ( isset( $_POST['force_refresh'] ) ? $_POST['force_refresh'] : 'not set' );
+			echo ', only_missing=' . ( isset( $_POST['only_missing'] ) ? $_POST['only_missing'] : 'not set' );
+			echo '</div>';
+		}
 
 		echo '<h3>Results</h3>';
 		echo '<table class="widefat striped" style="margin-top:1rem">';
@@ -701,6 +696,7 @@ if ( ! function_exists( 'bbb_sync_captivate_transcripts' ) ) {
 
 			// Check if transcript already exists
 			$existing_transcript = get_field( 'podcast_transcript', $post_id );
+
 			if ( $only_missing && ! empty( $existing_transcript ) ) {
 				$skipped_exist++;
 				if ( $shown < $limit_output ) {
@@ -739,49 +735,6 @@ if ( ! function_exists( 'bbb_sync_captivate_transcripts' ) ) {
 			// Fetch transcript - this counts as an API call
 			$api_calls++;
 			$raw_transcript = bbb_fetch_transcript_for_media_id( $media_id, $bearer_token, $debug_mode );
-
-			// Debug output - make a direct API call to show raw response
-			if ( $debug_mode && $shown < $limit_output ) {
-				// Make a test call to see the raw response (use same endpoint as the function)
-				if ( defined( 'CAPTIVATE_SHOW_ID' ) && CAPTIVATE_SHOW_ID ) {
-					$test_url = 'https://api.captivate.fm/spark/' . rawurlencode( CAPTIVATE_SHOW_ID ) . '/media/' . rawurlencode( $media_id ) . '/transcript';
-				} else {
-					$test_url = 'https://api.captivate.fm/media/' . rawurlencode( $media_id ) . '/transcript';
-				}
-				$test_response = wp_remote_get( $test_url, [
-					'timeout' => 30,
-					'headers' => [
-						'Authorization' => 'Bearer ' . $bearer_token,
-						'Accept'        => 'application/json',
-					],
-				] );
-
-				$test_code = wp_remote_retrieve_response_code( $test_response );
-				$test_body = wp_remote_retrieve_body( $test_response );
-				$test_content_type = wp_remote_retrieve_header( $test_response, 'content-type' );
-
-				echo '<tr style="background: #fffbcc;">';
-				echo '<td colspan="4"><strong>DEBUG for post #' . (int) $post_id . ':</strong><br>';
-				echo 'API URL: ' . esc_html( $test_url ) . '<br>';
-				echo 'HTTP Status: ' . esc_html( $test_code ) . '<br>';
-				echo 'Content-Type: ' . esc_html( $test_content_type ) . '<br>';
-				echo 'Body Length: ' . strlen( $test_body ) . ' bytes<br>';
-				echo 'Raw response type: ' . esc_html( gettype( $raw_transcript ) ) . '<br>';
-				if ( is_string( $raw_transcript ) ) {
-					echo 'Response length: ' . strlen( $raw_transcript ) . ' chars<br>';
-					echo 'First 500 chars: <pre>' . esc_html( substr( $raw_transcript, 0, 500 ) ) . '</pre>';
-				} elseif ( is_wp_error( $raw_transcript ) ) {
-					echo 'Error: ' . esc_html( $raw_transcript->get_error_message() );
-				} elseif ( $raw_transcript === null ) {
-					echo 'Response is NULL<br>';
-					if ( ! empty( $test_body ) ) {
-						echo 'Raw body (first 500 chars): <pre>' . esc_html( substr( $test_body, 0, 500 ) ) . '</pre>';
-					} else {
-						echo 'Body is empty';
-					}
-				}
-				echo '</td></tr>';
-			}
 
 			if ( is_wp_error( $raw_transcript ) ) {
 				$errors++;
@@ -851,10 +804,8 @@ if ( ! function_exists( 'bbb_sync_captivate_transcripts' ) ) {
 				$shown++;
 			}
 
-			$processed++;
-
-			// Small delay every batch_size posts to avoid hammering API
-			if ( $processed % $batch_size === 0 ) {
+			// Small delay every 5 API calls to avoid hammering the API
+			if ( $api_calls % 5 === 0 ) {
 				usleep( 100000 ); // 100ms
 			}
 		}

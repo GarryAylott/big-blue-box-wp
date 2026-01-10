@@ -93,7 +93,7 @@
 
     /* Anything that has been anchored to should have extra scroll margin */
     :target {
-        scroll-margin: 6rlh;
+        scroll-margin: var(--vertical-space);
     }
 
     /* Nicer looking HRs */

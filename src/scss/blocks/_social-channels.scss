@@ -35,6 +35,14 @@ Layout and styling for the list of social channels.
     }
 }
 
+// Sticky social share on single posts only
+.article-sidebar .social-channels {
+    @media (min-width: 72.188rem) {
+        position: sticky;
+        top: var(--vertical-space);
+    }
+}
+
 // Icons horizontal list
 .social-icons {
     display: flex;

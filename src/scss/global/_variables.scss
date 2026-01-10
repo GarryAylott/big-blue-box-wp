@@ -90,6 +90,7 @@ $colors: (
     --flow-space: var(--space-s-m);
     --flow-space-large: var(--space-l-xl);
     --flow-space-xl: calc(var(--space-2xl-3xl) + var(--space-s));
+    --vertical-space: 6rlh;
 
     /* Colours */
     // For future Garry or new dev, this list is paired with "_colour-tokens.scss" so make sure that is updated.

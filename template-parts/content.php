@@ -142,8 +142,6 @@
 							$episode_title = get_the_title();
 						}
 
-						bbb_log( '🎯 GUID from ACF: ' . print_r( $guid, true ) );
-
 						// Prefer the audio URL stored during acf/save_post; avoid front-end API calls.
 						$audio_url = get_field( 'captivate_audio_url' );
 						if ( ! $audio_url ) {

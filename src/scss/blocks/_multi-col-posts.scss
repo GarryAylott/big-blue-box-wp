@@ -26,7 +26,10 @@ Layout and styling for small post cards in multiple columns (desktop).
 
             @media (max-width: 46rem) {
                 flex-direction: column;
-                @include flow-small;
+
+                > li + li {
+                    margin-block-start: var(--flow-space, 1em);
+                }
             }
 
             li {

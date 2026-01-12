@@ -64,6 +64,18 @@ body.login {
             text-decoration-thickness: 1px;
         }
     }
+
+    // Wordfence 2FA Overlay
+    #wfls-prompt-overlay {
+        position: relative;
+        width: 100%;
+        inset: unset;
+        background: none;
+
+        p.submit {
+            @include visually-hidden;
+        }
+    }
 }
 
 /* Style the login box */
@@ -243,5 +255,18 @@ body.login {
             -webkit-text-decoration-color: var(--clr-text-link);
             text-decoration-thickness: 1px;
         }
+    }
+}
+
+// Language Switcher on live site
+.language-switcher {
+    width: min(30rem, 90%);
+    margin: 0 auto;
+
+    form#language-switcher {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2xs);
+        margin: 0;
     }
 }

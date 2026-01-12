@@ -36,13 +36,22 @@ function bigbluebox_setup() {
 	// Enable support for Post Thumbnails on posts and pages.
 	add_theme_support( 'post-thumbnails' );
 
-	// custom image sizes
+	// Custom image sizes
 	add_image_size( 'post-featured-card', 1200, 675, true );
 	add_image_size( 'post-featured-large', 2400, 1350, true );
 	add_image_size( 'latest-podcast-ep-thumb', 640, 360 );
 	add_image_size( 'singlepost-wide', 1200, 675, true );
 	add_image_size( 'singlepost-square', 1200, 9999, true );
 	add_image_size( 'post-list-thumb', 400, 225, true );
+
+	// Remove un-needed WP generated image sizes
+	add_filter( 'intermediate_image_sizes_advanced', function ( $sizes ) {
+		unset( $sizes['thumbnail'] );     // 150 × 150
+		unset( $sizes['medium'] );        // 300 × 300
+		unset( $sizes['medium_large'] );  // 768 px wide:contentReference[oaicite:1]{index=1}
+		unset( $sizes['large'] );         // 1024 × 1024
+		return $sizes;
+	});
 
 	// Switch default core markup for search form, comment form, and comments to output valid HTML5.
 	add_theme_support(

@@ -57,35 +57,40 @@ if ( post_password_required() ) {
 
     <?php if ( comments_open() ) :
         $commenter = wp_get_current_commenter();
-        $fields    = [
-                'author_email_group' => sprintf(
-                        '<div class="comment-form-fields flex">
-                                <p class="comment-form-author form-input-group">
-                                        <label for="author">%1$s</label>
-                                        <input id="author" name="author" type="text" placeholder="%2$s" value="%3$s" required />
-                                </p>
-                                <p class="comment-form-email form-input-group">
-                                        <label for="email">%4$s</label>
-                                        <input id="email" name="email" type="email" placeholder="%5$s" value="%6$s" required />
-                                </p>
-                        </div>',
-                        esc_html__( 'Your name', 'bigbluebox' ),
-                        esc_attr__( 'John Smith', 'bigbluebox' ),
-                        esc_attr( $commenter['comment_author'] ),
-                        esc_html__( 'Your email address', 'bigbluebox' ),
-                        esc_attr__( 'johnsmith@gallifrey.com', 'bigbluebox' ),
-                        esc_attr( $commenter['comment_author_email'] )
-                ),
-                'cookies'             => sprintf(
-                        '<div class="comment-form-footer">
-                                <p class="comment-form-cookies-consent small flex">
-                                        <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"%1$s />
-                                        <label for="wp-comment-cookies-consent">%2$s</label>
-                                </p>',
-                        empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"',
-                        esc_html__( 'Save my name and email in this browser for the next time I comment.', 'bigbluebox' )
-                ),
-        ];
+        $fields    = [];
+
+        // Only show name/email fields for logged-out users.
+        if ( ! is_user_logged_in() ) {
+                $fields = [
+                        'author_email_group' => sprintf(
+                                '<div class="comment-form-fields flex">
+                                        <p class="comment-form-author form-input-group">
+                                                <label for="author">%1$s</label>
+                                                <input id="author" name="author" type="text" placeholder="%2$s" value="%3$s" required />
+                                        </p>
+                                        <p class="comment-form-email form-input-group">
+                                                <label for="email">%4$s</label>
+                                                <input id="email" name="email" type="email" placeholder="%5$s" value="%6$s" required />
+                                        </p>
+                                </div>',
+                                esc_html__( 'Your name', 'bigbluebox' ),
+                                esc_attr__( 'John Smith', 'bigbluebox' ),
+                                esc_attr( $commenter['comment_author'] ),
+                                esc_html__( 'Your email address', 'bigbluebox' ),
+                                esc_attr__( 'johnsmith@gallifrey.com', 'bigbluebox' ),
+                                esc_attr( $commenter['comment_author_email'] )
+                        ),
+                        'cookies'             => sprintf(
+                                '<div class="comment-form-footer">
+                                        <p class="comment-form-cookies-consent small flex">
+                                                <input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"%1$s />
+                                                <label for="wp-comment-cookies-consent">%2$s</label>
+                                        </p>',
+                                empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"',
+                                esc_html__( 'Save my name and email in this browser for the next time I comment.', 'bigbluebox' )
+                        ),
+                ];
+        }
 
         comment_form(
                 [

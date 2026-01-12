@@ -10,7 +10,17 @@ get_header();
 ?>
 
 <?php get_template_part('template-parts/content', 'hero-bg-image', [
-    'image' => get_template_directory_uri() . '/images/pagebg_about.webp'
+    'image'   => get_template_directory_uri() . '/images/pagebg_about.jpg',
+    'sources' => [
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_about.avif',
+            'type'   => 'image/avif'
+        ],
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_about.webp',
+            'type'   => 'image/webp'
+        ]
+    ]
 ]); ?>
 
 <main id="primary" class="site-main">
@@ -188,7 +198,7 @@ get_header();
                                 <button class="button"><?php printf(esc_html__('More about %s', 'bigbluebox'), esc_html($first_name)); ?></button>
                             </a>
                         </div>
-                        <img class="team-writers__image" src="<?php echo esc_url(get_theme_file_uri($writer['image'])); ?>" alt="<?php echo esc_attr($writer['image_alt']); ?>" />
+                        <img class="team-writers__image" src="<?php echo esc_url(get_theme_file_uri($writer['image'])); ?>" alt="<?php echo esc_attr($writer['image_alt']); ?>" loading="lazy" />
                     </div>
                 <?php endforeach; ?>
 
@@ -204,7 +214,7 @@ get_header();
                             <?php esc_html_e( 'Get in Touch', 'bigbluebox' ); ?>
                         </a>
                     </div>
-                    <img class="team-writers__image" src="<?php echo esc_url(get_theme_file_uri('images/authors/about-writers-panel-maybeyou.webp')); ?>" alt="<?php echo esc_attr__( 'Future Big Blue Box writer', 'bigbluebox' ); ?>"/>
+                    <img class="team-writers__image" src="<?php echo esc_url(get_theme_file_uri('images/authors/about-writers-panel-maybeyou.webp')); ?>" alt="<?php echo esc_attr__( 'Future Big Blue Box writer', 'bigbluebox' ); ?>" loading="lazy" />
                 </div>
             </div>
 
@@ -213,7 +223,7 @@ get_header();
                 <picture>
                     <source srcset="<?php echo $theme_dir; ?>/images/DalekTat.avif" type="image/avif">
                     <source srcset="<?php echo $theme_dir; ?>/images/DalekTat.webp" type="image/webp">
-                    <img src="<?php echo $theme_dir; ?>/images/DalekTat.webp" alt="<?php echo esc_attr__( 'Dalek Tat illustration', 'bigbluebox' ); ?>">
+                    <img src="<?php echo $theme_dir; ?>/images/DalekTat.webp" alt="<?php echo esc_attr__( 'Dalek Tat illustration', 'bigbluebox' ); ?>" loading="lazy">
                 </picture>
                 <div class="dalektat__content flow-small">
                     <h3><?php esc_html_e( 'Dalek Tat', 'bigbluebox' ); ?></h3>

@@ -293,7 +293,7 @@ Header styling for logo, nav etc.
 // Content for search shortcut
 html[data-os="mac"] .search-shortcut {
     &::before {
-        content: "⌘";
+        content: "\2318";
         font-size: 1em;
         margin-inline-end: 0.05rem;
         transform: translateY(0.5px);

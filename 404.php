@@ -57,7 +57,7 @@ get_header();
 				<?php $theme_dir = esc_url( get_template_directory_uri() ); ?>
 				<source srcset="<?php echo $theme_dir; ?>/images/TARDIS-busted.avif" type="image/avif">
 				<source srcset="<?php echo $theme_dir; ?>/images/TARDIS-busted.webp" type="image/webp">
-				<img src="<?php echo $theme_dir; ?>/images/TARDIS-busted.webp" alt="<?php echo esc_attr__( 'TARDIS illustration', 'bigbluebox' ); ?>">
+				<img src="<?php echo $theme_dir; ?>/images/TARDIS-busted.webp" alt="<?php echo esc_attr__( 'TARDIS illustration', 'bigbluebox' ); ?>" loading="lazy">
 			</picture>
 		</section>
 		<?php get_template_part('template-parts/content', 'suggested-posts',

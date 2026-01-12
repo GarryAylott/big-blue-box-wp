@@ -11,18 +11,17 @@ get_header();
 ?>
 
 <?php get_template_part('template-parts/content', 'hero-bg-image', [
-    'image'       => get_template_directory_uri() . '/images/pagebg_legal.webp',
+    'image'       => get_template_directory_uri() . '/images/pagebg_home.webp',
     'sources'     => [
         [
-            'srcset' => get_template_directory_uri() . '/images/pagebg_legal.avif',
+            'srcset' => get_template_directory_uri() . '/images/pagebg_home.avif',
             'type'   => 'image/avif'
         ],
         [
-            'srcset' => get_template_directory_uri() . '/images/pagebg_legal.webp',
+            'srcset' => get_template_directory_uri() . '/images/pagebg_home.webp',
             'type'   => 'image/webp'
         ]
-    ],
-    'extra_image' => get_template_directory_uri() . '/images/pagebg_home.webp'
+    ]
 ]); ?>
 
 <main id="primary" class="site-main flow-page-regions">
@@ -50,7 +49,8 @@ get_header();
                                     'latest-podcast-ep-thumb',
                                     false,
                                     [
-                                        'class'  => 'post-thumb-img img-hover',
+                                        'class'   => 'post-thumb-img img-hover',
+                                        'loading' => 'eager',
                                     ]
                                 );
                                 ?>
@@ -259,7 +259,7 @@ get_header();
         <picture>
             <source srcset="<?php echo $theme_dir; ?>/images/hero-doctors.avif" type="image/avif">
             <source srcset="<?php echo $theme_dir; ?>/images/hero-doctors.webp" type="image/webp">
-            <img src="<?php echo $theme_dir; ?>/images/hero-doctors.png" alt="<?php echo esc_attr__( 'Your space-time coordinates for everything Doctor Who...', 'bigbluebox' ); ?>">
+            <img src="<?php echo $theme_dir; ?>/images/hero-doctors.png" alt="<?php echo esc_attr__( 'Your space-time coordinates for everything Doctor Who...', 'bigbluebox' ); ?>" loading="lazy">
         </picture>
         <div class="podcast-app-links">
             <h5>

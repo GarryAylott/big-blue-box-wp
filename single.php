@@ -7,7 +7,17 @@ get_header();
 ?>
 
 <?php get_template_part('template-parts/content', 'hero-bg-image', [
-    'image' => get_template_directory_uri() . '/images/pagebg_single-post.webp'
+    'image'   => get_template_directory_uri() . '/images/pagebg_single-post.jpg',
+    'sources' => [
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_single-post.avif',
+            'type'   => 'image/avif'
+        ],
+        [
+            'srcset' => get_template_directory_uri() . '/images/pagebg_single-post.webp',
+            'type'   => 'image/webp'
+        ]
+    ]
 ]); ?>
 
 <main id="primary" class="site-main">

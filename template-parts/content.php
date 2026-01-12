@@ -13,8 +13,10 @@
 				'post-featured-large',
 				false,
 				[
-					'class' => 'post-thumb-img rounded',
-					'sizes' => '(min-width: 1400px) 1600px, 100vw',
+					'class'         => 'post-thumb-img rounded',
+					'sizes'         => '(min-width: 1400px) 1600px, 100vw',
+					'loading'       => 'eager',
+					'fetchpriority' => 'high',
 				]
 			);
 		endif;
@@ -217,7 +219,7 @@
 				} else {
 					$author_image_url = get_template_directory_uri() . '/images/authors/author-avatar-small-default.webp';
 				}
-				echo '<img class="author-image" src="' . esc_url($author_image_url) . '" width="80" height="80" alt="' . esc_attr($author_name) . '" />';
+				echo '<img class="author-image" src="' . esc_url($author_image_url) . '" width="80" height="80" alt="' . esc_attr($author_name) . '" loading="lazy" />';
 				// Author name
 				echo '<h5 class="author-name">' . esc_html( $author_name ) . '</h5>';
 

@@ -127,7 +127,8 @@ if (is_tag()) {
                                                 alt="<?php echo esc_attr($fav_doctor_image['alt']); ?>"
                                                 class="fav-doctor-image"
                                                 width="<?php echo esc_attr( absint( $doctor_width ) ); ?>"
-                                                height="<?php echo esc_attr( absint( $doctor_height ) ); ?>">
+                                                height="<?php echo esc_attr( absint( $doctor_height ) ); ?>"
+                                                loading="lazy">
                                         <?php endif; ?>
                                     </div>
                                     <h6>
@@ -150,7 +151,8 @@ if (is_tag()) {
                                                 alt="<?php echo esc_attr($fav_story_image['alt']); ?>"
                                                 class="fav-story-image"
                                                 width="<?php echo esc_attr( absint( $story_width ) ); ?>"
-                                                height="<?php echo esc_attr( absint( $story_height ) ); ?>">
+                                                height="<?php echo esc_attr( absint( $story_height ) ); ?>"
+                                                loading="lazy">
                                         <?php endif; ?>
                                     </div>
                                     <h6>

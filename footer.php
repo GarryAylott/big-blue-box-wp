@@ -57,32 +57,32 @@
 					<ul class="social-icons" role="list">
 						<li>
 							<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noopener noreferrer">
-								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-x.svg" width="24" height="24" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on X', 'bigbluebox' ); ?>">
+								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-x.svg" width="24" height="24" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on X', 'bigbluebox' ); ?>" loading="lazy">
 							</a>
 						</li>
 						<li>
 							<a class="has-external-icon" href="https://instagram.com/bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
-								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-insta.svg" width="24" height="24" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on Instagram', 'bigbluebox' ); ?>">
+								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-insta.svg" width="24" height="24" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on Instagram', 'bigbluebox' ); ?>" loading="lazy">
 							</a>
 						</li>
 						<li>
 								<a class="has-external-icon" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
-								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-fb.svg" width="24" height="24" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on Facebook', 'bigbluebox' ); ?>">
+								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-fb.svg" width="24" height="24" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on Facebook', 'bigbluebox' ); ?>" loading="lazy">
 								</a>
 						</li>
 						<li>
 							<a class="has-external-icon" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noopener noreferrer">
-								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-threads.svg" width="24" height="24" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on Threads', 'bigbluebox' ); ?>">
+								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-threads.svg" width="24" height="24" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on Threads', 'bigbluebox' ); ?>" loading="lazy">
 							</a>
 						</li>
 						<li>
 								<a class="has-external-icon" href="https://www.youtube.com/@BigBlueBoxPodcast" target="_blank" rel="noopener noreferrer">
-								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-yt.svg" width="29" height="28" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on YouTube', 'bigbluebox' ); ?>">
+								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-yt.svg" width="29" height="28" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on YouTube', 'bigbluebox' ); ?>" loading="lazy">
 								</a>
 						</li>
 						<li>
 							<a class="has-external-icon" href="https://discord.gg/QfHAmyVdaJ" target="_blank" rel="noopener noreferrer">
-								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-discord.svg" width="29" height="22" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on Discord', 'bigbluebox' ); ?>">
+								<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-discord.svg" width="29" height="22" alt="<?php echo esc_attr__( 'Link to The Big Blue Box Podcast on Discord', 'bigbluebox' ); ?>" loading="lazy">
 							</a>
 						</li>
 					</ul>

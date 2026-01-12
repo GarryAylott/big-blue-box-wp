@@ -91,7 +91,7 @@
 
 	<section class="call-out-panel discord-link">
 		<div class="intro">
-			<img src="<?php echo $theme_dir; ?>/images/logos/logo-discord.svg" width="121" height="23" alt="<?php echo esc_attr__( 'Our free Discord server', 'bigbluebox' ); ?>">
+			<img src="<?php echo $theme_dir; ?>/images/logos/logo-discord.svg" width="121" height="23" alt="<?php echo esc_attr__( 'Our free Discord server', 'bigbluebox' ); ?>" loading="lazy">
 			<p class="small">
 				<?php esc_html_e( 'Join the Big Blue Box Discord server - it\'s free! Hang out with Doctor Who fans in a safe space to discuss episodes, theories, events, Big Finish, collecting and more!', 'bigbluebox' ); ?>
 			</p>
@@ -166,7 +166,7 @@
 			</div>
 			<div class="author-section-small__author-block">
 				<span class="author-avatar no-link">
-					<img src="<?php echo $theme_dir; ?>/images/authors/author-avatar-small-default.webp" width="56" height="81" alt="<?php echo esc_attr__( 'Maybe you could join the team?', 'bigbluebox' ); ?>">
+					<img src="<?php echo $theme_dir; ?>/images/authors/author-avatar-small-default.webp" width="56" height="81" alt="<?php echo esc_attr__( 'Maybe you could join the team?', 'bigbluebox' ); ?>" loading="lazy">
 				</span>
 				<div class="author-block-content">
 					<h6>
@@ -190,7 +190,7 @@
 			<picture class="img-container-square">
 				<source srcset="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.avif" type="image/avif">
 				<source srcset="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.webp" type="image/webp">
-				<img class="sidebar-img img-hover" src="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.webp" width="342" height="342" alt="<?php echo esc_attr__( 'Check out the full range of Doctor Who audio dramas from Big Finish, now.', 'bigbluebox' ); ?>">
+				<img class="sidebar-img img-hover" src="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.webp" width="342" height="342" alt="<?php echo esc_attr__( 'Check out the full range of Doctor Who audio dramas from Big Finish, now.', 'bigbluebox' ); ?>" loading="lazy">
 			</picture>
 		</a>
 	</section>

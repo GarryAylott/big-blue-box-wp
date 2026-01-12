@@ -38,8 +38,9 @@ $random_heading = $promo_headings[ array_rand( $promo_headings ) ];
                     'post-featured-card',
                     false,
                     [
-						'class' => 'post-thumb-img img-hover rounded-small',
-						'sizes' => '(min-width: 1200px) 25vw, (min-width: 900px) 33vw, 90vw',
+						'class'   => 'post-thumb-img img-hover rounded-small',
+						'sizes'   => '(min-width: 1200px) 25vw, (min-width: 900px) 33vw, 90vw',
+						'loading' => 'lazy',
 					]
                 );
                 ?>

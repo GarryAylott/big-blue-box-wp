@@ -21,8 +21,9 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
                         'post-featured-card',
                         false,
                         [
-                            'class'  => 'post-thumb-img img-hover',
-                            'sizes'  => '(min-width: 1400px) 33vw, (min-width: 900px) 50vw, 100vw',
+                            'class'   => 'post-thumb-img img-hover',
+                            'sizes'   => '(min-width: 1400px) 33vw, (min-width: 900px) 50vw, 100vw',
+                            'loading' => 'lazy',
                         ]
                     );
                     ?>
@@ -56,8 +57,9 @@ $card_type = isset($args['card_type']) ? $args['card_type'] : 'browse';
                         'post-featured-card',
                         false,
                         [
-                            'class'  => 'post-thumb-img img-hover',
-                            'sizes'  => '(min-width: 1400px) 33vw, (min-width: 900px) 50vw, 100vw',
+                            'class'   => 'post-thumb-img img-hover',
+                            'sizes'   => '(min-width: 1400px) 33vw, (min-width: 900px) 50vw, 100vw',
+                            'loading' => 'lazy',
                         ]
                     );
                     ?>

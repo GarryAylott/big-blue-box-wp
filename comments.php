@@ -40,7 +40,7 @@ if ( post_password_required() ) {
         <?php the_comments_navigation(); ?>
     <?php else : ?>
         <div class="no-comments flex">
-            <img src="<?php echo esc_url( get_template_directory_uri() . '/images/no-comments-dr.webp' ); ?>" width="160" height="169" alt="<?php echo esc_attr__( 'No comments', 'bigbluebox' ); ?>">
+            <img src="<?php echo esc_url( get_template_directory_uri() . '/images/no-comments-dr.webp' ); ?>" width="160" height="169" alt="<?php echo esc_attr__( 'No comments', 'bigbluebox' ); ?>" loading="lazy">
             <p>
                 <?php
                 echo wp_kses_post(

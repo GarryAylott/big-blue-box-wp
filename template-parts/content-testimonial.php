@@ -121,9 +121,9 @@ $random_testimonial = $testimonials[array_rand($testimonials)];
         <div class="testimonial__source">
             <h5><?php echo $random_testimonial['author']; ?></h5>
             <cite>
-                <img src="<?php echo esc_url( $random_testimonial['rating_img'] ); ?>" width="92" height="16" alt="<?php echo esc_attr__( 'Five star rating', 'bigbluebox' ); ?>"><?php echo $random_testimonial['source']; ?>
+                <img src="<?php echo esc_url( $random_testimonial['rating_img'] ); ?>" width="92" height="16" alt="<?php echo esc_attr__( 'Five star rating', 'bigbluebox' ); ?>" loading="lazy"><?php echo $random_testimonial['source']; ?>
             </cite>
         </div>
-        <img class="testimonial__bg-image" src="<?php echo $theme_dir; ?>/images/tardis-blockquote.svg" alt="">
+        <img class="testimonial__bg-image" src="<?php echo $theme_dir; ?>/images/tardis-blockquote.svg" alt="" loading="lazy">
     </blockquote>
 </div>

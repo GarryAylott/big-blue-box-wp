@@ -52,7 +52,7 @@ if ( $is_podcast_post ) {
 }
 ?>
 <div class="author-meta">
-    <img class="author-image" src="<?php echo esc_url($author_image_url); ?>" width="48" height="70" alt="<?php echo esc_attr($author_name); ?>">
+    <img class="author-image" src="<?php echo esc_url($author_image_url); ?>" width="48" height="70" alt="<?php echo esc_attr($author_name); ?>" loading="lazy">
     <div class="author-meta__details">
         <?php if ( $show_author_name ) : ?>
             <p class="author-meta__author-name small">

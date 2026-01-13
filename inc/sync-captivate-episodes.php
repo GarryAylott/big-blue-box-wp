@@ -174,10 +174,8 @@ if ( ! function_exists( 'bbb_apply_episode_to_post' ) ) {
 		$ep_type  = $episode['episode_type'] ?? '';
 		$ep_num   = $episode['episode_number'] ?? null;
 		
-		// 🔎 Debug log to inspect what fields Captivate actually returns
-		bbb_log( '🔍 Captivate episode data for post ' . $post_id . ': ' . print_r( $episode, true ) );
-
 		if ( ! $guid ) {
+			bbb_log( 'Captivate sync FAILED: Post #' . $post_id . ' - missing episode GUID' );
 			return new WP_Error( 'no_guid', 'Episode is missing an ID (guid).' );
 		}
 
@@ -209,6 +207,7 @@ if ( ! function_exists( 'bbb_apply_episode_to_post' ) ) {
 			}
 		}
 
+		bbb_log( 'Captivate sync OK: Post #' . $post_id . ' -> Episode "' . ( $episode['title'] ?? $guid ) . '"' );
 		return true;
 	}
 }

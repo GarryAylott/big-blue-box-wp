@@ -13,8 +13,4 @@ LATEST ARTICLES BLOCK
     header {
         margin-block-start: var(--space-xs);
     }
-
-    @media (max-width: 45rem) {
-        gap: var(--space-xl);
-    }
 }

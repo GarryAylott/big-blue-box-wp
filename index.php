@@ -165,7 +165,7 @@ get_header();
                         wp_reset_postdata();
                     endif; ?>
 
-                    <div class="more-buttons flex-splitter">
+                    <div class="more-buttons">
                         <a class="button-ghost" href="<?php echo esc_url( home_url( '/category/articles/' ) ); ?>">
                             <i data-lucide="newspaper"></i>
                             <?php esc_html_e( 'All Articles', 'bigbluebox' ); ?>

@@ -137,4 +137,11 @@ Layout and styling for the main sidebar that appears on the homepage and a selec
             height: auto;
         }
     }
+
+    // Prevent section going too wide at first when stacking - 50% width at first layout change then 100% width at narrower viewport widths.
+    .prevent-oversized-width {
+        @media (40rem <= width < 59.78rem) {
+            max-width: 50%;
+        }
+    }
 }

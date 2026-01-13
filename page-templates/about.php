@@ -208,10 +208,10 @@ get_header();
                             <?php esc_html_e( 'Maybe You?', 'bigbluebox' ); ?>
                         </h5>
                         <p class="small" id="panel5-title">
-                            <?php esc_html_e( 'Writers with a love for Doctor Who — we want you! We’re always on the lookout for writers who can craft great articles. If that\'s you and want to be part of a welcoming, creative crew, drop us a message.', 'bigbluebox' ); ?>
+                            <?php esc_html_e( 'Writers with a love for Doctor Who — we want you! We’re always on the lookout for writers who can craft great articles. If that\'s you and want to be part of a welcoming, creative crew, see what openings we have.', 'bigbluebox' ); ?>
                         </p>
-                        <a class="button" href="mailto:hello@bigblueboxpodcast.co.uk?subject=I%27m%20interested%20in%20writing%20for%20The%20Big%20Blue%20Box!">
-                            <?php esc_html_e( 'Get in Touch', 'bigbluebox' ); ?>
+                        <a class="button" href="<?php echo esc_url( home_url( '/team-openings' ) ); ?>">
+                            <?php esc_html_e( 'Team Openings', 'bigbluebox' ); ?>
                         </a>
                     </div>
                     <img class="team-writers__image" src="<?php echo esc_url(get_theme_file_uri('images/authors/about-writers-panel-maybeyou.webp')); ?>" alt="<?php echo esc_attr__( 'Future Big Blue Box writer', 'bigbluebox' ); ?>" loading="lazy" />

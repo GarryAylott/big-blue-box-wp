@@ -185,8 +185,8 @@
 		</div>
 	</section>
 
-	<section>
-		<a class="has-external-icon" href="https://www.bigfinish.com/" target="_blank" rel="noreferrer noopener">
+	<section class="prevent-oversized-width">
+		<a href="https://www.bigfinish.com/" target="_blank" rel="noreferrer noopener">
 			<picture class="img-container-square">
 				<source srcset="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.avif" type="image/avif">
 				<source srcset="<?php echo $theme_dir; ?>/images/ads/big-finish-banner-square.webp" type="image/webp">

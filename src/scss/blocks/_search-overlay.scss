@@ -29,7 +29,7 @@ Search overlay that appears when the search icon is clicked
         transition: height 0.2s ease;
         z-index: 150;
 
-        @media (min-width: 37.5rem) {
+        @media (width > 37.5rem) {
             padding-inline: var(--gutter-large);
         }
 
@@ -41,10 +41,19 @@ Search overlay that appears when the search icon is clicked
             padding-block-end: var(--space-s);
             border-bottom: 2px solid var(--clr-border-darker);
 
+            @media (width < 32rem) {
+                border: none;
+            }
+
             .search-form-title {
                 display: flex;
                 align-items: center;
                 gap: var(--space-xs);
+
+                @media (width < 32rem) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
 
                 svg {
                     width: 3.5rem;
@@ -59,6 +68,12 @@ Search overlay that appears when the search icon is clicked
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+
+                @media (width < 32rem) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: var(--space-m);
+                }
             }
 
             .search-field {
@@ -70,21 +85,35 @@ Search overlay that appears when the search icon is clicked
                 border: none;
                 border-radius: 0;
 
+                @media (width < 32rem) {
+                    display: flex;
+                    align-items: flex-start;
+                    width: 100%;
+                    margin-block-start: var(--space-2xs);
+                    padding-block: var(--space-xs);
+                    padding-inline: var(--space-xs);
+                    background: var(--clr-brand-primary-darker);
+                    border: 1px solid hsl(var(--clr-brand-primary-hsl) / 0.25);
+                    border-radius: var(--radius-small);
+                }
+
                 &:focus-visible {
                     outline: none;
                 }
 
                 &::placeholder {
                     color: var(--clr-surface-200);
+
+                    @media (width < 32rem) {
+                        color: hsl(var(--clr-surface-100-hsl) / 0.5);
+                    }
                 }
             }
 
             .search-submit {
+                max-width: 8rem;
+                align-self: flex-end;
                 cursor: pointer;
-
-                img {
-                    width: 1.5rem;
-                }
             }
         }
     }

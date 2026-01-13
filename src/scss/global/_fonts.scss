@@ -59,7 +59,13 @@ Self-hosted fonts.
     font-style: normal;
     src: url("fonts/Pmath-SemiBold.woff2") format("woff2");
     font-display: swap;
-    font-feature-settings: "cv23" on, "cv25" on, "cv27" on, "cv28" on, "cv29" on;
+    font-feature-settings:
+        "cv14" on,
+        "cv23" on,
+        "cv25" on,
+        "cv27" on,
+        "cv28" on,
+        "cv29" on;
 }
 
 @font-face {
@@ -68,7 +74,13 @@ Self-hosted fonts.
     font-style: normal;
     src: url("fonts/Pmath-Bold.woff2") format("woff2");
     font-display: swap;
-    font-feature-settings: "cv23" on, "cv25" on, "cv27" on, "cv28" on, "cv29" on;
+    font-feature-settings:
+        "cv14" on,
+        "cv23" on,
+        "cv25" on,
+        "cv27" on,
+        "cv28" on,
+        "cv29" on;
 }
 
 @font-face {
@@ -77,5 +89,11 @@ Self-hosted fonts.
     font-style: normal;
     src: url("fonts/Pmath-Black.woff2") format("woff2");
     font-display: swap;
-    font-feature-settings: "cv23" on, "cv25" on, "cv27" on, "cv28" on, "cv29" on;
+    font-feature-settings:
+        "cv14" on,
+        "cv23" on,
+        "cv25" on,
+        "cv27" on,
+        "cv28" on,
+        "cv29" on;
 }

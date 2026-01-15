@@ -51,13 +51,8 @@ Layout and styling for single post pages.
                 display: flex;
                 flex-wrap: wrap;
                 column-gap: var(--space-2xl);
-                row-gap: var(--space-s);
+                row-gap: var(--space-m);
                 font-family: var(--font-family-headings);
-
-                // @media (max-width: 700px) {
-                //     flex-direction: column;
-                //     gap: var(--space-s);
-                // }
 
                 .post-content-meta {
                     display: flex;
@@ -72,14 +67,17 @@ Layout and styling for single post pages.
 
                     .post-meta-content {
                         display: flex;
-                        flex-wrap: wrap;
-                        align-items: center;
-                        gap: 4px;
+                        flex-direction: column;
 
                         .reading-time {
                             display: inline-flex;
                             align-items: center;
                             gap: var(--space-2xs);
+                        }
+
+                        .post-meta-updated {
+                            font-size: var(--step--1);
+                            color: var(--clr-text-900);
                         }
                     }
                 }

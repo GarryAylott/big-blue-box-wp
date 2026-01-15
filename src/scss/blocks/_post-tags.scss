@@ -6,6 +6,7 @@ Layout and styling for single post page and search results tags.
 .post-tags {
     display: flex;
     flex-direction: column;
+    gap: calc(var(--space-3xs) - 0.25rem);
 
     p {
         font-size: var(--step--2);

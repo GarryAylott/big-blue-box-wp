@@ -54,15 +54,27 @@
 							<p><?php echo esc_html( get_the_date() ); ?></p>
 
 					<?php else : ?>
-						<p>
+						<p class="post-meta-publish">
 							<?php
 							printf(
 								esc_html__( 'Words by %s on', 'bigbluebox' ),
 								esc_html( get_the_author() )
 							);
 							?>
+							<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+								<?php echo esc_html( get_the_date() ); ?>
+							</time>
 						</p>
-						<p><?php echo esc_html( get_the_date() ); ?></p>
+						<?php
+						$last_updated = bbb_get_last_updated_date();
+						if ( $last_updated ) :
+							?>
+							<p class="post-meta-updated">
+								<time datetime="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>">
+									<?php echo esc_html( $last_updated ); ?>
+								</time>
+							</p>
+						<?php endif; ?>
 					<?php endif; ?>
 					</div>
 				</div>

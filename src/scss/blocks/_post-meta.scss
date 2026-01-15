@@ -3,17 +3,17 @@ POST META
 Layout and styling for mainly single post meta information.
 */
 
-.post-meta {
-    gap: var(--space-2xs);
-    
-    @media (max-width: 23.063rem) {
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: var(--space-3xs);
+// .post-meta {
+//     gap: var(--space-2xs);
 
-        span {
-            display: none;
-        }
-    }
-}
+//     @media (max-width: 23.063rem) {
+//         flex-direction: column;
+//         flex-wrap: wrap;
+//         align-items: flex-start;
+//         gap: var(--space-3xs);
+
+//         span {
+//             display: none;
+//         }
+//     }
+// }

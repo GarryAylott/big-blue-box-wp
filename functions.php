@@ -208,8 +208,13 @@ function bbbx_clean_gutenberg_images($content) {
 			$img->removeAttribute( 'height' );
 		}
 
-		// Loop through all <figure> and remove style="width: ..."
+		// Loop through all <figure> and remove style="width: ..." (skip embeds)
 		foreach ( $doc->getElementsByTagName( 'figure' ) as $figure ) {
+			// Skip embed blocks - they contain iframes that wp_kses_post would strip
+			$class = $figure->getAttribute( 'class' );
+			if ( str_contains( $class, 'wp-block-embed' ) ) {
+				continue;
+			}
 			if ( $figure->hasAttribute( 'style' ) ) {
 				$figure->removeAttribute( 'style' );
 			}
@@ -225,7 +230,7 @@ function bbbx_clean_gutenberg_images($content) {
 			$new_content .= $doc->saveHTML( $child );
 		}
 
-		return wp_kses_post( $new_content );
+		return $new_content;
 	} catch ( Throwable $e ) {
 		bbb_log( '❌ Failed to clean Gutenberg images: ' . $e->getMessage() );
 		return $content;

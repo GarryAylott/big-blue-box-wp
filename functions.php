@@ -452,6 +452,30 @@ function bbb_allow_authors_to_list_users( $allcaps, $caps, $args ) {
 add_filter( 'user_has_cap', 'bbb_allow_authors_to_list_users', 10, 3 );
 
 /**
+ * Modify REST API user query to show all authors/editors for the block editor.
+ *
+ * By default, the REST API only returns users that the current user can "edit".
+ * This filter removes that restriction when querying for authors/editors,
+ * allowing the Thoughts from Team block to show all team members.
+ */
+function bbb_rest_user_query_for_block( $prepared_args, $request ) {
+	$roles = $request->get_param( 'roles' );
+
+	// Only modify queries specifically requesting author/editor roles (from our block).
+	if ( is_array( $roles ) && count( array_intersect( $roles, array( 'author', 'editor' ) ) ) > 0 ) {
+		if ( current_user_can( 'edit_posts' ) ) {
+			// Remove the "who=authors" restriction that limits to editable users.
+			if ( isset( $prepared_args['who'] ) ) {
+				unset( $prepared_args['who'] );
+			}
+		}
+	}
+
+	return $prepared_args;
+}
+add_filter( 'rest_user_query', 'bbb_rest_user_query_for_block', 10, 2 );
+
+/**
  * Customize the number of posts per page for archives.
  */
 add_action('pre_get_posts', function($query) {

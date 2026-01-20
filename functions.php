@@ -435,45 +435,47 @@ add_filter('query_vars', function($vars) {
 });
 
 /**
- * Allow authors to list users via REST API for the Thoughts from Team block.
+ * Custom REST endpoint to list team members for the Thoughts from Team block.
  *
- * By default, WordPress requires 'list_users' capability to access /wp/v2/users.
- * Authors need this to populate the contributor dropdown in the block editor.
- * This grants access to users who can edit posts (Authors, Editors, Admins).
+ * The default /wp/v2/users endpoint requires 'list_users' capability which
+ * Authors don't have. This custom endpoint allows anyone who can edit posts
+ * to fetch a list of authors and editors for use in the block.
  */
-function bbb_allow_authors_to_list_users( $allcaps, $caps, $args ) {
-	if ( isset( $args[0] ) && 'list_users' === $args[0] ) {
-		if ( isset( $allcaps['edit_posts'] ) && $allcaps['edit_posts'] ) {
-			$allcaps['list_users'] = true;
-		}
-	}
-	return $allcaps;
+function bbb_register_team_members_endpoint() {
+	register_rest_route( 'bbb/v1', '/team-members', array(
+		'methods'             => 'GET',
+		'callback'            => 'bbb_get_team_members',
+		'permission_callback' => function () {
+			return current_user_can( 'edit_posts' );
+		},
+	) );
 }
-add_filter( 'user_has_cap', 'bbb_allow_authors_to_list_users', 10, 3 );
+add_action( 'rest_api_init', 'bbb_register_team_members_endpoint' );
 
 /**
- * Modify REST API user query to show all authors/editors for the block editor.
- *
- * By default, the REST API only returns users that the current user can "edit".
- * This filter removes that restriction when querying for authors/editors,
- * allowing the Thoughts from Team block to show all team members.
+ * Return list of authors and editors for the Thoughts from Team block.
  */
-function bbb_rest_user_query_for_block( $prepared_args, $request ) {
-	$roles = $request->get_param( 'roles' );
+function bbb_get_team_members() {
+	$users = get_users( array(
+		'role__in' => array( 'author', 'editor', 'administrator' ),
+		'orderby'  => 'display_name',
+		'order'    => 'ASC',
+	) );
 
-	// Only modify queries specifically requesting author/editor roles (from our block).
-	if ( is_array( $roles ) && count( array_intersect( $roles, array( 'author', 'editor' ) ) ) > 0 ) {
-		if ( current_user_can( 'edit_posts' ) ) {
-			// Remove the "who=authors" restriction that limits to editable users.
-			if ( isset( $prepared_args['who'] ) ) {
-				unset( $prepared_args['who'] );
-			}
-		}
+	$team_members = array();
+	foreach ( $users as $user ) {
+		$team_members[] = array(
+			'id'          => $user->ID,
+			'name'        => $user->display_name,
+			'avatar_urls' => array(
+				'48' => get_avatar_url( $user->ID, array( 'size' => 48 ) ),
+				'96' => get_avatar_url( $user->ID, array( 'size' => 96 ) ),
+			),
+		);
 	}
 
-	return $prepared_args;
+	return rest_ensure_response( $team_members );
 }
-add_filter( 'rest_user_query', 'bbb_rest_user_query_for_block', 10, 2 );
 
 /**
  * Customize the number of posts per page for archives.

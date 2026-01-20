@@ -1,8 +1,8 @@
 import { __ } from "@wordpress/i18n";
-import { useEffect } from "@wordpress/element";
-import { useSelect } from "@wordpress/data";
+import { useEffect, useState } from "@wordpress/element";
 import { useBlockProps } from "@wordpress/block-editor";
 import { Button, SelectControl, TextareaControl } from "@wordpress/components";
+import apiFetch from "@wordpress/api-fetch";
 
 /**
  * Edit component for the Thoughts from the Team block.
@@ -11,6 +11,7 @@ import { Button, SelectControl, TextareaControl } from "@wordpress/components";
  */
 export default function Edit({ attributes, setAttributes }) {
     const { entries = [] } = attributes;
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         if (!entries || entries.length === 0) {
@@ -19,12 +20,12 @@ export default function Edit({ attributes, setAttributes }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const users =
-        useSelect(
-            (select) =>
-                select("core").getUsers({ roles: ["author", "editor"] }),
-            []
-        ) || [];
+    // Fetch team members from custom endpoint (works for Authors).
+    useEffect(() => {
+        apiFetch({ path: "/bbb/v1/team-members" })
+            .then((data) => setUsers(data))
+            .catch(() => setUsers([]));
+    }, []);
 
     const userOptions = users.map((user) => ({
         label: user.name,

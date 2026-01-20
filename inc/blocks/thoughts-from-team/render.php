@@ -56,7 +56,7 @@ if ( empty( $entries ) ) {
 					<?php echo esc_html( $first_name ); ?>
 				</h4>
 			</div>
-			<div class="team-thoughts__content">
+			<div class="team-thoughts__content flow-small">
 				<?php echo wpautop( wp_kses_post( $text ) ); ?>
 			</div>
 		</div>

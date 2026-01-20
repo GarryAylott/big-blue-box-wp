@@ -439,19 +439,17 @@ add_filter('query_vars', function($vars) {
  *
  * By default, WordPress requires 'list_users' capability to access /wp/v2/users.
  * Authors need this to populate the contributor dropdown in the block editor.
- * This filter grants access to users who can edit posts (Authors, Editors, Admins).
- *
- * @param array           $prepared_args Array of arguments for WP_User_Query.
- * @param WP_REST_Request $request       The REST API request.
- * @return array Modified arguments.
+ * This grants access to users who can edit posts (Authors, Editors, Admins).
  */
-function bbb_allow_authors_to_list_users( $prepared_args, $request ) {
-	if ( current_user_can( 'edit_posts' ) ) {
-		$prepared_args['has_published_posts'] = array( 'post' );
+function bbb_allow_authors_to_list_users( $allcaps, $caps, $args ) {
+	if ( isset( $args[0] ) && 'list_users' === $args[0] ) {
+		if ( isset( $allcaps['edit_posts'] ) && $allcaps['edit_posts'] ) {
+			$allcaps['list_users'] = true;
+		}
 	}
-	return $prepared_args;
+	return $allcaps;
 }
-add_filter( 'rest_user_query', 'bbb_allow_authors_to_list_users', 10, 2 );
+add_filter( 'user_has_cap', 'bbb_allow_authors_to_list_users', 10, 3 );
 
 /**
  * Customize the number of posts per page for archives.

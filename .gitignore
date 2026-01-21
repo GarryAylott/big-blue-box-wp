@@ -15,8 +15,8 @@ gulpfile.js
 # Node modules and output
 node_modules
 
-# Styles ignore as run on GitHub via Action
-style.css
-style.css.map
-editor.css
-editor.css.map
+# Styles ignore as run on GitHub via Action (root level only)
+/style.css
+/style.css.map
+/editor.css
+/editor.css.map

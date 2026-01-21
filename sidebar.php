@@ -15,6 +15,15 @@
 		</h5>
 		<ul role="list">
 			<li>
+				<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
+					<div class="social-channels__item">
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="<?php echo esc_attr__( 'X (Twitter) link', 'bigbluebox' ); ?>">
+						<h6><?php esc_html_e( 'X (Twitter)', 'bigbluebox' ); ?></h6>
+					</div>
+					<i data-lucide="arrow-up-right"></i>
+				 </a>
+			</li>
+			<li>
 				<a class="has-external-icon" href="https://bsky.app/profile/bigblueboxpodcast.bsky.social" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
 						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-bluesky.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Bluesky link', 'bigbluebox' ); ?>">
@@ -24,10 +33,10 @@
 				 </a>
 			</li>
 			<li>
-				<a class="has-external-icon" href="https://twitter.com/bigblueboxpcast" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-x.svg" width="21" height="21" alt="<?php echo esc_attr__( 'X (Twitter) link', 'bigbluebox' ); ?>">
-						<h6><?php esc_html_e( 'X (Twitter)', 'bigbluebox' ); ?></h6>
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Threads link', 'bigbluebox' ); ?>">
+						<h6><?php esc_html_e( 'Threads', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
@@ -42,19 +51,19 @@
 				 </a>
 			</li>
 			<li>
-				<a class="has-external-icon" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://www.tiktok.com/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Facebook link', 'bigbluebox' ); ?>">
-						<h6><?php esc_html_e( 'Facebook', 'bigbluebox' ); ?></h6>
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-tiktok.svg" width="21" height="21" alt="<?php echo esc_attr__( 'TikTok link', 'bigbluebox' ); ?>">
+						<h6><?php esc_html_e( 'TikTok', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>
 			</li>
 			<li>
-				<a class="has-external-icon" href="https://www.threads.net/@bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
+				<a class="has-external-icon" href="https://facebook.com/bigblueboxpodcast" target="_blank" rel="noreferrer noopener">
 					<div class="social-channels__item">
-						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-threads.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Threads link', 'bigbluebox' ); ?>">
-						<h6><?php esc_html_e( 'Threads', 'bigbluebox' ); ?></h6>
+						<img src="<?php echo $theme_dir; ?>/images/icons/social-icon-fb.svg" width="21" height="21" alt="<?php echo esc_attr__( 'Facebook link', 'bigbluebox' ); ?>">
+						<h6><?php esc_html_e( 'Facebook', 'bigbluebox' ); ?></h6>
 					</div>
 					<i data-lucide="arrow-up-right"></i>
 				 </a>

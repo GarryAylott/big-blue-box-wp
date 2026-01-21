@@ -1,0 +1,39 @@
+@use "utilities" as *;
+
+.info-block {
+    position: relative;
+    margin-block: var(--space-l);
+    padding: var(--space-s);
+    padding-inline-start: calc(var(--space-m) + 1.75rem);
+    background: hsl(var(--clr-brand-primary-hsl) / 0.1);
+    border: 1px solid hsl(var(--clr-brand-primary-hsl) / 0.3);
+    border-radius: var(--radius-normal);
+
+    &__icon {
+        position: absolute;
+        top: var(--space-s);
+        left: 1rem;
+        filter: drop-shadow(0 0 4px hsl(var(--clr-brand-primary-hsl) / 0.8));
+    }
+
+    &__content {
+        p {
+            margin: 0;
+            color: var(--clr-text-400);
+
+            &:not(:last-child) {
+                margin-block-end: var(--space-s);
+            }
+        }
+
+        a {
+            color: var(--clr-text-link);
+            text-decoration: underline;
+
+            &:hover,
+            &:focus {
+                color: var(--clr-text-link-hover);
+            }
+        }
+    }
+}

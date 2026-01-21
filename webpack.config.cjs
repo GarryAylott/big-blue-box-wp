@@ -6,17 +6,19 @@ const pluginsWithoutClean = (defaultConfig.plugins || []).filter(
     (plugin) => !(plugin instanceof CleanWebpackPlugin)
 );
 
-module.exports = {
+const blocks = ["thoughts-from-team", "info-block"];
+
+module.exports = blocks.map((block) => ({
     ...defaultConfig,
 
     entry: {
-        "thoughts-from-team": "./src/blocks/thoughts-from-team.js",
+        [block]: `./src/blocks/${block}.js`,
     },
 
     output: {
         filename: "[name].js",
-        path: path.resolve(__dirname, "inc/blocks/thoughts-from-team"),
+        path: path.resolve(__dirname, `inc/blocks/${block}`),
     },
 
     plugins: pluginsWithoutClean,
-};
+}));

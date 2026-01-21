@@ -1,0 +1,21 @@
+{
+    "apiVersion": 2,
+    "name": "bbb/info-block",
+    "title": "Info Block",
+    "category": "bbb-blocks",
+    "icon": "format-quote",
+    "description": "A styled info box with TARDIS icon for highlighting important text.",
+    "attributes": {
+        "content": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "supports": {
+        "html": false
+    },
+    "editorScript": "file:./info-block.js",
+    "render": "file:./render.php",
+    "style": "bigbluebox-style",
+    "editorStyle": "file:./editor.css"
+}

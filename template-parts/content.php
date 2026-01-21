@@ -46,12 +46,13 @@
 								$episode_text = null;
 							}
 
-							if ( $episode_text ) :
-								?>
-								<p><?php echo esc_html( $episode_text ); ?>,</p>
-							<?php endif; ?>
-
-							<p><?php echo esc_html( get_the_date() ); ?></p>
+							?>
+							<p>
+								<?php if ( $episode_text ) : ?>
+									<?php echo esc_html( $episode_text ); ?>,
+								<?php endif; ?>
+								<?php echo esc_html( get_the_date() ); ?>
+							</p>
 
 					<?php else : ?>
 						<p class="post-meta-publish">

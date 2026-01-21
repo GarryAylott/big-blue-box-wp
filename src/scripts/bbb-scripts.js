@@ -18,6 +18,7 @@ import {
     X,
     Tag,
     FileText,
+    Info,
 } from "lucide";
 
 // Only register icons we use so the bundle stays lean.
@@ -39,6 +40,7 @@ const icons = {
     X,
     Tag,
     FileText,
+    Info,
 };
 createIcons({ icons });
 
@@ -128,7 +130,7 @@ const initBackgroundFade = () => {
 
     const getOverlayBase = () => {
         const base = Number.parseFloat(
-            backgroundImage.dataset.heroOverlayBase || ""
+            backgroundImage.dataset.heroOverlayBase || "",
         );
         return Number.isFinite(base) ? base : null;
     };
@@ -139,7 +141,7 @@ const initBackgroundFade = () => {
     const getFadeDistance = () => {
         const maxScroll = Math.max(
             document.documentElement.scrollHeight - window.innerHeight,
-            0
+            0,
         );
         return maxScroll > 0 ? Math.min(CONFIG.FADE_DISTANCE, maxScroll) : 1;
     };
@@ -152,7 +154,7 @@ const initBackgroundFade = () => {
             if (overlayBase !== null) {
                 backgroundImage.style.setProperty(
                     "--hero-overlay-opacity",
-                    "0"
+                    "0",
                 );
             }
         }
@@ -169,14 +171,14 @@ const initBackgroundFade = () => {
                         requestAnimationFrame(() => {
                             const opacity = Math.max(
                                 1 - window.scrollY / fadeDistance,
-                                0
+                                0,
                             );
                             backgroundImage.style.opacity = opacity;
                             const overlayBase = getOverlayBase();
                             if (overlayBase !== null) {
                                 backgroundImage.style.setProperty(
                                     "--hero-overlay-opacity",
-                                    `${overlayBase * opacity}`
+                                    `${overlayBase * opacity}`,
                                 );
                             }
                             ticking = false;
@@ -200,7 +202,7 @@ const initHeroOverlayFromFeaturedImage = () => {
 
     const backgroundImage = document.querySelector(CONFIG.SELECTORS.bgImage);
     const featuredImage = document.querySelector(
-        CONFIG.SELECTORS.featuredImage
+        CONFIG.SELECTORS.featuredImage,
     );
 
     if (!backgroundImage || !featuredImage) return;
@@ -258,11 +260,11 @@ const initHeroOverlayFromFeaturedImage = () => {
             ) {
                 backgroundImage.style.setProperty(
                     "--hero-overlay-opacity",
-                    "0"
+                    "0",
                 );
                 backgroundImage.style.setProperty(
                     "--hero-overlay-gradient",
-                    "none"
+                    "none",
                 );
                 return;
             }
@@ -289,24 +291,24 @@ const initHeroOverlayFromFeaturedImage = () => {
 
             backgroundImage.style.setProperty(
                 "--hero-overlay-color",
-                `${fallbackR}, ${fallbackG}, ${fallbackB}`
+                `${fallbackR}, ${fallbackG}, ${fallbackB}`,
             );
             backgroundImage.style.setProperty(
                 "--hero-overlay-gradient",
-                `linear-gradient(90deg, ${stops.join(", ")})`
+                `linear-gradient(90deg, ${stops.join(", ")})`,
             );
             backgroundImage.style.setProperty(
                 "--hero-overlay-opacity",
-                `${overlayOpacity}`
+                `${overlayOpacity}`,
             );
             backgroundImage.dataset.heroOverlayBase = `${overlayOpacity}`;
             const currentOpacity = Number.parseFloat(
-                window.getComputedStyle(backgroundImage).opacity
+                window.getComputedStyle(backgroundImage).opacity,
             );
             if (Number.isFinite(currentOpacity)) {
                 backgroundImage.style.setProperty(
                     "--hero-overlay-opacity",
-                    `${overlayOpacity * currentOpacity}`
+                    `${overlayOpacity * currentOpacity}`,
                 );
             }
         } catch (err) {
@@ -352,7 +354,7 @@ const initHeroOverlayFromFeaturedImage = () => {
 const initSearch = () => {
     const searchIcon = document.querySelector(CONFIG.SELECTORS.searchIcon);
     const searchOverlay = document.querySelector(
-        CONFIG.SELECTORS.searchOverlay
+        CONFIG.SELECTORS.searchOverlay,
     );
 
     if (!searchIcon || !searchOverlay) return;
@@ -436,7 +438,7 @@ const initSearch = () => {
 // Podcast links menu
 const initPodcastMenu = () => {
     const podLinksDetails = document.querySelector(
-        CONFIG.SELECTORS.podcastMenu
+        CONFIG.SELECTORS.podcastMenu,
     );
     if (!podLinksDetails) return;
 
@@ -474,7 +476,7 @@ const initExternalLinkIcons = () => {
 
     contentAreas.forEach((contentArea) => {
         const links = contentArea.querySelectorAll(
-            'a[target="_blank"]:not(.has-external-icon)'
+            'a[target="_blank"]:not(.has-external-icon)',
         );
 
         links.forEach((link) => {
@@ -495,7 +497,7 @@ const initExternalLinkIcons = () => {
 // TARDIS progress image on scroll
 const initScrollContainers = () => {
     const scrollContainers = document.querySelectorAll(
-        CONFIG.SELECTORS.scrollContainer
+        CONFIG.SELECTORS.scrollContainer,
     );
     if (!scrollContainers.length) return;
 
@@ -623,12 +625,12 @@ const initCategorySwitcher = () => {
     if (document.body.matches(".search-results, .search-no-results")) return;
 
     const switchButtons = document.querySelectorAll(
-        CONFIG.SELECTORS.categorySwitcher
+        CONFIG.SELECTORS.categorySwitcher,
     );
     const postContainer = document.getElementById("ajax-posts-container");
     const statusRegion = document.getElementById("ajax-posts-status");
     const paginationContainer = document.getElementById(
-        "ajax-posts-pagination"
+        "ajax-posts-pagination",
     );
     const switcher = switchButtons.length
         ? switchButtons[0].closest(".view-switcher")
@@ -736,7 +738,7 @@ const initCategorySwitcher = () => {
                         category,
                         paged,
                         payload.data?.content ?? "",
-                        payload.data?.pagination ?? ""
+                        payload.data?.pagination ?? "",
                     );
                 }
             })
@@ -967,7 +969,7 @@ const initEraJumpDropdown = () => {
 // Review compendium rotating artwork
 const initCompendiumLinkImages = () => {
     const container = document.querySelector(
-        "[data-compendium-rotation][data-image-dir]"
+        "[data-compendium-rotation][data-image-dir]",
     );
     if (!container) return;
 
@@ -1052,7 +1054,7 @@ const initTranscriptAnimation = () => {
             details.addEventListener("toggle", () => {
                 if (details.open) {
                     const content = details.querySelector(
-                        ".podcast-transcript__content"
+                        ".podcast-transcript__content",
                     );
                     if (content) {
                         content.style.animation = "none";
@@ -1077,7 +1079,7 @@ const initLogosMarquee = () => {
             scroller.setAttribute("data-animated", true);
 
             const scrollerGroup = scroller.querySelector(
-                ".brand-logos-marquee__group"
+                ".brand-logos-marquee__group",
             );
             if (!scrollerGroup) return;
 

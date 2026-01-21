@@ -138,14 +138,14 @@ body:is(.single) .entry-content {
         &:not(:focus):first-letter {
             -webkit-initial-letter: 2;
             initial-letter: 2;
-            color: var(--clr-brand-accent);
+            color: var(--clr-brand-secondary);
             margin-inline-end: 0.5ch;
         }
 
         @supports not (initial-letter: 2) {
             &:first-letter,
             &:not(:focus):first-letter {
-                color: var(--clr-brand-accent);
+                color: var(--clr-brand-secondary);
                 font-size: 73px;
                 line-height: 1em;
                 margin-block-start: 0.5rem;

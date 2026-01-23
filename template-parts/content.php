@@ -245,10 +245,16 @@
 
 				// Retrieve the author's first name.
 				$first_name = get_the_author_meta( 'first_name', $author_id );
-				// Set the link text, falling back to a generic label if the first name is not set.
+				// Set the link text - use different text for legacy authors.
+				if ( bbb_is_legacy_author( $author_id ) ) {
+					$link_text = ! empty( $first_name )
+						? sprintf( esc_html__( "Read %s's articles", 'bigbluebox' ), esc_html( $first_name ) )
+						: esc_html__( "Read this author's articles", 'bigbluebox' );
+				} else {
 					$link_text = ! empty( $first_name )
 						? sprintf( esc_html__( 'More about %s', 'bigbluebox' ), esc_html( $first_name ) )
 						: esc_html__( 'More about the author', 'bigbluebox' );
+				}
 
 				// Output the link to the author's archive.
 				echo '<a class="link-alt" href="' . esc_url( get_author_posts_url( $author_id ) ) . '">';

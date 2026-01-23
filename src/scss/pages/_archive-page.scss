@@ -98,6 +98,12 @@ body:is(.search-no-results) {
         @media (min-width: 50rem) {
             grid-template-columns: 300px 1fr;
         }
+
+        &--legacy {
+            @media (min-width: 50rem) {
+                grid-template-columns: 1fr;
+            }
+        }
     }
 
     &__image {

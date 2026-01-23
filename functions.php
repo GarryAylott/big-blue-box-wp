@@ -100,6 +100,18 @@ function bigbluebox_setup() {
 }
 add_action( 'after_setup_theme', 'bigbluebox_setup' );
 
+/**
+ * Check if an author is a legacy (former) team member.
+ * Legacy authors have simplified profiles - no hero image, social links, or favourites.
+ *
+ * @param int $author_id The user ID to check.
+ * @return bool True if the author is a legacy author.
+ */
+function bbb_is_legacy_author( $author_id ) {
+	$legacy_author_ids = array( 5 );
+	return in_array( (int) $author_id, $legacy_author_ids, true );
+}
+
 // Trim unneeded core image sizes
 add_filter(
 	'intermediate_image_sizes_advanced',

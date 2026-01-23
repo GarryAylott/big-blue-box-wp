@@ -145,7 +145,9 @@ body:is(.single) .entry-content {
         &:not(:focus):first-letter {
             -webkit-initial-letter: 2;
             initial-letter: 2;
-            color: var(--clr-brand-secondary);
+            color: var(
+                --clr-brand-secondary
+            ); // Correct colour for article posts (brand-secondary).
             margin-inline-end: 0.5ch;
         }
 
@@ -163,21 +165,14 @@ body:is(.single) .entry-content {
     }
 }
 
-body.category-podcasts {
+body:is(.category-podcasts) .entry-content {
     p.lead,
     p.has-drop-cap {
         &:first-letter,
         &:not(:focus):first-letter {
-            color: inherit;
-            float: none;
-            font-family: inherit;
-            font-size: inherit;
-            line-height: inherit;
-            margin: 0;
-
-            @media (max-width: 400px) {
-                @include visually-hidden;
-            }
+            color: hsl(
+                var(--clr-brand-accent-hsl)
+            ); // Correct colour for podcast posts (brand-accent).
         }
     }
 }

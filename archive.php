@@ -77,7 +77,8 @@ if (is_tag()) {
             );
             ?>
             <section class="author-hero">
-                <div class="author-hero__container">
+                <div class="author-hero__container<?php echo bbb_is_legacy_author( $author_id ) ? ' author-hero__container--legacy' : ''; ?>">
+                    <?php if ( ! bbb_is_legacy_author( $author_id ) ) : ?>
                     <div class="author-hero__image">
                         <?php if ($profile_img_id): ?>
                             <?php
@@ -89,9 +90,10 @@ if (is_tag()) {
                             ?>
                         <?php endif; ?>
                     </div>
+                    <?php endif; ?>
                     <div class="author-hero__content flow-small">
                         <h1 class="author-hero__name"><?php echo esc_html($author->display_name); ?></h1>
-                        <?php if (!empty($social_links_markup)) : ?>
+                        <?php if ( ! bbb_is_legacy_author( $author_id ) && ! empty( $social_links_markup ) ) : ?>
                             <?php echo $social_links_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup escaped within helper. ?>
                         <?php endif; ?>
                         <span class="author-hero__badge">
@@ -105,6 +107,7 @@ if (is_tag()) {
                             </span>
                         </span>
                         <div class="author-hero__bio"><?php echo wpautop( wp_kses_post( $acf_bio ) ); ?></div>
+                        <?php if ( ! bbb_is_legacy_author( $author_id ) ) : ?>
                         <div class="author-hero__favs">
                             <?php
                             if ($fav_doctor_image) {
@@ -166,6 +169,7 @@ if (is_tag()) {
                                 </div>
                             <?php endif; ?>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </section>

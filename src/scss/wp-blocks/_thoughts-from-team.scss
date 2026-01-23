@@ -53,6 +53,7 @@
         p {
             color: var(--clr-text-900);
             font-style: italic;
+            text-wrap: unset;
         }
 
         @media (max-width: 40rem) {

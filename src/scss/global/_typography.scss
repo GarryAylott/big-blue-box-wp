@@ -22,7 +22,9 @@ Font styling for headings, paragraphs etc.
 :where(h1, h2, h3, h4, h5, h6) {
     font-family: var(--font-family-headings);
     font-weight: var(--fw-bold);
-    text-wrap: pretty;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    font-variant-numeric: lining-nums;
 }
 
 // Heading sizes and styles
@@ -55,6 +57,11 @@ h6 {
     font-size: calc(var(--step--1) + 0.15rem);
     line-height: 1.3;
     letter-spacing: -0.1px;
+}
+
+p {
+    overflow-wrap: break-word;
+    font-variant-numeric: proportional-nums;
 }
 
 p,

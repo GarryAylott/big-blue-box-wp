@@ -13,7 +13,7 @@ Styles for full-width section that links to the Reviews Compendium
     @media (max-width: 50rem) {
         height: auto;
         padding-block: var(--space-l);
-        background-image: url("images/pagebg_legal.avif");
+        background-image: url("images/pagebg_legal.webp");
         background-size: cover;
         background-position: top center;
     }
@@ -40,6 +40,17 @@ Styles for full-width section that links to the Reviews Compendium
             background: hsl(var(--clr-brand-primary-darker-hsl) / 0.65);
             backdrop-filter: blur(12px);
             border-radius: var(--radius-normal);
+            overflow: hidden;
+
+            &::before {
+                @include soft-glow($top: -4rem, $left: -32rem, $opacity: 0.3);
+            }
+
+            &::after {
+                @include img-border-highlight($border-transparency: 100%);
+                border-radius: inherit;
+                opacity: 30%;
+            }
 
             @media (max-width: 50rem) {
                 width: 100%;

@@ -16,20 +16,12 @@ Layout and styling for the closing paragraph and review score.
     z-index: 1;
 
     &::before {
-        content: "";
-        position: absolute;
-        bottom: -2rem;
-        right: -30rem;
-        width: 1200px;
-        height: 200px;
-        background: radial-gradient(
-            circle,
-            hsl(var(--clr-brand-primary-hsl) / 0.4) 0,
-            hsl(var(--clr-brand-primary-hsl) / 0) 60%
+        @include soft-glow(
+            $top: -1rem,
+            $left: -28rem,
+            $height: 150px,
+            $opacity: 0.25
         );
-        border-radius: var(--radius-circle);
-        filter: blur(80px);
-        z-index: -1;
 
         @media (max-width: 38.875rem) {
             right: -15rem;
@@ -37,7 +29,8 @@ Layout and styling for the closing paragraph and review score.
     }
 
     &::after {
-        @include img-border-highlight(var(--clr-border-default));
+        @include img-border-highlight;
+        border-radius: inherit;
     }
 
     &__text {

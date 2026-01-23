@@ -12,20 +12,7 @@ RELATED ARTICLE IN-POST BANNER
     z-index: 1;
 
     &::before {
-        content: "";
-        position: absolute;
-        bottom: -2rem;
-        right: -30rem;
-        width: 1200px;
-        height: 200px;
-        background: radial-gradient(
-            circle,
-            hsla(221, 91%, 70%, 0.15) 0,
-            hsla(221, 91%, 70%, 0) 60%
-        );
-        border-radius: var(--radius-circle);
-        filter: blur(80px);
-        z-index: -1;
+        @include soft-glow;
 
         @media (max-width: 38.875rem) {
             right: -15rem;
@@ -33,7 +20,7 @@ RELATED ARTICLE IN-POST BANNER
     }
 
     &::after {
-        @include img-border-highlight(var(--clr-brand-primary));
+        @include img-border-highlight;
     }
 
     &__heading {

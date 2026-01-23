@@ -225,7 +225,8 @@ body:is(.search-no-results) {
     }
 }
 
-body.archive .post-cards-grid {
+body.archive .post-cards-grid,
+body.search-results .post-cards-grid {
     margin-block-start: var(--space-l);
 
     @include post-cards-grid;

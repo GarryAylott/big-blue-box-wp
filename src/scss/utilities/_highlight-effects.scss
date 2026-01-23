@@ -1,0 +1,112 @@
+/* 
+SECTION AND PANEL HIGHLIGHT EFFECTS
+Top left border and soft glow effects.
+*/
+
+/* Border highlight effects */
+
+// Top left highlight for sections with background or layered images.
+@mixin img-border-highlight(
+    $highlight-color: var(--clr-brand-primary),
+    $border-transparency: 40%,
+    $gradient-transparency: 100%
+) {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(
+                140deg,
+                hsl(215, 95%, 7%) $gradient-transparency,
+                hsl(215, 95%, 7%) $gradient-transparency
+            )
+            padding-box,
+        linear-gradient(
+                150deg,
+                $highlight-color -20%,
+                transparent $border-transparency
+            )
+            border-box;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    z-index: -2;
+}
+/**
+Notes:
+The only variable value in this mixin is '$highlight-color' and is used to change the highlighted colour from it's default value of --clr-brand-primary (the primary blue colour).
+Example usage with a different colour variable:
+img::before {
+    @include img-border-highlight(var(--clr-brand-accent));
+}
+**/
+
+// Top left highlight for sections with solid fills.
+@mixin panel-border-highlight(
+    $start-color: var(--clr-surface-100),
+    $end-color: var(--clr-surface-300)
+) {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: -1px;
+    background: linear-gradient(to bottom right, $start-color, $end-color 40%);
+    border-radius: inherit;
+    z-index: -1;
+}
+/**
+Notes:
+The '$end-color' should remain at --clr-surface-300 as it will blend with the site's main background colour.
+Based on this, passing one custom colour will only change the highlight colour as intended.
+Example usage for a custom start colour:
+.element::before {
+    @include panel-border-highlight(#ff6600);
+}
+
+If the section this is being applied to is on anything other than the site's main background colour, two values
+can be passed and '$end-color' will be the second/last colour to match whatever background it sits on.
+Example usage for a custom start colour:
+.element::before {
+    @include panel-border-highlight(#ffcc00, #ff6600);
+}
+**/
+
+/* Glow and light effects */
+@mixin soft-glow(
+    $opacity: 0.15,
+    $width: 1200px,
+    $height: 300px,
+    $top: -2rem,
+    $left: -30rem
+) {
+    content: "";
+    position: absolute;
+    top: $top;
+    left: $left;
+    width: $width;
+    height: $height;
+    background: radial-gradient(
+        circle,
+        hsla(221, 91%, 70%, $opacity) 0,
+        hsla(221, 91%, 70%, 0) 60%
+    );
+    border-radius: var(--radius-circle);
+    filter: blur(80px);
+    z-index: -1;
+}
+/**
+Notes:
+Variables can be used to change the glow opacity, width, height and inset (top and left) values.
+Example usage with just opacity:
+.element::before {
+    @include soft-glow($opacity: 0.3);
+}
+
+Example usage with all five variables:
+.element::before {
+    @include soft-glow($top: -3.5rem, $left: -15rem, $width: 800px, $height: 100px, $opacity: 0.25);
+}
+**/

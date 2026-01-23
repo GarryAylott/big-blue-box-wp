@@ -9,13 +9,16 @@ Layout and styling for panels that are styled differently to regular sections.
 .call-out-panel-large {
     position: relative;
     padding: calc(var(--space-s) + 0.25rem);
-    background: var(--clr-surface-300);
     border-radius: var(--radius-small);
+    overflow: hidden;
+
+    &::before {
+        @include soft-glow;
+    }
 
     &::after {
-        @include panel-border-highlight;
-        border-radius: var(--radius-small);
-        opacity: 0.4;
+        @include img-border-highlight;
+        border-radius: inherit;
     }
 }
 

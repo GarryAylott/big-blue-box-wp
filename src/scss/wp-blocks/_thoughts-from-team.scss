@@ -1,11 +1,27 @@
 @use "utilities" as *;
 
 .team-thoughts {
+    position: relative;
     margin-block: var(--space-xl);
     padding-block: var(--space-m);
     padding-inline: var(--space-l);
     background: var(--clr-surface-600);
     border-radius: var(--radius-normal);
+    overflow: hidden;
+    z-index: 1;
+
+    &::before {
+        @include soft-glow;
+
+        @media (max-width: 38.875rem) {
+            right: -15rem;
+        }
+    }
+
+    &::after {
+        @include img-border-highlight;
+        border-radius: inherit;
+    }
 
     &__heading {
         font-size: var(--step-3);

@@ -31,12 +31,13 @@ add_action( 'acf/render_field/name=podcast_transcript', function ( $field ) {
 	$existing_transcript = get_field( 'podcast_transcript', $post->ID );
 	$api_disabled        = (int) get_option( 'disable_captivate_api', 0 );
 
-	$has_transcript = ! empty( $existing_transcript ) && trim( wp_strip_all_tags( $existing_transcript ) ) !== '';
-	$word_count     = $has_transcript ? str_word_count( wp_strip_all_tags( $existing_transcript ) ) : 0;
+	$stripped_transcript = trim( wp_strip_all_tags( $existing_transcript ) );
+	$word_count          = ! empty( $stripped_transcript ) ? str_word_count( $stripped_transcript ) : 0;
+	$has_transcript      = $word_count > 0;
 
 	wp_nonce_field( 'bbb_fetch_transcript_action', 'bbb_transcript_nonce' );
 	?>
-	<div id="bbb-transcript-fetch-ui" style="margin-bottom: 15px;">
+	<div id="bbb-transcript-fetch-ui">
 		<p id="bbb-transcript-status" style="margin: 0 0 8px 0;">
 			<?php if ( $has_transcript ) : ?>
 				<strong>Status:</strong> Transcript added to post (<?php echo esc_html( number_format( $word_count ) ); ?> words)

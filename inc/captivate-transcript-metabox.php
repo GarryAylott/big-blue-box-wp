@@ -1,9 +1,9 @@
 <?php
 /**
- * Captivate Transcript Meta Box
+ * Captivate Transcript Fetch Button
  *
- * Adds a meta box to the post editor for fetching episode transcripts
- * from the Captivate API with a single click.
+ * Adds a fetch button to the existing podcast_transcript ACF field
+ * for fetching episode transcripts from the Captivate API.
  *
  * @package Big_Blue_Box
  */
@@ -11,32 +11,19 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Register the transcript fetch meta box.
- * Only for administrators on post edit screens.
+ * Render the transcript fetch UI above the podcast_transcript field.
+ * Only for administrators.
+ *
+ * @param array $field ACF field array.
  */
-add_action( 'add_meta_boxes', function () {
+add_action( 'acf/render_field/name=podcast_transcript', function ( $field ) {
+	// Only for administrators.
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
 
-	add_meta_box(
-		'bbb_transcript_fetch',
-		'Fetch Episode Transcript',
-		'bbb_render_transcript_metabox',
-		'post',
-		'side',
-		'default'
-	);
-} );
-
-/**
- * Render the transcript fetch meta box.
- *
- * @param WP_Post $post Current post object.
- */
-function bbb_render_transcript_metabox( $post ) {
-	// Double-check capability.
-	if ( ! current_user_can( 'manage_options' ) ) {
+	global $post;
+	if ( ! $post ) {
 		return;
 	}
 
@@ -49,8 +36,8 @@ function bbb_render_transcript_metabox( $post ) {
 
 	wp_nonce_field( 'bbb_fetch_transcript_action', 'bbb_transcript_nonce' );
 	?>
-	<div id="bbb-transcript-metabox">
-		<p id="bbb-transcript-status">
+	<div id="bbb-transcript-fetch-ui" style="margin-bottom: 15px; padding: 12px; background: #f6f7f7; border: 1px solid #c3c4c7; border-radius: 4px;">
+		<p id="bbb-transcript-status" style="margin: 0 0 8px 0;">
 			<?php if ( $has_transcript ) : ?>
 				<strong>Status:</strong> Transcript exists (<?php echo esc_html( number_format( $word_count ) ); ?> words)
 			<?php else : ?>
@@ -59,22 +46,22 @@ function bbb_render_transcript_metabox( $post ) {
 		</p>
 
 		<?php if ( $api_disabled ) : ?>
-			<p class="description" style="color: #d63638;">
+			<p class="description" style="color: #d63638; margin: 0 0 8px 0;">
 				<strong>API is disabled.</strong> Enable it under Captivate API Tools to fetch transcripts.
 			</p>
 		<?php elseif ( ! $guid ) : ?>
-			<p class="description">
+			<p class="description" style="margin: 0 0 8px 0;">
 				Select an episode from the Captivate Episode Selector field first.
 			</p>
 		<?php endif; ?>
 
 		<?php if ( $has_transcript ) : ?>
-			<p id="bbb-overwrite-warning" class="description" style="color: #dba617; display: none;">
+			<p id="bbb-overwrite-warning" class="description" style="color: #dba617; margin: 0 0 8px 0; display: none;">
 				<strong>Warning:</strong> This will overwrite the existing transcript.
 			</p>
 		<?php endif; ?>
 
-		<p id="bbb-transcript-message" style="display: none;"></p>
+		<p id="bbb-transcript-message" style="margin: 0 0 8px 0; display: none;"></p>
 
 		<button type="button"
 			id="bbb-fetch-transcript-btn"
@@ -88,7 +75,7 @@ function bbb_render_transcript_metabox( $post ) {
 		<span id="bbb-transcript-spinner" class="spinner" style="float: none; margin-top: 0;"></span>
 	</div>
 	<?php
-}
+}, 5 ); // Priority 5 to render before the field.
 
 /**
  * AJAX handler for fetching a single transcript.
@@ -183,7 +170,7 @@ add_action( 'wp_ajax_bbb_fetch_single_transcript', function () {
 } );
 
 /**
- * Enqueue admin scripts for the meta box.
+ * Enqueue admin scripts for the transcript fetch button.
  *
  * @param string $hook_suffix Current admin page.
  */
@@ -201,7 +188,7 @@ add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
 		return;
 	}
 
-	// Inline script for the meta box.
+	// Inline script for the fetch button.
 	$script = <<<'JS'
 (function() {
 	document.addEventListener('DOMContentLoaded', function() {

@@ -31,17 +31,17 @@ add_action( 'acf/render_field/name=podcast_transcript', function ( $field ) {
 	$existing_transcript = get_field( 'podcast_transcript', $post->ID );
 	$api_disabled        = (int) get_option( 'disable_captivate_api', 0 );
 
-	$has_transcript = ! empty( $existing_transcript );
+	$has_transcript = ! empty( $existing_transcript ) && trim( wp_strip_all_tags( $existing_transcript ) ) !== '';
 	$word_count     = $has_transcript ? str_word_count( wp_strip_all_tags( $existing_transcript ) ) : 0;
 
 	wp_nonce_field( 'bbb_fetch_transcript_action', 'bbb_transcript_nonce' );
 	?>
-	<div id="bbb-transcript-fetch-ui" style="margin-bottom: 15px; padding: 12px; background: #f6f7f7; border: 1px solid #c3c4c7; border-radius: 4px;">
+	<div id="bbb-transcript-fetch-ui" style="margin-bottom: 15px;">
 		<p id="bbb-transcript-status" style="margin: 0 0 8px 0;">
 			<?php if ( $has_transcript ) : ?>
-				<strong>Status:</strong> Transcript exists (<?php echo esc_html( number_format( $word_count ) ); ?> words)
+				<strong>Status:</strong> Transcript added to post (<?php echo esc_html( number_format( $word_count ) ); ?> words)
 			<?php else : ?>
-				<strong>Status:</strong> No transcript
+				<strong>Status:</strong> No transcript added to post
 			<?php endif; ?>
 		</p>
 
@@ -55,24 +55,28 @@ add_action( 'acf/render_field/name=podcast_transcript', function ( $field ) {
 			</p>
 		<?php endif; ?>
 
+		<p id="bbb-transcript-message" style="margin: 0 0 8px 0; display: none;"></p>
+
 		<?php if ( $has_transcript ) : ?>
-			<p id="bbb-overwrite-warning" class="description" style="color: #dba617; margin: 0 0 8px 0; display: none;">
-				<strong>Warning:</strong> This will overwrite the existing transcript.
+			<p style="margin: 0 0 8px 0;">
+				<label>
+					<input type="checkbox" id="bbb-overwrite-transcript" />
+					Overwrite existing transcript
+				</label>
 			</p>
 		<?php endif; ?>
 
-		<p id="bbb-transcript-message" style="margin: 0 0 8px 0; display: none;"></p>
-
-		<button type="button"
-			id="bbb-fetch-transcript-btn"
-			class="button button-secondary"
-			data-post-id="<?php echo esc_attr( $post->ID ); ?>"
-			data-has-transcript="<?php echo $has_transcript ? '1' : '0'; ?>"
-			<?php disabled( $api_disabled || ! $guid ); ?>>
-			Fetch Transcript
-		</button>
-
-		<span id="bbb-transcript-spinner" class="spinner" style="float: none; margin-top: 0;"></span>
+		<p style="margin: 0;">
+			<button type="button"
+				id="bbb-fetch-transcript-btn"
+				class="button button-secondary"
+				data-post-id="<?php echo esc_attr( $post->ID ); ?>"
+				data-has-transcript="<?php echo $has_transcript ? '1' : '0'; ?>"
+				<?php disabled( $api_disabled || ! $guid ); ?>>
+				Fetch Transcript
+			</button>
+			<span id="bbb-transcript-spinner" class="spinner" style="float: none; margin-top: 0;"></span>
+		</p>
 	</div>
 	<?php
 }, 5 ); // Priority 5 to render before the field.
@@ -132,6 +136,9 @@ add_action( 'wp_ajax_bbb_fetch_single_transcript', function () {
 		if ( is_wp_error( $media_id ) ) {
 			wp_send_json_error( [ 'message' => 'Failed to get media ID: ' . $media_id->get_error_message() ] );
 		}
+
+		// Save media_id for future use.
+		update_field( 'captivate_media_id', $media_id, $post_id );
 	}
 
 	// Fetch transcript.
@@ -141,15 +148,24 @@ add_action( 'wp_ajax_bbb_fetch_single_transcript', function () {
 		wp_send_json_error( [ 'message' => 'Failed to fetch transcript: ' . $raw_transcript->get_error_message() ] );
 	}
 
+	// No transcript available at source.
 	if ( null === $raw_transcript ) {
-		wp_send_json_error( [ 'message' => 'No transcript available for this episode.' ] );
+		wp_send_json_error( [
+			'message'      => 'Transcript not present',
+			'no_transcript' => true,
+		] );
 	}
 
 	// Normalize transcript.
 	$normalized_transcript = bbb_normalize_transcript( $raw_transcript );
 
-	if ( empty( $normalized_transcript ) ) {
-		wp_send_json_error( [ 'message' => 'Transcript was empty after processing.' ] );
+	// Check if normalized transcript is empty or just whitespace/empty tags.
+	$stripped = trim( wp_strip_all_tags( $normalized_transcript ) );
+	if ( empty( $stripped ) ) {
+		wp_send_json_error( [
+			'message'      => 'Transcript not present',
+			'no_transcript' => true,
+		] );
 	}
 
 	// Save transcript.
@@ -159,13 +175,11 @@ add_action( 'wp_ajax_bbb_fetch_single_transcript', function () {
 		wp_send_json_error( [ 'message' => 'Failed to save transcript: ' . $result->get_error_message() ] );
 	}
 
-	$word_count = str_word_count( wp_strip_all_tags( $normalized_transcript ) );
-	$preview    = wp_trim_words( wp_strip_all_tags( $normalized_transcript ), 20, '...' );
+	$word_count = str_word_count( $stripped );
 
 	wp_send_json_success( [
 		'message'    => 'Transcript saved successfully!',
 		'word_count' => number_format( $word_count ),
-		'preview'    => $preview,
 	] );
 } );
 
@@ -196,29 +210,21 @@ add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
 		var spinner = document.getElementById('bbb-transcript-spinner');
 		var status = document.getElementById('bbb-transcript-status');
 		var message = document.getElementById('bbb-transcript-message');
-		var warning = document.getElementById('bbb-overwrite-warning');
+		var overwriteCheckbox = document.getElementById('bbb-overwrite-transcript');
 
 		if (!btn) return;
 
 		var hasTranscript = btn.dataset.hasTranscript === '1';
-		var confirmStep = false;
 
 		btn.addEventListener('click', function(e) {
 			e.preventDefault();
 
-			// Two-step confirmation for existing transcripts.
-			if (hasTranscript && !confirmStep) {
-				confirmStep = true;
-				if (warning) warning.style.display = 'block';
-				btn.textContent = 'Confirm Overwrite';
-				btn.classList.remove('button-secondary');
-				btn.classList.add('button-primary');
+			// Check if overwrite checkbox exists and is required but not checked.
+			if (hasTranscript && overwriteCheckbox && !overwriteCheckbox.checked) {
+				message.innerHTML = '<span style="color: #dba617;">Please check the "Overwrite existing transcript" box to proceed.</span>';
+				message.style.display = 'block';
 				return;
 			}
-
-			// Reset confirmation state.
-			confirmStep = false;
-			if (warning) warning.style.display = 'none';
 
 			// Show loading state.
 			btn.disabled = true;
@@ -242,17 +248,33 @@ add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
 				spinner.classList.remove('is-active');
 				btn.disabled = false;
 				btn.textContent = 'Fetch Transcript';
-				btn.classList.remove('button-primary');
-				btn.classList.add('button-secondary');
 
 				if (data.success) {
-					status.innerHTML = '<strong>Status:</strong> Transcript exists (' + data.data.word_count + ' words)';
+					status.innerHTML = '<strong>Status:</strong> Transcript added to post (' + data.data.word_count + ' words)';
 					message.innerHTML = '<span style="color: #00a32a;">' + data.data.message + '</span>';
 					message.style.display = 'block';
+
+					// Update state and hide checkbox since we now have a transcript.
 					hasTranscript = true;
 					btn.dataset.hasTranscript = '1';
+
+					// Add checkbox if it doesn't exist, or keep it visible.
+					if (!overwriteCheckbox) {
+						var checkboxHtml = '<p style="margin: 0 0 8px 0;"><label><input type="checkbox" id="bbb-overwrite-transcript" /> Overwrite existing transcript</label></p>';
+						message.insertAdjacentHTML('afterend', checkboxHtml);
+						overwriteCheckbox = document.getElementById('bbb-overwrite-transcript');
+					}
+					if (overwriteCheckbox) {
+						overwriteCheckbox.checked = false;
+					}
 				} else {
-					message.innerHTML = '<span style="color: #d63638;">' + (data.data.message || 'An error occurred.') + '</span>';
+					// Check if this is a "no transcript at source" error.
+					if (data.data && data.data.no_transcript) {
+						status.innerHTML = '<strong>Status:</strong> <span style="color: #d63638;">No transcript added to episode at Captivate</span>';
+						message.innerHTML = '<span style="color: #d63638;">' + data.data.message + '</span>';
+					} else {
+						message.innerHTML = '<span style="color: #d63638;">' + (data.data.message || 'An error occurred.') + '</span>';
+					}
 					message.style.display = 'block';
 				}
 			})
@@ -260,8 +282,6 @@ add_action( 'admin_enqueue_scripts', function ( $hook_suffix ) {
 				spinner.classList.remove('is-active');
 				btn.disabled = false;
 				btn.textContent = 'Fetch Transcript';
-				btn.classList.remove('button-primary');
-				btn.classList.add('button-secondary');
 				message.innerHTML = '<span style="color: #d63638;">Network error. Please try again.</span>';
 				message.style.display = 'block';
 			});

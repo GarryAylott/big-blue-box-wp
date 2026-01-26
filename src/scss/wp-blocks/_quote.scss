@@ -6,11 +6,7 @@ Styles for the Quote block in the WP block editor
 */
 
 .editor-styles-wrapper .wp-block-quote {
-    border-left: 3px solid
-        var(
-            --wp--preset--color--primary,
-            hsl(var(--clr-brand-accent-darker-hsl))
-        );
+    border-left: 3px solid #1f7af9;
     padding-left: 1rem;
     font-style: normal;
 
@@ -19,7 +15,8 @@ Styles for the Quote block in the WP block editor
     }
 
     cite,
-    footer {
+    footer,
+    .wp-block-quote__citation {
         display: block;
         opacity: 0.8;
         margin-top: 0.25rem;

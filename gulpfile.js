@@ -159,6 +159,12 @@ export const editorStylesBuild = compileEditorStyles;
 
 export const scriptsDev = () =>
     bundleScripts({ production: false, reloadBrowser: true });
+export const scriptsDevConditional = async () => {
+    const jsFile = path.resolve("scripts/bbb-scripts.min.js");
+    if (!fs.existsSync(jsFile)) {
+        return bundleScripts({ production: false, reloadBrowser: false });
+    }
+};
 export const scriptsBuild = () =>
     bundleScripts({ production: true, reloadBrowser: false });
 
@@ -195,7 +201,7 @@ export function watchFiles() {
 // Combined tasks
 // -----------------------------------------------------------------------------
 export const dev = gulp.series(
-    gulp.parallel(stylesDev, scriptsDev, editorStylesDev),
+    gulp.parallel(stylesDev, scriptsDevConditional, editorStylesDev),
     serve,
     watchFiles
 );

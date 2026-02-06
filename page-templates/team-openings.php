@@ -30,12 +30,12 @@ get_header();
             [
                 'title'       => __( 'General Staff Writer', 'bigbluebox' ),
                 'description' => __( 'We’re after a general writer to join the team who is interested in writing a general mix of Doctor Who content. Episode reviews, opinion pieces, book reviews, merch reviews, Top 10s, etc. Basically, anything you’re passionate about within Doctor Who that you feel our audience would enjoy reading.', 'bigbluebox' ),
-                'mailto'      => 'mailto:hello@bigblueboxpodcast.co.uk?subject=Product%20Designer%20Application',
+                'mailto'      => 'mailto:hello@bigblueboxpodcast.co.uk?subject=Staff%20Writer%20Application',
             ],
             [
                 'title'       => __( 'Big Finish/Audio Drama Specialist', 'bigbluebox' ),
                 'description' => __( 'Do you love the Doctor Who range of audio dramas from Big Finish? Do you listen to an unhealthy amount of audio dramas, soundtracks and more from the world of Doctor Who? Have a knack for writing easily readable, concise, insightful reviews? We’re looking to expand in this area so we’d love to hear from you. ', 'bigbluebox' ),
-                'mailto'      => 'mailto:hello@bigblueboxpodcast.co.uk?subject=Podcast%20Producer%20Application',
+                'mailto'      => 'mailto:hello@bigblueboxpodcast.co.uk?subject=Audio%20Drama%20Specialist%20Application',
             ],
         ];
         ?>

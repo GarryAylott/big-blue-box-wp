@@ -3,8 +3,7 @@
 .team-thoughts {
     position: relative;
     margin-block: var(--space-xl);
-    padding-block: var(--space-m);
-    padding-inline: var(--space-l);
+    padding: var(--space-l);
     background: var(--clr-surface-600);
     border-radius: var(--radius-normal);
     overflow: hidden;
@@ -25,14 +24,17 @@
 
     &__heading {
         font-size: var(--step-3);
-        margin-block-end: var(--space-m);
     }
 
     &__entry {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin-block-end: var(--space-m);
+
+        &:not(:last-child) {
+            padding-block-end: var(--space-l);
+            border-bottom: 1px solid hsl(var(--clr-border-link-hsl) / 0.2);
+        }
     }
 
     &__author {
@@ -51,7 +53,7 @@
         margin-inline-start: calc(64px + var(--space-xs));
 
         p {
-            color: var(--clr-text-900);
+            color: var(--clr-text-400);
             font-style: italic;
             text-wrap: unset;
         }

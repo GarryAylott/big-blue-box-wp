@@ -14,7 +14,7 @@ if ( empty( $entries ) ) {
 	return;
 }
 ?>
-<section class="team-thoughts">
+<section class="team-thoughts flow">
 	<h2 class="team-thoughts__heading">
 		<?php echo esc_html__( 'Thoughts from the team', 'bigbluebox' ); ?>
 	</h2>

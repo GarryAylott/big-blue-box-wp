@@ -269,13 +269,8 @@ body:is(.single-post) :is(.entry-content) a {
 }
 
 // External links with icon
-a[target="_blank"] {
-    display: inline-flex;
-    align-items: center;
-
-    &:not(.has-external-icon) {
-        display: unset;
-    }
+a[target="_blank"]:not(.has-external-icon) {
+    display: unset;
 }
 
 a.no-external-icon {

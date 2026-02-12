@@ -1,4 +1,4 @@
-@use 'utilities' as *;
+@use "utilities" as *;
 
 .tardis-progress-container {
     position: fixed;
@@ -7,17 +7,21 @@
     width: 70px;
     height: 96px;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: translateX(3rem);
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
     pointer-events: none;
     z-index: 9999;
 
     @media (max-width: 72.188rem) {
-        @include visually-hidden
+        @include visually-hidden;
     }
 }
 
 .tardis-progress-container.visible {
     opacity: 1;
+    transform: translateX(0);
 }
 
 #tardis-fill {

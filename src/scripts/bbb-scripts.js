@@ -16,6 +16,7 @@ import {
     Search,
     X,
     Tag,
+    LayoutList,
     FileText,
     Info,
 } from "lucide";
@@ -37,6 +38,7 @@ const icons = {
     Search,
     X,
     Tag,
+    LayoutList,
     FileText,
     Info,
 };
@@ -119,6 +121,51 @@ const initNavigation = () => {
         elements.primaryNav?.setAttribute("data-visible", String(!isVisible));
         elements.navToggle?.setAttribute("aria-expanded", String(!isVisible));
     });
+};
+
+// Hide header on scroll down, show on scroll up
+const initAutoHideHeader = () => {
+    const siteHead = document.querySelector(".site-head");
+    if (!siteHead) return;
+
+    const desktopMedia = window.matchMedia("(min-width: 55rem)");
+    const topRevealOffset = 16;
+    const minDelta = 1;
+    let previousScrollY = window.scrollY;
+    let frameId = 0;
+
+    const updateHeaderState = () => {
+        frameId = 0;
+
+        const currentScrollY = window.scrollY;
+        if (!desktopMedia.matches) {
+            siteHead.classList.remove("is-hidden");
+            previousScrollY = currentScrollY;
+            return;
+        }
+
+        const hasScrolledDown = currentScrollY > previousScrollY + minDelta;
+        const hasScrolledUp = currentScrollY < previousScrollY - minDelta;
+
+        if (currentScrollY <= topRevealOffset) {
+            siteHead.classList.remove("is-hidden");
+        } else if (hasScrolledDown && previousScrollY > topRevealOffset) {
+            siteHead.classList.add("is-hidden");
+        } else if (hasScrolledUp) {
+            siteHead.classList.remove("is-hidden");
+        }
+
+        previousScrollY = currentScrollY;
+    };
+
+    const onScroll = () => {
+        if (frameId) return;
+        frameId = window.requestAnimationFrame(updateHeaderState);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    desktopMedia.addEventListener("change", updateHeaderState);
+    updateHeaderState();
 };
 
 // Background fade
@@ -1091,6 +1138,7 @@ const initLogosMarquee = () => {
 // Initialize all features
 const init = () => {
     initNavigation();
+    initAutoHideHeader();
     initBackgroundFade();
     initHeroOverlayFromFeaturedImage();
     initSearch();

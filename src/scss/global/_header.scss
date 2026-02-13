@@ -13,7 +13,8 @@ Header styling for logo, nav etc.
     width: 100%;
     padding: var(--space-xs) 0;
     border-bottom: 1px solid hsl(var(--clr-border-link-hsl) / 0.1);
-    transform: translateZ(0);
+    transform: translateY(0);
+    transition: transform 0.4s ease-out;
     z-index: 10;
 
     .header-backdrop {
@@ -269,6 +270,20 @@ Header styling for logo, nav etc.
                 right: 2rem;
             }
         }
+    }
+}
+
+@media (min-width: 55rem) {
+    .site-head.is-hidden {
+        transform: translateY(-100%);
+    }
+}
+
+@media (max-width: 55rem) {
+    html:has(.nav-drawer[data-visible="true"]),
+    body:has(.nav-drawer[data-visible="true"]) {
+        overflow: hidden;
+        overscroll-behavior: none;
     }
 }
 

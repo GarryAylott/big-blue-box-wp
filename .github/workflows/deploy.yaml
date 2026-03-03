@@ -52,7 +52,7 @@ jobs:
                     --exclude='gulpfile.js' \
                     --exclude='webpack.config.cjs' \
                     --exclude='README.md' \
-                    --exclude='AGENTS.md' \
+                    --exclude='CLAUDE.md' \
                     --exclude='.claude/' \
                     --exclude='.nvmrc' \
                     --exclude='.prettierignore' \

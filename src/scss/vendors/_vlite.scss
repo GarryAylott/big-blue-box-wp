@@ -6,7 +6,7 @@ Importing vLite styles from NPM package
 .v-vlite {
     --vlite-colorPrimary: #ff7f15;
     --vlite-transition: 0.25s ease;
-    --vlite-controlBarHeight: 60px;
+    --vlite-controlBarHeight: 40px;
     --vlite-controlBarHorizontalPadding: 10px;
     --vlite-controlBarBackground: linear-gradient(0deg, #000 -50%, transparent);
     --vlite-controlsColor: #fff;
@@ -348,10 +348,8 @@ Importing vLite styles from NPM package
 .v-controlBar {
     align-items: center;
     display: flex;
-    height: var(--vlite-controlBarHeight);
+    height: 4rem;
     justify-content: flex-end;
-    padding-left: var(--vlite-controlBarHorizontalPadding);
-    padding-right: var(--vlite-controlBarHorizontalPadding);
     padding-top: calc(var(--vlite-progressBarHeight) + 10px);
     position: relative;
     text-align: right;

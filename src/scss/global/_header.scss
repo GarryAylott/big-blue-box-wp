@@ -345,17 +345,20 @@ $easing-fade: ease-out;
 @mixin header-fade-start {
     opacity: 0;
     transform: translateY(-#{$drop-distance});
+    filter: blur(8px);
 }
 
 @mixin header-fade-animate($count: 10, $delay-start: 0.5s, $delay-step: 0.2s) {
     animation:
         headerDrop $drop-duration $easing-drop forwards,
-        headerFade $fade-duration $easing-fade forwards;
+        headerFade $fade-duration $easing-fade forwards,
+        headerBlur $drop-duration $easing-drop forwards;
 
     @for $i from 1 through $count {
         &:nth-child(#{$i}) {
-            // same delay applied to both animations
+            // same delay applied to all animations
             animation-delay:
+                #{$delay-start + ($i - 1) * $delay-step},
                 #{$delay-start + ($i - 1) * $delay-step},
                 #{$delay-start + ($i - 1) * $delay-step};
         }
@@ -372,6 +375,7 @@ body:is(.nav-no-fade, .paged)
     animation: none;
     opacity: 1;
     transform: none;
+    filter: none;
 }
 
 // Logo + navigation animations only when enabled
@@ -380,8 +384,9 @@ body:not(.nav-no-fade):not(.paged) {
         @include header-fade-start;
         animation:
             headerDrop $drop-duration $easing-drop forwards,
-            headerFade $fade-duration $easing-fade forwards;
-        animation-delay: 0.3s, 0.3s; // same delay for both
+            headerFade $fade-duration $easing-fade forwards,
+            headerBlur $drop-duration $easing-drop forwards;
+        animation-delay: 0.3s, 0.3s, 0.3s;
     }
 
     // Desktop: animate nav items on load
@@ -430,8 +435,9 @@ body:not(.nav-no-fade):not(.paged) {
         .site-head__navigation .nav-drawer[data-visible="true"] .nav-logo {
             animation:
                 headerDrop $drop-duration $easing-drop forwards,
-                headerFade $fade-duration $easing-fade forwards;
-            animation-delay: $mobile-logo-delay, $mobile-logo-delay;
+                headerFade $fade-duration $easing-fade forwards,
+                headerBlur $drop-duration $easing-drop forwards;
+            animation-delay: $mobile-logo-delay, $mobile-logo-delay, $mobile-logo-delay;
         }
     }
 }
@@ -444,5 +450,10 @@ body:not(.nav-no-fade):not(.paged) {
 @keyframes headerFade {
     to {
         opacity: 1;
+    }
+}
+@keyframes headerBlur {
+    to {
+        filter: blur(0);
     }
 }

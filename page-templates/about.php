@@ -54,17 +54,17 @@ get_header();
                         </p>
                         <ul class="social-icons" role="list">
                             <li>
-                                <a href="https://twitter.com/bigblueboxpod" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'X (Twitter)', 'bigbluebox' ); ?>">
+                                <a href="https://x.com/GarryAylott" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'X (Twitter)', 'bigbluebox' ); ?>">
                                     <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-x.svg' ) ); ?>" alt="<?php echo esc_attr__( 'X (Twitter)', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>
                             <li>
-                                <a href="https://instagram.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'Instagram', 'bigbluebox' ); ?>">
+                                <a href="https://instagram.com/garryaylott" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'Instagram', 'bigbluebox' ); ?>">
                                     <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-insta.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Instagram', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>
                             <li>
-                                <a href="https://facebook.com/bigblueboxpodcast" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'Facebook', 'bigbluebox' ); ?>">
+                                <a href="https://www.facebook.com/garryaylott" class="has-external-icon" target="_blank" rel="noopener" aria-label="<?php echo esc_attr__( 'Facebook', 'bigbluebox' ); ?>">
                                     <img src="<?php echo esc_url( get_theme_file_uri( 'images/icons/social-icon-fb.svg' ) ); ?>" alt="<?php echo esc_attr__( 'Facebook', 'bigbluebox' ); ?>" width="24" height="24">
                                 </a>
                             </li>

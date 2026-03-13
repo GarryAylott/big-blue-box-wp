@@ -61,12 +61,19 @@ function bbb_get_related_articles( int $limit = 2, string $context = 'non-podcas
 
     $collected = [];
 
-    $run_query = function( array $args ) use ( $base, &$collected, $limit ) {
-        // Don’t fetch more if we already have enough.
+    $run_query = function( array $args ) use ( $base, &$collected, $limit, $post_id ) {
+        // Don't fetch more if we already have enough.
         if ( count( $collected ) >= $limit ) {
             return;
         }
+        $exclude_ids = array_map( fn( $p ) => $p->ID, $collected );
+        $exclude_ids[] = $post_id;
+
         $args['posts_per_page'] = max( 0, $limit - count( $collected ) );
+        $args['post__not_in']   = array_unique( array_merge(
+            isset( $args['post__not_in'] ) ? $args['post__not_in'] : [],
+            $exclude_ids
+        ) );
         $q = new WP_Query( array_merge( $base, $args ) );
         if ( $q->have_posts() ) {
             $collected = array_merge( $collected, $q->posts );
@@ -94,7 +101,8 @@ function bbb_get_related_articles( int $limit = 2, string $context = 'non-podcas
         if ( count( $collected ) < $limit ) {
             $args = [
                 'category__in' => [ $podcasts_cat_id ],
-                'orderby'      => 'rand',
+                'orderby'      => 'date',
+                'order'        => 'DESC',
             ];
             if ( $specific_cat_ids ) {
                 $args['category__in'] = array_unique( array_merge( [ $podcasts_cat_id ], $specific_cat_ids ) );
@@ -126,7 +134,8 @@ function bbb_get_related_articles( int $limit = 2, string $context = 'non-podcas
                 $exclude_podcasts,
                 [
                     'tag__and' => $pair,
-                    'orderby'  => 'rand',
+                    'orderby'  => 'date',
+                    'order'    => 'DESC',
                 ]
             ) );
         }
@@ -137,7 +146,8 @@ function bbb_get_related_articles( int $limit = 2, string $context = 'non-podcas
                 $exclude_podcasts,
                 [
                     'tag__in' => $tag_ids,
-                    'orderby' => 'rand',
+                    'orderby' => 'date',
+                    'order'   => 'DESC',
                 ]
             ) );
         }
@@ -146,24 +156,21 @@ function bbb_get_related_articles( int $limit = 2, string $context = 'non-podcas
         if ( count( $collected ) < $limit && $specific_cat_ids ) {
             $run_query( [
                 'category__in' => $specific_cat_ids,
-                'orderby'      => 'rand',
+                'orderby'      => 'date',
+                'order'        => 'DESC',
             ] );
         }
 
-        // 4) Fallback: random non-podcast posts
+        // 4) Fallback: latest non-podcast posts
         if ( count( $collected ) < $limit ) {
             $run_query( array_merge(
                 $exclude_podcasts,
                 [
-                    'orderby' => 'rand',
+                    'orderby' => 'date',
+                    'order'   => 'DESC',
                 ]
             ) );
         }
-    }
-
-    // Deduplicate just in case.
-    if ( count( $collected ) > 1 ) {
-        $collected = array_values( array_unique( $collected, SORT_REGULAR ) );
     }
 
     return array_slice( $collected, 0, $limit );

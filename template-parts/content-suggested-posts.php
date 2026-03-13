@@ -60,6 +60,7 @@
                 $related_posts = function_exists( 'bbb_get_related_articles' ) ? bbb_get_related_articles( 10, $context ) : array();
 
                 if ( ! empty( $related_posts ) ) :
+                    global $post;
                     foreach ( $related_posts as $post ) :
                         setup_postdata( $post ); ?>
                         <?php get_template_part( 'template-parts/content', 'post-cards', array( 'card_type' => 'browse' ) ); ?>

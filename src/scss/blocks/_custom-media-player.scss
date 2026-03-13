@@ -83,7 +83,7 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
             align-items: center;
             gap: var(--space-s);
             margin: 0;
-            padding-inline: var(--space-m);
+            padding-inline: calc(var(--space-s) + 5px);
             font-family: var(--font-family-headings);
             color: var(--clr-text-400);
         }
@@ -157,6 +157,26 @@ Custom styles to override vLite.js defaults and provide a basic custom theme.
         /* Hide unwanted default icons if needed */
         .vlite-svg-volume {
             display: none;
+        }
+
+        .v-download-link {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3xs);
+            width: fit-content;
+            font-size: var(--step--1);
+            font-family: var(--font-family-headings);
+            margin-inline-start: calc(var(--space-s) + 1px);
+            margin-block-end: var(--space-xs);
+            padding-inline: var(--space-xs);
+            padding-block: var(--space-3xs);
+            border: 1px solid hsl(var(--clr-brand-accent-hsl) / 1);
+            border-radius: var(--radius-small);
+
+            &:hover {
+                text-decoration: none;
+                background: hsl(var(--clr-surface-50-hsl) / 0.15);
+            }
         }
     }
 }

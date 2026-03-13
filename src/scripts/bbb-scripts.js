@@ -19,6 +19,7 @@ import {
     LayoutList,
     FileText,
     Info,
+    CloudDownload,
 } from "lucide";
 
 // Only register icons we use so the bundle stays lean.
@@ -41,6 +42,7 @@ const icons = {
     LayoutList,
     FileText,
     Info,
+    CloudDownload,
 };
 createIcons({ icons });
 
@@ -78,9 +80,20 @@ class EpisodeMetaPlugin {
             this.metaElement.appendChild(titleEl);
         }
 
-        elements.controlBar
-            .closest(".v-container")
-            ?.insertBefore(this.metaElement, elements.controlBar);
+        const container = elements.controlBar.closest(".v-container");
+        container?.insertBefore(this.metaElement, elements.controlBar);
+
+        const audioSrc = media.querySelector("source")?.src;
+        if (audioSrc && container) {
+            const downloadLink = document.createElement("a");
+            downloadLink.className = "v-download-link";
+            downloadLink.href = audioSrc;
+            downloadLink.target = "_blank";
+            downloadLink.rel = "noopener";
+            downloadLink.innerHTML = `<i data-lucide="cloud-download" class="icon-step-0"></i>Download`;
+            container.appendChild(downloadLink);
+            createIcons({ icons, root: container });
+        }
     }
 
     destroy() {

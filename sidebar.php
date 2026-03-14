@@ -9,6 +9,8 @@
 <?php $theme_dir = esc_url( get_template_directory_uri() ); ?>
 
 <aside id="secondary" class="main-sidebar flow-large">
+	<?php get_template_part( 'template-parts/content', 'countdown-timer' ); ?>
+
 	<section class="social-channels flow">
 		<h5>
 			<?php esc_html_e( 'Connect and Follow', 'bigbluebox' ); ?>

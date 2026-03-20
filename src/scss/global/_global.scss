@@ -3,6 +3,10 @@ GLOBAL STYLES
 Site-wide styles.
 */
 
+@view-transition {
+    navigation: auto;
+}
+
 body {
     width: 100%;
     max-width: 100%;

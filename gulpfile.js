@@ -6,7 +6,6 @@ import postcss from "gulp-postcss";
 import autoprefixer from "autoprefixer";
 import cssnano from "cssnano";
 import browserSync from "browser-sync";
-import header from "gulp-header";
 import { rollup } from "rollup";
 import resolve from "@rollup/plugin-node-resolve";
 import fs from "fs";
@@ -15,8 +14,6 @@ import { minify } from "terser";
 
 const sass = gulpSass(dartSass);
 const bs = browserSync.create();
-
-const themeHeader = `/*\nTheme Name: Big Blue Box Theme\nTheme URI: https://www.bigblueboxpodcast.co.uk\nAuthor: Garry Aylott\nDescription: A custom theme for The Big Blue Box Podcast website.\nVersion: 2\nText Domain: bigbluebox\n*/\n`;
 
 // -----------------------------------------------------------------------------
 // File paths
@@ -57,8 +54,7 @@ function compileStyles({
                 sass.logError
             )
         )
-        .pipe(postcss([autoprefixer(), cssnano()]))
-        .pipe(header(themeHeader));
+        .pipe(postcss([autoprefixer(), cssnano()]));
 
     if (sourcemapsEnabled) {
         pipeline = pipeline.pipe(sourcemaps.write("."));

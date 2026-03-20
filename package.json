@@ -20,7 +20,7 @@
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^16.0.1",
         "@rollup/plugin-replace": "^6.0.2",
-        "@rollup/plugin-terser": "^0.4.4",
+        "@rollup/plugin-terser": "^1.0.0",
         "@wordpress/scripts": "^31.7.0",
         "autoprefixer": "^10.4.16",
         "browser-sync": "^3.0.4",
@@ -38,5 +38,8 @@
     },
     "dependencies": {
         "vlitejs": "^7.4.0"
+    },
+    "overrides": {
+        "serialize-javascript": ">=7.0.3"
     }
 }

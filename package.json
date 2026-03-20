@@ -41,6 +41,7 @@
     },
     "overrides": {
         "serialize-javascript": ">=7.0.3",
-        "minimatch": ">=9.0.7"
+        "minimatch": ">=9.0.7",
+        "webpack-dev-server": ">=5.2.1"
     }
 }

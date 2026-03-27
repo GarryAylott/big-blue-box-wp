@@ -1,0 +1,24 @@
+/*
+TARDIS SEPARATOR
+Decorative horizontal rule with centred TARDIS icon.
+*/
+
+.tardis-separator {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-block: var(--space-l);
+	color: var(--clr-brand-primary);
+
+	&__line {
+		flex: 1;
+		border-top: 1px solid var(--clr-brand-primary);
+	}
+
+	&__icon {
+		flex-shrink: 0;
+		width: 20px;
+		height: auto;
+		transform: rotate(10deg);
+	}
+}

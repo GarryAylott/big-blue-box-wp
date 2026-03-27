@@ -1,0 +1,17 @@
+{
+	"apiVersion": 2,
+	"name": "bbb/tardis-separator",
+	"title": "TARDIS Separator",
+	"category": "bbb-blocks",
+	"icon": "minus",
+	"description": "A decorative horizontal separator with a centred TARDIS icon.",
+	"attributes": {},
+	"supports": {
+		"html": false,
+		"multiple": true
+	},
+	"editorScript": "file:./tardis-separator.js",
+	"render": "file:./render.php",
+	"style": "bigbluebox-style",
+	"editorStyle": "file:./editor.css"
+}

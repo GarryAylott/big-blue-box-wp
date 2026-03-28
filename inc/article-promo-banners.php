@@ -61,6 +61,25 @@ function bbb_insert_article_promo_banners( string $content ): string {
         return $content;
     }
 
+    // Build a map of token indices that sit inside a no-promo container
+    // (e.g. info-block). We track nesting depth of data-bbb-no-promo elements.
+    $no_promo_indices = [];
+    $depth            = 0;
+    for ( $k = 0; $k < count( $tokens ); $k++ ) {
+        $seg = $tokens[ $k ];
+        // Opening tag with the marker — increase depth.
+        if ( stripos( $seg, 'data-bbb-no-promo' ) !== false ) {
+            $depth++;
+        }
+        if ( $depth > 0 ) {
+            $no_promo_indices[ $k ] = true;
+        }
+        // Closing div that would end a no-promo container.
+        if ( $depth > 0 && stripos( $seg, '</div>' ) !== false ) {
+            $depth--;
+        }
+    }
+
     $words_so_far = 0;
     $out = [];
 
@@ -111,8 +130,8 @@ function bbb_insert_article_promo_banners( string $content ): string {
     for ( $i = 0; $i < $count; $i++ ) {
         $segment = $tokens[ $i ];
         $words_so_far += str_word_count( wp_strip_all_tags( $segment ) );
-        // Only consider after closing a paragraph
-        if ( stripos( $segment, '</p>' ) !== false ) {
+        // Only consider after closing a paragraph, and never inside a no-promo container.
+        if ( stripos( $segment, '</p>' ) !== false && ! isset( $no_promo_indices[ $i ] ) ) {
             $word_counts[$i] = $words_so_far;
             $diff = abs( $words_so_far - $halfway );
             if ( $closest_diff === null || $diff < $closest_diff ) {

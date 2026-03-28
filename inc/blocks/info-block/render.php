@@ -12,10 +12,10 @@ if ( ! isset( $attributes['content'] ) || empty( trim( $attributes['content'] ) 
     return '';
 }
 
-$content = wp_kses_post( $attributes['content'] );
+$content = wpautop( wp_kses_post( $attributes['content'] ) );
 ?>
 
-<div class="info-block">
+<div class="info-block" data-bbb-no-promo>
     <i data-lucide="info" class="info-block__icon icon-step-2 icon-brand-primary"></i>
     <div class="info-block__content">
         <?php echo $content; ?>

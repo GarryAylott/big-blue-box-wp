@@ -1,2 +1,56 @@
 // Editor-only styles
+// Loaded via add_editor_style() — WP auto-scopes :root to .editor-styles-wrapper.
+
+@use "global/variables";
 @use "wp-blocks/quote";
+
+// Editor typography — use system-ui for readability, keep frontend sizing.
+:root {
+    --font-family-headings: system-ui, sans-serif;
+    --font-family-body: system-ui, sans-serif;
+    --fw-bold: 700;
+    font-family: system-ui, sans-serif;
+}
+
+p {
+    line-height: 1.5;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+    font-family: system-ui, sans-serif;
+    font-weight: var(--fw-bold);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    font-variant-numeric: lining-nums;
+}
+
+h1 {
+    font-size: var(--step-5);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+h2 {
+    font-size: var(--step-4);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+h3 {
+    font-size: var(--step-3);
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+}
+h4 {
+    font-size: var(--step-2);
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+}
+h5 {
+    font-size: var(--step-1);
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+}
+h6 {
+    font-size: calc(var(--step--1) + 0.15rem);
+    line-height: 1.3;
+    letter-spacing: -0.1px;
+}

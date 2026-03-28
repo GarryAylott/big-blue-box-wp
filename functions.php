@@ -97,6 +97,10 @@ function bigbluebox_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	// Load editor stylesheet inside the block editor iframe.
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'editor.css' );
 }
 add_action( 'after_setup_theme', 'bigbluebox_setup' );
 

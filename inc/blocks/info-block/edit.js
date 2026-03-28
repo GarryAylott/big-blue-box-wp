@@ -25,7 +25,8 @@ export default function Edit({ attributes, setAttributes }) {
             </h3>
             <div className="info-block-editor__content">
                 <RichText
-                    tagName="p"
+                    tagName="div"
+                    multiline="p"
                     className="info-block-editor__text"
                     value={content}
                     onChange={(val) => setAttributes({ content: val })}

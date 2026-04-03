@@ -16,7 +16,7 @@ $content = wpautop( wp_kses_post( $attributes['content'] ) );
 ?>
 
 <div class="info-block" data-bbb-no-promo>
-    <i data-lucide="info" class="info-block__icon icon-step-2 icon-brand-primary"></i>
+    <i data-lucide="info" class="info-block__icon icon-brand-primary"></i>
     <div class="info-block__content">
         <?php echo $content; ?>
     </div>

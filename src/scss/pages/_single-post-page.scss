@@ -99,6 +99,10 @@ Layout and styling for single post pages.
             flex-basis: 0;
             flex-grow: 999;
             min-inline-size: 63%;
+
+            p {
+                max-width: 100%;
+            }
         }
 
         .post-summary {

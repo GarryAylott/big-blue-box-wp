@@ -15,9 +15,9 @@ if ( empty( $entries ) ) {
 }
 ?>
 <section class="team-thoughts flow">
-	<h2 class="team-thoughts__heading">
+	<h4 class="team-thoughts__heading">
 		<?php echo esc_html__( 'Thoughts from the team', 'bigbluebox' ); ?>
-	</h2>
+	</h4>
 	<?php foreach ( $entries as $entry ) :
 		$user_id = isset( $entry['userId'] ) ? absint( $entry['userId'] ) : 0;
 		$text    = isset( $entry['content'] ) ? (string) $entry['content'] : '';

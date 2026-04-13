@@ -3,13 +3,18 @@ BLOCKQUOTE
 Layout and styling for in-post blockquotes.
 */
 
+// Spacing for blockquotes only in single posts
+.single-post blockquote,
+.article-body blockquote {
+    margin-block: var(--space-xl);
+    padding-block-start: var(--space-l);
+    padding-inline-start: var(--space-m);
+}
+
 blockquote {
     position: relative;
     font-family: var(--font-family-headings);
-    margin-block: var(--space-xl);
     margin-inline-start: calc(var(--space-m) * -1.1);
-    padding-block-start: var(--space-l);
-    padding-inline-start: var(--space-m);
     border-inline-start: 2px solid var(--clr-brand-accent);
 
     &:before {
